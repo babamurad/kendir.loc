@@ -16247,3 +16247,10 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-origin {
   padding: 28px;
 }
 /*# sourceMappingURL=style.css.map */
+
+.departments__item-link:hover{
+    background-color: #3366cc !important;
+    color: #fff;
+    padding: 16px 16px;
+    transition: 0.4s;
+}

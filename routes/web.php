@@ -1,7 +1,9 @@
 <?php
 
+use App\Livewire\Admin\DashboardComponent;
 use App\Livewire\HomeComponent;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', HomeComponent::class)->name('home');
+
+Route::get('dashboard', DashboardComponent::class)->name('dashboard');
