@@ -3,6 +3,9 @@
 use App\Livewire\Admin\CategoryComponent;
 use App\Livewire\Admin\DashboardComponent;
 use App\Livewire\HomeComponent;
+use \App\Livewire\UserDashboardComponent;
+use App\Livewire\RegisterUserComponent;
+use App\Livewire\UserComponent;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -23,6 +26,13 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', HomeComponent::class)->name('home');
 
-Route::get('dashboard', DashboardComponent::class)->name('dashboard');
+Route::get('user', UserComponent::class)->name('name');
+Route::get('register', RegisterUserComponent::class)->name('register');
 
-Route::get('admin/categories', CategoryComponent::class)->name('admin.categories');
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard', UserDashboardComponent::class)->name('dashboard');
+});
+Route::middleware(['authadmin'])->group(function () {
+    Route::get('admin/dashboard', DashboardComponent::class)->name('admin.dashboard');
+    Route::get('admin/categories', CategoryComponent::class)->name('admin.categories');
+});

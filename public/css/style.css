@@ -16254,3 +16254,8 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-origin {
     padding: 16px 16px;
     transition: 0.4s;
 }
+.required-field::after {
+    content: "*";
+    color: red;
+    padding-left: 0.3rem;
+}

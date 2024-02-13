@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="{{asset('vendor/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <!-- font - fontawesome -->
-    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="{{asset('vendor/fontawesome/css/all.min.css')}}">
     <!-- font - stroyka -->
-    <link rel="stylesheet" href="fonts/stroyka/stroyka.css">
+    <link rel="stylesheet" href="{{asset('fonts/stroyka/stroyka.css')}}">
 </head>
 
 <body>
@@ -37,7 +37,7 @@
                                     <use xlink:href="images/sprite.svg#menu-18x14"></use>
                                 </svg>
                             </button>
-                            <a class="mobile-header__logo" href="index.html">
+                            <a class="mobile-header__logo" href="/">
                                 <!-- mobile-logo -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="120px" height="20px">
                                     <path d="M118.5,20h-1.1c-0.6,0-1.2-0.4-1.4-1l-1.5-4h-6.1l-1.5,4c-0.2,0.6-0.8,1-1.4,1h-1.1c-1,0-1.8-1-1.4-2l1.1-3
@@ -268,8 +268,8 @@
                                                     <div class="menu__item-submenu-offset"></div>
                                                     <a class="menu__item-link" href="">
                                                         <div class="menu__item-icon"><img
-                                                                srcset="images/languages/language-1.png 1x, images/languages/language-1@2x.png 2x"
-                                                                src="images/languages/language-1.png" alt=""></div>
+                                                                srcset="{{ asset('images/languages/language-1.png') }} 1x, {{ asset('images/languages/language-1@2x.png') }} 2x"
+                                                                src="{{ asset('images/languages/language-1.png') }}" alt=""></div>
                                                         English
                                                     </a>
                                                 </li>
@@ -325,7 +325,7 @@
                 <!-- .topbar / end -->
                 <div class="site-header__middle container">
                     <div class="site-header__logo">
-                        <a href="index.html">
+                        <a href="/">
                             <!-- logo -->
                             <img src="{{ asset('images/kendir/logo.png') }}" alt="Kendir Logo" style="width: 14rem;">
                             <!-- logo / end -->
@@ -376,6 +376,7 @@
                             <div class="nav-panel__row">
                                 <div class="nav-panel__departments">
                                     <!-- .departments -->
+                                    @if ( request()->is('/'))
                                     <div class="departments  departments--open departments--fixed "
                                         data-departments-fixed-by=".block-slideshow">
                                         <div class="departments__body">
@@ -1004,6 +1005,8 @@
                                             </svg>
                                         </button>
                                     </div>
+                                    @endif
+
                                     <!-- .departments / end -->
                                 </div>
                                 <!-- .nav-links -->
@@ -1668,7 +1671,7 @@
                                             </span>
                                         </a>
                                         <div class="indicator__dropdown">
-                                            <livewire:account-menu-component />
+                                            <livewire:user-component />
                                         </div>
                                     </div>
                                 </div>
@@ -1681,6 +1684,7 @@
         <!-- desktop site__header / end -->
         <!-- site__body -->
         <div class="site__body">
+
             <!-- .block-slideshow -->
             {{ $slot}}
 
