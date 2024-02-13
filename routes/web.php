@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Admin\CategoryComponent;
 use App\Livewire\Admin\DashboardComponent;
 use App\Livewire\HomeComponent;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,5 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/', HomeComponent::class)->name('home');
 
 Route::get('dashboard', DashboardComponent::class)->name('dashboard');
+
+Route::get('admin/categories', CategoryComponent::class)->name('admin.categories');

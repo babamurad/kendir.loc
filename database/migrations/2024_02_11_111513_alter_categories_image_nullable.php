@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('utype')->default('USR')->comment('ADM for Admin and USR for Normal user');
+        Schema::table('categories', function (Blueprint $table) {
+            $table->string('image')->nullable()->change();
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('utype');
+        Schema::table('categories', function (Blueprint $table) {
+            $table->string('image')->nullable(false)->change();
         });
     }
 };

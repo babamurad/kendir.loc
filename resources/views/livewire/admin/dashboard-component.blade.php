@@ -1,3 +1,4 @@
+@section('title', 'Dashboard')
 <div>
     <header class="main-heading">
         <div class="container-fluid">

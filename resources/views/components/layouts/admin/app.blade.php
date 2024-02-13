@@ -17,8 +17,8 @@
 		<meta property="og:description" content="Marketplace for Bootstrap Admin Dashboards">
 		<meta property="og:type" content="Website">
 		<meta property="og:site_name" content="Bootstrap Gallery">
-		<link rel="shortcut icon" href="{{asset('admin/img/favicon.svg')}}" />
-		<title>Premium Admin Dashboards</title>
+		<link rel="shortcut icon" href="{{asset('admin/img/favicon.ico')}}" />
+		<title>@yield('title') - Kendir</title>
 
 		<!-- Common CSS -->
 		<link rel="stylesheet" href="{{asset('admin/css/bootstrap.min.css')}}" />
@@ -29,22 +29,11 @@
 		<!-- Chartist css -->
 		<link href="{{asset('admin/vendor/chartist/css/chartist.min.css')}}" rel="stylesheet" />
 		<link href="{{asset('admin/vendor/chartist/css/chartist-custom.css')}}" rel="stylesheet" />
-
+        @stack('dateTables')
 	</head>
 
 	<body>
 
-		<!-- Loading starts -->
-		<div class="loading-wrapper">
-			<div class="loading">
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-			</div>
-		</div>
-		<!-- Loading ends -->
 
 		<!-- BEGIN .app-wrap -->
 		<div class="app-wrap">
@@ -187,7 +176,7 @@
 						<!-- BEGIN .user-profile -->
 						<div class="user-profile">
 							<a href="{{route('dashboard')}}" class="logo">
-								<img src="{{asset('admin/img/logo.svg')}}" alt="Google Dashboards" />
+								<img src="{{asset('admin/img/logo.png')}}" alt="Google Dashboards" />
 							</a>
 							<h6 class="location-name">San Francisco</h6>
 							<ul class="profile-actions">
@@ -212,21 +201,22 @@
 						</div>
 						<!-- END .user-profile -->
 						<!-- BEGIN .side-nav -->
+                        {{-- @dd(request()) --}}
 						<nav class="side-nav">
 							<!-- BEGIN: side-nav-content -->
 							<ul class="unifyMenu" id="unifyMenu">
 								<li class=" {{ request()->is('dashboard') ? 'active selected' : '' }}">
-									<a href="{{route('dashboard')}}" aria-expanded="false">
+									<a href="{{route('dashboard')}}" aria-expanded="false" wire:navigate>
 										<span class="has-icon">
-											<i class="icon-laptop_windows"></i>
+											<i class="icon-display"></i>
 										</span>
 										<span class="nav-title">Dashboards</span>
 									</a>
 								</li>
-								<li class=" {{ request()->is('dashboard') ? 'active selected' : '' }}">
-									<a href="{{route('dashboard')}}" aria-expanded="false">
+								<li class=" {{ request()->is('admin/categories') ? 'active selected' : '' }}">
+									<a href="{{route('admin.categories')}}" aria-expanded="false" wire:navigate>
 										<span class="has-icon">
-											<i class="icon-laptop_windows"></i>
+											<i class="icon-list2"></i>
 										</span>
 										<span class="nav-title">Categories</span>
 									</a>
