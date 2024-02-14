@@ -15,20 +15,29 @@ class CategoryComponent extends Component
     use WithPagination;
     use WithFileUploads;
     protected $paginationTheme = 'bootstrap';
-    public $perPage = 5;
+    public $perPage = 10;
     public $search = '';
 
-    #[Validate('required|min:3')]
+
     public $name;
-    //#[Validate('required|min:3')]
+
     public $slug;
-    //#[Validate('image')]
-    public $image;
-    //#[Validate('required')]
-    public $is_popular;
-    //#[Validate('required')]
+
+    public $image = '';
+
+    public $is_popular = 0;
+
     public $parent;
 
+    public $edit_id, $del_id, $del_name;
+    public $edit_mode = 0;
+    public $newimage;
+
+    protected $rules = [
+        'name' => 'required|min:3',
+        'slug' => 'required|min:3',
+        'image' => 'required|image|mimes:jpeg,png,svg,jpg,gif|max:2048',
+    ];
 
     public function render()
     {
@@ -53,28 +62,66 @@ class CategoryComponent extends Component
         $this->validateOnly($fields,[
             'name' => 'required|min:3',
             'slug' => 'required|min:3',
-            'image' => 'image',
+            'image' => 'required|image|mimes:jpeg,png,svg,jpg,gif|max:1024',
         ]);
     }
 
     public function createCategory()
     {
-        $this->validate([
-            'name' => 'required|min:3',
-            'slug' => 'required|min:3',
-            'image' => 'image',
-        ]);
+        $this->edit_mode = false;
+        $this->validate();
         $category = new Category;
         $category->name = $this->name;
         $category->slug = Str::slug($this->slug);
         $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();
         $this->image->storeAs('categories', $imageName);
         $category->image = $imageName;
-        $category->is_popular = $this->is_popular;
+        $category->is_popular = $this->is_popular? $this->is_popular : 0;
         $category->save();
-
+        $this->dispatch('closeCreateCategoryModal');
         $this->resetInputFields();
         session()->flash('success', __('Category has been added successfully!'));
+    }
+
+    public function editCategory($id)
+    {
+        $this->edit_mode = true;
+
+        $category = Category::findOrFail($id);
+        $this->edit_id = $category->id;
+        $this->name = $category->name;
+        $this->slug = $category->slug;
+        $this->parent = $category->parent;
+        $this->image = $category->image;
+        $this->is_popular = $category->is_popular;
+    }
+
+    public function updateCategory()
+    {
+        $this->edit_mode = true;
+        $this->validate([
+            'name' => 'required|min:3',
+            'slug' => 'required|min:3',
+            //'image' => 'required|image|mimes:jpeg,png,svg,jpg,gif|max:1024',
+        ]);
+
+        $category = Category::findOrFail($this->edit_id);
+        $category->name = $this->name;
+        $category->slug = $this->slug;
+        $category->parent = $this->parent;
+        if ($this->newimage){
+            unlink('images/categories/'.$this->image);
+            $imageName = Carbon::now()->timestamp.'.'.$this->newimage->extension();
+            //dd($imageName);
+            $this->newimage->storeAs('categories', $imageName);
+            $category->image = $imageName;
+        }
+        $category->is_popular = $this->is_popular;
+        $category->update();
+        $this->dispatch('closeEditCategoryModal');
+        $this->resetInputFields();
+        session()->flash('success', __('Category has been updated successfully!'));
+        $this->edit_mode = false;
     }
 
     public function resetInputFields()
@@ -94,5 +141,26 @@ class CategoryComponent extends Component
         dd($parentName);
 
         return $parentName;
+    }
+
+    public function cancel()
+    {
+        $this->edit_mode = false;
+        $this->resetInputFields();
+    }
+
+    public function deleteId($id)
+    {
+       $this->del_id = $id;
+       $cat = Category::findOrFail($id);
+       $this->del_name = $cat->name;
+    }
+
+    public function deleteCategory()
+    {
+        $category = Category::find($this->del_id);
+        $category->delete();
+        $this->dispatch('closeDeleteCategoryModal');
+        session()->flash('error', 'Category has been deleted!');
     }
 }

@@ -29,6 +29,7 @@
 		<!-- Chartist css -->
 		<link href="{{asset('admin/vendor/chartist/css/chartist.min.css')}}" rel="stylesheet" />
 		<link href="{{asset('admin/vendor/chartist/css/chartist-custom.css')}}" rel="stylesheet" />
+		<link href="{{asset('admin/css/style.css')}}" rel="stylesheet" />
         @stack('dateTables')
 	</head>
 
@@ -175,10 +176,10 @@
 					<div class="side-content ">
 						<!-- BEGIN .user-profile -->
 						<div class="user-profile">
-							<a href="{{route('dashboard')}}" class="logo">
-								<img src="{{asset('admin/img/logo.png')}}" alt="Google Dashboards" />
+							<a href="{{route('admin.dashboard')}}" class="logo">
+								<img src="{{asset('admin/img/logo.png')}}" alt="Admin Dashboards" />
 							</a>
-							<h6 class="location-name">San Francisco</h6>
+							<h6 class="location-name">Ashgabat</h6>
 							<ul class="profile-actions">
 								<li>
 									<a href="#">
@@ -205,8 +206,8 @@
 						<nav class="side-nav">
 							<!-- BEGIN: side-nav-content -->
 							<ul class="unifyMenu" id="unifyMenu">
-								<li class=" {{ request()->is('dashboard') ? 'active selected' : '' }}">
-									<a href="{{route('dashboard')}}" aria-expanded="false" wire:navigate>
+								<li class=" {{ request()->is('admin/dashboard') ? 'active selected' : '' }}">
+									<a href="{{route('admin.dashboard')}}" aria-expanded="false" wire:navigate>
 										<span class="has-icon">
 											<i class="icon-display"></i>
 										</span>

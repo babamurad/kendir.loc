@@ -16259,3 +16259,8 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-origin {
     color: red;
     padding-left: 0.3rem;
 }
+
+.mega-menu-background-image{
+    background-position: right 3rem;
+}
+

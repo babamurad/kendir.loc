@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> jQuery Slides JS Plugin Example </title>
+	<!-- Font Awesome 4-->
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- Slides CSS -->
+<link rel="stylesheet" href="css/slides.css">
+<!-- Slides JS -->
+<script src="js/jquery.slides.min.js"></script>
+	<!-- Demo CSS -->
+	<link rel="stylesheet" href="css/demo.css">
+	<style>
+		#slides img{
+			width: 90%;
+			position:fixed;
+		}
+		#slide{
+			justify-content: center;
+		}
+	</style>
+</head>
+ <body>
+	<header class="">
+	<h1> </h1>
+	<p></p>
+	<p></p>
+	<div class="">
+		</div>
+	</header>
+<main>
+ <article>
+	<p>The following is the example of jQuery automatic image slider. </p>
+
+    <div id="slides">
+      <img src="img/1.jpg" >
+      <img src="img/2.jpg">
+      <img src="img/3.jpg">
+      <img src="img/4.jpg">
+    </div>
+
+</article>
+</main>
+
+<script>
+$(document).ready(function(){
+	$('#slides').slidesjs({
+        width: 640,
+        height: 320,
+        play: {
+          active: true,
+          auto: true,
+          interval: 4000,
+          swap: true
+        }
+      });
+});
+</script>
+
+ </body>
+</html>

@@ -1,3 +1,4 @@
+@section('title', 'Home')
 <div>
     <div class="block-slideshow block-slideshow--layout--with-departments block">
         <div class="container">
