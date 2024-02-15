@@ -10,12 +10,11 @@ class HomeComponent extends Component
 {
     public function render()
     {
-        $categories = Category::all();
-        $carousels = Carousel::all();
+        $categories = Category::orderBy('id', 'DESC')->get();
+        $carousels = Carousel::orderBy('id', 'DESC')->get();
         return view('livewire.home-component',
-        [
-            'categories' => $categories,
-            'carousels' => $carousels,
-        ]);
+        compact('categories', 'carousels')
+
+        );
     }
 }
