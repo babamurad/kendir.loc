@@ -8,39 +8,25 @@
                     @include('components.alerts')
                     <div class="block-slideshow__body">
                         <div class="owl-carousel">
-                            <a class="block-slideshow__slide" href="">
-                                <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('{{asset('images/slides/slide-1.jpg')}}')"></div>
-                                <div class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url('{{asset('images/slides/slide-1-mobile.jpg')}}')"></div>
-                                <div class="block-slideshow__slide-content">
-                                    <div class="block-slideshow__slide-title">Big choice of<br>Plumbing products</div>
-                                    <div class="block-slideshow__slide-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.</div>
-                                    <div class="block-slideshow__slide-button">
-                                        <span class="btn btn-primary btn-lg">Shop Now</span>
+                            @foreach($carousels as $carousel)
+                                <a class="block-slideshow__slide img-fluid" href="#">
+                                    <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop">
+                                        <img src="{{asset('images/carousel').'/'.$carousel->image}}" alt="" class="img-fluid">
                                     </div>
-                                </div>
-                            </a>
-                            <a class="block-slideshow__slide" href="">
-                                <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('images/slides/slide-2.jpg')"></div>
-                                <div class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url('images/slides/slide-2-mobile.jpg')"></div>
-                                <div class="block-slideshow__slide-content">
-                                    <div class="block-slideshow__slide-title">Screwdrivers<br>Professional Tools</div>
-                                    <div class="block-slideshow__slide-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.</div>
-                                    <div class="block-slideshow__slide-button">
-                                        <span class="btn btn-primary btn-lg">Shop Now</span>
+                                    <div class="block-slideshow__slide-content">
+                                        <div class="block-slideshow__slide-title text-white">
+                                            <h4 class="shadow-lg">{{ $carousel->title }}</h4>
+                                        </div>
+                                        <div class="block-slideshow__slide-text">
+                                            <h6 class="h3-responsive text-white">{!! \Illuminate\Support\Str::wordWrap($carousel->text, characters: 70, break: "<br />\n"); !!}</h6>
+
+                                        </div>
+                                        <div class="block-slideshow__slide-button">
+                                            <span class="btn btn-primary btn-lg">Shop Now</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            <a class="block-slideshow__slide" href="">
-                                <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('images/slides/slide-3.jpg')"></div>
-                                <div class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url('images/slides/slide-3-mobile.jpg')"></div>
-                                <div class="block-slideshow__slide-content">
-                                    <div class="block-slideshow__slide-title">One more<br>Unique header</div>
-                                    <div class="block-slideshow__slide-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.</div>
-                                    <div class="block-slideshow__slide-button">
-                                        <span class="btn btn-primary btn-lg">Shop Now</span>
-                                    </div>
-                                </div>
-                            </a>
+                                </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
