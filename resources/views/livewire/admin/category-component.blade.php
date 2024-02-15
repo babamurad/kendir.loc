@@ -53,12 +53,14 @@
                             <div class="form-group">
                                 <label for="inputName">Input Category Name</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter name" wire:model.live='name' wire:keyup="generateSlug()">
+                                @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="inputName">Slug</label>
                                 <input type="text" class="form-control @error('slug') is-invalid @enderror" readonly  wire:model.live='slug' >
+                                @error('slug') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
 {{--                        <div class="col-12">--}}
@@ -91,6 +93,7 @@
                                 @else
                                     <img class="rounded mt-2" src="{{ asset('images/categories').'/'.$image }}" alt="Category image" width="120">
                                 @endif
+                                @error('image') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
                         <div class="col-12">
@@ -130,12 +133,14 @@
                 <div class="form-group">
                     <label for="inputName">Input Category Name</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter name" wire:model.live='name' wire:keyup="generateSlug()">
+                    @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-group">
                     <label for="inputName">Slug</label>
                     <input type="text" class="form-control @error('slug') is-invalid @enderror" readonly  wire:model.live='slug' >
+                    @error('slug') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
             </div>
 {{--            <div class="col-12">--}}
@@ -166,6 +171,7 @@
                     @if($image && !$edit_mode)
                         <img class="rounded mt-2" src="{{ $image->temporaryUrl() }}" alt="Category image" width="120">
                     @endif
+                    @error('image') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
             </div>
             <div class="col-12">
@@ -235,7 +241,7 @@
                     <tbody>
                         @php
                              $i = ($categories->currentPage()-1)*$categories->perPage();
-                         @endphp
+                        @endphp
                         @forelse ( $categories as $category )
                         <tr>
                             <td>{{ ++$i }}</td>

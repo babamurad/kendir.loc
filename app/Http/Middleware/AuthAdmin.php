@@ -16,13 +16,14 @@ class AuthAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->utype === 'ADM')
-        {
-            return $next($request);
-        }
-        else{
-            session()->flash();
-            return redirect()->route('login');
-        }
+            if (Auth::user()->utype === 'ADM')
+            {
+                return $next($request);
+            }
+            else{
+                session()->flash();
+                return redirect()->route('home');
+            }
+
     }
 }

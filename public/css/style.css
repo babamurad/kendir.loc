@@ -16264,3 +16264,18 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-origin {
     background-position: right 3rem;
 }
 
+.departments__links{
+    overflow: hidden;
+}
+
+.alert-danger {
+    color: #721c24 !important;
+    background-color: #f8d7da !important;
+    border-color: #f5c6cb !important;
+}
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+

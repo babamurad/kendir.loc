@@ -383,10 +383,10 @@
                                             <div class="departments__links-wrapper">
                                                 <div class="departments__submenus-container"></div>
                                                 <ul class="departments__links">
-{{--                                                    @foreach($categories as $category)--}}
+                                                    @foreach($categories as $category)
                                                         <li class="departments__item">
                                                         <a class="departments__item-link" href="">
-                                                            Power Tools
+                                                            {{ $category->name }}
                                                             <svg class="departments__item-arrow" width="6px"
                                                                 height="9px">
                                                                 <use
@@ -398,13 +398,13 @@
                                                             <!-- .megamenu -->
                                                             <div class="megamenu  megamenu--departments ">
                                                                 <div class="megamenu__body"
-                                                                    style="background-image: url('{{ asset('images/megamenu/megamenu-1.jpg') }}'); background-position: right 3rem;">
+                                                                    >
                                                                     <div class="row">
-                                                                        <div class="col-3">
+                                                                        <div class="col-4">
                                                                             <ul class="megamenu__links megamenu__links--level--0">
                                                                                 <li
                                                                                     class="megamenu__item  megamenu__item--with-submenu ">
-                                                                                    <a href="">Power Tools</a>
+                                                                                    <a href="">{{ $category->name }}</a>
                                                                                     <ul
                                                                                         class="megamenu__links megamenu__links--level--1">
                                                                                         <li class="megamenu__item"><a
@@ -431,13 +431,16 @@
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
+                                                                        <div class="col-8">
+                                                                            <img src="{{ asset('images/categories').'/'.$category->image }}" alt="" class="img-fluid">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <!-- .megamenu / end -->
                                                         </div>
                                                     </li>
-{{--                                                    @endforeach--}}
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>
@@ -1845,7 +1848,7 @@
     <!-- js -->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('vendor/owl-carousel/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('vendor/owl-carousel/owl.carousel.js')}}"></script>
     <script src="{{asset('vendor/nouislider/nouislider.min.js')}}"></script>
     <script src="{{asset('vendor/photoswipe/photoswipe.min.js')}}"></script>
     <script src="{{asset('vendor/photoswipe/photoswipe-ui-default.min.js')}}"></script>
