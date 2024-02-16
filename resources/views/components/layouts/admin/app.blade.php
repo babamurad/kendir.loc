@@ -64,7 +64,7 @@
 								<li class=" {{ request()->is('admin/dashboard') ? 'active selected' : '' }}">
 									<a href="{{route('admin.dashboard')}}" aria-expanded="false" wire:navigate>
 										<span class="has-icon">
-											<i class="icon-display"></i>
+											<i class="icon-library"></i>
 										</span>
 										<span class="nav-title">Dashboards</span>
 									</a>
@@ -72,7 +72,7 @@
                                 <li class=" {{ request()->is('admin/carousel') ? 'active selected' : '' }}">
                                     <a href="{{route('admin.carousel')}}" aria-expanded="false" wire:navigate>
 										<span class="has-icon">
-											<i class="icon-file-picture"></i>
+											<i class="icon-image"></i>
 										</span>
                                         <span class="nav-title">Carousel</span>
                                     </a>
@@ -86,18 +86,18 @@
 									</a>
 								</li>
                                 <li class="{{ request()->is('admin/products') || request()->is('admin/create-product') ? 'active selected' : '' }}">
-                                    <a href="{{route('admin.products')}}" class="has-arrow" aria-expanded="false">
+                                    <a href="{{route('admin.products')}}" class="has-arrow" aria-expanded="false" wire:navigate>
 										<span class="has-icon">
-											<i class="icon-beaker"></i>
+											<i class="icon-drawer"></i>
 										</span>
                                         <span class="nav-title">Products</span>
                                     </a>
                                     <ul aria-expanded="true" class="collapse" style="height: 0px;">
                                         <li>
-                                            <a class="{{ request()->is('admin/create-product') ? 'current-page' : '' }}" href="{{route('admin.create-product')}}">Create Product</a>
+                                            <a class="{{ request()->is('admin/create-product') ? 'current-page' : '' }}" href="{{route('admin.create-product')}}" wire:navigate>Create Product</a>
                                         </li>
                                         <li>
-                                            <a class="{{ request()->is('admin/products') ? 'current-page' : '' }}" href="{{route('admin.products')}}">Product List</a>
+                                            <a class="{{ request()->is('admin/products') ? 'current-page' : '' }}" href="{{route('admin.products')}}" wire:navigate>Product List</a>
                                         </li>
                                     </ul>
                                 </li>
