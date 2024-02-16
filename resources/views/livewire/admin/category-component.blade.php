@@ -63,19 +63,19 @@
                                 @error('slug') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
-{{--                        <div class="col-12">--}}
-{{--                            <div class="input-group mb-3">--}}
-{{--                                <div class="input-group-prepend">--}}
-{{--                                    <label class="input-group-text" for="inputGroupSelect01">{{__('Parent')}} {{ $parent }}</label>--}}
-{{--                                </div>--}}
-{{--                                <select class="custom-select @error('parent') is-invalid @enderror" id="inputGroupSelect01"  wire:model='parent'>--}}
-{{--                                    <option selected="">Root</option>--}}
-{{--                                    @foreach ($categories as $category)--}}
-{{--                                        <option value="{{$category->id}}">{{$category->name}}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        <div class="col-12">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">{{__('Parent')}} {{ $parent }}</label>
+                                </div>
+                                <select class="custom-select @error('parent') is-invalid @enderror" id="inputGroupSelect01"  wire:model='parent'>
+                                    <option selected="">Root</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-12">
                             <div class="form-group">
                                 <div class="input-group">
@@ -235,6 +235,7 @@
                             <th>{{__('Category Name')}}</th>
                             <th>{{__('Slug')}}</th>
                             <th>{{__('Is Popular')}}</th>
+                            <th>{{__('Parent')}}</th>
                             <th>{{__('Action')}}</th>
                         </tr>
                     </thead>
@@ -249,6 +250,7 @@
                             <td>{{$category->name}}</td>
                             <td>{{$category->slug}}</td>
                             <td>{{$category->is_popular? 'Yes':'No'}}</td>
+                            <td>{{$category->parent?->name}}</td>
                             <td>
                                 <button type="button" class="btn btn-success btn-sm"data-toggle="modal" data-target="#EditCategory" wire:click="editCategory({{ $category->id }})">
                                     <i class="icon icon-pencil3"></i>

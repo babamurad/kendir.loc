@@ -41,13 +41,14 @@ class CategoryComponent extends Component
 
     public function render()
     {
+
         $this->slug = Str::slug($this->name);
 
-        if($this->search==''){
-            $categories = Category::orderBy('id', 'DESC')->paginate($this->perPage);
-        } else {
-            $categories = Category::where('name', 'LIKE', '%'.$this->search.'%')->paginate($this->perPage);
-        }
+            $categories = Category::
+            with('parent')
+                ->where('name', 'LIKE', '%'.$this->search.'%')
+                ->orderBy('id', 'desc')
+                ->paginate($this->perPage);
 
         return view('livewire.admin.category-component', compact('categories'))->layout('components.layouts.admin.app');
     }

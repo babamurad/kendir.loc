@@ -49,9 +49,9 @@
                                                 <input type="file" id="inputGroupFile02" class="custom-file-input" wire:model="newimage">
                                                 <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Product Image</label>
                                                 @if($newimage)
-                                                    <img class="mt-2 mb-5 rounded" src="{{ $newimage->temporaryUrl() }}" alt="" width="120">
+                                                    <img class="mt-2 mb-5 rounded" src="{{ $newimage->temporaryUrl() }}" alt="Product Image" style="max-height: 120px;">
                                                 @else
-                                                    <img class="mt-2 mb-5 rounded" src="{{ asset('images/products') }}/{{ $image }}" alt="" width="120">
+                                                    <img class="mt-2 mb-5 rounded" src="{{ asset('images/products') }}/{{ $image }}" alt="Product Image" style="max-height: 120px;">
                                                 @endif
                                                 @error('newimage') <p class="text-danger">{{$message}}</p> @enderror
                                             </div>
