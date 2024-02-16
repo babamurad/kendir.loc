@@ -42,9 +42,9 @@
                             <div class="d-flex">
                                 <label>Show</label>
                                 <select class="form-control form-control-sm mx-2" wire:model.live='perPage' style="width: 20%;">
-                                    <option selected value="5">10</option>
-                                    <option value="10">20</option>
-                                    <option value="20">40</option>
+                                    <option selected value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="40">40</option>
                                 </select>
                                 <label>entries</label>
                             </div>

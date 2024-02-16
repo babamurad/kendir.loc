@@ -49,9 +49,9 @@
                                                 <input type="file" id="inputGroupFile02" class="custom-file-input" wire:model="newimage">
                                                 <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Product Image</label>
                                                 @if($newimage)
-                                                    <img src="{{ $newimage->temporaryUrl() }}" alt="" width="120">
+                                                    <img class="mt-2 mb-5 rounded" src="{{ $newimage->temporaryUrl() }}" alt="" width="120">
                                                 @else
-                                                    <img src="{{ asset('images/products') }}/{{ $image }}" alt="" width="120">
+                                                    <img class="mt-2 mb-5 rounded" src="{{ asset('images/products') }}/{{ $image }}" alt="" width="120">
                                                 @endif
                                                 @error('newimage') <p class="text-danger">{{$message}}</p> @enderror
                                             </div>
@@ -65,13 +65,13 @@
                                                 @if($newimages)
                                                     @foreach($newimages as $newimage)
                                                         @if($newimage)
-                                                            <img src="{{ $newimage->temporaryUrl() }}" alt="" width="120">
+                                                            <img class="mt-2 mb-5 rounded" src="{{ $newimage->temporaryUrl() }}" alt="" width="120">
                                                         @endif
                                                     @endforeach
                                                 @else
                                                     @foreach($images as $image)
                                                         @if($image)
-                                                            <img src="{{ asset('images/products') }}/{{ $image }}" alt="" width="120">
+                                                            <img class="mt-2 mb-5 rounded" src="{{ asset('images/products') }}/{{ $image }}" alt="" width="120">
                                                         @endif
                                                     @endforeach
                                                 @endif

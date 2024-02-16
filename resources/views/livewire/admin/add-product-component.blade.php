@@ -121,7 +121,8 @@
                                 @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
                             </div>
                         </div>
-                            <button class="btn btn-primary float-end" type="submit">Submit</button>
+                            <button class="btn btn-primary float-end" type="submit">Submit<i class="icon icon-plus ml-1" style="font-size: 12px;"></i></button>
+                            <button type="button" class="btn btn-primary" wire:click="subAndBack">Submit&Back <i class="icon icon-undo2" style="font-size: 14px;"></i></button>
                             <button type="button" class="btn btn-primary" wire:click="toProductsLis">Back <i class="icon icon-undo2" style="font-size: 14px;"></i></button>
                         </div>
                     </div>

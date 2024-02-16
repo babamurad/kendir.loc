@@ -32,6 +32,17 @@ class AddProductComponent extends Component
         $this->slug = Str::slug($this->name);
     }
 
+    public function subAndAdd()
+    {
+        $this->addProduct();
+    }
+
+    public function subAndBack()
+    {
+        $this->addProduct();
+        return redirect()->route('admin.products');
+    }
+
     public function addProduct()
     {
         $this->validate([

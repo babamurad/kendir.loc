@@ -49,7 +49,8 @@ class ProductComponent extends Component
     public function render()
     {
         $products = Product::
-            orderBy($this->sortBy, $this->sortDirection)
+            where('name', 'LIKE', '%'.$this->search.'%')
+            ->orderBy($this->sortBy, $this->sortDirection)
             ->paginate($this->perPage);
         return view('livewire.admin.product-component',
             compact('products'))
