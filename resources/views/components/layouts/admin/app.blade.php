@@ -94,10 +94,10 @@
                                     </a>
                                     <ul aria-expanded="true" class="collapse" style="height: 0px;">
                                         <li>
-                                            <a class="{{ request()->is('admin/products') ? 'current-page' : '' }}" href="{{route('admin.products')}}">Product List</a>
+                                            <a class="{{ request()->is('admin/create-product') ? 'current-page' : '' }}" href="{{route('admin.create-product')}}">Create Product</a>
                                         </li>
                                         <li>
-                                            <a class="{{ request()->is('admin/create-product') ? 'current-page' : '' }}" href="{{route('admin.create-product')}}">Create Product</a>
+                                            <a class="{{ request()->is('admin/products') ? 'current-page' : '' }}" href="{{route('admin.products')}}">Product List</a>
                                         </li>
                                     </ul>
                                 </li>
