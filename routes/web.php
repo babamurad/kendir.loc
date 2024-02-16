@@ -8,6 +8,8 @@ use App\Livewire\RegisterUserComponent;
 use App\Livewire\UserComponent;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\CarouselComponent;
+use \App\Livewire\Admin\ProductComponent;
+use \App\Livewire\Admin\AddProductComponent;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -32,9 +34,12 @@ Route::get('register', RegisterUserComponent::class)->name('register');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', UserDashboardComponent::class)->name('dashboard');
+
 });
 Route::middleware(['auth','authadmin'])->group(function () {
     Route::get('admin/dashboard', DashboardComponent::class)->name('admin.dashboard');
     Route::get('admin/categories', CategoryComponent::class)->name('admin.categories');
     Route::get('admin/carousel', CarouselComponent::class)->name('admin.carousel');
+    Route::get('admin/products', ProductComponent::class)->name('admin.products');
+    Route::get('admin/create-product', AddProductComponent::class)->name('admin.create-product');
 });

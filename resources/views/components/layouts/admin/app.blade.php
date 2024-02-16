@@ -53,25 +53,7 @@
 								<img src="{{asset('admin/img/logo.png')}}" alt="Admin Dashboards" />
 							</a>
 							<h6 class="location-name">Ashgabat</h6>
-							<ul class="profile-actions">
-								<li>
-									<a href="#">
-										<i class="icon-social-skype"></i>
-										<span class="count-label yellow"></span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span class="count-label green"></span>
-										<i class="icon-drafts"></i>
-									</a>
-								</li>
-								<li>
-									<a href="login.html">
-										<i class="icon-export"></i>
-									</a>
-								</li>
-							</ul>
+
 						</div>
 						<!-- END .user-profile -->
 						<!-- BEGIN .side-nav -->
@@ -87,6 +69,14 @@
 										<span class="nav-title">Dashboards</span>
 									</a>
 								</li>
+                                <li class=" {{ request()->is('admin/carousel') ? 'active selected' : '' }}">
+                                    <a href="{{route('admin.carousel')}}" aria-expanded="false" wire:navigate>
+										<span class="has-icon">
+											<i class="icon-file-picture"></i>
+										</span>
+                                        <span class="nav-title">Carousel</span>
+                                    </a>
+                                </li>
 								<li class=" {{ request()->is('admin/categories') ? 'active selected' : '' }}">
 									<a href="{{route('admin.categories')}}" aria-expanded="false" wire:navigate>
 										<span class="has-icon">
@@ -95,14 +85,23 @@
 										<span class="nav-title">Categories</span>
 									</a>
 								</li>
-                                <li class=" {{ request()->is('admin/carousel') ? 'active selected' : '' }}">
-									<a href="{{route('admin.carousel')}}" aria-expanded="false" wire:navigate>
+                                <li class="{{ request()->is('admin/products') || request()->is('admin/create-product') ? 'active selected' : '' }}">
+                                    <a href="{{route('admin.products')}}" class="has-arrow" aria-expanded="false">
 										<span class="has-icon">
-											<i class="icon-file-picture"></i>
+											<i class="icon-beaker"></i>
 										</span>
-										<span class="nav-title">Carousel</span>
-									</a>
-								</li>
+                                        <span class="nav-title">Products</span>
+                                    </a>
+                                    <ul aria-expanded="true" class="collapse" style="height: 0px;">
+                                        <li>
+                                            <a class="{{ request()->is('admin/products') ? 'current-page' : '' }}" href="{{route('admin.products')}}">Product List</a>
+                                        </li>
+                                        <li>
+                                            <a class="{{ request()->is('admin/create-product') ? 'current-page' : '' }}" href="{{route('admin.create-product')}}">Create Product</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
 							</ul>
 							<!-- END: side-nav-content -->
 						</nav>
