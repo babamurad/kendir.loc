@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Models\Category;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -32,6 +33,7 @@ class CategoryComponent extends Component
     public $edit_id, $del_id, $del_name;
     public $edit_mode = 0;
     public $newimage;
+//    public $categories;
 
     protected $rules = [
         'name' => 'required|min:3',
@@ -41,16 +43,33 @@ class CategoryComponent extends Component
 
     public function render()
     {
+//        $cat = Category::with('cparent')->find(42);
+//        dd($cat->cparent->name);
 
         $this->slug = Str::slug($this->name);
-
-            $categories = Category::
-            with('parent')
-                ->where('name', 'LIKE', '%'.$this->search.'%')
-                ->orderBy('id', 'desc')
-                ->paginate($this->perPage);
+        $categories =
+            Category::with('cparent')
+            ->where('name', 'like', '%'.$this->search.'%')
+            ->orderBy('id', 'desc')
+            ->paginate($this->perPage);
 
         return view('livewire.admin.category-component', compact('categories'))->layout('components.layouts.admin.app');
+    }
+
+    public function parentName()
+    {
+        if ($this->search)
+        {
+            $query = 'SELECT c.id, c.name, c.slug, c.parent, c.created_at, c.updated_at, c.image, c.is_popular, c1.name AS parent_name
+            FROM categories c
+            LEFT JOIN categories c1 ON c.parent = c1.id
+            WHERE c.name LIKE %'.$this->search.'%';
+        } else {
+            $query = 'SELECT c.id, c.name, c.slug, c.parent, c.created_at, c.updated_at, c.image, c.is_popular, c1.name AS parent_name
+            FROM categories c
+            LEFT JOIN categories c1 ON c.parent = c1.id';
+        }
+        return DB::select($query);
     }
 
     public function generateSlug()
@@ -78,6 +97,7 @@ class CategoryComponent extends Component
         $this->image->storeAs('categories', $imageName);
         $category->image = $imageName;
         $category->is_popular = $this->is_popular? $this->is_popular : 0;
+        $category->name = $this->name;
         $category->save();
         $this->dispatch('closeCreateCategoryModal');
         $this->resetInputFields();
@@ -111,7 +131,9 @@ class CategoryComponent extends Component
         $category->slug = $this->slug;
         $category->parent = $this->parent;
         if ($this->newimage){
-            unlink('images/categories/'.$this->image);
+            if (file_exists('images/categories/'.$this->image)){
+                unlink('images/categories/'.$this->image);
+            }
             $imageName = Carbon::now()->timestamp.'.'.$this->newimage->extension();
             //dd($imageName);
             $this->newimage->storeAs('categories', $imageName);
@@ -130,18 +152,8 @@ class CategoryComponent extends Component
         $this->name = '';
         $this->slug = '';
         $this->image = '';
-        $this->parent = '';
+        $this->parent_id = '';
         $this->is_popular = '';
-    }
-
-    public function getParent($id)
-    {
-        $parentName = Category::where('parent', '=', $id)->get();
-        dd($parentName);
-        $parentName = $parentName->name;
-        dd($parentName);
-
-        return $parentName;
     }
 
     public function cancel()
