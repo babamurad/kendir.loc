@@ -40,108 +40,51 @@
                 </tr>
                 </thead>
                 <tbody class="cart-table__body">
-                <tr class="cart-table__row">
+                @if(\Gloudemans\Shoppingcart\Facades\Cart::count() > 0)
+                    @foreach(\Gloudemans\Shoppingcart\Facades\Cart::content() as $product)
+                    <tr class="cart-table__row">
                     <td class="cart-table__column cart-table__column--image">
                         <div class="product-image">
                             <a href="" class="product-image__body">
-                                <img class="product-image__img" src="images/products/product-1.jpg" alt="">
+                                <img class="product-image__img" src="{{ asset('images/products').'/'.$product->model->image }}" alt="">
                             </a>
                         </div>
                     </td>
                     <td class="cart-table__column cart-table__column--product">
-                        <a href="" class="cart-table__product-name">Electric Planer Brandix KL370090G 300 Watts</a>
-                        <ul class="cart-table__options">
-                            <li>Color: Yellow</li>
-                            <li>Material: Aluminium</li>
-                        </ul>
+                        <a href="" class="cart-table__product-name">{{ $product->model->name }}</a>
+{{--                        <ul class="cart-table__options">--}}
+{{--                            <li>Color: Yellow</li>--}}
+{{--                            <li>Material: Aluminium</li>--}}
+{{--                        </ul>--}}
                     </td>
-                    <td class="cart-table__column cart-table__column--price" data-title="Price">$699.00</td>
+                    <td class="cart-table__column cart-table__column--price" data-title="Price">{{ $product->model->sale_price }}</td>
                     <td class="cart-table__column cart-table__column--quantity" data-title="Quantity">
                         <div class="input-number">
-                            <input class="form-control input-number__input" type="number" min="1" value="2">
-                            <div class="input-number__add"></div>
-                            <div class="input-number__sub"></div>
+                            <input class="form-control input-number__input" type="number" min="1" value="{{ $product->qty }}">
+                            <div class="input-number__add" wire:click="increaseQty('{{ $product->rowId }}')"></div>
+                            <div class="input-number__sub" wire:click="decreaseQty('{{ $product->rowId }}')"></div>
                         </div>
                     </td>
-                    <td class="cart-table__column cart-table__column--total" data-title="Total">$1,398.00</td>
+                    <td class="cart-table__column cart-table__column--total" data-title="Total">{{ $product->subtotal }}</td>
                     <td class="cart-table__column cart-table__column--remove">
-                        <button type="button" class="btn btn-light btn-sm btn-svg-icon">
+                        <button type="button" class="btn btn-light btn-sm btn-svg-icon" wire:click="destroy('{{ $product->rowId }}')">
                             <svg width="12px" height="12px">
                                 <use xlink:href="images/sprite.svg#cross-12"></use>
                             </svg>
                         </button>
                     </td>
                 </tr>
-                <tr class="cart-table__row">
-                    <td class="cart-table__column cart-table__column--image">
-                        <div class="product-image">
-                            <a href="" class="product-image__body">
-                                <img class="product-image__img" src="images/products/product-2.jpg" alt="">
-                            </a>
-                        </div>
-                    </td>
-                    <td class="cart-table__column cart-table__column--product">
-                        <a href="" class="cart-table__product-name">Undefined Tool IRadix DPS3000SY 2700 watts</a>
-                    </td>
-                    <td class="cart-table__column cart-table__column--price" data-title="Price">$849.00</td>
-                    <td class="cart-table__column cart-table__column--quantity" data-title="Quantity">
-                        <div class="input-number">
-                            <input class="form-control input-number__input" type="number" min="1" value="1">
-                            <div class="input-number__add"></div>
-                            <div class="input-number__sub"></div>
-                        </div>
-                    </td>
-                    <td class="cart-table__column cart-table__column--total" data-title="Total">$849.00</td>
-                    <td class="cart-table__column cart-table__column--remove">
-                        <button type="button" class="btn btn-light btn-sm btn-svg-icon">
-                            <svg width="12px" height="12px">
-                                <use xlink:href="images/sprite.svg#cross-12"></use>
-                            </svg>
-                        </button>
-                    </td>
-                </tr>
-                <tr class="cart-table__row">
-                    <td class="cart-table__column cart-table__column--image">
-                        <div class="product-image">
-                            <a href="" class="product-image__body">
-                                <img class="product-image__img" src="images/products/product-5.jpg" alt="">
-                            </a>
-                        </div>
-                    </td>
-                    <td class="cart-table__column cart-table__column--product">
-                        <a href="" class="cart-table__product-name">Brandix Router Power Tool 2017ERXPK</a>
-                        <ul class="cart-table__options">
-                            <li>Color: True Red</li>
-                        </ul>
-                    </td>
-                    <td class="cart-table__column cart-table__column--price" data-title="Price">$1,210.00</td>
-                    <td class="cart-table__column cart-table__column--quantity" data-title="Quantity">
-                        <div class="input-number">
-                            <input class="form-control input-number__input" type="number" min="1" value="3">
-                            <div class="input-number__add"></div>
-                            <div class="input-number__sub"></div>
-                        </div>
-                    </td>
-                    <td class="cart-table__column cart-table__column--total" data-title="Total">$3,630.00</td>
-                    <td class="cart-table__column cart-table__column--remove">
-                        <button type="button" class="btn btn-light btn-sm btn-svg-icon">
-                            <svg width="12px" height="12px">
-                                <use xlink:href="images/sprite.svg#cross-12"></use>
-                            </svg>
-                        </button>
-                    </td>
-                </tr>
+                    @endforeach
                 </tbody>
             </table>
             <div class="cart__actions">
                 <form class="cart__coupon-form">
-                    <label for="input-coupon-code" class="sr-only">Password</label>
-                    <input type="text" class="form-control" id="input-coupon-code" placeholder="Coupon Code">
-                    <button type="submit" class="btn btn-primary">Apply Coupon</button>
+{{--                    <label for="input-coupon-code" class="sr-only">Password</label>--}}
+{{--                    <input type="text" class="form-control" id="input-coupon-code" placeholder="Coupon Code">--}}
+{{--                    <button type="submit" class="btn btn-primary">Apply Coupon</button>--}}
                 </form>
                 <div class="cart__buttons">
-                    <a href="index.html" class="btn btn-light">Continue Shopping</a>
-                    <a href="" class="btn btn-primary cart__update-button">Update Cart</a>
+                    <a href="{{ route('shop') }}" class="btn btn-primary cart__update-button">Continue Shopping</a>
                 </div>
             </div>
             <div class="row justify-content-end pt-5">
@@ -153,28 +96,27 @@
                                 <thead class="cart__totals-header">
                                 <tr>
                                     <th>Subtotal</th>
-                                    <td>$5,877.00</td>
+                                    <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</td>
                                 </tr>
                                 </thead>
                                 <tbody class="cart__totals-body">
                                 <tr>
-                                    <th>Shipping</th>
+                                    <th>{{ __('Shipping') }}</th>
                                     <td>
-                                        $25.00
-                                        <div class="cart__calc-shipping"><a href="#">Calculate Shipping</a></div>
+                                        {{ __('Free Shipping') }}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Tax</th>
+                                    <th>{{__('Tax 10%')}}</th>
                                     <td>
-                                        $0.00
+                                        {{ \Gloudemans\Shoppingcart\Facades\Cart::tax() }}
                                     </td>
                                 </tr>
                                 </tbody>
                                 <tfoot class="cart__totals-footer">
                                 <tr>
-                                    <th>Total</th>
-                                    <td>$5,902.00</td>
+                                    <th>{{__('Total')}}</th>
+                                    <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::total() }}</td>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -185,11 +127,12 @@
             </div>
         </div>
     </div>
-
+    @else
     <div class="block-empty__body">
         <div class="block-empty__message">Your shopping cart is empty!</div>
         <div class="block-empty__actions">
             <a class="btn btn-primary btn-sm" href="">Continue</a>
         </div>
     </div>
+    @endif
 </div>

@@ -23,9 +23,22 @@
                 </nav>
             </div>
             <div class="page-header__title">
-                <h1>Shop</h1>
+                <div class="row">
+                    <div class="col-md-6"><h1>Shop</h1></div>
+                    <div class="col-md-6">
+                        @if(session('success'))
+                        <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; top: -2rem;">
+                            <button type="button" class="close  mt-3" data-dismiss="alert" aria-hidden="true" style="top: -16px;">×</button>
+                            <h6><i class="icon fas fa-check"></i> Item added in Cart</h6>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+
+
             </div>
         </div>
+
     </div>
     <div class="container">
 
@@ -748,7 +761,7 @@
                                                 </div>
                                                 <div class="product-card__buttons">
                                                     <button class="btn btn-primary product-card__addtocart" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
-                                                    <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+                                                    <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
                                                     <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
                                                         <svg width="16px" height="16px">
                                                             <use xlink:href="images/sprite.svg#wishlist-16"></use>
