@@ -1,5 +1,5 @@
 
-@section('title', 'Shop')
+@section('title', 'Category')
 <div>
     <div class="page-header">
         <div class="page-header__container container">
@@ -27,10 +27,10 @@
                     <div class="col-md-6"><h1>Shop</h1></div>
                     <div class="col-md-6">
                         @if(session('success'))
-                        <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; top: -2rem;">
-                            <button type="button" class="close  mt-3" data-dismiss="alert" aria-hidden="true" style="top: -16px;">×</button>
-                            <h6><i class="icon fas fa-check"></i> Item added in Cart</h6>
-                        </div>
+                            <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; top: -2rem;">
+                                <button type="button" class="close  mt-3" data-dismiss="alert" aria-hidden="true" style="top: -16px;">×</button>
+                                <h6><i class="icon fas fa-check"></i> Item added in Cart</h6>
+                            </div>
                         @endif
                     </div>
                 </div>
@@ -73,8 +73,7 @@
                                                         <ul class="filter-categories__list">
                                                             @foreach($categories as $category)
                                                                 <li class="filter-categories__item filter-categories__item--parent">
-                                                                    <a href="#"
-                                                                       wire:click="selectCategory('{{ $category->id }}')">{{ $category->name }}</a>
+                                                                    <a href="#" wire:click="selectCategory('{{ $category->id }}')">{{ $category->name }}</a>
                                                                     <div class="filter-categories__counter">{{ $category->products->count() }}</div>
                                                                 </li>
                                                             @endforeach
@@ -87,7 +86,7 @@
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item>
                                             <button type="button" class="filter__title" data-collapse-trigger>
-                                                {{ __('Filter by Price') }}
+                                                Price
                                                 <svg class="filter__arrow" width="12px" height="7px">
                                                     <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
                                                 </svg>
@@ -97,12 +96,9 @@
                                                     <script>
                                                         $(document).ready(function(){
                                                             var minPrice = {{ $minPrice }}
-                                                            var maxPrice={{ $maxPrice }}
+                                                                var maxPrice={{ $maxPrice }}
                                                             $(".filter-price").data("min", minPrice)
                                                             $(".filter-price").data("max", maxPrice)
-
-
-
                                                         });
                                                     </script>
 
@@ -110,12 +106,12 @@
                                                         <div class="filter-price__slider" wire:ignore></div>
                                                         <div class="filter-price__title">
                                                             Price: $
-                                                            <span class="filter-price__min-value" wire:model="minPrice">
-{{--                                                            {{ $minPrice }}--}}
+                                                            <span class="filter-price__min-value">
+                                                            {{ $minPrice }}
                                                             </span>
                                                             – $
-                                                            <span class="filter-price__max-value" wire:model="maxPrice">
-{{--                                                            {{ $maxPrice }}--}}
+                                                            <span class="filter-price__max-value">
+                                                            {{ $maxPrice }}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -481,23 +477,23 @@
                                 <h4 class="widget__title">Latest Products</h4>
                                 <div class="widget-products__list">
                                     @foreach($latestProducts as $latestProduct)
-                                    <div class="widget-products__item">
-                                        <div class="widget-products__image">
-                                            <div class="product-image">
-                                                <a href="#" class="product-image__body">
-                                                    <img class="product-image__img" src="{{ asset('images/products').'/'.$latestProduct->image }}" alt="{{ $latestProduct->name }} image" style="margin-top: -10px;">
-                                                </a>
+                                        <div class="widget-products__item">
+                                            <div class="widget-products__image">
+                                                <div class="product-image">
+                                                    <a href="#" class="product-image__body">
+                                                        <img class="product-image__img" src="{{ asset('images/products').'/'.$latestProduct->image }}" alt="{{ $latestProduct->name }} image" style="margin-top: -10px;">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="widget-products__info">
+                                                <div class="widget-products__name">
+                                                    <a href="product.html">{{ $latestProduct->name }}</a>
+                                                </div>
+                                                <div class="widget-products__prices">
+                                                    {{ $latestProduct->sale_price }}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="widget-products__info">
-                                            <div class="widget-products__name">
-                                                <a href="product.html">{{ $latestProduct->name }}</a>
-                                            </div>
-                                            <div class="widget-products__prices">
-                                                {{ $latestProduct->sale_price }}
-                                            </div>
-                                        </div>
-                                    </div>
                                     @endforeach
                                 </div>
                             </div>
@@ -540,7 +536,7 @@
                                         </div>
                                     </div>
                                 </div>
-{{--                                <div class="view-options__legend">Showing 6 of 98 products  </div>--}}
+                                {{--                                <div class="view-options__legend">Showing 6 of 98 products  </div>--}}
                                 <div class="view-options__divider"></div>
                                 <div class="view-options__control">
                                     <label for="">Sort By</label>
@@ -632,9 +628,6 @@
                         </div>
                         <div class="products-view__list products-list" data-layout="grid-3-sidebar" data-with-features="false" data-mobile-grid-columns="2">
                             <div class="products-list__body">
-                                @php
-                                $wproducts = \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->pluck('id');
-                                @endphp
                                 @foreach($products as $product)
                                     <div class="products-list__item">
                                         <div class="product-card product-card--hidden-actions ">
@@ -645,13 +638,13 @@
                                                 <span class="fake-svg-icon"></span>
                                             </button>
                                             <div class="product-card__badges-list">
-                                            @if($newArrivals->contains($product->id))
-                                                <div class="product-card__badge product-card__badge--new">New</div>
-                                            @elseif($product->featured)
-                                                <div class="product-card__badge product-card__badge--hot">Hot</div>
-                                            @else
-                                                <div class="product-card__badge product-card__badge--sale">Sale</div>
-                                            @endif
+                                                @if($newArrivals->contains($product->id))
+                                                    <div class="product-card__badge product-card__badge--new">New</div>
+                                                @elseif($product->featured)
+                                                    <div class="product-card__badge product-card__badge--hot">Hot</div>
+                                                @else
+                                                    <div class="product-card__badge product-card__badge--sale">Sale</div>
+                                                @endif
                                             </div>
                                             <div class="product-card__image product-image">
                                                 <a href="#" class="product-image__body">
@@ -769,21 +762,12 @@
                                                 <div class="product-card__buttons">
                                                     <button class="btn btn-primary product-card__addtocart" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
                                                     <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
-                                                    @if($wproducts->contains($product->id))
-                                                    <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button" wire:click="removeWishlist('{{ $product->id }}')">
-                                                        <svg width="16px" height="16px" style="fill: #ff3333;">
+                                                    <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
+                                                        <svg width="16px" height="16px">
                                                             <use xlink:href="images/sprite.svg#wishlist-16"></use>
                                                         </svg>
                                                         <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
                                                     </button>
-                                                    @else
-                                                        <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button" wire:click="addToWishlist({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">
-                                                            <svg width="16px" height="16px">
-                                                                <use xlink:href="images/sprite.svg#wishlist-16"></use>
-                                                            </svg>
-                                                            <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                                        </button>
-                                                    @endif
                                                     <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare" type="button">
                                                         <svg width="16px" height="16px">
                                                             <use xlink:href="images/sprite.svg#compare-16"></use>
@@ -806,39 +790,3 @@
         </div>
     </div>
 </div>
-@push('priceFilter')
-    <script>
-        /*
-        // price filter
-        */
-        $(function () {
-            $('.filter-price').each(function (i, element) {
-                const min = $(element).data('min');
-                const max = $(element).data('max');
-                const from = $(element).data('from');
-                const to = $(element).data('to');
-                const slider = element.querySelector('.filter-price__slider');
-
-                noUiSlider.create(slider, {
-                    start: [from, to],
-                    connect: true,
-                    direction: isRTL() ? 'rtl' : 'ltr',
-                    range: {
-                        'min': min,
-                        'max': max
-                    }
-                });
-
-                const titleValues = [
-                    $(element).find('.filter-price__min-value')[0],
-                    $(element).find('.filter-price__max-value')[0]
-                ];
-
-
-                slider.noUiSlider.on('update', function (values, handle) {
-                    titleValues[handle].innerHTML = values[handle];
-                });
-            });
-        });
-    </script>
-@endpush

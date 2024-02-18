@@ -10,35 +10,27 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
-class ShopComponent extends Component
+class CategoryComponent extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $perPage = 12;
     public $sort = 'ASC';
     public $category_id;
-
+    public $min_price, $max_price;
     public $minPrice, $maxPrice;
+    public $slug;
 
     public $id, $name, $pqty = 1, $sale_price, $image;
 
     public function render()
     {
-//        $cat_count =Category::find(36);
-//        dd($cat_count->products->count());
-        //->where('name', 'like', '%'.$this->search.'%')
-//                ->orderBy('id', 'desc')
-//                ->paginate($this->perPage);
         $categories = Category::with('cparent')->with('products')->get();
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
         if ($this->category_id){
-            $products = Product::where('category_id', $this->category_id)
-                ->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
-                ->orderBy('name', $this->sort)->paginate($this->perPage);
+            $products = Product::where('category_id', $this->category_id)->orderBy('name', $this->sort)->paginate($this->perPage);
         } else {
-            $products = Product::orderBy('name', $this->sort)
-                ->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
-                ->paginate($this->perPage);
+            $products = Product::orderBy('name', $this->sort)->paginate($this->perPage);
         }
 
         $date = Carbon::now()->subDays(7);
@@ -53,34 +45,16 @@ class ShopComponent extends Component
         //dd($this->pqty);
         $pqty = $this->pqty?$this->pqty:1;
 
-        Cart::instance('cart')->add($product_id, $product_name, $pqty, $product_price)->associate('App\Models\Product');
+        Cart::add($product_id, $product_name, $pqty, $product_price)->associate('App\Models\Product');
         $this->pqty = 1;
         session()->flash('success', 'Item added in Cart');
         $this->dispatch('addToCart');
         return redirect()->back();
     }
 
-    public function addToWishlist($product_id, $product_name, $product_price)
+    public function mount($slug)
     {
-        Cart::instance('wishlist')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
-        $this->dispatch('addToWishlist');
-    }
-
-    public function removeWishlist($id)
-    {
-        foreach (Cart::instance('wishlist')->content() as $witem)
-        {
-            if ($witem->id == $id)
-            {
-                Cart::instance('wishlist')->remove($witem->rowId);
-                $this->dispatch('removeFromWishlist');
-                return;
-            }
-        }
-    }
-
-    public function mount()
-    {
+        $this->slug = $slug;
         $this->minPrice = DB::table('products')->min('sale_price');
         $this->maxPrice = DB::table('products')->max('sale_price');
     }

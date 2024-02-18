@@ -13,6 +13,8 @@ use \App\Livewire\Admin\AddProductComponent;
 use \App\Livewire\Admin\ProductEditComponent;
 use \App\Livewire\ShopComponent;
 use \App\Livewire\CartComponent;
+use \App\Livewire\CategoryComponent as ProductCategory;
+use \App\Livewire\WishlistComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +33,9 @@ use \App\Livewire\CartComponent;
 
 Route::get('/', HomeComponent::class)->name('home');
 Route::get('shop', ShopComponent::class)->name('shop');
+Route::get('category/{slug}', ProductCategory::class)->name('product.category');
 Route::get('cart', CartComponent::class)->name('cart');
+Route::get('wishlist', WishlistComponent::class)->name('wishlist');
 
 Route::get('user', UserComponent::class)->name('login');
 Route::get('register', RegisterUserComponent::class)->name('register');

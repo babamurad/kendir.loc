@@ -17,7 +17,7 @@ class CartComponent extends Component
     {
         $product = Cart::get($rowId);
         $qty = $product->qty + 1;
-        Cart::update($rowId, $qty);
+        Cart::instance('cart')->update($rowId, $qty);
         $this->dispatch('incQty');
     }
 
@@ -25,13 +25,13 @@ class CartComponent extends Component
     {
         $product = Cart::get($rowId);
         $qty = $product->qty - 1;
-        Cart::update($rowId, $qty);
+        Cart::instance('cart')->update($rowId, $qty);
         $this->dispatch('decQty');
     }
 
     public function destroy($id)
     {
-        Cart::remove($id);
+        Cart::instance('cart')->remove($id);
         $this->dispatch('delProd');
     }
 }

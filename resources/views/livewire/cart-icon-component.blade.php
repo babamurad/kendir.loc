@@ -4,16 +4,16 @@
            <svg width="20px" height="20px">
                <use xlink:href="images/sprite.svg#cart-20"></use>
            </svg>
-           <span class="indicator__value">{{ \Gloudemans\Shoppingcart\Facades\Cart::count() }}</span>
+           <span class="indicator__value">{{ \Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->count() }}</span>
        </span>
     </a>
     <div class="indicator__dropdown">
         <!-- .dropcart -->
         <div class="dropcart dropcart--style--dropdown">
             <div class="dropcart__body">
-                @if(\Gloudemans\Shoppingcart\Facades\Cart::count() > 0)
+                @if(\Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->count() > 0)
                 <div class="dropcart__products-list">
-                    @foreach(\Gloudemans\Shoppingcart\Facades\Cart::content() as $product)
+                    @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->content() as $product)
                         <div class="dropcart__product">
                             <div class="product-image dropcart__product-image">
                                 <a href="#" class="product-image__body" style="margin-top: -0.6rem;">
@@ -44,7 +44,7 @@
                     <table>
                         <tr>
                             <th>Subtotal</th>
-                            <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</td>
+                            <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->subtotal() }}</td>
                         </tr>
                         <tr>
                             <th>{{ __('Shipping') }}</th>
@@ -52,11 +52,11 @@
                         </tr>
                         <tr>
                             <th>{{__('Tax 10%')}}</th>
-                            <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::tax() }}</td>
+                            <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->tax() }}</td>
                         </tr>
                         <tr>
                             <th>{{__('Total')}}</th>
-                            <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::total() }}</td>
+                            <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->total() }}</td>
                         </tr>
                     </table>
                 </div>

@@ -40,8 +40,8 @@
                 </tr>
                 </thead>
                 <tbody class="cart-table__body">
-                @if(\Gloudemans\Shoppingcart\Facades\Cart::count() > 0)
-                    @foreach(\Gloudemans\Shoppingcart\Facades\Cart::content() as $product)
+                @if(\Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->count() > 0)
+                    @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->content() as $product)
                     <tr class="cart-table__row">
                     <td class="cart-table__column cart-table__column--image">
                         <div class="product-image">
