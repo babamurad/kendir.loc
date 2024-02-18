@@ -11,7 +11,8 @@ use App\Livewire\Admin\CarouselComponent;
 use \App\Livewire\Admin\ProductComponent;
 use \App\Livewire\Admin\AddProductComponent;
 use \App\Livewire\Admin\ProductEditComponent;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use \App\Livewire\ShopComponent;
+use \App\Livewire\CartComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 // });
 
 Route::get('/', HomeComponent::class)->name('home');
+Route::get('shop', ShopComponent::class)->name('shop');
+Route::get('cart', CartComponent::class)->name('cart');
 
 Route::get('user', UserComponent::class)->name('login');
 Route::get('register', RegisterUserComponent::class)->name('register');

@@ -10,6 +10,8 @@ use Livewire\Component;
 
 class HomeComponent extends Component
 {
+    protected $paginationTheme = 'bootstrap';
+
     public function render()
     {
         //вывести товары недельной давности
