@@ -374,12 +374,7 @@
                                                         <li class="departments__item">
                                                         <a class="departments__item-link" href="">
                                                             {{ $category->name }}
-                                                            <svg class="departments__item-arrow" width="6px"
-                                                                height="9px">
-                                                                <use
-                                                                    xlink:href="images/sprite.svg#arrow-rounded-right-6x9">
-                                                                </use>
-                                                            </svg>
+                                                            <svg class="departments__item-arrow" width="6px" height="9px"> <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"> </use> </svg>
                                                         </a>
                                                         <div class="departments__submenu departments__submenu--type--megamenu departments__submenu--size--lg">
                                                             <!-- .megamenu -->
@@ -463,9 +458,9 @@
                                                             <div class="departments__submenu departments__submenu--type--megamenu departments__submenu--size--xl">
                                                                 <!-- .megamenu -->
                                                                 <div class="megamenu  megamenu--departments ">
-                                                                    <div class="megamenu__body" style="background-image: url("{{ asset('images/categories').'/'.$category->image }}")">
+                                                                    <div class="megamenu__body">
                                                                         <div class="row">
-                                                                            <div class="col-3">
+                                                                            <div class="col-4">
                                                                                 <ul class="megamenu__links megamenu__links--level--0">
                                                                                     <li class="megamenu__item"><a
                                                                                             href="">Engravers</a>
@@ -488,6 +483,9 @@
                                                                                             href="">Milling
                                                                                             Cutters</a></li>
                                                                                 </ul>
+                                                                            </div>
+                                                                            <div class="col-8">
+                                                                                <img src="{{ asset('images/categories').'/'.$category->image }}" alt="Category Image" class="img-fluid">
                                                                             </div>
                                                                         </div>
                                                                     </div>

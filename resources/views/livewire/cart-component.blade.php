@@ -26,6 +26,7 @@
         </div>
     </div>
 
+    @if(\Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->count() > 0)
     <div class="cart block">
         <div class="container">
             <table class="cart__table cart-table">
@@ -40,9 +41,8 @@
                 </tr>
                 </thead>
                 <tbody class="cart-table__body">
-                @if(\Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->count() > 0)
                     @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->content() as $product)
-                    <tr class="cart-table__row">
+                        <tr class="cart-table__row">
                     <td class="cart-table__column cart-table__column--image">
                         <div class="product-image">
                             <a href="" class="product-image__body">
