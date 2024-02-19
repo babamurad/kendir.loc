@@ -73,6 +73,11 @@
                                                 <div class="filter__container">
                                                     <div class="filter-categories">
                                                         <ul class="filter-categories__list">
+                                                            <li class="filter-categories__item filter-categories__item--parent">
+                                                                <a href="#"
+                                                                   wire:click="allCategory">{{ __(' All Category') }}</a>
+                                                                <div id="prodCount" class="filter-categories__counter">{{ $prodCount }}</div>
+                                                            </li>
                                                             @foreach($categories as $category)
                                                                 <li class="filter-categories__item filter-categories__item--parent">
                                                                     <a href="#"

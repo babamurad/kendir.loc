@@ -22,7 +22,8 @@ class SearchComponent extends Component
 
     public $id, $name, $pqty = 1, $sale_price, $image;
 
-    public $searchTerm, $catId;
+    public $searchTerm, $catId, $q;
+    public $prodCount;
 
     public function render()
     {
@@ -31,16 +32,21 @@ class SearchComponent extends Component
         //->where('name', 'like', '%'.$this->search.'%')
 //                ->orderBy('id', 'desc')
 //                ->paginate($this->perPage);
+        /*
+         * ->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
+         * */
         $categories = Category::with('cparent')->with('products')->get();
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
-        if ($this->category_id){
-            $products = Product::where('category_id', $this->category_id)
-                ->orWhere('name', 'like', $this->searchTerm)
-                //->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
-                ->orderBy('name', $this->sort)->paginate($this->perPage);
+        if ($this->catId){
+            $products = Product::
+                where('category_id', $this->catId)
+                ->where('name', 'like', $this->searchTerm)
+                ->orderBy('name', $this->sort)
+                ->paginate($this->perPage);
         } else {
-            $products = Product::orderBy('name', $this->sort)
-                ->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
+            $products = Product::
+                where('name', 'like', $this->searchTerm)
+                ->orderBy('name', $this->sort)
                 ->paginate($this->perPage);
         }
 
@@ -85,19 +91,28 @@ class SearchComponent extends Component
 
     public function mount()
     {
-        //dd($this->fill(request()->only('q')));
+        $this->prodCount = Product::count();
         $this->fill(request()->only('q'));
         $this->searchTerm = '%' . $this->q . '%';
+        //
         $this->fill(request()->only('catId'));
         //$this->catId =
-        dd($this->catId);
+        //dd($this->catId . '-' . $this->searchTerm);
         $this->minPrice = DB::table('products')->min('sale_price');
         $this->maxPrice = DB::table('products')->max('sale_price');
     }
 
     public function selectCategory($id)
     {
-        $this->category_id = $id;
+        $this->catId = $id;
+        $this->searchTerm = '';
+    }
+
+    public function allCategory()
+    {
+        $this->catId = '';
+        $this->searchTerm = '';
+        return redirect()->route('shop');
     }
 
     public function productDetails($id)

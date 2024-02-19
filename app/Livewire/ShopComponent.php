@@ -21,6 +21,7 @@ class ShopComponent extends Component
     public $minPrice, $maxPrice;
 
     public $id, $name, $pqty = 1, $sale_price, $image;
+    public $prodCount;
 
     public function render()
     {
@@ -81,6 +82,7 @@ class ShopComponent extends Component
 
     public function mount()
     {
+        $this->prodCount = Product::count();
         $this->minPrice = DB::table('products')->min('sale_price');
         $this->maxPrice = DB::table('products')->max('sale_price');
     }
@@ -88,6 +90,11 @@ class ShopComponent extends Component
     public function selectCategory($id)
     {
         $this->category_id = $id;
+    }
+
+    public function allCategory()
+    {
+        $this->category_id = '';
     }
 
     public function productDetails($id)

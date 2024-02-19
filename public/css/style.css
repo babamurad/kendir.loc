@@ -16279,3 +16279,11 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-origin {
     border-color: #c3e6cb;
 }
 
+#prodCount{
+    background-color: #3366cc;
+    color: white;
+    font-size: 12px;
+    border-radius: 0.8rem;
+    padding: 4px;
+    padding-top: 5px;
+}
