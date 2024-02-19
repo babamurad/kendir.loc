@@ -1,6 +1,9 @@
 
 @section('title', 'Shop')
 <div>
+    @php
+        $wproducts = \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->pluck('id');
+    @endphp
     <div class="page-header">
         <div class="page-header__container container">
             <div class="page-header__breadcrumb">
@@ -41,7 +44,6 @@
 
     </div>
     <div class="container">
-
         <div class="shop-layout shop-layout--sidebar--start">
             <div class="shop-layout__sidebar">
                 <div class="block block-sidebar block-sidebar--offcanvas--mobile">
@@ -84,45 +86,45 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="widget-filters__item">
-                                        <div class="filter filter--opened" data-collapse-item>
-                                            <button type="button" class="filter__title" data-collapse-trigger>
-                                                {{ __('Filter by Price') }}
-                                                <svg class="filter__arrow" width="12px" height="7px">
-                                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
-                                                </svg>
-                                            </button>
-                                            <div class="filter__body" data-collapse-content>
-                                                <div class="filter__container">
-                                                    <script>
-                                                        $(document).ready(function(){
-                                                            var minPrice = {{ $minPrice }}
-                                                            var maxPrice={{ $maxPrice }}
-                                                            $(".filter-price").data("min", minPrice)
-                                                            $(".filter-price").data("max", maxPrice)
+{{--                                    <div class="widget-filters__item">--}}
+{{--                                        <div class="filter filter--opened" data-collapse-item>--}}
+{{--                                            <button type="button" class="filter__title" data-collapse-trigger>--}}
+{{--                                                {{ __('Filter by Price') }}--}}
+{{--                                                <svg class="filter__arrow" width="12px" height="7px">--}}
+{{--                                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>--}}
+{{--                                                </svg>--}}
+{{--                                            </button>--}}
+{{--                                            <div class="filter__body" data-collapse-content>--}}
+{{--                                                <div class="filter__container">--}}
+{{--                                                    <script>--}}
+{{--                                                        $(document).ready(function(){--}}
+{{--                                                            var minPrice = {{ $minPrice }}--}}
+{{--                                                            var maxPrice={{ $maxPrice }}--}}
+{{--                                                            $(".filter-price").data("min", minPrice)--}}
+{{--                                                            $(".filter-price").data("max", maxPrice)--}}
 
 
 
-                                                        });
-                                                    </script>
+{{--                                                        });--}}
+{{--                                                    </script>--}}
 
-                                                    <div class="filter-price" data-min="" data-max="" data-from="250" data-to="500">
-                                                        <div class="filter-price__slider" wire:ignore></div>
-                                                        <div class="filter-price__title">
-                                                            Price: $
-                                                            <span class="filter-price__min-value" wire:model="minPrice">
+{{--                                                    <div class="filter-price" data-min="" data-max="" data-from="250" data-to="500">--}}
+{{--                                                        <div class="filter-price__slider" wire:ignore></div>--}}
+{{--                                                        <div class="filter-price__title">--}}
+{{--                                                            Price: $--}}
+{{--                                                            <span class="filter-price__min-value" wire:model="minPrice">--}}
 {{--                                                            {{ $minPrice }}--}}
-                                                            </span>
-                                                            – $
-                                                            <span class="filter-price__max-value" wire:model="maxPrice">
+{{--                                                            </span>--}}
+{{--                                                            – $--}}
+{{--                                                            <span class="filter-price__max-value" wire:model="maxPrice">--}}
 {{--                                                            {{ $maxPrice }}--}}
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+{{--                                                            </span>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item>
                                             <button type="button" class="filter__title" data-collapse-trigger>
@@ -540,7 +542,7 @@
                                         </div>
                                     </div>
                                 </div>
-{{--                                <div class="view-options__legend">Showing 6 of 98 products  </div>--}}
+                               <div class="view-options__legend">Showing {{ $products->count() }} of {{ $products->total() }} products  </div>
                                 <div class="view-options__divider"></div>
                                 <div class="view-options__control">
                                     <label for="">Sort By</label>
@@ -603,13 +605,25 @@
                                                         <div class="product__actions-item product__actions-item--addtocart">
                                                             <button class="btn btn-primary btn-lg" wire:click="store({{$id}}, '{{$name}}', {{ $sale_price }})">Add to cart</button>
                                                         </div>
+
                                                         <div class="product__actions-item product__actions-item--wishlist">
-                                                            <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="" data-original-title="Wishlist">
-                                                                <svg width="16px" height="16px">
+                                                            @if($wproducts->contains($id))
+                                                            <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="" data-original-title="Wishlist"
+                                                                    wire:click="removeWishlist('{{ $id }}')">
+                                                                <svg width="16px" height="16px" style="fill: #ff3333;">
                                                                     <use xlink:href="images/sprite.svg#wishlist-16"></use>
                                                                 </svg>
                                                             </button>
+                                                            @else
+                                                            <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="" data-original-title="Wishlist"
+                                                                        wire:click="addToWishlist({{$id}}, '{{$name}}', {{ $sale_price }})">
+                                                                    <svg width="16px" height="16px">
+                                                                        <use xlink:href="images/sprite.svg#wishlist-16"></use>
+                                                                    </svg>
+                                                            </button>
+                                                            @endif
                                                         </div>
+
                                                         <div class="product__actions-item product__actions-item--compare">
                                                             <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="" data-original-title="Compare">
                                                                 <svg width="16px" height="16px">
@@ -632,9 +646,6 @@
                         </div>
                         <div class="products-view__list products-list" data-layout="grid-3-sidebar" data-with-features="false" data-mobile-grid-columns="2">
                             <div class="products-list__body">
-                                @php
-                                $wproducts = \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->pluck('id');
-                                @endphp
                                 @foreach($products as $product)
                                     <div class="products-list__item">
                                         <div class="product-card product-card--hidden-actions ">
