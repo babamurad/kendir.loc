@@ -10,6 +10,7 @@ use Livewire\Component;
 
 class HomeComponent extends Component
 {
+    public $category_id;
     protected $paginationTheme = 'bootstrap';
 
     public function render()
@@ -21,13 +22,14 @@ class HomeComponent extends Component
 
         $categories = Category::orderBy('id', 'DESC')->get();
         $carousels = Carousel::orderBy('id', 'DESC')->get();
+
         $products = Product::all();
 
         $date = Carbon::now()->subDays(7);
         $newArrivals = Product::where('created_at', '>=', $date)->get();
 
         return view('livewire.home-component',
-        compact('categories', 'carousels', 'products', 'newArrivals')
+            compact('categories', 'carousels', 'products', 'newArrivals')
 
         );
     }

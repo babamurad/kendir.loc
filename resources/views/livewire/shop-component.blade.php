@@ -1,5 +1,5 @@
 
-@section('title', 'Shop')
+@section('title', __('Shop'))
 <div>
     @php
         $wproducts = \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->pluck('id');
@@ -531,17 +531,17 @@
                                         <div class="layout-switcher__list">
                                             <button data-layout="grid-3-sidebar" data-with-features="false" title="Grid" type="button" class="layout-switcher__button  layout-switcher__button--active ">
                                                 <svg width="16px" height="16px">
-                                                    <use xlink:href="images/sprite.svg#layout-grid-16x16"></use>
+                                                    <use xlink:href="{{ asset('images/sprite.svg#layout-grid-16x16') }}"></use>
                                                 </svg>
                                             </button>
                                             <button data-layout="grid-3-sidebar" data-with-features="true" title="Grid With Features" type="button" class="layout-switcher__button ">
                                                 <svg width="16px" height="16px">
-                                                    <use xlink:href="images/sprite.svg#layout-grid-with-details-16x16"></use>
+                                                    <use xlink:href="{{ asset('images/sprite.svg#layout-grid-with-details-16x16') }}"></use>
                                                 </svg>
                                             </button>
                                             <button data-layout="list" data-with-features="false" title="List" type="button" class="layout-switcher__button ">
                                                 <svg width="16px" height="16px">
-                                                    <use xlink:href="images/sprite.svg#layout-list-16x16"></use>
+                                                    <use xlink:href="{{ asset('images/sprite.svg#layout-list-16x16') }}"></use>
                                                 </svg>
                                             </button>
                                         </div>
@@ -670,13 +670,13 @@
                                             @endif
                                             </div>
                                             <div class="product-card__image product-image">
-                                                <a href="#" class="product-image__body">
+                                                <a href="{{ route('product.details', ['slug' => $product->slug]) }}" class="product-image__body">
                                                     <img class="product-image__img" src="{{ asset('images/products').'/'.$product->image }}" alt="Product Image">
                                                 </a>
                                             </div>
                                             <div class="product-card__info">
                                                 <div class="product-card__name">
-                                                    <a href="#">{{ $product->name }}</a>
+                                                    <a href="{{ route('product.details', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
                                                 </div>
                                                 <div class="product-card__rating">
                                                     <div class="product-card__rating-stars">
@@ -824,37 +824,38 @@
 </div>
 @push('priceFilter')
     <script>
-        /*
-        // price filter
-        */
-        $(function () {
-            $('.filter-price').each(function (i, element) {
-                const min = $(element).data('min');
-                const max = $(element).data('max');
-                const from = $(element).data('from');
-                const to = $(element).data('to');
-                const slider = element.querySelector('.filter-price__slider');
 
-                noUiSlider.create(slider, {
-                    start: [from, to],
-                    connect: true,
-                    direction: isRTL() ? 'rtl' : 'ltr',
-                    range: {
-                        'min': min,
-                        'max': max
-                    }
-                });
-
-                const titleValues = [
-                    $(element).find('.filter-price__min-value')[0],
-                    $(element).find('.filter-price__max-value')[0]
-                ];
-
-
-                slider.noUiSlider.on('update', function (values, handle) {
-                    titleValues[handle].innerHTML = values[handle];
-                });
-            });
-        });
+        // /*
+        // // price filter
+        // */
+        // $(function () {
+        //     $('.filter-price').each(function (i, element) {
+        //         const min = $(element).data('min');
+        //         const max = $(element).data('max');
+        //         const from = $(element).data('from');
+        //         const to = $(element).data('to');
+        //         const slider = element.querySelector('.filter-price__slider');
+        //
+        //         noUiSlider.create(slider, {
+        //             start: [from, to],
+        //             connect: true,
+        //             direction: isRTL() ? 'rtl' : 'ltr',
+        //             range: {
+        //                 'min': min,
+        //                 'max': max
+        //             }
+        //         });
+        //
+        //         const titleValues = [
+        //             $(element).find('.filter-price__min-value')[0],
+        //             $(element).find('.filter-price__max-value')[0]
+        //         ];
+        //
+        //
+        //         slider.noUiSlider.on('update', function (values, handle) {
+        //             titleValues[handle].innerHTML = values[handle];
+        //         });
+        //     });
+        // });
     </script>
 @endpush

@@ -411,68 +411,7 @@
                                     <div class="nav-panel__departments">
                                         <!-- .departments -->
                                         <div class="departments " data-departments-fixed-by="">
-                                            <div class="departments__body">
-                                                <div class="departments__links-wrapper">
-                                                    <div class="departments__submenus-container"></div>
-                                                    <ul class="departments__links">
-                                                        @foreach($categories as $category)
-                                                        <li class="departments__item">
-                                                            <a class="departments__item-link" href="">
-                                                                {{ $category->name }}
-                                                                <svg class="departments__item-arrow" width="6px" height="9px">
-                                                                    <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
-                                                                </svg>
-                                                            </a>
-                                                            <div class="departments__submenu departments__submenu--type--megamenu departments__submenu--size--xl">
-                                                                <!-- .megamenu -->
-                                                                <div class="megamenu  megamenu--departments ">
-                                                                    <div class="megamenu__body">
-                                                                        <div class="row">
-                                                                            <div class="col-4">
-                                                                                <ul class="megamenu__links megamenu__links--level--0">
-                                                                                    <li class="megamenu__item"><a
-                                                                                            href="">Engravers</a>
-                                                                                    </li>
-                                                                                    <li class="megamenu__item"><a
-                                                                                            href="">Drills</a></li>
-                                                                                    <li class="megamenu__item"><a
-                                                                                            href="">Wrenches</a>
-                                                                                    </li>
-                                                                                    <li class="megamenu__item"><a
-                                                                                            href="">Plumbing</a>
-                                                                                    </li>
-                                                                                    <li class="megamenu__item"><a
-                                                                                            href="">Wall Chaser</a>
-                                                                                    </li>
-                                                                                    <li class="megamenu__item"><a
-                                                                                            href="">Pneumatic
-                                                                                            Tools</a></li>
-                                                                                    <li class="megamenu__item"><a
-                                                                                            href="">Milling
-                                                                                            Cutters</a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="col-8">
-                                                                                <img src="{{ asset('images/categories').'/'.$category->image }}" alt="Category Image" class="img-fluid">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- .megamenu / end -->
-                                                            </div>
-                                                        </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            </div>
                                             <button class="departments__button">
-                                                <svg class="departments__button-icon" width="18px" height="14px">
-                                                    <use xlink:href="images/sprite.svg#menu-18x14"></use>
-                                                </svg>
-                                                Shop By Category
-                                                <svg class="departments__button-arrow" width="9px" height="6px">
-                                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-9x6"></use>
-                                                </svg>
                                             </button>
                                         </div>
                                         <!-- .departments / end -->

@@ -20,6 +20,7 @@ class CategoryComponent extends Component
     public $min_price, $max_price;
     public $minPrice, $maxPrice;
     public $slug;
+    public $prodCount;
 
     public $id, $name, $pqty = 1, $sale_price, $image;
 
@@ -27,17 +28,17 @@ class CategoryComponent extends Component
     {
         $categories = Category::with('cparent')->with('products')->get();
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
-        if ($this->category_id){
-            $products = Product::where('category_id', $this->category_id)->orderBy('name', $this->sort)->paginate($this->perPage);
-        } else {
-            $products = Product::orderBy('name', $this->sort)->paginate($this->perPage);
-        }
+
+        $category = Category::where('slug', $this->slug)->first();
+        //dd($category);
+        $category_id = $category->id;
+        $products = Product::where('category_id', $category_id)->orderBy('name', $this->sort)->paginate($this->perPage);
 
         $date = Carbon::now()->subDays(7);
         $newArrivals = Product::where('created_at', '>=', $date)->get();
 
 
-        return view('livewire.shop-component', compact('categories', 'latestProducts', 'products', 'newArrivals'));
+        return view('livewire.category-component', compact('categories', 'latestProducts', 'products', 'newArrivals'));
     }
 
     public function store($product_id, $product_name, $product_price)
@@ -55,6 +56,8 @@ class CategoryComponent extends Component
     public function mount($slug)
     {
         $this->slug = $slug;
+        //dd($this->slug);
+        $this->prodCount = Product::count();
         $this->minPrice = DB::table('products')->min('sale_price');
         $this->maxPrice = DB::table('products')->max('sale_price');
     }

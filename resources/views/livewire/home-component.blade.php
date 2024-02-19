@@ -132,13 +132,13 @@
                                         @endif
                                     </div>
                                     <div class="product-card__image product-image">
-                                        <a href="#" class="product-image__body">
+                                        <a href="{{ route('product.details', ['slug' => $product->slug]) }}" class="product-image__body">
                                             <img class="product-image__img" src="{{ asset('images/products').'/'.$product->image }}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-card__info">
                                         <div class="product-card__name">
-                                            <a href="#">{{ $product->name }}</a>
+                                            <a href="{{ route('product.details', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
                                         </div>
                                         <div class="product-card__rating">
                                             <div class="product-card__rating-stars">

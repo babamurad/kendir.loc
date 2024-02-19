@@ -1,6 +1,9 @@
 
-@section('title', 'Category')
+@section('title', __('Category'))
 <div>
+    @php
+        $wproducts = \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->pluck('id');
+    @endphp
     <div class="page-header">
         <div class="page-header__container container">
             <div class="page-header__breadcrumb">
@@ -41,7 +44,6 @@
 
     </div>
     <div class="container">
-
         <div class="shop-layout shop-layout--sidebar--start">
             <div class="shop-layout__sidebar">
                 <div class="block block-sidebar block-sidebar--offcanvas--mobile">
@@ -71,9 +73,14 @@
                                                 <div class="filter__container">
                                                     <div class="filter-categories">
                                                         <ul class="filter-categories__list">
+                                                            <li class="filter-categories__item filter-categories__item--parent">
+                                                                <a href="#"
+                                                                   wire:click="allCategory">{{ __(' All Category') }}</a>
+                                                                <div id="prodCount" class="filter-categories__counter">{{ $prodCount }}</div>
+                                                            </li>
                                                             @foreach($categories as $category)
                                                                 <li class="filter-categories__item filter-categories__item--parent">
-                                                                    <a href="#" wire:click="selectCategory('{{ $category->id }}')">{{ $category->name }}</a>
+                                                                    <a href="{{route('product.category', ['slug' => $category->slug])}}">{{ $category->name }}</a>
                                                                     <div class="filter-categories__counter">{{ $category->products->count() }}</div>
                                                                 </li>
                                                             @endforeach
@@ -83,42 +90,45 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="widget-filters__item">
-                                        <div class="filter filter--opened" data-collapse-item>
-                                            <button type="button" class="filter__title" data-collapse-trigger>
-                                                Price
-                                                <svg class="filter__arrow" width="12px" height="7px">
-                                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
-                                                </svg>
-                                            </button>
-                                            <div class="filter__body" data-collapse-content>
-                                                <div class="filter__container">
-                                                    <script>
-                                                        $(document).ready(function(){
-                                                            var minPrice = {{ $minPrice }}
-                                                                var maxPrice={{ $maxPrice }}
-                                                            $(".filter-price").data("min", minPrice)
-                                                            $(".filter-price").data("max", maxPrice)
-                                                        });
-                                                    </script>
+                                    {{--                                    <div class="widget-filters__item">--}}
+                                    {{--                                        <div class="filter filter--opened" data-collapse-item>--}}
+                                    {{--                                            <button type="button" class="filter__title" data-collapse-trigger>--}}
+                                    {{--                                                {{ __('Filter by Price') }}--}}
+                                    {{--                                                <svg class="filter__arrow" width="12px" height="7px">--}}
+                                    {{--                                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>--}}
+                                    {{--                                                </svg>--}}
+                                    {{--                                            </button>--}}
+                                    {{--                                            <div class="filter__body" data-collapse-content>--}}
+                                    {{--                                                <div class="filter__container">--}}
+                                    {{--                                                    <script>--}}
+                                    {{--                                                        $(document).ready(function(){--}}
+                                    {{--                                                            var minPrice = {{ $minPrice }}--}}
+                                    {{--                                                            var maxPrice={{ $maxPrice }}--}}
+                                    {{--                                                            $(".filter-price").data("min", minPrice)--}}
+                                    {{--                                                            $(".filter-price").data("max", maxPrice)--}}
 
-                                                    <div class="filter-price" data-min="" data-max="" data-from="250" data-to="500">
-                                                        <div class="filter-price__slider" wire:ignore></div>
-                                                        <div class="filter-price__title">
-                                                            Price: $
-                                                            <span class="filter-price__min-value">
-                                                            {{ $minPrice }}
-                                                            </span>
-                                                            – $
-                                                            <span class="filter-price__max-value">
-                                                            {{ $maxPrice }}
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+
+                                    {{--                                                        });--}}
+                                    {{--                                                    </script>--}}
+
+                                    {{--                                                    <div class="filter-price" data-min="" data-max="" data-from="250" data-to="500">--}}
+                                    {{--                                                        <div class="filter-price__slider" wire:ignore></div>--}}
+                                    {{--                                                        <div class="filter-price__title">--}}
+                                    {{--                                                            Price: $--}}
+                                    {{--                                                            <span class="filter-price__min-value" wire:model="minPrice">--}}
+                                    {{--                                                            {{ $minPrice }}--}}
+                                    {{--                                                            </span>--}}
+                                    {{--                                                            – $--}}
+                                    {{--                                                            <span class="filter-price__max-value" wire:model="maxPrice">--}}
+                                    {{--                                                            {{ $maxPrice }}--}}
+                                    {{--                                                            </span>--}}
+                                    {{--                                                        </div>--}}
+                                    {{--                                                    </div>--}}
+                                    {{--                                                </div>--}}
+                                    {{--                                            </div>--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                    </div>--}}
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item>
                                             <button type="button" class="filter__title" data-collapse-trigger>
@@ -536,7 +546,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{--                                <div class="view-options__legend">Showing 6 of 98 products  </div>--}}
+                                <div class="view-options__legend">Showing {{ $products->count() }} of {{ $products->total() }} products  </div>
                                 <div class="view-options__divider"></div>
                                 <div class="view-options__control">
                                     <label for="">Sort By</label>
@@ -599,13 +609,25 @@
                                                         <div class="product__actions-item product__actions-item--addtocart">
                                                             <button class="btn btn-primary btn-lg" wire:click="store({{$id}}, '{{$name}}', {{ $sale_price }})">Add to cart</button>
                                                         </div>
+
                                                         <div class="product__actions-item product__actions-item--wishlist">
-                                                            <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="" data-original-title="Wishlist">
-                                                                <svg width="16px" height="16px">
-                                                                    <use xlink:href="images/sprite.svg#wishlist-16"></use>
-                                                                </svg>
-                                                            </button>
+                                                            @if($wproducts->contains($id))
+                                                                <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="" data-original-title="Wishlist"
+                                                                        wire:click="removeWishlist('{{ $id }}')">
+                                                                    <svg width="16px" height="16px" style="fill: #ff3333;">
+                                                                        <use xlink:href="images/sprite.svg#wishlist-16"></use>
+                                                                    </svg>
+                                                                </button>
+                                                            @else
+                                                                <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="" data-original-title="Wishlist"
+                                                                        wire:click="addToWishlist({{$id}}, '{{$name}}', {{ $sale_price }})">
+                                                                    <svg width="16px" height="16px">
+                                                                        <use xlink:href="images/sprite.svg#wishlist-16"></use>
+                                                                    </svg>
+                                                                </button>
+                                                            @endif
                                                         </div>
+
                                                         <div class="product__actions-item product__actions-item--compare">
                                                             <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="" data-original-title="Compare">
                                                                 <svg width="16px" height="16px">
@@ -647,13 +669,13 @@
                                                 @endif
                                             </div>
                                             <div class="product-card__image product-image">
-                                                <a href="#" class="product-image__body">
+                                                <a href="{{ route('details') }}" class="product-image__body">
                                                     <img class="product-image__img" src="{{ asset('images/products').'/'.$product->image }}" alt="Product Image">
                                                 </a>
                                             </div>
                                             <div class="product-card__info">
                                                 <div class="product-card__name">
-                                                    <a href="#">{{ $product->name }}</a>
+                                                    <a href="{{ route('details') }}">{{ $product->name }}</a>
                                                 </div>
                                                 <div class="product-card__rating">
                                                     <div class="product-card__rating-stars">
@@ -762,12 +784,21 @@
                                                 <div class="product-card__buttons">
                                                     <button class="btn btn-primary product-card__addtocart" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
                                                     <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
-                                                    <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
-                                                        <svg width="16px" height="16px">
-                                                            <use xlink:href="images/sprite.svg#wishlist-16"></use>
-                                                        </svg>
-                                                        <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                                    </button>
+                                                    @if($wproducts->contains($product->id))
+                                                        <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button" wire:click="removeWishlist('{{ $product->id }}')">
+                                                            <svg width="16px" height="16px" style="fill: #ff3333;">
+                                                                <use xlink:href="images/sprite.svg#wishlist-16"></use>
+                                                            </svg>
+                                                            <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                                                        </button>
+                                                    @else
+                                                        <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button" wire:click="addToWishlist({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">
+                                                            <svg width="16px" height="16px">
+                                                                <use xlink:href="images/sprite.svg#wishlist-16"></use>
+                                                            </svg>
+                                                            <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                                                        </button>
+                                                    @endif
                                                     <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare" type="button">
                                                         <svg width="16px" height="16px">
                                                             <use xlink:href="images/sprite.svg#compare-16"></use>
@@ -790,3 +821,40 @@
         </div>
     </div>
 </div>
+@push('priceFilter')
+    <script>
+
+        // /*
+        // // price filter
+        // */
+        // $(function () {
+        //     $('.filter-price').each(function (i, element) {
+        //         const min = $(element).data('min');
+        //         const max = $(element).data('max');
+        //         const from = $(element).data('from');
+        //         const to = $(element).data('to');
+        //         const slider = element.querySelector('.filter-price__slider');
+        //
+        //         noUiSlider.create(slider, {
+        //             start: [from, to],
+        //             connect: true,
+        //             direction: isRTL() ? 'rtl' : 'ltr',
+        //             range: {
+        //                 'min': min,
+        //                 'max': max
+        //             }
+        //         });
+        //
+        //         const titleValues = [
+        //             $(element).find('.filter-price__min-value')[0],
+        //             $(element).find('.filter-price__max-value')[0]
+        //         ];
+        //
+        //
+        //         slider.noUiSlider.on('update', function (values, handle) {
+        //             titleValues[handle].innerHTML = values[handle];
+        //         });
+        //     });
+        // });
+    </script>
+@endpush
