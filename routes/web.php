@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/', function () {
-//     return view('welcome');
+//    hi from kabulov
 // });
 
 Route::get('/', HomeComponent::class)->name('home');
