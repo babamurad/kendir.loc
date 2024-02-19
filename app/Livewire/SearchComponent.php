@@ -38,16 +38,29 @@ class SearchComponent extends Component
         $categories = Category::with('cparent')->with('products')->get();
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
         if ($this->catId){
-            $products = Product::
-                where('category_id', $this->catId)
-                ->where('name', 'like', $this->searchTerm)
-                ->orderBy('name', $this->sort)
-                ->paginate($this->perPage);
+            if (!$this->searchTerm=='') {
+                $products = DB::table('products')
+                    ->where('category_id', '=', $this->catId)
+                    ->where('name', 'like', $this->searchTerm)
+                    ->orderBy('name', $this->sort)
+                    ->paginate($this->perPage);
+            } else {
+                $products = DB::table('products')
+                    ->where('category_id', '=', $this->catId)
+                    ->orderBy('name', $this->sort)
+                    ->paginate($this->perPage);
+            }
+            //dd($products->count());
         } else {
-            $products = Product::
-                where('name', 'like', $this->searchTerm)
-                ->orderBy('name', $this->sort)
-                ->paginate($this->perPage);
+            if (!$this->searchTerm==''){
+                $products = Product::where('name', 'like', $this->searchTerm)
+                    ->orderBy('name', $this->sort)
+                    ->paginate($this->perPage);
+            } else {
+                $products = Product::
+                    orderBy('name', $this->sort)
+                    ->paginate($this->perPage);
+            }
         }
 
         $date = Carbon::now()->subDays(7);
@@ -102,10 +115,17 @@ class SearchComponent extends Component
         $this->maxPrice = DB::table('products')->max('sale_price');
     }
 
-    public function selectCategory($id)
+    public function selectCategory($id = '')
     {
-        $this->catId = $id;
+        if ($id){
+            $this->catId = $id;
+        } else {
+            $this->catId = '';
+        }
         $this->searchTerm = '';
+        //dd($this->catId);
+        //redirect()->route('product.search');
+
     }
 
     public function allCategory()
