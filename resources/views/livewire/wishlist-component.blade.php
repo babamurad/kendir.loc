@@ -5,15 +5,15 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="index.html">Home</a>
+                            <a href="/">Home</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
-                                <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
+                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="">Breadcrumb</a>
+                            <a href="#">Breadcrumb</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
-                                <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
+                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Wish List</li>
@@ -65,10 +65,10 @@
                                     <div class="rating__body">
                                         <svg class="rating__star rating__star--active" width="13px" height="12px">
                                             <g class="rating__fill">
-                                                <use xlink:href="images/sprite.svg#star-normal"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#star-normal') }}"></use>
                                             </g>
                                             <g class="rating__stroke">
-                                                <use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#star-normal-stroke') }}"></use>
                                             </g>
                                         </svg>
                                         <div class="rating__star rating__star--only-edge rating__star--active">
@@ -81,10 +81,10 @@
                                         </div>
                                         <svg class="rating__star rating__star--active" width="13px" height="12px">
                                             <g class="rating__fill">
-                                                <use xlink:href="images/sprite.svg#star-normal"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#star-normal') }}"></use>
                                             </g>
                                             <g class="rating__stroke">
-                                                <use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#star-normal-stroke') }}"></use>
                                             </g>
                                         </svg>
                                         <div class="rating__star rating__star--only-edge rating__star--active">
@@ -97,10 +97,10 @@
                                         </div>
                                         <svg class="rating__star rating__star--active" width="13px" height="12px">
                                             <g class="rating__fill">
-                                                <use xlink:href="images/sprite.svg#star-normal"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#star-normal') }}"></use>
                                             </g>
                                             <g class="rating__stroke">
-                                                <use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#star-normal-stroke') }}"></use>
                                             </g>
                                         </svg>
                                         <div class="rating__star rating__star--only-edge rating__star--active">
@@ -113,10 +113,10 @@
                                         </div>
                                         <svg class="rating__star rating__star--active" width="13px" height="12px">
                                             <g class="rating__fill">
-                                                <use xlink:href="images/sprite.svg#star-normal"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#star-normal') }}"></use>
                                             </g>
                                             <g class="rating__stroke">
-                                                <use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#star-normal-stroke') }}"></use>
                                             </g>
                                         </svg>
                                         <div class="rating__star rating__star--only-edge rating__star--active">
@@ -129,10 +129,10 @@
                                         </div>
                                         <svg class="rating__star " width="13px" height="12px">
                                             <g class="rating__fill">
-                                                <use xlink:href="images/sprite.svg#star-normal"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#star-normal') }}"></use>
                                             </g>
                                             <g class="rating__stroke">
-                                                <use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#star-normal-stroke') }}"></use>
                                             </g>
                                         </svg>
                                         <div class="rating__star rating__star--only-edge ">
@@ -160,7 +160,7 @@
                         <td class="wishlist__column wishlist__column--remove">
                             <button type="button" class="btn btn-light btn-sm btn-svg-icon" wire:click="removeWishlist('{{ $wproduct->id }}')">
                                 <svg width="12px" height="12px">
-                                    <use xlink:href="images/sprite.svg#cross-12"></use>
+                                    <use xlink:href="{{ asset('images/sprite.svg#cross-12') }}"></use>
                                 </svg>
                             </button>
                         </td>

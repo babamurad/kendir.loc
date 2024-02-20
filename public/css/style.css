@@ -16287,3 +16287,14 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-origin {
     padding: 4px;
     padding-top: 5px;
 }
+.activecat{
+    color: #3366cc;
+}
+.activecount{
+    background-color: #3366cc;
+    color: white;
+    font-size: 12px;
+    border-radius: 0.8rem;
+    padding: 4px;
+    padding-top: 5px;
+}

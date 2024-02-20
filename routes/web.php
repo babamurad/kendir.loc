@@ -36,12 +36,12 @@ use \App\Livewire\DetailsComponent;
 Route::get('/', HomeComponent::class)->name('home');
 Route::get('shop', ShopComponent::class)->name('shop');
 Route::get('category/{slug}', ProductCategory::class)->name('product.category');
-//Route::get('cart', CartComponent::class)->name('cart');
+Route::get('cart', CartComponent::class)->name('cart');
 Route::get('wishlist', WishlistComponent::class)->name('wishlist');
 Route::get('search', SearchComponent::class)->name('product.search');
 Route::get('details/{slug}', DetailsComponent::class)->name('product.details');
 
-Route::get('user', UserComponent::class)->name('login');
+Route::get('user', UserComponent::class)->name('user');
 Route::get('register', RegisterUserComponent::class)->name('register');
 
 Route::middleware(['auth'])->group(function () {

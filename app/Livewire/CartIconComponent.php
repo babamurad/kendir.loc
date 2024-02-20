@@ -12,6 +12,7 @@ class CartIconComponent extends Component
     #[On('incQty')]
     #[On('decQty')]
     #[On('delProd')]
+    #[On('addToCartDetails')]
     public function render()
     {
         return view('livewire.cart-icon-component');

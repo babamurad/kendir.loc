@@ -22,6 +22,7 @@ class ShopComponent extends Component
 
     public $id, $name, $pqty = 1, $sale_price, $image;
     public $prodCount;
+    public $active_id;
 
     public function render()
     {
@@ -33,6 +34,7 @@ class ShopComponent extends Component
         $categories = Category::with('cparent')->with('products')->get();
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
         if ($this->category_id){
+            $this->active_id = $this->category_id;
             $products = Product::where('category_id', $this->category_id)
                 ->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
                 ->orderBy('name', $this->sort)->paginate($this->perPage);

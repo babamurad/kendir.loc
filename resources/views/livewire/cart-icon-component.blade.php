@@ -2,7 +2,7 @@
     <a href="cart.html" class="indicator__button" style="margin-top: 0.4rem;">
        <span class="indicator__area">
            <svg width="20px" height="20px">
-               <use xlink:href="images/sprite.svg#cart-20"></use>
+               <use xlink:href="{{ asset('images/sprite.svg#cart-20') }}"></use>
            </svg>
            <span class="indicator__value">{{ \Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->count() }}</span>
        </span>
@@ -34,7 +34,7 @@
                             <button type="button" wire:click="destroy('{{ $product->rowId }}')"
                                     class="dropcart__product-remove btn btn-light btn-sm btn-svg-icon">
                                 <svg width="10px" height="10px">
-                                    <use xlink:href="images/sprite.svg#cross-10"></use>
+                                    <use xlink:href="{{ asset('images/sprite.svg#cross-10') }}"></use>
                                 </svg>
                             </button>
                         </div>

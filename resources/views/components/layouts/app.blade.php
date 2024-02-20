@@ -35,7 +35,7 @@
                         <div class="mobile-header__body">
                             <button class="mobile-header__menu-button">
                                 <svg width="18px" height="14px">
-                                    <use xlink:href="images/sprite.svg#menu-18x14"></use>
+                                    <use xlink:href="{{ asset('images/sprite.svg#menu-18x14') }}"></use>
                                 </svg>
                             </button>
                             <a class="mobile-header__logo" href="/">
@@ -69,12 +69,12 @@
                                             type="text" autocomplete="off">
                                         <button class="search__button search__button--type--submit" type="submit">
                                             <svg width="20px" height="20px">
-                                                <use xlink:href="images/sprite.svg#search-20"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#search-20') }}"></use>
                                             </svg>
                                         </button>
                                         <button class="search__button search__button--type--close" type="button">
                                             <svg width="20px" height="20px">
-                                                <use xlink:href="images/sprite.svg#cross-20"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#cross-20') }}"></use>
                                             </svg>
                                         </button>
                                         <div class="search__border"></div>
@@ -88,16 +88,16 @@
                                     <button class="indicator__button">
                                         <span class="indicator__area">
                                             <svg width="20px" height="20px">
-                                                <use xlink:href="images/sprite.svg#search-20"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#search-20') }}"></use>
                                             </svg>
                                         </span>
                                     </button>
                                 </div>
                                 <div class="indicator indicator--mobile d-sm-flex d-none">
-                                    <a href="wishlist.html" class="indicator__button">
+                                    <a href="{{ route('wishlist') }}" class="indicator__button">
                                         <span class="indicator__area">
                                             <svg width="20px" height="20px">
-                                                <use xlink:href="images/sprite.svg#heart-20"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#heart-20') }}"></use>
                                             </svg>
                                             <span class="indicator__value">0</span>
                                         </span>
@@ -107,7 +107,7 @@
                                     <a href="cart.html" class="indicator__button">
                                         <span class="indicator__area">
                                             <svg width="20px" height="20px">
-                                                <use xlink:href="images/sprite.svg#cart-20"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#cart-20') }}"></use>
                                             </svg>
                                             <span class="indicator__value">3</span>
                                         </span>
@@ -134,7 +134,7 @@
                                     <button class="topbar-dropdown__btn" type="button">
                                         My Account
                                         <svg width="7px" height="5px">
-                                            <use xlink:href="images/sprite.svg#arrow-rounded-down-7x5"></use>
+                                            <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-7x5') }}"></use>
                                         </svg>
                                     </button>
                                     <div class="topbar-dropdown__body">
@@ -195,7 +195,7 @@
                                     <button class="topbar-dropdown__btn" type="button">
                                         Currency: <span class="topbar__item-value">USD</span>
                                         <svg width="7px" height="5px">
-                                            <use xlink:href="images/sprite.svg#arrow-rounded-down-7x5"></use>
+                                            <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-7x5') }}"></use>
                                         </svg>
                                     </button>
                                     <div class="topbar-dropdown__body">
@@ -242,7 +242,7 @@
                                     <button class="topbar-dropdown__btn" type="button">
                                         Language: <span class="topbar__item-value">EN</span>
                                         <svg width="7px" height="5px">
-                                            <use xlink:href="images/sprite.svg#arrow-rounded-down-7x5"></use>
+                                            <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-7x5') }}"></use>
                                         </svg>
                                     </button>
                                     <div class="topbar-dropdown__body">
@@ -342,7 +342,7 @@
                                                         <li class="departments__item">
                                                         <a class="departments__item-link" href="">
                                                             {{ $category->name }}
-                                                            <svg class="departments__item-arrow" width="6px" height="9px"> <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"> </use> </svg>
+                                                            <svg class="departments__item-arrow" width="6px" height="9px"> <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use> </svg>
                                                         </a>
                                                         <div class="departments__submenu departments__submenu--type--megamenu departments__submenu--size--lg">
                                                             <!-- .megamenu -->
@@ -381,7 +381,7 @@
                                                                             </ul>
                                                                         </div>
                                                                         <div class="col-8">
-                                                                            <img src="{{ asset('images/categories').'/'.$category->image }}" alt="" class="img-fluid">
+                                                                            <img src="{{ asset('images/categories'. '/'. $category->image) }}" alt="" class="img-fluid">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -399,7 +399,7 @@
                                             </svg>
                                             Shop By Category
                                             <svg class="departments__button-arrow" width="9px" height="6px">
-                                                <use xlink:href="images/sprite.svg#arrow-rounded-down-9x6"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-9x6') }}"></use>
                                             </svg>
                                         </button>
                                     </div>
@@ -487,7 +487,7 @@
                                         <a href="account-login.html" class="indicator__button">
                                             <span class="indicator__area">
                                                 <svg width="20px" height="20px">
-                                                    <use xlink:href="images/sprite.svg#person-20"></use>
+                                                    <use xlink:href="{{ asset('images/sprite.svg#person-20') }}"></use>
                                                 </svg>
                                             </span>
                                         </a>
@@ -656,7 +656,7 @@
                         <div class="totop__end">
                             <button type="button" class="totop__button">
                                 <svg width="13px" height="8px">
-                                    <use xlink:href="images/sprite.svg#arrow-rounded-up-13x8"></use>
+                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-up-13x8') }}"></use>
                                 </svg>
                             </button>
                         </div>
@@ -682,7 +682,7 @@
                 <div class="mobilemenu__title">Menu</div>
                 <button type="button" class="mobilemenu__close">
                     <svg width="20px" height="20px">
-                        <use xlink:href="images/sprite.svg#cross-20"></use>
+                        <use xlink:href="{{ asset('images/sprite.svg#cross-20') }}"></use>
                     </svg>
                 </button>
             </div>
@@ -694,7 +694,7 @@
                             <a href="index.html" class="mobile-links__item-link">Home</a>
                             <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                 <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                 </svg>
                             </button>
                         </div>
@@ -733,7 +733,7 @@
                             <a href="" class="mobile-links__item-link">Categories</a>
                             <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                 <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                 </svg>
                             </button>
                         </div>
@@ -744,7 +744,7 @@
                                         <a href="" class="mobile-links__item-link">Power Tools</a>
                                         <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                             <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                                <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                             </svg>
                                         </button>
                                     </div>
@@ -778,7 +778,7 @@
                                         <a href="" class="mobile-links__item-link">Machine Tools</a>
                                         <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                             <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                                <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                             </svg>
                                         </button>
                                     </div>
@@ -825,7 +825,7 @@
                             <a href="shop-grid-3-columns-sidebar.html" class="mobile-links__item-link">Shop</a>
                             <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                 <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                 </svg>
                             </button>
                         </div>
@@ -837,7 +837,7 @@
                                             Grid</a>
                                         <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                             <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                                <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                             </svg>
                                         </button>
                                     </div>
@@ -880,7 +880,7 @@
                                         <a href="product.html" class="mobile-links__item-link">Product</a>
                                         <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                             <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                                <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                             </svg>
                                         </button>
                                     </div>
@@ -928,7 +928,7 @@
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="wishlist.html" class="mobile-links__item-link">Wishlist</a>
+                                        <a href="{{ route('wishlist') }}" class="mobile-links__item-link">Wishlist</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
@@ -949,7 +949,7 @@
                             <a href="account-login.html" class="mobile-links__item-link">Account</a>
                             <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                 <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                 </svg>
                             </button>
                         </div>
@@ -1007,7 +1007,7 @@
                             <a href="blog-classic.html" class="mobile-links__item-link">Blog</a>
                             <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                 <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                 </svg>
                             </button>
                         </div>
@@ -1053,7 +1053,7 @@
                             <a href="" class="mobile-links__item-link">Pages</a>
                             <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                 <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                 </svg>
                             </button>
                         </div>
@@ -1108,7 +1108,7 @@
                             <a data-collapse-trigger class="mobile-links__item-link">Currency</a>
                             <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                 <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                 </svg>
                             </button>
                         </div>
@@ -1142,7 +1142,7 @@
                             <a data-collapse-trigger class="mobile-links__item-link">Language</a>
                             <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                 <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                 </svg>
                             </button>
                         </div>
