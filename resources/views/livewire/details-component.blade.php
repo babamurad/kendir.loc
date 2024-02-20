@@ -6,25 +6,37 @@
     @endphp
         <div class="page-header">
             <div class="page-header__container container">
-                @include('components.alerts')
                 <div class="page-header__breadcrumb">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="/">Home</a>
-                                <svg class="breadcrumb-arrow" width="6px" height="9px">
-                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
-                                </svg>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="">Breadcrumb</a>
-                                <svg class="breadcrumb-arrow" width="6px" height="9px">
-                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
-                                </svg>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
-                        </ol>
-                    </nav>
+                    <div class="row">
+                        <div class="col-6">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="/">Home</a>
+                                        <svg class="breadcrumb-arrow" width="6px" height="9px">
+                                            <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
+                                        </svg>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="">Breadcrumb</a>
+                                        <svg class="breadcrumb-arrow" width="6px" height="9px">
+                                            <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
+                                        </svg>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="col-6">
+                            @if(session('success'))
+                                <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem;">
+                                    <button type="button" class="close  mt-3" data-dismiss="alert" aria-hidden="true" style="top: -16px;">×</button>
+                                    <h6><i class="icon fas fa-check"></i> Item added in Cart</h6>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -193,9 +205,7 @@
                                     <a href="#">7 Reviews</a><span>/</span><a href="">Write A Review</a>
                                 </div>
                             </div>
-                            <div class="product__description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ornare, mi in ornare elementum, libero nibh
-                                lacinia urna, quis convallis lorem erat at purus. Maecenas eu varius nisi.
+                            <div class="product__description">{{ $product->short_description }}
                             </div>
                             <ul class="product__features">
                                 <li>Speed: 750 RPM</li>
@@ -266,15 +276,33 @@
                                 <div class="form-group product__option">
                                     <label class="product__option-label" for="product-quantity">Quantity {{$qty}}</label>
                                     <div class="product__actions">
+                                        <script>
+                                            $(document).ready(function () {
+                                            var aa='';
+                                            $('.input-number__add').click(function () {
+                                                aa=$("#product-quantity").val();
+                                                @this.set('qty', aa)
+                                                // alert(aa)
+
+                                            })
+                                            $('.input-number__sub').click(function () {
+                                                aa=$("#product-quantity").val();
+                                            @this.set('qty', aa)
+                                                // alert(aa)
+                                            })
+                                            })
+                                        </script>
                                         <div class="product__actions-item">
                                             <div class="input-number product__quantity">
-                                                <input id="product-quantity" class="input-number__input form-control" type="number" min="1" value="1" wire:model.live="qty">
+                                                <input id="product-quantity" class="input-number__input form-control" type="number" min="1" wire:model.live="qty">
+
                                                 <div class="input-number__add"></div>
                                                 <div class="input-number__sub"></div>
+
                                             </div>
                                         </div>
                                         <div class="product__actions-item product__actions-item--addtocart">
-                                            <button class="btn btn-primary" wire:click="storeProduct({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
+                                            <button class="btn btn-primary" wire:click.prevent="storeProduct({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
                                         </div>
                                     </div>
                                 </div>
@@ -316,14 +344,7 @@
                             <div class="typography">
                                 <h3>Product Full Description</h3>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum, diam non iaculis finibus,
-                                    ipsum arcu sollicitudin dolor, ut cursus sapien sem sed purus. Donec vitae fringilla tortor, sed
-                                    fermentum nunc. Suspendisse sodales turpis dolor, at rutrum dolor tristique id. Quisque pellentesque
-                                    ullamcorper felis, eget gravida mi elementum a. Maecenas consectetur volutpat ante, sit amet molestie
-                                    urna luctus in. Nulla eget dolor semper urna malesuada dictum. Duis eleifend pellentesque dui et
-                                    finibus. Pellentesque dapibus dignissim augue. Etiam odio est, sodales ac aliquam id, iaculis eget
-                                    lacus. Aenean porta, ante vitae suscipit pulvinar, purus dui interdum tellus, sed dapibus mi mauris
-                                    vitae tellus.
+                                    {{ $product->description }}
                                 </p>
                                 <h3>Etiam lacus lacus mollis in mattis</h3>
                                 <p>

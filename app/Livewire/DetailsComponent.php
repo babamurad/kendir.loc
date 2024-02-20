@@ -13,7 +13,7 @@ class DetailsComponent extends Component
     public function render()
     {
         $product = Product::where('slug', $this->slug)->first();
-        return view('livewire.details-component', compact('product'));
+        return view('livewire.details-component', compact('product'))->layout('components.layouts.app');
     }
     public function mount($slug)
     {
@@ -26,6 +26,7 @@ class DetailsComponent extends Component
 
     public function storeProduct($product_id, $product_name, $product_price)
     {
+        //dd($this->qty);
         Cart::instance('cart')->add($product_id, $product_name, $this->qty, $product_price)->associate('App\Models\Product');
         session()->flash('success', 'Item added in Cart');
         $this->dispatch('addToCartDetails');

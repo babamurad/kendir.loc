@@ -16,15 +16,27 @@ class RegisterUserComponent extends Component
     //#[Validate('required|min:6')]
     public $password;
 
-    protected $rules = [
-        'name' => 'required|max:200',
-        'email' => 'required|email|unique:users',
-        'password' => 'required|min:6',
-    ];
+    public function login()
+    {
+        $user = $this->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+        ]);
+        if (Auth::attempt($user))
+        {
+            Auth::user($user);
+        }
+        session()->flash('success', 'You are logged in');
+        $this->redirectRoute('home');
+    }
 
     public function registerUser()
     {
-        $this->validate();
+        $this->validate([
+            'name' => 'required|max:200',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ]);
 
         $user = new User();
         $user->name = $this->name;
