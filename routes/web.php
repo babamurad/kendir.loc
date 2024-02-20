@@ -18,6 +18,7 @@ use \App\Livewire\WishlistComponent;
 use \App\Livewire\SearchComponent;
 use \App\Livewire\DetailsComponent;
 use \App\Livewire\ChekoutComponent;
+use \App\Livewire\ThankYouComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,8 @@ Route::get('wishlist', WishlistComponent::class)->name('wishlist');
 Route::get('search', SearchComponent::class)->name('product.search');
 Route::get('details/{slug}', DetailsComponent::class)->name('product.details');
 Route::get('checkout', ChekoutComponent::class)->name('checkout');
+Route::get('checkout', ChekoutComponent::class)->name('checkout');
+Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 
 Route::get('user', UserComponent::class)->name('user');
 Route::get('register', RegisterUserComponent::class)->name('register');

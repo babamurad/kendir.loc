@@ -13,7 +13,19 @@ return new class extends Migration
     {
         Schema::create('shippings', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('order_id')->unsigned();
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('mobile');
+            $table->string('email');
+            $table->string('line1');
+            $table->string('line2')->nullable();
+            $table->string('city');
+            $table->string('province');
+            $table->string('country');
+            $table->string('zipcode');
             $table->timestamps();
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
         });
     }
 
