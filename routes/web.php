@@ -17,6 +17,7 @@ use \App\Livewire\CategoryComponent as ProductCategory;
 use \App\Livewire\WishlistComponent;
 use \App\Livewire\SearchComponent;
 use \App\Livewire\DetailsComponent;
+use \App\Livewire\ChekoutComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,7 @@ Route::get('cart', CartComponent::class)->name('cart');
 Route::get('wishlist', WishlistComponent::class)->name('wishlist');
 Route::get('search', SearchComponent::class)->name('product.search');
 Route::get('details/{slug}', DetailsComponent::class)->name('product.details');
+Route::get('checkout', ChekoutComponent::class)->name('checkout');
 
 Route::get('user', UserComponent::class)->name('user');
 Route::get('register', RegisterUserComponent::class)->name('register');

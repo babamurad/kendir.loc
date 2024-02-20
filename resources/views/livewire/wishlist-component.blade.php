@@ -59,7 +59,7 @@
                             </div>
                         </td>
                         <td class="wishlist__column wishlist__column--product">
-                            <a href="" class="wishlist__product-name">{{ $wproduct->model->name }}</a>
+                            <a href="{{ route('product.details', ['slug' => $wproduct->model->slug]) }}" class="wishlist__product-name" wire:navigate>{{ $wproduct->model->name }}</a>
                             <div class="wishlist__product-rating">
                                 <div class="rating">
                                     <div class="rating__body">

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -21,5 +22,14 @@ class CartIconComponent extends Component
     public function destroy($id)
     {
         Cart::instance('cart')->remove($id);
+    }
+
+    public function checkout()
+    {
+        if (Auth::check()) {
+            return redirect()->route('checkout');
+        } else {
+            return redirect()->route('register');
+        }
     }
 }

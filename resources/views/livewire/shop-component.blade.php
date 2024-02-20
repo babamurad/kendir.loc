@@ -656,7 +656,7 @@
                                         <div class="product-card product-card--hidden-actions ">
                                             <button class="product-card__quickview" type="button" data-toggle="modal" data-target="#productDetails" wire:click="productDetails('{{$product->id}}')">
                                                 <svg width="16px" height="16px">
-                                                    <use xlink:href="images/sprite.svg#quickview-16"></use>
+                                                    <use xlink:href="{{ asset('images/sprite.svg#quickview-16') }}"></use>
                                                 </svg>
                                                 <span class="fake-svg-icon"></span>
                                             </button>
@@ -670,13 +670,13 @@
                                             @endif
                                             </div>
                                             <div class="product-card__image product-image">
-                                                <a href="{{ route('product.details', ['slug' => $product->slug]) }}" class="product-image__body">
+                                                <a href="{{ route('product.details', ['slug' => $product->slug]) }}" class="product-image__body" wire:navigate>
                                                     <img class="product-image__img" src="{{ asset('images/products').'/'.$product->image }}" alt="Product Image">
                                                 </a>
                                             </div>
                                             <div class="product-card__info">
                                                 <div class="product-card__name">
-                                                    <a href="{{ route('product.details', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
+                                                    <a href="{{ route('product.details', ['slug' => $product->slug]) }}" wire:navigate>{{ $product->name }}</a>
                                                 </div>
                                                 <div class="product-card__rating">
                                                     <div class="product-card__rating-stars">

@@ -120,7 +120,7 @@
                                 </tr>
                                 </tfoot>
                             </table>
-                            <a class="btn btn-primary btn-xl btn-block cart__checkout-button" href="checkout.html">Proceed to checkout</a>
+                            <a class="btn btn-primary btn-xl btn-block cart__checkout-button" href="#" wire:click="checkout">Proceed to checkout</a>
                         </div>
                     </div>
                 </div>

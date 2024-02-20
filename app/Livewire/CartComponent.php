@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -33,5 +34,16 @@ class CartComponent extends Component
     {
         Cart::instance('cart')->remove($id);
         $this->dispatch('delProd');
+    }
+
+    public function checkout()
+    {
+        //$prev = url()->previous();
+        //dd($prev);
+        if (Auth::check()) {
+            return redirect()->route('checkout');
+        } else {
+            return redirect()->route('register');
+        }
     }
 }

@@ -1,5 +1,5 @@
 <div>
-    <a href="{{ route('wishlist') }}" class="indicator__button" style="margin-top: 0.4rem;">
+    <a href="{{ route('wishlist') }}" class="indicator__button" style="margin-top: 0.4rem;" wire:navigate>
        <span class="indicator__area">
            <svg width="20px" height="20px">
                <use xlink:href="{{ asset('images/sprite.svg#heart-20') }}"></use>
