@@ -9,22 +9,22 @@
                     <h1 class="order-success__title">Thank you</h1>
                     <div class="order-success__subtitle">Your order has been received</div>
                     <div class="order-success__actions">
-                        <a href="" class="btn btn-xs btn-secondary">Go To Homepage</a>
+                        <a href="/" class="btn btn-xs btn-secondary">Go To Homepage</a>
                     </div>
                 </div>
                 <div class="order-success__meta">
                     <ul class="order-success__meta-list">
                         <li class="order-success__meta-item">
                             <span class="order-success__meta-title">Order number:</span>
-                            <span class="order-success__meta-value">#3487</span>
+                            <span class="order-success__meta-value">#{{ $order->id }}</span>
                         </li>
                         <li class="order-success__meta-item">
                             <span class="order-success__meta-title">Created at:</span>
-                            <span class="order-success__meta-value">October 19, 2020</span>
+                            <span class="order-success__meta-value">{{ \Carbon\Carbon::create($order->created_at)->format('F d, Y') }} </span>
                         </li>
                         <li class="order-success__meta-item">
                             <span class="order-success__meta-title">Total:</span>
-                            <span class="order-success__meta-value">$5,882.00</span>
+                            <span class="order-success__meta-value">{{ $order_sum[0]->ototal }}</span>
                         </li>
                         <li class="order-success__meta-item">
                             <span class="order-success__meta-title">Payment method:</span>
@@ -43,68 +43,34 @@
                             </tr>
                             </thead>
                             <tbody class="order-list__products">
+                            @foreach($order_items as $order_item)
                             <tr>
                                 <td class="order-list__column-image">
                                     <div class="product-image">
                                         <a href="" class="product-image__body">
-                                            <img class="product-image__img" src="images/products/product-1.jpg" alt="">
+                                            <img class="product-image__img" src="{{ asset('images/products').'/'.$order_item->image }}" alt="">
                                         </a>
                                     </div>
                                 </td>
                                 <td class="order-list__column-product">
-                                    <a href="">Electric Planer Brandix KL370090G 300 Watts</a>
-                                    <div class="order-list__options">
-                                        <ul class="order-list__options-list">
-                                            <li class="order-list__options-item">
-                                                <span class="order-list__options-label">Color:</span>
-                                                <span class="order-list__options-value">Yellow</span>
-                                            </li>
-                                            <li class="order-list__options-item">
-                                                <span class="order-list__options-label">Material:</span>
-                                                <span class="order-list__options-value">Aluminium</span>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <a href="">{{ $order_item->product_id }}</a>
+{{--                                    <div class="order-list__options">--}}
+{{--                                        <ul class="order-list__options-list">--}}
+{{--                                            <li class="order-list__options-item">--}}
+{{--                                                <span class="order-list__options-label">Color:</span>--}}
+{{--                                                <span class="order-list__options-value">Yellow</span>--}}
+{{--                                            </li>--}}
+{{--                                            <li class="order-list__options-item">--}}
+{{--                                                <span class="order-list__options-label">Material:</span>--}}
+{{--                                                <span class="order-list__options-value">Aluminium</span>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
                                 </td>
-                                <td class="order-list__column-quantity" data-title="Qty:">2</td>
-                                <td class="order-list__column-total">$1,398.00</td>
+                                <td class="order-list__column-quantity" data-title="Qty:">{{ $order_item->quantity }}</td>
+                                <td class="order-list__column-total">{{ $order_item->price*$order_item->quantity }}</td>
                             </tr>
-                            <tr>
-                                <td class="order-list__column-image">
-                                    <div class="product-image">
-                                        <a href="" class="product-image__body">
-                                            <img class="product-image__img" src="images/products/product-2.jpg" alt="">
-                                        </a>
-                                    </div>
-                                </td>
-                                <td class="order-list__column-product">
-                                    <a href="">Undefined Tool IRadix DPS3000SY 2700 watts</a>
-                                </td>
-                                <td class="order-list__column-quantity" data-title="Qty:">1</td>
-                                <td class="order-list__column-total">$849.00</td>
-                            </tr>
-                            <tr>
-                                <td class="order-list__column-image">
-                                    <div class="product-image">
-                                        <a href="" class="product-image__body">
-                                            <img class="product-image__img" src="images/products/product-5.jpg" alt="">
-                                        </a>
-                                    </div>
-                                </td>
-                                <td class="order-list__column-product">
-                                    <a href="">Brandix Router Power Tool 2017ERXPK</a>
-                                    <div class="order-list__options">
-                                        <ul class="order-list__options-list">
-                                            <li class="order-list__options-item">
-                                                <span class="order-list__options-label">Color:</span>
-                                                <span class="order-list__options-value">True Red</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </td>
-                                <td class="order-list__column-quantity" data-title="Qty:">3</td>
-                                <td class="order-list__column-total">$3,630.00</td>
-                            </tr>
+                            @endforeach
                             </tbody>
                             <tbody class="order-list__subtotals">
                             <tr>
@@ -134,7 +100,7 @@
                         <div class="card address-card">
                             <div class="address-card__body">
                                 <div class="address-card__badge address-card__badge--muted">Shipping Address</div>
-                                <div class="address-card__name">Helena Garcia</div>
+                                <div class="address-card__name">{{ auth()->user()->name }}</div>
                                 <div class="address-card__row">
                                     Random Federation<br>
                                     115302, Moscow<br>

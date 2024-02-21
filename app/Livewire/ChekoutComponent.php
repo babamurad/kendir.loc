@@ -6,17 +6,18 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Shipping;
 use App\Models\Transaction;
+use App\Models\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ChekoutComponent extends Component
 {
-    public $ship_to_different;
+    public $ship_to_different = 0;
     public $firstname;
     public $lastname;
     public $companyname;
-    public $country;
+    public $country = 1;
     public $address1;
     public $address2;
     public $city;
@@ -36,8 +37,11 @@ class ChekoutComponent extends Component
     public $s_phone;
     public $s_addinfo;
 
+    public $createAcc = 0, $password;
+
     public $paymentmode;
     public $thankyou;
+
     public function updated($fields)
     {
         $this->validateOnly($fields, [
@@ -72,22 +76,44 @@ class ChekoutComponent extends Component
 
     public function placeOrder()
     {
+        //dd($this->firstname);
+        if(!Auth::check()){
+            $this->validate([
+                'firstname' => 'required|max:200',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|min:6',
+            ]);
+
+            $user = new User();
+            $user->name = $this->firstname;
+            $user->email = $this->email;
+            $user->password = $this->password;
+            $user->save();
+
+            session()->flash('success', 'Successful registration');
+            Auth::login($user);
+        }
+
+    // $uid = Auth::user()->id;
+    // dd($uid);
+
         $this->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'companyname' => 'required',
-//            'country' => 'required',
+            //'companyname' => 'required',
+          //  'country' => 'required',
             'address1' => 'required',
             'city' => 'required',
             'state' => 'required',
             'zipcode' => 'required',
             'phone' => 'required|numeric',
             'email' => 'required|email',
-            'paymentmode' => 'required',
+            // 'paymentmode' => 'required',
         ]);
-
+//dd('validate');
         $order = new Order();
         $order->user_id = Auth::user()->id;
+//dd($order->user_id);
 //        $order->subtotal = session()->get('checout')['subtotal'];
 //        $order->tax = session()->get('checout')['tax'];
 //        $order->total = session()->get('checout')['total'];
@@ -100,17 +126,17 @@ class ChekoutComponent extends Component
         $order->firstname = $this->firstname;
         $order->lastname = $this->lastname;
         $order->companyname = $this->companyname;
-//        $order->country = $this->country;
-        $order->address1 = $this->address1;
-        $order->address2 = $this->address2;
+        $order->country = $this->country;
+        $order->line1 = $this->address1;
+        $order->line2 = $this->address2;
         $order->city = $this->city;
-        $order->state = $this->state;
+        $order->province = $this->state;
         $order->zipcode = $this->zipcode;
-        $order->phone = $this->phone;
+        $order->mobile = $this->phone;
         $order->email = $this->email;
         $order->addinfo = $this->addinfo;
         $order->status = 'ordered';
-        $order->ship_to_different = $this->ship_to_different ? 1:0;
+        $order->is_shipping_different = $this->ship_to_different ? 1:0;
         $order->save();
 
         foreach (Cart::instance('cart')->content() as $item)
@@ -166,14 +192,17 @@ class ChekoutComponent extends Component
 
     public function verifyForCheckout()
     {
-        if (!Auth::check())
-        {
-            return redirect()->route('register');
+        if ($this->thankyou){
+           return redirect()->route('thankyou');
         }
-        elseif ($this->thankyou)
-        {
-            return redirect()->route('thankyou');
-        }
+        // if (!Auth::check())
+        // {
+        //     return redirect()->route('register');
+        // }
+        // elseif ($this->thankyou)
+        // {
+        //     return redirect()->route('thankyou');
+        // }
 //        elseif (!session()->get('checkout'))
 //        {
 //            return redirect()->route('cart');

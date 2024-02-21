@@ -36,12 +36,12 @@
                             <form wire:submit="login">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Email address</label>
+                                    <label class="required-field">Email address</label>
                                     <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email address" wire:model="email">
                                     @error('email') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
+                                    <label class="required-field">Password</label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" wire:model="password">
                                     @error('password') <p class="text-danger">{{$message}}</p> @enderror
                                     <small class="form-text text-muted">

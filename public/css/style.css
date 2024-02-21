@@ -16298,3 +16298,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-origin {
     padding: 4px;
     padding-top: 5px;
 }
+
+.cpoint{
+    cursor: pointer;
+}

@@ -578,7 +578,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">{{__('Product Details')}} - {{$pqty}}</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">{{__('Product Details')}}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -589,11 +589,11 @@
                                                 <img class="img-fluid" src="{{ asset('images/products').'/'.$image }}" alt="">
                                             </div>
                                             <div class="col-12">
-                                                <h1 class="product__name mb-0 mt-2">{{ $name }}</h1>
+                                                <h5 class="product__name mb-0 mt-2">{{ $name }}</h5>
                                             </div>
                                             <div class="col-12">
                                                 <div class="product__prices">
-                                                    {{ $sale_price }} man.
+                                                    <h6>{{ $sale_price }} man.</h6>
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -602,25 +602,25 @@
                                                     <div class="product__actions">
                                                         <div class="product__actions-item">
                                                             <div class="input-number product__quantity">
-                                                                <input id="product-quantity" class="input-number__input form-control form-control-lg" type="number" min="1" value="1" wire:model.live="pqty">
+                                                                <input id="product-quantity" class="input-number__input form-control" type="number" min="1" value="1" wire:model.live="pqty">
                                                                 <div class="input-number__add" wire:click="qtyInc"></div>
                                                                 <div class="input-number__sub" wire:click="qtyDec"></div>
                                                             </div>
                                                         </div>
                                                         <div class="product__actions-item product__actions-item--addtocart">
-                                                            <button class="btn btn-primary btn-lg" wire:click="store({{$id}}, '{{$name}}', {{ $sale_price }})">Add to cart</button>
+                                                            <button class="btn btn-primary" wire:click="store({{$id}}, '{{$name}}', {{ $sale_price }})">Add to cart</button>
                                                         </div>
 
                                                         <div class="product__actions-item product__actions-item--wishlist">
                                                             @if($wproducts->contains($id))
-                                                            <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="" data-original-title="Wishlist"
+                                                            <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" title="" data-original-title="Wishlist"
                                                                     wire:click="removeWishlist('{{ $id }}')">
                                                                 <svg width="16px" height="16px" style="fill: #ff3333;">
                                                                     <use xlink:href="images/sprite.svg#wishlist-16"></use>
                                                                 </svg>
                                                             </button>
                                                             @else
-                                                            <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="" data-original-title="Wishlist"
+                                                            <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" title="" data-original-title="Wishlist"
                                                                         wire:click="addToWishlist({{$id}}, '{{$name}}', {{ $sale_price }})">
                                                                     <svg width="16px" height="16px">
                                                                         <use xlink:href="images/sprite.svg#wishlist-16"></use>
@@ -630,7 +630,7 @@
                                                         </div>
 
                                                         <div class="product__actions-item product__actions-item--compare">
-                                                            <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="" data-original-title="Compare">
+                                                            <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" title="" data-original-title="Compare">
                                                                 <svg width="16px" height="16px">
                                                                     <use xlink:href="images/sprite.svg#compare-16"></use>
                                                                 </svg>
@@ -649,6 +649,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- /Modal -->
                         <div class="products-view__list products-list" data-layout="grid-3-sidebar" data-with-features="false" data-mobile-grid-columns="2">
                             <div class="products-list__body">
                                 @foreach($products as $product)

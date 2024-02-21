@@ -26,10 +26,11 @@ class CartIconComponent extends Component
 
     public function checkout()
     {
-        if (Auth::check()) {
-            return redirect()->route('checkout');
-        } else {
-            return redirect()->route('register');
-        }
+        return redirect()->route('checkout');
+        // if (Auth::check()) {
+        //     return redirect()->route('checkout');
+        // } else {
+        //     return redirect()->route('register');
+        // }
     }
 }

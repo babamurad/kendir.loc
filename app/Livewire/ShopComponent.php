@@ -104,7 +104,7 @@ class ShopComponent extends Component
         $product = Product::find($id);
         $this->id = $product->id;
         $this->name = $product->name;
-        $this->qty = $product->qty;
+        //$this->qty = $product->qty;
         $this->image = $product->image;
         $this->sale_price = $product->sale_price;
     }
