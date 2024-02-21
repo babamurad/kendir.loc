@@ -62,7 +62,7 @@
 							<!-- BEGIN: side-nav-content -->
 							<ul class="unifyMenu" id="unifyMenu">
 								<li class=" {{ request()->is('admin/dashboard') ? 'active selected' : '' }}">
-									<a href="{{route('admin.dashboard')}}" aria-expanded="false" wire:navigate>
+									<a href="{{route('admin.dashboard')}}" wire:navigate>
 										<span class="has-icon">
 											<i class="icon-library"></i>
 										</span>
@@ -70,7 +70,7 @@
 									</a>
 								</li>
                                 <li class=" {{ request()->is('admin/carousel') ? 'active selected' : '' }}">
-                                    <a href="{{route('admin.carousel')}}" aria-expanded="false" wire:navigate>
+                                    <a href="{{route('admin.carousel')}}" wire:navigate>
 										<span class="has-icon">
 											<i class="icon-image"></i>
 										</span>
@@ -78,7 +78,7 @@
                                     </a>
                                 </li>
 								<li class=" {{ request()->is('admin/categories') ? 'active selected' : '' }}">
-									<a href="{{route('admin.categories')}}" aria-expanded="false" wire:navigate>
+									<a href="{{route('admin.categories')}}" wire:navigate>
 										<span class="has-icon">
 											<i class="icon-list2"></i>
 										</span>
@@ -86,7 +86,7 @@
 									</a>
 								</li>
                                 <li class=" {{ request()->is('admin/orders') ? 'active selected' : '' }}">
-                                    <a href="{{route('admin.orders')}}" aria-expanded="false" wire:navigate>
+                                    <a href="{{route('admin.orders')}}" wire:navigate>
 										<span class="has-icon">
 											<i class="icon-price-tag"></i>
 										</span>
