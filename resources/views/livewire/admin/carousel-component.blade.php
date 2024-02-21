@@ -142,10 +142,10 @@ $i=1;
                                 <td>{{$item->title}}</td>
                                 <td>{{$item->text}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-success btn-sm"data-toggle="modal" data-target="#EditItem"
+                                    <button type="button" class="btn btn-success btn-sm rounded"data-toggle="modal" data-target="#EditItem"
                                             wire:click="editItem({{ $item->id }})"> <i class="icon icon-pencil3"></i>
                                     </button>
-                                    <button type="button" class="btn btn-danger btn-sm"  data-toggle="modal" data-target="#deleteConfirmation"
+                                    <button type="button" class="btn btn-danger btn-sm rounded"  data-toggle="modal" data-target="#deleteConfirmation"
                                             wire:click="deleteId({{ $item->id }})"> <i class="icon icon-bin"></i>
                                     </button>
                                 </td>

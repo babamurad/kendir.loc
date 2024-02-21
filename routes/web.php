@@ -53,11 +53,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', UserDashboardComponent::class)->name('dashboard');
 
 });
-Route::middleware(['auth','authadmin'])->group(function () {
-    Route::get('admin/dashboard', DashboardComponent::class)->name('admin.dashboard');
-    Route::get('admin/categories', CategoryComponent::class)->name('admin.categories');
-    Route::get('admin/carousel', CarouselComponent::class)->name('admin.carousel');
-    Route::get('admin/products', ProductComponent::class)->name('admin.products');
-    Route::get('admin/create-product', AddProductComponent::class)->name('admin.create-product');
-    Route::get('admin/edit-product/{product_id}', ProductEditComponent::class)->name('admin.edit-product');
+Route::middleware(['auth','authadmin'])->prefix('admin')->group(function () {
+    Route::get('dashboard', DashboardComponent::class)->name('admin.dashboard');
+    Route::get('categories', CategoryComponent::class)->name('admin.categories');
+    Route::get('carousel', CarouselComponent::class)->name('admin.carousel');
+    Route::get('products', ProductComponent::class)->name('admin.products');
+    Route::get('create-product', AddProductComponent::class)->name('admin.create-product');
+    Route::get('edit-product/{product_id}', ProductEditComponent::class)->name('admin.edit-product');
+    Route::get('orders', \App\Livewire\Admin\OrderComponent::class)->name('admin.orders');
 });

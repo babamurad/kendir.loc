@@ -85,6 +85,14 @@
 										<span class="nav-title">Categories</span>
 									</a>
 								</li>
+                                <li class=" {{ request()->is('admin/orders') ? 'active selected' : '' }}">
+                                    <a href="{{route('admin.orders')}}" aria-expanded="false" wire:navigate>
+										<span class="has-icon">
+											<i class="icon-price-tag"></i>
+										</span>
+                                        <span class="nav-title">Orders</span>
+                                    </a>
+                                </li>
                                 <li class="{{ request()->is('admin/products') || request()->is('admin/create-product') ? 'active selected' : '' }}">
                                     <a href="{{route('admin.products')}}" class="has-arrow" aria-expanded="false" wire:navigate>
 										<span class="has-icon">
@@ -101,6 +109,7 @@
                                         </li>
                                     </ul>
                                 </li>
+
 
 							</ul>
 							<!-- END: side-nav-content -->

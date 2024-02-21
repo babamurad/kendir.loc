@@ -254,10 +254,10 @@
                             <td>{{$category->is_popular? 'Yes':'No'}}</td>
                             <td>{{ $category->cparent->name? $category->cparent->name : 'Root'}}</td>
                             <td>
-                                <button type="button" class="btn btn-success btn-sm"data-toggle="modal" data-target="#EditCategory" wire:click="editCategory({{ $category->id }})">
+                                <button type="button" class="btn btn-success btn-sm rounded"data-toggle="modal" data-target="#EditCategory" wire:click="editCategory({{ $category->id }})">
                                     <i class="icon icon-pencil3"></i>
                                 </button>
-                                <button type="button" class="btn btn-danger btn-sm"  data-toggle="modal" data-target="#deleteConfirmation" wire:click="deleteId({{ $category->id }})">
+                                <button type="button" class="btn btn-danger btn-sm rounded"  data-toggle="modal" data-target="#deleteConfirmation" wire:click="deleteId({{ $category->id }})">
                                     <i class="icon icon-bin"></i>
                                 </button>
                             </td>
