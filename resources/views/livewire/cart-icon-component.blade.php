@@ -68,7 +68,7 @@
                     <div class="block-empty__body">
                         <div class="block-empty__message">Your shopping cart is empty!</div>
                         <div class="block-empty__actions">
-                            <a class="btn btn-primary btn-sm" href="">Continue</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('shop') }}">Continue</a>
                         </div>
                     </div>
                 @endif

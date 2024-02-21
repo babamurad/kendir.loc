@@ -38,8 +38,7 @@ class CartComponent extends Component
 
     public function checkout()
     {
-        //$prev = url()->previous();
-        //dd($prev);
+        //dd('checkout');
         if (Auth::check()) {
             return redirect()->route('checkout');
         } else {

@@ -38,20 +38,20 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="checkout-first-name">First Name</label>
-                                    <input type="text" class="form-control" id="checkout-first-name" placeholder="First Name">
+                                    <input type="text" class="form-control" id="checkout-first-name" placeholder="First Name" wire:model="firstname">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="checkout-last-name">Last Name</label>
-                                    <input type="text" class="form-control" id="checkout-last-name" placeholder="Last Name">
+                                    <input type="text" class="form-control" id="checkout-last-name" placeholder="Last Name" wire:model="lastname">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="checkout-company-name">Company Name <span class="text-muted">(Optional)</span></label>
-                                <input type="text" class="form-control" id="checkout-company-name" placeholder="Company Name">
+                                <input type="text" class="form-control" id="checkout-company-name" placeholder="Company Name" wire:model="companyname">
                             </div>
                             <div class="form-group">
                                 <label for="checkout-country">Country</label>
-                                <select id="checkout-country" class="form-control form-control-select2">
+                                <select id="checkout-country" class="form-control form-control-select2" wire:model="country">
                                     <option>Select a country...</option>
                                     <option>United States</option>
                                     <option>Russia</option>
@@ -63,11 +63,11 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="checkout-street-address">Street Address</label>
+                                <label for="checkout-street-address">Address</label>
                                 <input type="text" class="form-control" id="checkout-street-address" placeholder="Street Address">
                             </div>
                             <div class="form-group">
-                                <label for="checkout-address">Apartment, suite, unit etc. <span class="text-muted">(Optional)</span></label>
+                                <label for="checkout-address">Address Line 2 <span class="text-muted">(Optional)</span></label>
                                 <input type="text" class="form-control" id="checkout-address">
                             </div>
                             <div class="form-group">
