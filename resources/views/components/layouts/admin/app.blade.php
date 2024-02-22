@@ -162,7 +162,7 @@
 
 		<!-- Common JS -->
 		<script src="{{asset('admin/js/common.js')}}"></script>
-
+        @stack('print')
 	</body>
 
 </html>

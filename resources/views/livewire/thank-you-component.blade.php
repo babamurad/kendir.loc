@@ -49,12 +49,12 @@
                                 <td class="order-list__column-image">
                                     <div class="product-image">
                                         <a href="" class="product-image__body">
-                                            <img class="product-image__img" src="{{ asset('images/products').'/'.$order_item->image }}" alt="">
+                                            <img class="product-image__img" src="{{ asset('images/products').'/'.$order_item->product->image }}" alt="">
                                         </a>
                                     </div>
                                 </td>
                                 <td class="order-list__column-product">
-                                    <a href="">{{ $order_item->product_id }}</a>
+                                    <a href="">{{ $order_item->product->name }}</a>
 {{--                                    <div class="order-list__options">--}}
 {{--                                        <ul class="order-list__options-list">--}}
 {{--                                            <li class="order-list__options-item">--}}
@@ -76,21 +76,21 @@
                             <tbody class="order-list__subtotals">
                             <tr>
                                 <th class="order-list__column-label" colspan="3">Subtotal</th>
-                                <td class="order-list__column-total">$5,877.00</td>
+                                <td class="order-list__column-total">{{ number_format($total[0]->ototal, 2) }}</td>
                             </tr>
                             <tr>
                                 <th class="order-list__column-label" colspan="3">Shipping</th>
-                                <td class="order-list__column-total">$25.00</td>
+                                <td class="order-list__column-total">Free Shipping</td>
                             </tr>
                             <tr>
                                 <th class="order-list__column-label" colspan="3">Tax</th>
-                                <td class="order-list__column-total">$0.00</td>
+                                <td class="order-list__column-total">{{ $order->tax }}</td>
                             </tr>
                             </tbody>
                             <tfoot class="order-list__footer">
                             <tr>
                                 <th class="order-list__column-label" colspan="3">Total</th>
-                                <td class="order-list__column-total">$5,902.00</td>
+                                <td class="order-list__column-total">{{ number_format($total[0]->ototal+$order->tax,2) }}</td>
                             </tr>
                             </tfoot>
                         </table>
@@ -103,17 +103,17 @@
                                 <div class="address-card__badge address-card__badge--muted">Shipping Address</div>
                                 <div class="address-card__name">{{ auth()->user()->name }}</div>
                                 <div class="address-card__row">
-                                    Random Federation<br>
-                                    115302, Moscow<br>
-                                    ul. Varshavskaya, 15-2-178
+                                    {{ $order->line1 }}<br>
+                                    {{ $order->line2 }}<br>
+                                    {{ $order->city }}, {{ $order->province }}<br>
                                 </div>
                                 <div class="address-card__row">
                                     <div class="address-card__row-title">Phone Number</div>
-                                    <div class="address-card__row-content">38 972 588-42-36</div>
+                                    <div class="address-card__row-content">{{ $order->mobile }}</div>
                                 </div>
                                 <div class="address-card__row">
                                     <div class="address-card__row-title">Email Address</div>
-                                    <div class="address-card__row-content">stroyka@example.com</div>
+                                    <div class="address-card__row-content">{{ $order->email }}</div>
                                 </div>
                             </div>
                         </div>
@@ -122,19 +122,19 @@
                         <div class="card address-card">
                             <div class="address-card__body">
                                 <div class="address-card__badge address-card__badge--muted">Billing Address</div>
-                                <div class="address-card__name">Helena Garcia</div>
+                                <div class="address-card__name">{{ auth()->user()->name }}</div>
                                 <div class="address-card__row">
-                                    Random Federation<br>
-                                    115302, Moscow<br>
-                                    ul. Varshavskaya, 15-2-178
+                                    {{ $order->line1 }}<br>
+                                    {{ $order->line2 }}<br>
+                                    {{ $order->city }}, {{ $order->province }}<br>
                                 </div>
                                 <div class="address-card__row">
                                     <div class="address-card__row-title">Phone Number</div>
-                                    <div class="address-card__row-content">38 972 588-42-36</div>
+                                    <div class="address-card__row-content">{{ $order->mobile }}</div>
                                 </div>
                                 <div class="address-card__row">
                                     <div class="address-card__row-title">Email Address</div>
-                                    <div class="address-card__row-content">stroyka@example.com</div>
+                                    <div class="address-card__row-content">{{ $order->email }}</div>
                                 </div>
                             </div>
                         </div>

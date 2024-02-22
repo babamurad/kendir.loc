@@ -30,90 +30,98 @@
     <div class="checkout block">
         <div class="container">
             <div class="row">
-                {{-- Accordion --}}
-                <div class="col-12 mb-3">
-                    <div id="accordionIcons" class="accordion-icons" role="tablist">
-                        <div class="mb-0">
-                            <div class="alert alert-lg alert-primary" role="tab" id="headingFour">Returning customer?
-                                    <a data-toggle="collapse" href="#collapseLogin" aria-expanded="false" aria-controls="collapseLogin" class="collapsed">
-                                        Click here to login
-                                    </a>
+                    <div class="col-12 mb-3">
+                        @if(\Illuminate\Support\Facades\Auth::check())
+                            <div class="mb-0">
+                                <div class="alert alert-lg alert-primary">
+                                    <p>Order for {{ \Illuminate\Support\Facades\Auth::user()->name }}</p>
+                                </div>
                             </div>
-                            <div id="collapseLogin" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordionIcons" style="">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6 d-flex flex-column">
-                                            <div class="card flex-grow-1 mb-md-0">
-                                                <div class="card-body">
-                                                    <h3 class="card-title">Login</h3>
-
-                                                    <form wire:submit="login">
-                                                        @csrf
-                                                        <div class="form-group">
-                                                            <label class="required-field">Email address</label>
-                                                            <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email address" wire:model="email">
-                                                            @error('email') <p class="text-danger">{{$message}}</p> @enderror
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="required-field">Password</label>
-                                                            <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" wire:model="password">
-                                                            @error('password') <p class="text-danger">{{$message}}</p> @enderror
-                                                            <small class="form-text text-muted">
-                                                                <a href="">Forgotten Password</a>
-                                                            </small>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="form-check">
-                                                                        <span class="form-check-input input-check">
-                                                                            <span class="input-check__body">
-                                                                                <input class="input-check__input" type="checkbox" id="login-remember">
-                                                                                <span class="input-check__box"></span>
-                                                                                <svg class="input-check__icon" width="9px" height="7px">
-                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-9x7') }}"></use>
-                                                                                </svg>
+                        @else
+                            {{-- Accordion --}}
+                            <div id="accordionIcons" class="accordion-icons" role="tablist">
+                                <div class="">
+                                    <div class="alert alert-lg alert-primary" role="tab" id="headingFour">Returning customer?
+                                        <a data-toggle="collapse" href="#collapseLogin" aria-expanded="false" aria-controls="collapseLogin" class="collapsed">
+                                            Click here to login or register
+                                        </a>
+                                    </div>
+                                    <div id="collapseLogin" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordionIcons" style="">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6 d-flex flex-column">
+                                                    <div class="card flex-grow-1 mb-md-0">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">Login</h4>
+                                                            <form wire:submit="login">
+                                                                @csrf
+                                                                <div class="form-group">
+                                                                    <label class="required-field">Email address</label>
+                                                                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email address" wire:model="email">
+                                                                    @error('email') <p class="text-danger">{{$message}}</p> @enderror
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="required-field">Password</label>
+                                                                    <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" wire:model="password">
+                                                                    @error('password') <p class="text-danger">{{$message}}</p> @enderror
+                                                                    <small class="form-text text-muted">
+                                                                        <a href="">Forgotten Password</a>
+                                                                    </small>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="form-check">
+                                                                            <span class="form-check-input input-check">
+                                                                                <span class="input-check__body">
+                                                                                    <input class="input-check__input" type="checkbox" id="login-remember">
+                                                                                    <span class="input-check__box"></span>
+                                                                                    <svg class="input-check__icon" width="9px" height="7px">
+                                                                                        <use xlink:href="{{ asset('images/sprite.svg#check-9x7') }}"></use>
+                                                                                    </svg>
+                                                                                </span>
                                                                             </span>
-                                                                        </span>
-                                                                <label class="form-check-label" for="login-remember">Remember Me</label>
-                                                            </div>
+                                                                        <label class="form-check-label" for="login-remember">Remember Me</label>
+                                                                    </div>
+                                                                </div>
+                                                                <button type="submit" class="btn btn-primary mt-4">Login</button>
+                                                            </form>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary mt-4">Login</button>
-                                                    </form>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 d-flex flex-column mt-4 mt-md-0 mx-auto">
-                                            <div class="card flex-grow-1 mb-0">
-                                                <div class="card-body">
-                                                    <h3 class="card-title">Register</h3>
-                                                    @include('components.alerts')
-                                                    <form wire:submit="registerUser">
-                                                        <div class="form-group">
-                                                            <label class="required-field">Name</label>
-                                                            <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter Name" wire:model="name">
-                                                            @error('name') <span>{{ session('error') }}</span> @enderror
+                                                <div class="col-md-6 d-flex flex-column mt-4 mt-md-0 mx-auto">
+                                                    <div class="card flex-grow-1 mb-0">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">Register</h4>
+                                                            @include('components.alerts')
+                                                            <form wire:submit="registerUser">
+                                                                <div class="form-group">
+                                                                    <label class="required-field">Name</label>
+                                                                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter Name" wire:model="name">
+                                                                    @error('name') <span>{{ session('error') }}</span> @enderror
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="required-field">Email address</label>
+                                                                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" wire:model="email">
+                                                                    @error('email') <span>{{ session('error') }}</span> @enderror
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="required-field">Password</label>
+                                                                    <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" wire:model="password">
+                                                                    @error('password') <span>{{ session('error') }}</span> @enderror
+                                                                </div>
+                                                                <button type="submit" class="btn btn-primary mt-4">Register</button>
+                                                            </form>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="required-field">Email address</label>
-                                                            <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" wire:model="email">
-                                                            @error('email') <span>{{ session('error') }}</span> @enderror
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="required-field">Password</label>
-                                                            <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" wire:model="password">
-                                                            @error('password') <span>{{ session('error') }}</span> @enderror
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary mt-4">Register</button>
-                                                    </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            {{-- /Accordion --}}
+                        @endif
                     </div>
-                </div>
-                {{-- /Accordion --}}
+
                 <div class="col-12 col-lg-6 col-xl-7">
                     <div class="card mb-lg-0">
                         <div class="card-body">

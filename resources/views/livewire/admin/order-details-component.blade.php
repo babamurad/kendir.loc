@@ -1,12 +1,31 @@
 @section('title', __('Order Details'))
 <div>
+    <style>
+        @media print {
+            .header, .footer, .banner {
+                display: none;
+            }
+            #app-side{
+                display: none;
+            }
+            .app-header{
+                display: none;
+            }
+            .container-fluid{
+                display: none;
+            }
+            .btn-sm{
+                display: none;
+            }
+        }
+    </style>
     <!-- BEGIN .main-heading -->
     <header class="main-heading">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-8">
                     <div class="page-icon">
-                        <i class="icon-tabs-outline"></i>
+                        <a href="{{ route('admin.orders') }}"><i class="icon-undo2"></i></a>
                     </div>
                     <div class="page-title">
                         <h5>Invoice</h5>
@@ -14,17 +33,28 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="right-actions">
-{{--                        <a href="#" class="btn btn-primary float-right" data-toggle="tooltip" data-placement="left"--}}
-{{--                           title="Download Reports">--}}
-{{--                            <i class="icon-download4"></i>--}}
-{{--                        </a>--}}
+                    <div class="right-actions mr-3">
+                        <a href="#" id="action-print" class="btn btn-primary float-right" data-toggle="tooltip" data-placement="top"
+                           title="Print Invoice">
+                            <i class="icon-printer2"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </header>
     <!-- END: .main-heading -->
+    @push('print')
+        <script>
+            $(function($){
+                $("#action-print").click(function(){
+                    window.print();
+                    return false;
+                });
+            });
+        </script>
+    @endpush
+
     <!-- BEGIN .main-content -->
     <div class="main-content">
         <!-- Row start -->
@@ -67,21 +97,23 @@
                                     <table class="table table-hover table-bordered table-responsive table-striped">
                                         <thead>
                                         <tr>
-                                            <th>Item</th>
                                             <th>Product ID</th>
+                                            <th>Product Name</th>
+                                            <th>Price</th>
                                             <th>Quantity</th>
                                             <th>Subtotal</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-{{--                                        @foreach($order->orderItems as $product)--}}
-{{--                                        <tr>--}}
-{{--                                            <td>{{ $product->name }}</td>--}}
-{{--                                            <td>#{{ $product->id }}</td>--}}
-{{--                                            <td>{{ $product->qty }}</td>--}}
-{{--                                            <td>{{ $product->sale_price }}</td>--}}
-{{--                                        </tr>--}}
-{{--                                        @endforeach--}}
+                                        @foreach($order->orderItems as $product)
+                                        <tr>
+                                            <td>{{ $product->id }}</td>
+                                            <td>{{ $product->product->name }}</td>
+                                            <td>{{ $product->price }}</td>
+                                            <td>{{ $product->quantity }}</td>
+                                            <td>{{ number_format((float)$product->price*$product->quantity, 2, '.', '') }}</td>
+                                        </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -98,16 +130,16 @@
                                         <tbody>
                                         <tr>
                                             <td>
-                                                <p class="text-right">Subtotal</p>
-                                                <p class="text-right">Shipping &amp; Handling</p>
-                                                <p class="text-right text-secondary"><strong>Grand Total (Incl.Tax)</strong></p>
-                                                <p class="text-right">Tax</p>
+                                                <p>Subtotal</p>
+                                                <p>Shipping &amp; Handling</p>
+                                                <p class="text-secondary"><strong>Grand Total (Incl.Tax)</strong></p>
+                                                <p>Tax</p>
                                             </td>
                                             <td>
-                                                <p class="text-right">$172.99</p>
-                                                <p class="text-right">$30.01</p>
-                                                <p class="text-right text-secondary"><strong>$205.00</strong></p>
-                                                <p class="text-right">$55.79</p>
+                                                <p>{{ $order->subtotal }}</p>
+                                                <p>Free Shipping</p>
+                                                <p class="text-secondary"><strong>{{ $order->total }}</strong></p>
+                                                <p>{{ $order->tax }}</p>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -125,20 +157,21 @@
                                         <strong>Billing Information</strong>
                                     </p>
                                     <address>
-                                        <strong>Yuki Hayashi</strong><br>
-                                        Public Wales, Somewhere<br>
-                                        New York NY,4468, United States<br>
-                                        Tel: 000-000-9999<br>
+                                        <strong>{{ $order->firstname.' '.$order->lastname }}</strong><br>
+                                        {{ $order->line1.', '.$order->line2 }}<br>
+                                        {{ $order->city.', '.$order->province }}<br>
+                                        {{ $order->zipcode }}<br>
+                                        Tel: {{ $order->mobile }}<br>
                                     </address>
                                 </div>
                                 <div class="col-sm-6">
                                     <p class="text-uppercase">
-                                        <strong>Payment Method</strong>
+                                        <strong>{{ __('Payment Method') }}</strong>
                                     </p>
                                     <address>
-                                        <strong>Credit Card</strong><br>
-                                        Credit Card Type: Visa<br>
-                                        Transaction ID: #0009324670<br><br>
+                                        <strong>{{ ucfirst($order->transaction->mode) }}</strong><br>
+                                        Status: {{ $order->transaction->status }}<br>
+                                        Transaction ID: #{{ $order->transaction->id }}<br><br>
                                         <a href="#" class="btn btn-primary btn-sm">Right of Withdrawl</a>
                                     </address>
                                 </div>
@@ -155,9 +188,9 @@
                                     </p>
                                     <address>
                                         <strong>Unify INC.</strong><br>
-                                        Another Location, Somewhere<br>
-                                        New York NY,4468, United States<br>
-                                        Tel: 000-000-6666<br>
+                                        {{ $order->line1.', '.$order->line2 }}<br>
+                                        {{ $order->city.', '.$order->province }}<br>
+                                        Tel: {{ $order->mobile }}<br>
                                     </address>
                                 </div>
                                 <div class="col-sm-6">
