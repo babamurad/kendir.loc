@@ -80,6 +80,7 @@
                             <th>{{__('Zipcode')}}</th>
                             <th>{{__('Status')}}</th>
                             <th>{{__('Order Date')}}</th>
+                            <th>{{__('Action')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -100,6 +101,11 @@
                                 <td>{{ $order->zipcode }}</td>
                                 <td>{{ $order->status }}</td>
                                 <td>{{ \Carbon\Carbon::create($order->created_at)->format('d.m.Y') }} </td>
+                                <td>
+                                    <a href="{{ route('admin.order-details', ['order_id' => $order->id]) }}"
+                                       type="button" class="btn btn-warning btn-sm rounded"><i class="icon icon-eye"></i>
+                                    </a>
+                                </td>
                             </tr>
                         @empty
                             <p>Orders table is empty.</p>

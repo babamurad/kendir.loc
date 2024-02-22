@@ -90,7 +90,6 @@ class ProductEditComponent extends Component
             }
             //***
             $imagesName = '';
-//            dd($this->newimages);
             foreach ($this->newimages as $key=>$image)
             {
                 $imageName = Carbon::now()->timestamp . $key . '.' . $image->extension();

@@ -1,3 +1,4 @@
+@section('title', __('Thank You!'))
 <div>
     <div class="block order-success">
         <div class="container">
