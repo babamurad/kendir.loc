@@ -77,14 +77,7 @@
                                         <span class="nav-title">Carousel</span>
                                     </a>
                                 </li>
-								<li class=" {{ request()->is('admin/categories') ? 'active selected' : '' }}">
-									<a href="{{route('admin.categories')}}" wire:navigate>
-										<span class="has-icon">
-											<i class="icon-list2"></i>
-										</span>
-										<span class="nav-title">Categories</span>
-									</a>
-								</li>
+
                                 <li class=" {{ request()->is('admin/orders') ? 'active selected' : '' }}">
                                     <a href="{{route('admin.orders')}}" wire:navigate>
 										<span class="has-icon">
@@ -95,7 +88,7 @@
                                 </li>
 
                                 <li class="{{ request()->is('admin/contacts') || request()->is('admin/archive-messages') ? 'active selected' : '' }}">
-                                    <a href="{{route('admin.contacts')}}" class="has-arrow" aria-expanded="true" wire:navigate>
+                                    <a href="{{route('admin.contacts')}}" class="has-arrow" aria-expanded="{{ request()->is('admin/contacts') || request()->is('admin/archive-messages') ? 'true' : 'false' }}" wire:navigate>
 										<span class="has-icon">
 											<i class="icon-profile"></i>
 										</span>
@@ -104,7 +97,7 @@
                                         <span class="count-label red contact-label">{{ \App\Models\Contact::where('arhiw', '=', 0)->count() }}</span>
                                         @endif
                                     </a>
-                                    <ul aria-expanded="true" class="collapse in" style="">
+                                    <ul aria-expanded="true" class="collapse {{ request()->is('admin/contacts') || request()->is('admin/archive-messages') ? 'in' : '' }}" style="">
                                         <li>
                                             <a class="{{ request()->is('admin/contacts') ? 'current-page' : '' }}" href="{{route('admin.contacts')}}" wire:navigate>Messages
                                                 @if(\App\Models\Contact::where('arhiw', '=', 0)->count()>0)
@@ -122,6 +115,24 @@
                                     </ul>
                                 </li>
 
+                                <li class=" {{ request()->is('admin/posts') ? 'active selected' : '' }}">
+                                    <a href="{{route('admin.posts')}}" wire:navigate>
+										<span class="has-icon">
+											<i class="icon-file-text"></i>
+										</span>
+                                        <span class="nav-title">Posts</span>
+                                    </a>
+                                </li>
+
+                                <li class=" {{ request()->is('admin/categories') ? 'active selected' : '' }}">
+                                    <a href="{{route('admin.categories')}}" wire:navigate>
+										<span class="has-icon">
+											<i class="icon-list2"></i>
+										</span>
+                                        <span class="nav-title">Categories</span>
+                                    </a>
+                                </li>
+
                                 <li class="{{ request()->is('admin/products') || request()->is('admin/create-product') ? 'active selected' : '' }}">
                                     <a href="{{route('admin.products')}}" class="has-arrow" aria-expanded="false" wire:navigate>
 										<span class="has-icon">
@@ -131,10 +142,10 @@
                                     </a>
                                     <ul aria-expanded="true" class="collapse" style="height: 0px;">
                                         <li>
-                                            <a class="{{ request()->is('admin/create-product') ? 'current-page' : '' }}" href="{{route('admin.create-product')}}" wire:navigate>Create Product</a>
+                                            <a class="{{ request()->is('admin/products') ? 'current-page' : '' }}" href="{{route('admin.products')}}" wire:navigate>Product List</a>
                                         </li>
                                         <li>
-                                            <a class="{{ request()->is('admin/products') ? 'current-page' : '' }}" href="{{route('admin.products')}}" wire:navigate>Product List</a>
+                                            <a class="{{ request()->is('admin/create-product') ? 'current-page' : '' }}" href="{{route('admin.create-product')}}" wire:navigate>Create Product</a>
                                         </li>
                                     </ul>
                                 </li>

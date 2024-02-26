@@ -24,6 +24,9 @@ use App\Livewire\ContactComponent;
 use \App\Livewire\Admin\AdminContactComponent;
 use \App\Livewire\Admin\AdminMessageComponent;
 use \App\Livewire\Admin\AdminArchiveMessageComponent;
+use \App\Livewire\Admin\PostComponent;
+use \App\Livewire\Admin\CreatePostComponent;
+use \App\Livewire\Admin\EditPostComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,5 +76,8 @@ Route::middleware(['auth','authadmin'])->prefix('admin')->group(function () {
     Route::get('contacts', AdminContactComponent::class)->name('admin.contacts');
     Route::get('archive-messages', AdminArchiveMessageComponent::class)->name('admin.archive-messages');
     Route::get('message/{id}', AdminMessageComponent::class)->name('admin.message');
+    Route::get('posts', PostComponent::class)->name('admin.posts');
+    Route::get('create-post', CreatePostComponent::class)->name('admin.create-post');
+    Route::get('edit-post/{id}', EditPostComponent::class)->name('admin.edit-post');
 });
 
