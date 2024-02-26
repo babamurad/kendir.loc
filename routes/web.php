@@ -63,3 +63,4 @@ Route::middleware(['auth','authadmin'])->prefix('admin')->group(function () {
     Route::get('orders', \App\Livewire\Admin\OrderComponent::class)->name('admin.orders');
     Route::get('orders/{order_id}', \App\Livewire\Admin\OrderDetailsComponent::class)->name('admin.order-details');
 });
+

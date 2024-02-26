@@ -101,7 +101,7 @@
                         <div class="card address-card">
                             <div class="address-card__body">
                                 <div class="address-card__badge address-card__badge--muted">Shipping Address</div>
-                                <div class="address-card__name">{{ auth()->user()->name }}</div>
+                                <div class="address-card__name">{{ auth()->user()?auth()->user()->name:abort(404) }}</div>
                                 <div class="address-card__row">
                                     {{ $order->line1 }}<br>
                                     {{ $order->line2 }}<br>

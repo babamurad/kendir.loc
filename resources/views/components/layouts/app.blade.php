@@ -487,7 +487,7 @@
         <!-- desktop site__header / end -->
         <!-- site__body -->
         <div class="site__body">
-
+@yield('content')
             <!-- .block-slideshow -->
             {{ $slot}}
 
