@@ -93,6 +93,35 @@
                                         <span class="nav-title">Orders</span>
                                     </a>
                                 </li>
+
+                                <li class="{{ request()->is('admin/contacts') || request()->is('admin/archive-messages') ? 'active selected' : '' }}">
+                                    <a href="{{route('admin.contacts')}}" class="has-arrow" aria-expanded="true" wire:navigate>
+										<span class="has-icon">
+											<i class="icon-profile"></i>
+										</span>
+                                        <span class="nav-title">Contacts</span>
+                                        @if(\App\Models\Contact::where('arhiw', '=', 0)->count()>0)
+                                        <span class="count-label red contact-label">{{ \App\Models\Contact::where('arhiw', '=', 0)->count() }}</span>
+                                        @endif
+                                    </a>
+                                    <ul aria-expanded="true" class="collapse in" style="">
+                                        <li>
+                                            <a class="{{ request()->is('admin/contacts') ? 'current-page' : '' }}" href="{{route('admin.contacts')}}" wire:navigate>Messages
+                                                @if(\App\Models\Contact::where('arhiw', '=', 0)->count()>0)
+                                                <span class="count-label red contact-label">{{ \App\Models\Contact::where('arhiw', '=', 0)->count() }}</span>
+                                                @endif
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="{{ request()->is('admin/archive-messages') ? 'current-page' : '' }}" href="{{route('admin.archive-messages')}}" wire:navigate>Archive
+                                                @if(\App\Models\Contact::where('arhiw', '=', 1)->count()>0)
+                                                <span class="count-label contact-label bg-primary">{{ \App\Models\Contact::where('arhiw', '=', 1)->count() }}</span>
+                                                @endif
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
                                 <li class="{{ request()->is('admin/products') || request()->is('admin/create-product') ? 'active selected' : '' }}">
                                     <a href="{{route('admin.products')}}" class="has-arrow" aria-expanded="false" wire:navigate>
 										<span class="has-icon">

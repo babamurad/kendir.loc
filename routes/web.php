@@ -19,6 +19,11 @@ use \App\Livewire\SearchComponent;
 use \App\Livewire\DetailsComponent;
 use \App\Livewire\ChekoutComponent;
 use \App\Livewire\ThankYouComponent;
+use \App\Livewire\TermsComponent;
+use App\Livewire\ContactComponent;
+use \App\Livewire\Admin\AdminContactComponent;
+use \App\Livewire\Admin\AdminMessageComponent;
+use \App\Livewire\Admin\AdminArchiveMessageComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +50,9 @@ Route::get('details/{slug}', DetailsComponent::class)->name('product.details');
 Route::get('checkout', ChekoutComponent::class)->name('checkout');
 Route::get('checkout', ChekoutComponent::class)->name('checkout');
 Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
+Route::get('/terms', TermsComponent::class)->name('terms');
+Route::get('/contacts', ContactComponent::class)->name('contacts');
+
 
 Route::get('user', UserComponent::class)->name('user');
 Route::get('register', RegisterUserComponent::class)->name('register');
@@ -62,5 +70,8 @@ Route::middleware(['auth','authadmin'])->prefix('admin')->group(function () {
     Route::get('edit-product/{product_id}', ProductEditComponent::class)->name('admin.edit-product');
     Route::get('orders', \App\Livewire\Admin\OrderComponent::class)->name('admin.orders');
     Route::get('orders/{order_id}', \App\Livewire\Admin\OrderDetailsComponent::class)->name('admin.order-details');
+    Route::get('contacts', AdminContactComponent::class)->name('admin.contacts');
+    Route::get('archive-messages', AdminArchiveMessageComponent::class)->name('admin.archive-messages');
+    Route::get('message/{id}', AdminMessageComponent::class)->name('admin.message');
 });
 

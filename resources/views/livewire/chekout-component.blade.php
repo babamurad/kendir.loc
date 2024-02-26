@@ -199,11 +199,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox">
+                                <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input cpoint" id="createAcc" wire:model.live="createAcc">
                                         <label class="custom-control-label cpoint" for="createAcc">Create an account?</label>
-                                    </div>
                                 </div>
                             </div>
                             @if ($createAcc)
@@ -420,19 +418,13 @@
                                 </ul>
                             </div>
                             <div class="checkout__agree form-group">
-                                <div class="form-check">
-                                            <span class="form-check-input input-check">
-                                                <span class="input-check__body">
-                                                    <input class="input-check__input" type="checkbox" id="checkout-terms">
-                                                    <span class="input-check__box"></span>
-                                                    <svg class="input-check__icon" width="9px" height="7px">
-                                                        <use xlink:href="images/sprite.svg#check-9x7"></use>
-                                                    </svg>
-                                                </span>
-                                            </span>
-                                    <label class="form-check-label" for="checkout-terms">
-                                        I have read and agree to the website <a target="_blank" href="terms-and-conditions.html">terms and conditions</a>*
-                                    </label>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input cpoint" id="ship_to_different" wire:model.live="terms">
+                                        <label class="custom-control-label cpoint" for="ship_to_different">I have read and agree to the website
+                                            <a href="{{ route('terms') }}">terms and conditions*</a>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-xl btn-block" wire:click="placeOrder">Place Order</button>

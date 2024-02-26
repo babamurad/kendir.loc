@@ -440,7 +440,7 @@
                                         </li>
 
                                         <li class="nav-links__item  nav-links__item--has-submenu ">
-                                            <a class="nav-links__item-link" href="/">
+                                            <a class="nav-links__item-link" href="{{ route('contacts') }}" wire:navigate>
                                                 <div class="nav-links__item-body">
                                                     Contact us
                                                 </div>
@@ -487,7 +487,6 @@
         <!-- desktop site__header / end -->
         <!-- site__body -->
         <div class="site__body">
-@yield('content')
             <!-- .block-slideshow -->
             {{ $slot}}
 
