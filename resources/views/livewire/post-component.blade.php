@@ -31,18 +31,21 @@
                                 <div class="posts-list__item">
                                     <div class="post-card post-card--layout--list post-card--size--nl">
                                         <div class="post-card__image">
-                                            <a href="">
-                                                <img src="{{ asset('images/posts').'/'.$post->image }}" alt="">
+                                            <a href="{{ route('post-detail', ['id' => $post->id]) }}">
+                                                <img src="{{ asset('images/posts').'/'.$post->image }}" alt="{{ $post->title }}">
                                             </a>
                                         </div>
                                         <div class="post-card__info">
                                             <div class="post-card__category">
-                                                <a href="">Special Offers</a>
+                                                <a href="{{ route('posts') }}">Posts</a>
+                                            </div>
+                                            <div class="post-card__date">
+                                                {{ $post->name }}
                                             </div>
                                             <div class="post-card__name">
-                                                <a href="">{{ $post->title }}</a>
+                                                <a href="{{ route('post-detail', ['id' => $post->id]) }}">{{ $post->title }}</a>
                                             </div>
-                                            <div class="post-card__date">{{ \Carbon\Carbon::create($post->created_at)->format('M d, Y') }}</div>
+                                            <div class="post-card__date">{{ \Carbon\Carbon::create($post->created_at)->format('F d, Y') }}</div>
                                             <div class="post-card__content">
                                                 {{ \Illuminate\Support\Str::of($post->text)->words(25) }}
                                             </div>
@@ -55,7 +58,8 @@
                                 @endforeach
                             </div>
                         </div>
-                        {{ $posts->links() }}
+                        <p>{{ $posts->links() }}</p>
+
                     </div>
                 </div>
             </div>
@@ -86,45 +90,22 @@
                         <div class="widget-posts widget">
                             <h4 class="widget__title">Latest Posts</h4>
                             <div class="widget-posts__list">
-                                <div class="widget-posts__item">
-                                    <div class="widget-posts__image">
-                                        <a href="">
-                                            <img src="images/posts/post-1-thumbnail.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="widget-posts__info">
-                                        <div class="widget-posts__name">
-                                            <a href="">Philosophy That Addresses Topics Such As Goodness</a>
+                                @foreach($latestPosts as $latestPost)
+                                    <div class="widget-posts__item">
+                                        <div class="widget-posts__image">
+                                            <a href="{{ route('post-detail', ['id' => $latestPost->id]) }}">
+                                                <img src="{{ asset('images/posts'.'/'.$latestPost->image) }}" alt="{{ $latestPost->title }}">
+                                            </a>
                                         </div>
-                                        <div class="widget-posts__date">October 19, 2019</div>
-                                    </div>
-                                </div>
-                                <div class="widget-posts__item">
-                                    <div class="widget-posts__image">
-                                        <a href="">
-                                            <img src="images/posts/post-2-thumbnail.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="widget-posts__info">
-                                        <div class="widget-posts__name">
-                                            <a href="">Logic Is The Study Of Reasoning And Argument Part 2</a>
+                                        <div class="widget-posts__info">
+                                            <div class="widget-posts__name">
+                                                <a href="{{ route('post-detail', ['id' => $latestPost->id]) }}">{{ $latestPost->title }}</a>
+                                            </div>
+                                            <div class="widget-posts__date">{{ \Carbon\Carbon::create($latestPost->created_at)->format('F d, Y') }}</div>
                                         </div>
-                                        <div class="widget-posts__date">September 5, 2019</div>
                                     </div>
-                                </div>
-                                <div class="widget-posts__item">
-                                    <div class="widget-posts__image">
-                                        <a href="">
-                                            <img src="images/posts/post-3-thumbnail.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="widget-posts__info">
-                                        <div class="widget-posts__name">
-                                            <a href="">Some Philosophers Specialize In One Or More Historical Periods</a>
-                                        </div>
-                                        <div class="widget-posts__date">August 12, 2019</div>
-                                    </div>
-                                </div>
+                                @endforeach
+
                             </div>
                         </div>
                     </div>
