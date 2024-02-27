@@ -322,7 +322,7 @@
                                                 <ul class="departments__links">
                                                     @foreach($categories as $category)
                                                         <li class="departments__item">
-                                                        <a class="departments__item-link" href="">
+                                                        <a class="departments__item-link" href="{{ route('shop') }}">
                                                             {{ $category->name }}
                                                             <svg class="departments__item-arrow" width="6px" height="9px"> <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use> </svg>
                                                         </a>

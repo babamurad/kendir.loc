@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Livewire\ShopComponent;
 use \App\Livewire\CartComponent;
 use \App\Livewire\CategoryComponent as ProductCategory;
+use \App\Livewire\CategoryDetailsComponent;
 use \App\Livewire\WishlistComponent;
 use \App\Livewire\SearchComponent;
 use \App\Livewire\DetailsComponent;
@@ -51,7 +52,7 @@ use App\Livewire\PostDetailComponent;
 
 Route::get('/', HomeComponent::class)->name('home');
 Route::get('shop', ShopComponent::class)->name('shop');
-Route::get('category/{slug}', ProductCategory::class)->name('product.category');
+Route::get('category/{slug}', CategoryDetailsComponent::class)->name('product.category');
 Route::get('cart', CartComponent::class)->name('cart');
 Route::get('wishlist', WishlistComponent::class)->name('wishlist');
 Route::get('search', SearchComponent::class)->name('product.search');

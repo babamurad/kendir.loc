@@ -93,8 +93,8 @@
     </div>
     <!-- .block-features / end -->
 
-                        <!-- Modal -->
-                        <div wire:ignore.self class="modal fade" id="productDetails" tabindex="-1" role="dialog"
+    <!-- Modal -->
+    <div wire:ignore.self class="modal fade" id="productDetails" tabindex="-1" role="dialog"
                              aria-labelledby="exampleModalLabel"
                              aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -171,7 +171,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /Modal -->
+    <!-- /Modal -->
 
     <!-- .block-products-carousel -->
     <div class="block block-products-carousel" data-layout="grid-4" data-mobile-grid-columns="2">
