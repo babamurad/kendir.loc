@@ -432,7 +432,7 @@
                                         </li>
 
                                         <li class="nav-links__item  nav-links__item--has-submenu ">
-                                            <a class="nav-links__item-link" href="/">
+                                            <a class="nav-links__item-link" href="{{ route('posts') }}">
                                                 <div class="nav-links__item-body">
                                                     News
                                                 </div>

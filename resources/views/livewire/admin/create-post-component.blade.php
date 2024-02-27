@@ -46,7 +46,7 @@
                                     <div class="col-sm-12 col-12">
                                         <div class="form-group">
                                             <label for="description" class="form-label">Description</label>
-                                            <textarea class="form-control @error('text') is-invalid @enderror" name="text" minlength="400" maxlength="500"
+                                            <textarea class="form-control @error('text') is-invalid @enderror" name="text" minlength="1000" maxlength="10000"
                                                       placeholder="Enter post text" cols="30" rows="8" wire:model="text"> </textarea>
                                             @error('text') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>

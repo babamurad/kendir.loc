@@ -2,15 +2,22 @@
 
 use App\Livewire\Admin\CategoryComponent;
 use App\Livewire\Admin\DashboardComponent;
+use App\Livewire\Admin\CarouselComponent;
+use \App\Livewire\Admin\ProductComponent;
+use \App\Livewire\Admin\AddProductComponent;
+use \App\Livewire\Admin\ProductEditComponent;
+use \App\Livewire\Admin\AdminContactComponent;
+use \App\Livewire\Admin\AdminMessageComponent;
+use \App\Livewire\Admin\AdminArchiveMessageComponent;
+use \App\Livewire\Admin\PostComponent;
+use \App\Livewire\Admin\CreatePostComponent;
+use \App\Livewire\Admin\EditPostComponent;
+
 use App\Livewire\HomeComponent;
 use \App\Livewire\UserDashboardComponent;
 use App\Livewire\RegisterUserComponent;
 use App\Livewire\UserComponent;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Admin\CarouselComponent;
-use \App\Livewire\Admin\ProductComponent;
-use \App\Livewire\Admin\AddProductComponent;
-use \App\Livewire\Admin\ProductEditComponent;
 use \App\Livewire\ShopComponent;
 use \App\Livewire\CartComponent;
 use \App\Livewire\CategoryComponent as ProductCategory;
@@ -21,12 +28,11 @@ use \App\Livewire\ChekoutComponent;
 use \App\Livewire\ThankYouComponent;
 use \App\Livewire\TermsComponent;
 use App\Livewire\ContactComponent;
-use \App\Livewire\Admin\AdminContactComponent;
-use \App\Livewire\Admin\AdminMessageComponent;
-use \App\Livewire\Admin\AdminArchiveMessageComponent;
-use \App\Livewire\Admin\PostComponent;
-use \App\Livewire\Admin\CreatePostComponent;
-use \App\Livewire\Admin\EditPostComponent;
+use App\Livewire\PostComponent as Posts;
+use App\Livewire\PostDetailComponent;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +61,8 @@ Route::get('checkout', ChekoutComponent::class)->name('checkout');
 Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 Route::get('/terms', TermsComponent::class)->name('terms');
 Route::get('/contacts', ContactComponent::class)->name('contacts');
+Route::get('/posts', Posts::class)->name('posts');
+Route::get('/post/{id}', PostDetailComponent::class)->name('post-detail');
 
 
 Route::get('user', UserComponent::class)->name('user');

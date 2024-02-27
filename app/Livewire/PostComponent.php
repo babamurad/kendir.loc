@@ -9,9 +9,11 @@ use Livewire\WithPagination;
 
 class PostComponent extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
     public function render()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'desc')->paginate(6);
         return view('livewire.post-component', compact('posts'));
     }
 
