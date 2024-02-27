@@ -10,5 +10,8 @@ class Post extends Model
     use HasFactory;
 
     protected $guarded = 'id';
-
+    public function authorPost()
+    {
+        return $this->belongsTo(User::class, 'author', 'id');
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Post;
+use App\Models\User;
 use Carbon\Carbon;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -21,8 +22,10 @@ class EditPostComponent extends Component
 
     public function render()
     {
-        $post = Post::findOrFail($this->id);
-        return view('livewire.admin.edit-post-component',compact('post'))
+        $post = Post::with('authorPost')->findOrFail($this->id);
+        //dd($post->authorPost->name);
+        $author = User::where('id', '=', $post->author)->get();
+        return view('livewire.admin.edit-post-component',compact('post', 'author'))
             ->layout('components.layouts.admin.app');
     }
 

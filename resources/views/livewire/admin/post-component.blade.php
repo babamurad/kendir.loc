@@ -60,6 +60,7 @@
                             <th>{{__('ID')}}</th>
                             <th>{{__('Image')}}</th>
                             <th>{{__('Post Title')}}</th>
+                            <th>{{__('Author')}}</th>
                             <th>{{__('Date')}}</th>
                             <th>{{__('Action')}}</th>
                         </tr>
@@ -72,8 +73,9 @@
                             <tr>
                                 <td>{{ ++$i }}</td>
                                 <td>{{ $post->id }}</td>
-                                <td><img src="{{ asset('images/posts').'/'.$post->image }}" alt="" width="60"></td>
-                                <td>{{$post->title}}</td>
+                                <td><a href="{{ route('admin.edit-post', ['id' => $post->id]) }}"><img src="{{ asset('images/posts').'/'.$post->image }}" alt="" width="60"></a></td>
+                                <td><a href="{{ route('admin.edit-post', ['id' => $post->id]) }}">{{$post->title}}</a></td>
+                                <td>{{$post->name}}</td>
                                 <td>{{ \Carbon\Carbon::create($post->created_at)->format('y.m.Y') }}</td>
                                 <td>
                                     <a href="{{ route('admin.edit-post', ['id' => $post->id]) }}" type="button" class="btn btn-success btn-sm rounded">

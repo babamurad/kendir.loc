@@ -29,12 +29,14 @@ class CreatePostComponent extends Component
     {
         $this->validate();
 
+        //$post = Post::with('authorPost')->findOrFail($this->id);
         $post = new Post();
         $post->title = $this->title;
         $post->text = $this->text;
         $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();
         $this->image->storeAs('posts', $imageName);
         $post->image = $imageName;
+        $post->author = auth()->user()->id;
         $post->save();
         $this->resetFields();
         redirect()->route('admin.posts');

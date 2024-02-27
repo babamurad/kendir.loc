@@ -9,7 +9,7 @@
                         <a href="{{ route('admin.posts') }}"><i class="icon-undo2"></i></a>
                     </div>
                     <div class="page-title">
-                        <h5>Create Post</h5>
+                        <h5>Edit Post</h5>
                         <h6 class="sub-heading">Welcome to Kendir Admin Template</h6>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                                             @error('text') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <div class="custom-file">
                                                 <input type="file" id="inputGroupFile02" class="custom-file-input" wire:model="newimage">
@@ -65,17 +65,26 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="">
-                                        <div class="col-md-12 pt-3">
+                                    <div class="col-sm-6">
+                                        <div class="form-group row">
+                                            <label for="colFormLabel" class="col-sm-2 col-form-label">{{ __('Author') }}</label>
+                                            <div class="col-sm-10">
+                                                <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label" value="{{ $post->authorPost->name }}" readonly="">
+                                            </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                                <div class="row">
+                                    <div class="col-sm-6 pt-4">
+                                        <div class="form-group">
                                             <button type="submit" class="btn btn-primary rounded">
                                                 Save Post
                                             </button>
                                         </div>
                                     </div>
-
-
                                 </div>
-                            </div>
                         </div>
 
                     </form>
