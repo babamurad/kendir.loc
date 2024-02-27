@@ -448,7 +448,7 @@
                                         </li>
                                         <li class="nav-links__item ">
                                             <a class="nav-links__item-link"
-                                               href="/">
+                                               href="{{ route('about-us') }}">
                                                 <div class="nav-links__item-body">
                                                     About us
                                                 </div>

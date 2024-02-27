@@ -31,6 +31,7 @@ use \App\Livewire\TermsComponent;
 use App\Livewire\ContactComponent;
 use App\Livewire\PostComponent as Posts;
 use App\Livewire\PostDetailComponent;
+use App\Livewire\AboutUsComponent;
 
 
 
@@ -64,6 +65,7 @@ Route::get('/terms', TermsComponent::class)->name('terms');
 Route::get('/contacts', ContactComponent::class)->name('contacts');
 Route::get('/posts', Posts::class)->name('posts');
 Route::get('/post/{id}', PostDetailComponent::class)->name('post-detail');
+Route::get('about-us', AboutUsComponent::class)->name('about-us');
 
 
 Route::get('user', UserComponent::class)->name('user');
