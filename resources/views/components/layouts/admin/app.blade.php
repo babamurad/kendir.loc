@@ -115,6 +115,15 @@
                                     </ul>
                                 </li>
 
+                                <li class=" {{ request()->is('admin/about-us') ? 'active selected' : '' }}">
+                                    <a href="{{route('admin.about-us')}}" wire:navigate>
+										<span class="has-icon">
+											<i class="icon-info-with-circle"></i>
+										</span>
+                                        <span class="nav-title">About Us</span>
+                                    </a>
+                                </li>
+
                                 <li class=" {{ request()->is('admin/posts') ? 'active selected' : '' }}">
                                     <a href="{{route('admin.posts')}}" wire:navigate>
 										<span class="has-icon">
@@ -149,7 +158,6 @@
                                         </li>
                                     </ul>
                                 </li>
-
 
 							</ul>
 							<!-- END: side-nav-content -->

@@ -2,12 +2,18 @@
 
 namespace App\Livewire;
 
+use App\Models\Order;
 use Livewire\Component;
 
 class UserDashboardComponent extends Component
 {
     public function render()
     {
-        return view('livewire.user-dashboard-component');
+        $order = Order::with('strana')->orderBy('id', 'desc')->first();
+        $resentOrders = Order::with('orderItems')->orderBy('id', 'desc')->limit(3)->get();
+        //dd($resentOrders->orderItems[0]->price);
+        return view('livewire.user-dashboard-component',
+        compact('order', 'resentOrders')
+        );
     }
 }

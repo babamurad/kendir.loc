@@ -25,9 +25,13 @@ class RegisterUserComponent extends Component
         if (Auth::attempt($user))
         {
             Auth::user($user);
+            $this->redirectRoute('home');
+            session()->flash('success', __('You are logged in'));
+        } else {
+            session()->flash('error', __('The username or password is incorrect '));
         }
-        session()->flash('success', 'You are logged in');
-        $this->redirectRoute('home');
+
+
     }
 
     public function registerUser()

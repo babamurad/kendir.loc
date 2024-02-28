@@ -177,12 +177,12 @@
     <div class="block block-products-carousel" data-layout="grid-4" data-mobile-grid-columns="2">
         <div class="container">
             <div class="block-header">
-                @if(session('success'))
-                <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; top: -2rem;">
-                    <button type="button" class="close  mt-3" data-dismiss="alert" aria-hidden="true" style="top: -16px;">×</button>
-                    <h6><i class="icon fas fa-check"></i> Item added in Cart</h6>
-                </div>
-            @endif
+{{--                @if(session('success'))--}}
+{{--                <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; top: -2rem;">--}}
+{{--                    <button type="button" class="close  mt-3" data-dismiss="alert" aria-hidden="true" style="top: -16px;">×</button>--}}
+{{--                    <h6><i class="icon fas fa-check"></i> {{ session('success') }}</h6>--}}
+{{--                </div>--}}
+{{--                @endif--}}
                 <h3 class="block-header__title">Featured Products</h3>
                 <div class="block-header__divider"></div>
                 <ul class="block-header__groups-list">

@@ -1,3 +1,4 @@
+@section('title', __('User Dashboard'))
 <div>
     <!-- site__body -->
     <div class="site__body">
@@ -9,13 +10,13 @@
                             <li class="breadcrumb-item">
                                 <a href="/">Home</a>
                                 <svg class="breadcrumb-arrow" width="6px" height="9px">
-                                    <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
+                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                                 </svg>
                             </li>
                             <li class="breadcrumb-item">
                                 <a href="">Breadcrumb</a>
                                 <svg class="breadcrumb-arrow" width="6px" height="9px">
-                                    <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
+                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                                 </svg>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">My Account</li>
@@ -35,13 +36,13 @@
                             <h4 class="account-nav__title">Navigation</h4>
                             <ul>
                                 <li class="account-nav__item  account-nav__item--active ">
-                                    <a href="account-dashboard.html">Dashboard</a>
+                                    <a href="{{ route('dashboard') }}" wire:navigate>Dashboard</a>
                                 </li>
                                 <li class="account-nav__item ">
-                                    <a href="account-profile.html">Edit Profile</a>
+                                    <a href="{{ route('edit-profile') }}" wire:navigate>Edit Profile</a>
                                 </li>
                                 <li class="account-nav__item ">
-                                    <a href="account-orders.html">Order History</a>
+                                    <a href="{{ route('order-history') }}" wire:navigate>Order History</a>
                                 </li>
                                 <li class="account-nav__item ">
                                     <a href="account-order-details.html">Order Details</a>
@@ -66,31 +67,31 @@
                             <div class="dashboard__profile card profile-card">
                                 <div class="card-body profile-card__body">
                                     <div class="profile-card__avatar">
-                                        <img src="images/avatars/avatar-3.jpg" alt="">
+                                        <img src="{{ asset('images/avatars/avatar-3.jpg') }}" alt="">
                                     </div>
-                                    <div class="profile-card__name">Helena Garcia</div>
-                                    <div class="profile-card__email">stroyka@example.com</div>
+                                    <div class="profile-card__name">{{ auth()->user()->name }}</div>
+                                    <div class="profile-card__email">{{ auth()->user()->email }}</div>
                                     <div class="profile-card__edit">
-                                        <a href="account-profile.html" class="btn btn-secondary btn-sm">Edit Profile</a>
+                                        <a href="#" class="btn btn-secondary btn-sm">Edit Profile</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="dashboard__address card address-card address-card--featured">
                                 <div class="address-card__badge">Default Address</div>
                                 <div class="address-card__body">
-                                    <div class="address-card__name">Helena Garcia</div>
+                                    <div class="address-card__name">{{ auth()->user()->name }}</div>
                                     <div class="address-card__row">
-                                        Random Federation<br>
-                                        115302, Moscow<br>
-                                        ul. Varshavskaya, 15-2-178
+                                        {{ $order->strana->name }},<br>
+                                        {{ $order->zipcode }}, {{ $order->city }}<br>
+                                        {{ $order->line1 }}, {{ $order->line2 }}
                                     </div>
                                     <div class="address-card__row">
                                         <div class="address-card__row-title">Phone Number</div>
-                                        <div class="address-card__row-content">38 972 588-42-36</div>
+                                        <div class="address-card__row-content">{{ $order->mobile }}</div>
                                     </div>
                                     <div class="address-card__row">
                                         <div class="address-card__row-title">Email Address</div>
-                                        <div class="address-card__row-content">stroyka@example.com</div>
+                                        <div class="address-card__row-content">{{ auth()->user()->email }}</div>
                                     </div>
                                     <div class="address-card__footer">
                                         <a href="account-edit-address.html">Edit Address</a>
@@ -114,24 +115,14 @@
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            @foreach($resentOrders as $rorder)
                                             <tr>
-                                                <td><a href="">#8132</a></td>
-                                                <td>02 April, 2019</td>
-                                                <td>Pending</td>
-                                                <td>$2,719.00 for 5 item(s)</td>
+                                                <td><a href="">#{{ $rorder->id }}</a></td>
+                                                <td>{{ \Carbon\Carbon::create($rorder->created_at)->format('d F, Y') }}</td>
+                                                <td>{{ $rorder->status }}</td>
+                                                <td>{{ $rorder->orderItems[0]->price }} for {{ $rorder->orderItems[0]->quantity }} item(s)</td>
                                             </tr>
-                                            <tr>
-                                                <td><a href="">#7592</a></td>
-                                                <td>28 March, 2019</td>
-                                                <td>Pending</td>
-                                                <td>$374.00 for 3 item(s)</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="">#7192</a></td>
-                                                <td>15 March, 2019</td>
-                                                <td>Shipped</td>
-                                                <td>$791.00 for 4 item(s)</td>
-                                            </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>

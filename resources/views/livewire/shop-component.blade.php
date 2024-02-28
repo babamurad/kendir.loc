@@ -32,7 +32,7 @@
                         @if(session('success'))
                         <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; top: -2rem;">
                             <button type="button" class="close  mt-3" data-dismiss="alert" aria-hidden="true" style="top: -16px;">×</button>
-                            <h6><i class="icon fas fa-check"></i> Item added in Cart</h6>
+                            <h6><i class="icon fas fa-check"></i> {{ session('success') }}</h6>
                         </div>
                         @endif
                     </div>
@@ -616,14 +616,14 @@
                                                             <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" title="" data-original-title="Wishlist"
                                                                     wire:click="removeWishlist('{{ $id }}')">
                                                                 <svg width="16px" height="16px" style="fill: #ff3333;">
-                                                                    <use xlink:href="images/sprite.svg#wishlist-16"></use>
+                                                                    <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
                                                                 </svg>
                                                             </button>
                                                             @else
                                                             <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" title="" data-original-title="Wishlist"
                                                                         wire:click="addToWishlist({{$id}}, '{{$name}}', {{ $sale_price }})">
                                                                     <svg width="16px" height="16px">
-                                                                        <use xlink:href="images/sprite.svg#wishlist-16"></use>
+                                                                        <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
                                                                     </svg>
                                                             </button>
                                                             @endif

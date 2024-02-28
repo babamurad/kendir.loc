@@ -432,7 +432,7 @@
                                         </li>
 
                                         <li class="nav-links__item  nav-links__item--has-submenu ">
-                                            <a class="nav-links__item-link" href="{{ route('posts') }}">
+                                            <a class="nav-links__item-link" href="{{ route('posts') }}" wire:navigate>
                                                 <div class="nav-links__item-body">
                                                     News
                                                 </div>
@@ -448,7 +448,7 @@
                                         </li>
                                         <li class="nav-links__item ">
                                             <a class="nav-links__item-link"
-                                               href="{{ route('about-us') }}">
+                                               href="{{ route('about-us') }}" wire:navigate>
                                                 <div class="nav-links__item-body">
                                                     About us
                                                 </div>
@@ -466,7 +466,7 @@
 
                                     </div>
                                     <div class="indicator indicator--trigger--click">
-                                        <a href="account-login.html" class="indicator__button">
+                                        <a href="#" class="indicator__button">
                                             <span class="indicator__area">
                                                 <svg width="20px" height="20px">
                                                     <use xlink:href="{{ asset('images/sprite.svg#person-20') }}"></use>

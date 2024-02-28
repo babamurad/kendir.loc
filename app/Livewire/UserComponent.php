@@ -24,9 +24,10 @@ class UserComponent extends Component
        if (Auth::attempt($user))
        {
            Auth::user($user);
+           session()->flash('success', __('You are logged in'));
+       } else {
+           session()->flash('error', __('The username or password is incorrect '));
        }
-        session()->flash('success', 'You are logged in');
-        $this->redirectRoute('home');
     }
 
     public function logout()

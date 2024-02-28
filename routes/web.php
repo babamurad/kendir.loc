@@ -12,6 +12,7 @@ use \App\Livewire\Admin\AdminArchiveMessageComponent;
 use \App\Livewire\Admin\PostComponent;
 use \App\Livewire\Admin\CreatePostComponent;
 use \App\Livewire\Admin\EditPostComponent;
+use \App\Livewire\Admin\AdminAboutUsComponent;
 
 use App\Livewire\HomeComponent;
 use \App\Livewire\UserDashboardComponent;
@@ -32,6 +33,8 @@ use App\Livewire\ContactComponent;
 use App\Livewire\PostComponent as Posts;
 use App\Livewire\PostDetailComponent;
 use App\Livewire\AboutUsComponent;
+use App\Livewire\EditProfileComponent;
+use App\Livewire\OrderHistoryComponent;
 
 
 
@@ -40,16 +43,7 @@ use App\Livewire\AboutUsComponent;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get('/', HomeComponent::class)->name('home');
 Route::get('shop', ShopComponent::class)->name('shop');
@@ -73,8 +67,10 @@ Route::get('register', RegisterUserComponent::class)->name('register');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', UserDashboardComponent::class)->name('dashboard');
-
+    Route::get('edit-profile', EditProfileComponent::class)->name('edit-profile');
+    Route::get('order-history', OrderHistoryComponent::class)->name('order-history');
 });
+
 Route::middleware(['auth','authadmin'])->prefix('admin')->group(function () {
     Route::get('dashboard', DashboardComponent::class)->name('admin.dashboard');
     Route::get('categories', CategoryComponent::class)->name('admin.categories');
@@ -90,5 +86,6 @@ Route::middleware(['auth','authadmin'])->prefix('admin')->group(function () {
     Route::get('posts', PostComponent::class)->name('admin.posts');
     Route::get('create-post', CreatePostComponent::class)->name('admin.create-post');
     Route::get('edit-post/{id}', EditPostComponent::class)->name('admin.edit-post');
+    Route::get('about-us', AdminAboutUsComponent::class)->name('admin.about-us');
 });
 

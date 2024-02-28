@@ -30,4 +30,9 @@ class Order extends Model
     {
         return $this->hasOne(Transaction::class);
     }
+
+    public function strana()
+    {
+        return $this->hasOne(Country::class, 'id', 'country');
+    }
 }

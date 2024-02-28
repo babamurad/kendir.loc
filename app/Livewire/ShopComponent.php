@@ -58,7 +58,7 @@ class ShopComponent extends Component
 
         Cart::instance('cart')->add($product_id, $product_name, $pqty, $product_price)->associate('App\Models\Product');
         $this->pqty = 1;
-        session()->flash('success', 'Item added in Cart');
+        session()->flash('success', 'The product has been added to the cart');
         $this->dispatch('addToCart');
         return redirect()->back();
     }
