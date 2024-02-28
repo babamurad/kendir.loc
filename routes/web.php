@@ -35,8 +35,10 @@ use App\Livewire\PostDetailComponent;
 use App\Livewire\AboutUsComponent;
 use App\Livewire\EditProfileComponent;
 use App\Livewire\OrderHistoryComponent;
-
-
+use App\Livewire\UserOrderDetailsComponent;
+use App\Livewire\UserAddresessComponent;
+use App\Livewire\UserEditAddresessComponent;
+use App\Livewire\UserPasswordComponent;
 
 
 /*
@@ -69,6 +71,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', UserDashboardComponent::class)->name('dashboard');
     Route::get('edit-profile', EditProfileComponent::class)->name('edit-profile');
     Route::get('order-history', OrderHistoryComponent::class)->name('order-history');
+    Route::get('order-details/{id?}', UserOrderDetailsComponent::class)->name('order-details');
+    Route::get('addresses', UserAddresessComponent::class)->name('addresses');
+    Route::get('edit-address', UserEditAddresessComponent::class)->name('edit-address');
+    Route::get('password', UserPasswordComponent::class)->name('password');
 });
 
 Route::middleware(['auth','authadmin'])->prefix('admin')->group(function () {

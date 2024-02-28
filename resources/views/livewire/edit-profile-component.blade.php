@@ -32,35 +32,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-3 d-flex">
-                        <div class="account-nav flex-grow-1">
-                            <h4 class="account-nav__title">Navigation</h4>
-                            <ul>
-                                <li class="account-nav__item">
-                                    <a href="{{ route('dashboard') }}" wire:navigate>Dashboard</a>
-                                </li>
-                                <li class="account-nav__item  account-nav__item--active">
-                                    <a href="{{ route('edit-profile') }}" wire:navigate>Edit Profile</a>
-                                </li>
-                                <li class="account-nav__item">
-                                    <a href="{{ route('order-history') }}" wire:navigate>Order History</a>
-                                </li>
-                                <li class="account-nav__item ">
-                                    <a href="account-order-details.html">Order Details</a>
-                                </li>
-                                <li class="account-nav__item ">
-                                    <a href="account-addresses.html">Addresses</a>
-                                </li>
-                                <li class="account-nav__item ">
-                                    <a href="account-edit-address.html">Edit Address</a>
-                                </li>
-                                <li class="account-nav__item ">
-                                    <a href="account-password.html">Password</a>
-                                </li>
-                                <li class="account-nav__item ">
-                                    <a href="account-login.html">Logout</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <livewire:user-navigation-component />
                     </div>
                     <div class="col-12 col-lg-9 mt-4 mt-lg-0">
                         <div class="card">
@@ -72,23 +44,17 @@
                                 <div class="row no-gutters">
                                     <div class="col-12 col-lg-7 col-xl-6">
                                         <div class="form-group">
-                                            <label for="profile-first-name">First Name</label>
-                                            <input type="text" class="form-control" id="profile-first-name" placeholder="First Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="profile-last-name">Last Name</label>
-                                            <input type="text" class="form-control" id="profile-last-name" placeholder="Last Name">
+                                            <label for="profile-first-name">Name</label>
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="profile-first-name" wire:model="name">
+                                            @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="profile-email">Email Address</label>
-                                            <input type="email" class="form-control" id="profile-email" placeholder="Email Address">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="profile-phone">Phone Number</label>
-                                            <input type="text" class="form-control" id="profile-phone" placeholder="Phone Number">
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="profile-email" wire:model="email">
+                                            @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                         <div class="form-group mt-5 mb-0">
-                                            <button class="btn btn-primary">Save</button>
+                                            <button class="btn btn-primary" wire:click="save">Save</button>
                                         </div>
                                     </div>
                                 </div>

@@ -25,6 +25,7 @@
                 </div>
                 <div class="page-header__title">
                     <h1>My Account</h1>
+                    @include('components.alerts')
                 </div>
             </div>
         </div>
@@ -32,35 +33,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-3 d-flex">
-                        <div class="account-nav flex-grow-1">
-                            <h4 class="account-nav__title">Navigation</h4>
-                            <ul>
-                                <li class="account-nav__item  account-nav__item--active ">
-                                    <a href="{{ route('dashboard') }}" wire:navigate>Dashboard</a>
-                                </li>
-                                <li class="account-nav__item ">
-                                    <a href="{{ route('edit-profile') }}" wire:navigate>Edit Profile</a>
-                                </li>
-                                <li class="account-nav__item ">
-                                    <a href="{{ route('order-history') }}" wire:navigate>Order History</a>
-                                </li>
-                                <li class="account-nav__item ">
-                                    <a href="account-order-details.html">Order Details</a>
-                                </li>
-                                <li class="account-nav__item ">
-                                    <a href="account-addresses.html">Addresses</a>
-                                </li>
-                                <li class="account-nav__item ">
-                                    <a href="account-edit-address.html">Edit Address</a>
-                                </li>
-                                <li class="account-nav__item ">
-                                    <a href="account-password.html">Password</a>
-                                </li>
-                                <li class="account-nav__item ">
-                                    <a href="account-login.html">Logout</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <livewire:user-navigation-component />
                     </div>
                     <div class="col-12 col-lg-9 mt-4 mt-lg-0">
                         <div class="dashboard">
@@ -81,7 +54,7 @@
                                 <div class="address-card__body">
                                     <div class="address-card__name">{{ auth()->user()->name }}</div>
                                     <div class="address-card__row">
-                                        {{ $order->strana->name }},<br>
+{{--                                        {{ $order->strana->name }},<br>--}}
                                         {{ $order->zipcode }}, {{ $order->city }}<br>
                                         {{ $order->line1 }}, {{ $order->line2 }}
                                     </div>
@@ -91,10 +64,10 @@
                                     </div>
                                     <div class="address-card__row">
                                         <div class="address-card__row-title">Email Address</div>
-                                        <div class="address-card__row-content">{{ auth()->user()->email }}</div>
+                                        <div class="address-card__row-content">{{ \Illuminate\Support\Facades\Auth::user()->email }}</div>
                                     </div>
                                     <div class="address-card__footer">
-                                        <a href="account-edit-address.html">Edit Address</a>
+                                        <a href="#">Edit Address</a>
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +90,7 @@
                                             <tbody>
                                             @foreach($resentOrders as $rorder)
                                             <tr>
-                                                <td><a href="">#{{ $rorder->id }}</a></td>
+                                                <td><a href="{{ route('order-details', ['id' => $order->id]) }}">#{{ $rorder->id }}</a></td>
                                                 <td>{{ \Carbon\Carbon::create($rorder->created_at)->format('d F, Y') }}</td>
                                                 <td>{{ $rorder->status }}</td>
                                                 <td>{{ $rorder->orderItems[0]->price }} for {{ $rorder->orderItems[0]->quantity }} item(s)</td>

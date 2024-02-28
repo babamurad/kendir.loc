@@ -110,18 +110,26 @@ class ChekoutComponent extends Component
             'email' => 'required|email',
             // 'paymentmode' => 'required',
         ]);
-//dd('validate');
+
         $order = new Order();
         $order->user_id = Auth::user()->id;
-//dd($order->user_id);
-//        $order->subtotal = session()->get('checout')['subtotal'];
-//        $order->tax = session()->get('checout')['tax'];
-//        $order->total = session()->get('checout')['total'];
+        $nom = session()->get('checkout', Cart::instance('cart')->subtotal());
+//        dd((float)$nom);
+//        $nom = str_replace(' ', '', $nom);
+//        dd((float) $nom);
+
+//        $order->subtotal = session()->get('checkout')['subtotal'];
+//        $order->tax = session()->get('checkout')['tax'];
+//        $order->total = session()->get('checkout')['total'];
 //
-//        dd(((float)Cart::instance('cart')->subtotal()*100)/100);
-        $order->subtotal = (float)Cart::instance('cart')->subtotal();
-        $order->tax = (float)Cart::instance('cart')->tax();
-        $order->total = (float)Cart::instance('cart')->total();
+//        dd(((float)Cart::instance('cart')->subtotal()));
+
+//dd(number_format(Cart::instance('cart')->subtotal(),',', ' '));
+        //dd(Cart::instance('cart')->subtotal());
+
+        $order->subtotal = (float) str_replace(' ', '', Cart::instance('cart')->subtotal()) ;
+        $order->tax = (float) str_replace(' ', '', Cart::instance('cart')->tax());
+        $order->total = (float) str_replace(' ', '', Cart::instance('cart')->total());
 
         $order->firstname = $this->firstname;
         $order->lastname = $this->lastname;

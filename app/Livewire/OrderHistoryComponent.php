@@ -13,7 +13,7 @@ class OrderHistoryComponent extends Component
 
     public function render()
     {
-        $orders = Order::with('orderItems')->orderBy('id', 'desc')->paginate(6);
+        $orders = Order::with('orderItems')->where('user_id', '=', auth()->user()->id)->orderBy('id', 'desc')->paginate(6);
         return view('livewire.order-history-component', compact('orders'));
     }
 }

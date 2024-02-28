@@ -621,12 +621,12 @@
                     <div class="site-footer__bottom">
                         <div class="site-footer__copyright">
                             <!-- copyright -->
-                            Powered by HTML — Design by <a href="https://themeforest.net/user/kos9"
-                                target="_blank">Kos</a>
+                            Powered by <a href="/"
+                                target="_blank">Kendir</a>
                             <!-- copyright / end -->
                         </div>
                         <div class="site-footer__payments">
-                            <img src="images/payments.png" alt="">
+                            <img src="{{ asset('images/payments.png') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -672,7 +672,7 @@
                     data-collapse-opened-class="mobile-links__item--open">
                     <li class="mobile-links__item" data-collapse-item>
                         <div class="mobile-links__item-title">
-                            <a href="index.html" class="mobile-links__item-link">Home</a>
+                            <a href="/" class="mobile-links__item-link">Home</a>
                             <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                 <svg class="mobile-links__item-arrow" width="12px" height="7px">
                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>

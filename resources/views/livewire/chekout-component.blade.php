@@ -151,14 +151,6 @@
                                     <option value="2">{{ __('Uzbekistan') }}</option>
                                     <option value="3">{{ __('Turkiye') }}</option>
                                     <option value="4">{{ __('Russia') }}</option>
-                                    <option value="5">{{ __('Ukraine') }}</option>
-                                    <option value="6">{{ __('Kazakhstan') }}</option>
-                                    <option value="7">{{ __('Kyrgyzstan') }}</option>
-                                    <option value="8">{{ __('Iran') }}</option>
-                                    <option value="9">{{ __('Georgia') }}</option>
-                                    <option value="10">{{ __('Tadjikistan') }}</option>
-                                    <option value="11">{{ __('Afghanistan') }}</option>
-                                    <option value="12">{{ __('Azerbaijan') }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
