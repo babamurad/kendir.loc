@@ -81,7 +81,7 @@
                                 <li class=" {{ request()->is('admin/orders') ? 'active selected' : '' }}">
                                     <a href="{{route('admin.orders')}}" wire:navigate>
 										<span class="has-icon">
-											<i class="icon-price-tag"></i>
+											<i class="icon-cart"></i>
 										</span>
                                         <span class="nav-title">Orders</span>
                                     </a>
@@ -130,6 +130,24 @@
 											<i class="icon-file-text"></i>
 										</span>
                                         <span class="nav-title">Posts</span>
+                                    </a>
+                                </li>
+
+                                <li class=" {{ request()->is('admin/brands') ? 'active selected' : '' }}">
+                                    <a href="{{route('admin.brands')}}" wire:navigate>
+										<span class="has-icon">
+											<i class="icon-price-tag"></i>
+										</span>
+                                        <span class="nav-title">Brands</span>
+                                    </a>
+                                </li>
+
+                                <li class="{{ request()->is('admin/manufacturers') ? 'active selected' : '' }}">
+                                    <a href="{{route('admin.manufacturers')}}" wire:navigate>
+										<span class="has-icon">
+											<i class="icon-office"></i>
+										</span>
+                                        <span class="nav-title">Manufacturer</span>
                                     </a>
                                 </li>
 

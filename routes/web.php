@@ -13,6 +13,8 @@ use \App\Livewire\Admin\PostComponent;
 use \App\Livewire\Admin\CreatePostComponent;
 use \App\Livewire\Admin\EditPostComponent;
 use \App\Livewire\Admin\AdminAboutUsComponent;
+use \App\Livewire\Admin\BrandComponent;
+use \App\Livewire\Admin\ManufacturerComponent;
 
 use App\Livewire\HomeComponent;
 use \App\Livewire\UserDashboardComponent;
@@ -93,5 +95,7 @@ Route::middleware(['auth','authadmin'])->prefix('admin')->group(function () {
     Route::get('create-post', CreatePostComponent::class)->name('admin.create-post');
     Route::get('edit-post/{id}', EditPostComponent::class)->name('admin.edit-post');
     Route::get('about-us', AdminAboutUsComponent::class)->name('admin.about-us');
+    Route::get('brands', BrandComponent::class)->name('admin.brands');
+    Route::get('manufacturers', ManufacturerComponent::class)->name('admin.manufacturers');
 });
 
