@@ -117,7 +117,7 @@ class ProductEditComponent extends Component
         $this->description = $product->description;
         $this->regular_price = $product->regular_price;
         $this->sale_price = $product->sale_price;//dd($product->sku);
-        $this->sku = $product->sku;
+        $this->sku = $product->SKU;
         $this->stock_status = $product->stock_status;
         $this->featured = $product->featured;
         $this->quantity = $product->quantity;

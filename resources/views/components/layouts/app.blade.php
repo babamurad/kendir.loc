@@ -409,13 +409,7 @@
                                                 </div>
                                             </a>
                                         </li>
-                                        <li class="nav-links__item">
-                                            <a class="nav-links__item-link" href="/">
-                                                <div class="nav-links__item-body">
-                                                    Partners
-                                                </div>
-                                            </a>
-                                        </li>
+
                                         <li class="nav-links__item">
                                             <a class="nav-links__item-link" href="{{ route('shop') }}" wire:navigate>
                                                 <div class="nav-links__item-body">
