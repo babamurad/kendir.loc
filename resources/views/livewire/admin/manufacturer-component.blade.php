@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <div class="row mt-2 mb-0">
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CreateManufacturer">
+                            <button type="button" class="btn btn-primary rounded" data-toggle="modal" data-target="#CreateManufacturer">
                                 {{__('Create Manufacturer')}}
                             </button>
                         </div>
@@ -79,7 +79,7 @@
                         @forelse ( $manufs as $manuf )
                             <tr>
                                 <td wire:key="{{$manuf->id}}">{{ ++$i }}</td>
-                                <td><img src="{{ asset('images/manufacturer').'/'.$manuf->image }}" alt="" width="60"></td>
+                                <td><img class="rounded" src="{{ asset('images/manufacturer').'/'.$manuf->image }}" alt="" width="60"></td>
                                 <td>{{$manuf->name}}</td>
                                 <td>{{$manuf->code}}</td>
                                 <td>

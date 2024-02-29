@@ -29,7 +29,21 @@
 		<!-- Chartist css -->
 		<link href="{{asset('admin/vendor/chartist/css/chartist.min.css')}}" rel="stylesheet" />
 		<link href="{{asset('admin/vendor/chartist/css/chartist-custom.css')}}" rel="stylesheet" />
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}">
+
+        <script src="{{asset('admin/js/jquery.js')}}"></script>
+        <script src="{{asset('admin/js/popper.min.js')}}"></script>
+
+        @stack('sumcdn')
+
+{{--        <link href="{{asset('admin/css/quill.snow.css')}}" rel="stylesheet" />--}}
+{{--        <script src="{{asset('admin/js/quill.js')}}"></script>--}}
+
 		<link href="{{asset('admin/css/style.css')}}" rel="stylesheet" />
+
+
         @stack('dateTables')
 	</head>
 
@@ -203,9 +217,9 @@
 		<!-- END: .app-wrap -->
 
 		<!-- jQuery first, then Tether, then other JS. -->
-		<script src="{{asset('admin/js/jquery.js')}}"></script>
+
 		<script src="{{asset('admin/js/tether.min.js')}}"></script>
-		<script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
 		<script src="{{asset('admin/vendor/unifyMenu/unifyMenu.js')}}"></script>
 		<script src="{{asset('admin/vendor/onoffcanvas/onoffcanvas.js')}}"></script>
 		<script src="{{asset('admin/js/moment.js')}}"></script>
@@ -229,6 +243,8 @@
 		<!-- Common JS -->
 		<script src="{{asset('admin/js/common.js')}}"></script>
         @stack('print')
+
+        @stack('summernote')
 	</body>
 
 </html>

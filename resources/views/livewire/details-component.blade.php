@@ -1,4 +1,5 @@
 
+
 @section('title', __('Product Details').': '.$product->name)
 <div>
     @php
@@ -343,23 +344,7 @@
                         <div class="product-tabs__pane product-tabs__pane--active" id="tab-description">
                             <div class="typography">
                                 <h3>Product Full Description</h3>
-                                <p>
-                                    {{ $product->description }}
-                                </p>
-                                <h3>Etiam lacus lacus mollis in mattis</h3>
-                                <p>
-                                    Praesent mattis eget augue ac elementum. Maecenas vel ante ut enim mollis accumsan. Vestibulum vel
-                                    eros at mi suscipit feugiat. Sed tortor purus, vulputate et eros a, rhoncus laoreet orci. Proin sapien
-                                    neque, commodo at porta in, vehicula eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et
-                                    ultrices posuere cubilia Curae; Curabitur porta vulputate augue, at sollicitudin nisl molestie eget.
-                                </p>
-                                <p>
-                                    Nunc sollicitudin, nunc id accumsan semper, libero nunc aliquet nulla, nec pretium ipsum risus ac
-                                    neque. Morbi eu facilisis purus. Quisque mi tortor, cursus in nulla ut, laoreet commodo quam.
-                                    Pellentesque et ornare sapien. In ac est tempus urna tincidunt finibus. Integer erat ipsum, tristique
-                                    ac lobortis sit amet, dapibus sit amet purus. Nam sed lorem nisi. Vestibulum ultrices tincidunt turpis,
-                                    sit amet fringilla odio scelerisque non.
-                                </p>
+                                    {!! $product->description !!}
                             </div>
                         </div>
                         <div class="product-tabs__pane" id="tab-specification">

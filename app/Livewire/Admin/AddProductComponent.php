@@ -92,6 +92,8 @@ class AddProductComponent extends Component
         }
 
         $product->category_id = $this->category_id;
+        $product->brand_id = 1;
+        $product->manufacturer_id = 1;
         $product->save();
         $this->resetInputFileds();
         session()->flash('success', 'Product has been added!');

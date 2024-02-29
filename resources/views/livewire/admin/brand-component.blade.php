@@ -36,7 +36,7 @@
                     <div class="card-body">
                         <div class="row mt-2 mb-0">
                             <div class="col-md-4">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CreateBrand">
+                                <button type="button" class="btn btn-primary rounded" data-toggle="modal" data-target="#CreateBrand">
                                     {{__('Create Brand')}}
                                 </button>
                             </div>
@@ -79,7 +79,7 @@
                             @forelse ( $brands as $brand )
                                 <tr>
                                     <td wire:key="{{$brand->id}}">{{ ++$i }}</td>
-                                    <td><img src="{{ asset('images/brands').'/'.$brand->image }}" alt="" width="60"></td>
+                                    <td><img class="rounded" src="{{ asset('images/brands').'/'.$brand->image }}" alt="" width="60"></td>
                                     <td>{{$brand->name}}</td>
                                     <td>{{$brand->code}}</td>
                                     <td>

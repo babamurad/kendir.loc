@@ -9,7 +9,7 @@
                         <h1 class="about-us__title">{{ $about->title }}</h1>
                         <div class="about-us__text typography">
                             <p>
-                                {{ $about->text }}
+                                {!! $about->text !!}
                             </p>
                         </div>
                         <div class="about-us__team">

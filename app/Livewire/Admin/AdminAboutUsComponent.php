@@ -8,7 +8,7 @@ use Livewire\Component;
 class AdminAboutUsComponent extends Component
 {
     public $title, $text;
-    public $edit = 0;
+    public $edit = 1;
 
     public function render()
     {
@@ -22,7 +22,7 @@ class AdminAboutUsComponent extends Component
 
     public function editMode()
     {
-        $this->edit = !$this->edit;
+        //$this->edit = !$this->edit;
     }
     public function update()
     {

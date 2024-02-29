@@ -46,7 +46,7 @@
                                 @if($newimage)
                                     <img class="rounded mt-2" src="{{ $newimage->temporaryUrl() }}" alt="Post image" width="120">
                                 @else
-                                    <img class="rounded my-2 pb-2" src="{{ asset('images/brands').'/'.$image }}" alt="Post image" width="120">
+                                    <img class="rounded my-2 pb-2" src="{{ asset('images/manufacturer').'/'.$image }}" alt="Post image" width="120">
                                 @endif
                                 @error('image') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
