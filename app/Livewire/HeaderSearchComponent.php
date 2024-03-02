@@ -9,7 +9,7 @@ class HeaderSearchComponent extends Component
 {
     public function render()
     {
-        $categories = Category::orderBy('name')->get();
+        $categories = Category::with('children')->where('parent_id', '=', '0')->get();
         return view('livewire.header-search-component', compact('categories'));
     }
 }

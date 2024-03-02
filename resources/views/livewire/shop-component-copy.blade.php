@@ -57,41 +57,70 @@
                                 </svg>
                             </button>
                         </div>
-
                         <div class="block-sidebar__item">
                             <div class="widget-filters widget widget-filters--offcanvas--mobile" data-collapse data-collapse-opened-class="filter--opened">
                                 <h4 class="widget-filters__title widget__title">Filters</h4>
                                 <div class="widget-filters__list">
+                                    <div class="widget-filters__item">
+                                        <div class="filter filter--opened" data-collapse-item>
+                                            <button type="button" class="filter__title" data-collapse-trigger>
+                                                Categories
+                                                <svg class="filter__arrow" width="12px" height="7px">
+                                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="filter__body" data-collapse-content>
+                                                <div class="filter__container">
+                                                    <div class="filter-categories">
+                                                        <ul class="filter-categories__list">
+                                                            <li class="filter-categories__item filter-categories__item--parent @if($active_id=='') activecat @endif">
+                                                                <a href="#"
+                                                                   wire:click="allCategory">{{ __(' All Category') }}</a>
+                                                                <div id="prodCount" class="filter-categories__counter">{{ $prodCount }}</div>
+                                                            </li>
+                                                            @foreach($categories as $category)
+                                                                <li class="filter-categories__item filter-categories__item--parent @if($category->id==$active_id) activecat @endif ">
+                                                                    <a href="#"
+                                                                       wire:click="selectCategory('{{ $category->id }}')">{{ $category->name }}</a>
+                                                                    <div class="filter-categories__counter">{{ $category->products->count() }}</div>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item="">
                                             <button type="button" class="filter__title" data-collapse-trigger="">
                                                 Categories Alt
                                                 <svg class="filter__arrow" width="12px" height="7px">
-                                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                                 </svg>
                                             </button>
                                             <div class="filter__body" data-collapse-content="">
                                                 <div class="filter__container">
-                                                    <div class="filter-categories-alt" wire:ignore>
+                                                    <div class="filter-categories-alt">
                                                         <ul class="filter-categories-alt__list filter-categories-alt__list--level--1" data-collapse-opened-class="filter-categories-alt__item--open">
                                                             @foreach($rcategories as $rcategory)
                                                             <li class="filter-categories-alt__item" data-collapse-item="">
                                                                 @if($rcategory->children->count()>0)
-                                                                <button class="filter-categories-alt__expander" data-collapse-trigger="" wire:click="OpenClose"></button>
+                                                                <button class="filter-categories-alt__expander" data-collapse-trigger=""></button>
                                                                 @endif
-                                                                <a href="{{ route('product.category', ['slug' => $rcategory->slug]) }}">{{ $rcategory->name }}</a>
-                                                                @if($rcategory->children->count()>0)
-                                                                <div class="filter-categories-alt__children" data-collapse-content="">
+                                                                <a href="">{{ $rcategory->name }}</a>
+                                                                    @if($rcategory->children)
+                                                                    <div class="filter-categories-alt__children" data-collapse-content="" style="">
                                                                     <ul class="filter-categories-alt__list filter-categories-alt__list--level--2">
-                                                                        @foreach($rcategory->children as $category)
-                                                                        <li class="filter-categories-alt__item" data-collapse-item="">
-                                                                            <a href="{{ route('product.category', ['slug' => $category->slug]) }}" wire:click.prevent="selectCategory('{{ $category->id }}')">{{ $category->name }}</a>
+                                                                        @foreach($rcategory->children as $subcategory)
+                                                                        <li class="filter-categories-alt__item @if($active_id=='') activecat @endif" data-collapse-item="">
+                                                                            <a href="#" wire:click.prevent="selectCategory('{{ $category->id }}')">{{ $subcategory->name }}</a>
                                                                         </li>
                                                                         @endforeach
                                                                     </ul>
                                                                 </div>
-                                                                @endif
+                                                                    @endif
                                                             </li>
                                                             @endforeach
                                                         </ul>
@@ -206,9 +235,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="widget-filters__item">
+                                    </div><div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item="">
                                             <button type="button" class="filter__title" data-collapse-trigger="">
                                                 Manufacturer
@@ -546,7 +573,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class=" widget-filters__list widget-filters__actions d-flex">
+                                <div class="widget-filters__actions d-flex">
                                     <button class="btn btn-primary btn-sm">Filter</button>
                                     <button class="btn btn-secondary btn-sm">Reset</button>
                                 </div>

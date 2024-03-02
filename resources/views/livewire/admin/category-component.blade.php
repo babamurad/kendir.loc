@@ -64,17 +64,19 @@
                             </div>
                         </div>
                         <div class="col-12">
+                            @if(!$parent_id == 0)
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">{{__('Parent')}} {{ $parent }}</label>
+                                    <label class="input-group-text" for="inputGroupSelect01">{{__('Parent')}}</label>
                                 </div>
-                                <select class="custom-select @error('parent') is-invalid @enderror" id="inputGroupSelect01"  wire:model='parent'>
-                                    <option selected="">Root</option>
-                                    @foreach ($categories as $category)
+                                <select class="custom-select @error('parent_id') is-invalid @enderror" id="inputGroupSelect01"  wire:model='parent_id'>
+                                    <option selected="">Select Parent Category</option>
+                                    @foreach ($rcategories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
+                            @endif
                         </div>
                         <div class="col-12">
                             <div class="form-group">
@@ -146,14 +148,15 @@
             <div class="col-12">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">{{__('Parent')}} {{ $parent }}</label>
+                        <label class="input-group-text" for="inputGroupSelect01">{{__('Parent')}} </label>
                     </div>
-                    <select class="custom-select @error('parent') is-invalid @enderror" id="inputGroupSelect01"  wire:model='parent'>
-                        <option selected="">Root</option>
-                        @foreach ($categories as $category)
+                    <select class="custom-select @error('parent_id') is-invalid @enderror" id="inputGroupSelect01"  wire:model='parent_id'>
+                        <option selected="">Select Parent Category</option>
+                        @foreach ($rcategories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
+                    @error('parent_id') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
             </div>
             <div class="col-12">
@@ -203,7 +206,7 @@
             <div class="card-body">
                 <div class="row mt-2 mb-0">
                     <div class="col-md-4">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CreateCategory">
+                        <button type="button" class="btn btn-primary rounded" data-toggle="modal" data-target="#CreateCategory">
                             {{__('Create Category')}}
                         </button>
                     </div>
@@ -252,7 +255,7 @@
                             <td>{{$category->name}}</td>
                             <td>{{$category->slug}}</td>
                             <td>{{$category->is_popular? 'Yes':'No'}}</td>
-                            <td>{{ $category->cparent->name? $category->cparent->name : 'Root'}}</td>
+                            <td>{{ $category->cparent? $category->cparent->name : 'Root'}}</td>
                             <td>
                                 <button type="button" class="btn btn-success btn-sm rounded"data-toggle="modal" data-target="#EditCategory" wire:click="editCategory({{ $category->id }})">
                                     <i class="icon icon-pencil3"></i>

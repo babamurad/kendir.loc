@@ -22,7 +22,10 @@ class HomeComponent extends Component
         //$latestProducts = Product::orderBy('id', "DESC")->limit(9)->get();
         //********
 
-        $categories = Category::orderBy('id', 'DESC')->get();
+        $categories = Category::with('children')->get();
+        //dd($categories->count());
+        $rcategories = Category::with('children')->where('parent_id', '=', '0')->get();
+        //dd($categories->count());
         $carousels = Carousel::orderBy('id', 'DESC')->get();
 
         $products = Product::all();
@@ -30,11 +33,11 @@ class HomeComponent extends Component
 
         $date = Carbon::now()->subDays(7);
         $newArrivals = Product::where('created_at', '>=', $date)->get();
-
+        //$blya = 'Blyat suka blyat nahuy';
         return view('livewire.home-component',
-            compact('categories', 'carousels', 'products', 'newArrivals')
+            compact('categories', 'carousels', 'products', 'newArrivals', 'rcategories')
 
-        );
+        )->layout('components.layouts.app', ['rcategories' => $rcategories]);
     }
 
     public function store($product_id, $product_name, $product_price)

@@ -8,7 +8,6 @@
             <div class="row">
                 <div class="col-lg-3 d-none d-lg-block"></div>
                 <div class="col-12 col-lg-9">
-                    @include('components.alerts')
                     <div class="block-slideshow__body">
                         <div class="owl-carousel">
                             @foreach($carousels as $carousel)
@@ -38,6 +37,7 @@
     </div>
     <!-- .block-slideshow / end -->
     <!-- .block-features -->
+    @include('components.alerts')
     <div class="block block-features block-features--layout--classic">
         <div class="container">
             <div class="block-features__list">

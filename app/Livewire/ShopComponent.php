@@ -23,6 +23,7 @@ class ShopComponent extends Component
     public $id, $name, $pqty = 1, $sale_price, $image;
     public $prodCount;
     public $active_id;
+    public $collapce = 0;
 
     public function render()
     {
@@ -47,8 +48,15 @@ class ShopComponent extends Component
         $date = Carbon::now()->subDays(7);
         $newArrivals = Product::where('created_at', '>=', $date)->get();
 
+        $rcategories = Category::with('children')->where('parent_id', '=', '0')->get();
 
-        return view('livewire.shop-component', compact('categories', 'latestProducts', 'products', 'newArrivals'));
+        return view('livewire.shop-component',
+            compact('categories', 'latestProducts', 'products', 'newArrivals', 'rcategories'));
+    }
+
+    public function OpenClose()
+    {
+        $this->collapce = !$this->collapce;
     }
 
     public function store($product_id, $product_name, $product_price)

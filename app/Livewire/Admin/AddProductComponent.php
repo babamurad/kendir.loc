@@ -25,8 +25,13 @@ class AddProductComponent extends Component
     public $image;
     public $category_id;
     public $images;
+    public $activeTab;
 
-
+    public function acTab($tabName)
+    {
+        //dd($tabName);
+        $this->activeTab = $tabName;
+    }
     public function generateSlug()
     {
         $this->slug = Str::slug($this->name);
@@ -121,6 +126,10 @@ class AddProductComponent extends Component
         return redirect()->route('admin.products');
     }
 
+    public function mount()
+    {
+        $this->activeTab = 'details';
+    }
     public function render()
     {
         $categories = Category::OrderBy('name', 'ASC')->get();

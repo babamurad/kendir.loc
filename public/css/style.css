@@ -16251,8 +16251,8 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-origin {
 .departments__item-link:hover{
     background-color: #3366cc !important;
     color: #fff;
-    padding: 16px 16px;
-    transition: 0.4s;
+    padding: 10px 10px;
+    transition: 0.2s;
 }
 .required-field::after {
     content: "*";
@@ -16301,4 +16301,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-origin {
 
 .cpoint{
     cursor: pointer;
+}
+.active-menu{
+    color: #3366cc !important;
 }

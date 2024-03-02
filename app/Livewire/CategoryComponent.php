@@ -53,10 +53,14 @@ class CategoryComponent extends Component
         return redirect()->back();
     }
 
-    public function mount($slug)
+    public function mount($slug = '')
     {
-        $this->slug = $slug;
-        //dd($this->slug);
+        if ($slug){
+            $this->slug = $slug;
+        } else {
+            $category = Category::first();
+            $this->slug = $category->slug;
+        }
         $this->prodCount = Product::count();
         $this->minPrice = DB::table('products')->min('sale_price');
         $this->maxPrice = DB::table('products')->max('sale_price');

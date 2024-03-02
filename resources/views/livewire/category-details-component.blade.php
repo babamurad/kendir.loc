@@ -1,4 +1,5 @@
-@section('title', __('Category'))
+
+@section('title', __('Category Details'))
 <div>
     @php
         $wproducts = \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->pluck('id');
@@ -11,13 +12,13 @@
                         <li class="breadcrumb-item">
                             <a href="/">Home</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
-                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
+                                <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
                             </svg>
                         </li>
                         <li class="breadcrumb-item">
                             <a href="">Breadcrumb</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
-                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
+                                <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
                             </svg>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Categories</li>
@@ -31,7 +32,7 @@
                         @if(session('success'))
                             <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; top: -2rem;">
                                 <button type="button" class="close  mt-3" data-dismiss="alert" aria-hidden="true" style="top: -16px;">×</button>
-                                <h6><i class="icon fas fa-check"></i> Item added in Cart</h6>
+                                <h6><i class="icon fas fa-check"></i> {{ session('success') }}</h6>
                             </div>
                         @endif
                     </div>
@@ -52,34 +53,45 @@
                             <div class="block-sidebar__title">Filters</div>
                             <button class="block-sidebar__close" type="button">
                                 <svg width="20px" height="20px">
-                                    <use xlink:href="{{ asset('images/sprite.svg#cross-20') }}"></use>
+                                    <use xlink:href="images/sprite.svg#cross-20"></use>
                                 </svg>
                             </button>
                         </div>
+
                         <div class="block-sidebar__item">
                             <div class="widget-filters widget widget-filters--offcanvas--mobile" data-collapse data-collapse-opened-class="filter--opened">
                                 <h4 class="widget-filters__title widget__title">Filters</h4>
                                 <div class="widget-filters__list">
+
                                     <div class="widget-filters__item">
-                                        <div class="filter filter--opened" data-collapse-item>
-                                            <button type="button" class="filter__title" data-collapse-trigger>
-                                                Categories
+                                        <div class="filter filter--opened" data-collapse-item="">
+                                            <button type="button" class="filter__title" data-collapse-trigger="">
+                                                Categories Alt
                                                 <svg class="filter__arrow" width="12px" height="7px">
-                                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
+                                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
                                                 </svg>
                                             </button>
-                                            <div class="filter__body" data-collapse-content>
+                                            <div class="filter__body" data-collapse-content="">
                                                 <div class="filter__container">
-                                                    <div class="filter-categories">
-                                                        <ul class="filter-categories__list">
-                                                            <li class="filter-categories__item filter-categories__item--parent @if($active_id=='') activecat @endif">
-                                                                <a href="{{ route('shop') }}">{{ __(' All Category') }}</a>
-                                                                <div id="prodCount" class="filter-categories__counter">{{ $ccount->count() }}</div>
-                                                            </li>
-                                                            @foreach($categories as $category)
-                                                                <li class="filter-categories__item filter-categories__item--parent @if($category->id==$active_id) activecat @endif ">
-                                                                    <a href="{{ route('product.category', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
-                                                                    <div class="filter-categories__counter">{{ $category->products->count() }}</div>
+                                                    <div class="filter-categories-alt">
+                                                        <ul class="filter-categories-alt__list filter-categories-alt__list--level--1" data-collapse-opened-class="filter-categories-alt__item--open">
+                                                            @foreach($rcategories as $rcategory)
+                                                                <li class="filter-categories-alt__item" data-collapse-item="">
+                                                                    @if($rcategory->children->count()>0)
+                                                                        <button class="filter-categories-alt__expander" data-collapse-trigger=""></button>
+                                                                    @endif
+                                                                    <a href="{{ route('product.category', ['slug' => $rcategory->slug]) }}">{{ $rcategory->name }}</a>
+                                                                    @if($rcategory->children->count()>0)
+                                                                        <div class="filter-categories-alt__children" data-collapse-content=""  >
+                                                                            <ul class="filter-categories-alt__list filter-categories-alt__list--level--2">
+                                                                                @foreach($rcategory->children as $category)
+                                                                                    <li class=" filter-categories-alt__item {{ request()->is('category/'.$category->slug) ? 'active-menu' : '' }}" data-collapse-item="">
+                                                                                        <a class="" href="{{ route('product.category', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
+                                                                                    </li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        </div>
+                                                                    @endif
                                                                 </li>
                                                             @endforeach
                                                         </ul>
@@ -88,23 +100,27 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="widget-filters__item">
-                                        <div class="filter filter--opened" data-collapse-item>
-                                            <button type="button" class="filter__title" data-collapse-trigger>
+                                        <div class="filter filter--opened" data-collapse-item="">
+                                            <button type="button" class="filter__title" data-collapse-trigger="">
                                                 Brand
                                                 <svg class="filter__arrow" width="12px" height="7px">
-                                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                                 </svg>
                                             </button>
-                                            <div class="filter__body" data-collapse-content>
+                                            <div class="filter__body" data-collapse-content="">
                                                 <div class="filter__container">
                                                     <div class="filter-list">
                                                         <div class="filter-list__list">
                                                             <label class="filter-list__item ">
-                                                                        <span class="filter-list__input input-radio">
-                                                                            <span class="input-radio__body">
-                                                                                <input class="input-radio__input" name="filter_radio" type="radio">
-                                                                                <span class="input-radio__circle"></span>
+                                                                        <span class="filter-list__input input-check">
+                                                                            <span class="input-check__body">
+                                                                                <input class="input-check__input" type="checkbox">
+                                                                                <span class="input-check__box"></span>
+                                                                                <svg class="input-check__icon" width="9px" height="7px">
+                                                                                    <use xlink:href="{{asset('images/sprite.svg#check-9x7')}}"></use>
+                                                                                </svg>
                                                                             </span>
                                                                         </span>
                                                                 <span class="filter-list__title">
@@ -113,10 +129,13 @@
                                                                 <span class="filter-list__counter">7</span>
                                                             </label>
                                                             <label class="filter-list__item ">
-                                                                        <span class="filter-list__input input-radio">
-                                                                            <span class="input-radio__body">
-                                                                                <input class="input-radio__input" name="filter_radio" type="radio">
-                                                                                <span class="input-radio__circle"></span>
+                                                                        <span class="filter-list__input input-check">
+                                                                            <span class="input-check__body">
+                                                                                <input class="input-check__input" type="checkbox" checked="">
+                                                                                <span class="input-check__box"></span>
+                                                                                <svg class="input-check__icon" width="9px" height="7px">
+                                                                                    <use xlink:href="{{asset('images/sprite.svg#check-9x7')}}"></use>
+                                                                                </svg>
                                                                             </span>
                                                                         </span>
                                                                 <span class="filter-list__title">
@@ -125,10 +144,13 @@
                                                                 <span class="filter-list__counter">42</span>
                                                             </label>
                                                             <label class="filter-list__item  filter-list__item--disabled ">
-                                                                        <span class="filter-list__input input-radio">
-                                                                            <span class="input-radio__body">
-                                                                                <input class="input-radio__input" name="filter_radio" type="radio" checked disabled>
-                                                                                <span class="input-radio__circle"></span>
+                                                                        <span class="filter-list__input input-check">
+                                                                            <span class="input-check__body">
+                                                                                <input class="input-check__input" type="checkbox" checked="" disabled="">
+                                                                                <span class="input-check__box"></span>
+                                                                                <svg class="input-check__icon" width="9px" height="7px">
+                                                                                    <use xlink:href="{{asset('images/sprite.svg#check-9x7')}}"></use>
+                                                                                </svg>
                                                                             </span>
                                                                         </span>
                                                                 <span class="filter-list__title">
@@ -136,10 +158,13 @@
                                                                         </span>
                                                             </label>
                                                             <label class="filter-list__item  filter-list__item--disabled ">
-                                                                        <span class="filter-list__input input-radio">
-                                                                            <span class="input-radio__body">
-                                                                                <input class="input-radio__input" name="filter_radio" type="radio" disabled>
-                                                                                <span class="input-radio__circle"></span>
+                                                                        <span class="filter-list__input input-check">
+                                                                            <span class="input-check__body">
+                                                                                <input class="input-check__input" type="checkbox" disabled="">
+                                                                                <span class="input-check__box"></span>
+                                                                                <svg class="input-check__icon" width="9px" height="7px">
+                                                                                    <use xlink:href="{{asset('images/sprite.svg#check-9x7')}}"></use>
+                                                                                </svg>
                                                                             </span>
                                                                         </span>
                                                                 <span class="filter-list__title">
@@ -147,10 +172,13 @@
                                                                         </span>
                                                             </label>
                                                             <label class="filter-list__item ">
-                                                                        <span class="filter-list__input input-radio">
-                                                                            <span class="input-radio__body">
-                                                                                <input class="input-radio__input" name="filter_radio" type="radio">
-                                                                                <span class="input-radio__circle"></span>
+                                                                        <span class="filter-list__input input-check">
+                                                                            <span class="input-check__body">
+                                                                                <input class="input-check__input" type="checkbox">
+                                                                                <span class="input-check__box"></span>
+                                                                                <svg class="input-check__icon" width="9px" height="7px">
+                                                                                    <use xlink:href="{{asset('images/sprite.svg#check-9x7')}}"></use>
+                                                                                </svg>
                                                                             </span>
                                                                         </span>
                                                                 <span class="filter-list__title">
@@ -159,10 +187,13 @@
                                                                 <span class="filter-list__counter">1</span>
                                                             </label>
                                                             <label class="filter-list__item ">
-                                                                        <span class="filter-list__input input-radio">
-                                                                            <span class="input-radio__body">
-                                                                                <input class="input-radio__input" name="filter_radio" type="radio">
-                                                                                <span class="input-radio__circle"></span>
+                                                                        <span class="filter-list__input input-check">
+                                                                            <span class="input-check__body">
+                                                                                <input class="input-check__input" type="checkbox">
+                                                                                <span class="input-check__box"></span>
+                                                                                <svg class="input-check__icon" width="9px" height="7px">
+                                                                                    <use xlink:href="{{asset('images/sprite.svg#check-9x7')}}"></use>
+                                                                                </svg>
                                                                             </span>
                                                                         </span>
                                                                 <span class="filter-list__title">
@@ -176,12 +207,92 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="widget-filters__item">
+                                        <div class="filter filter--opened" data-collapse-item="">
+                                            <button type="button" class="filter__title" data-collapse-trigger="">
+                                                Manufacturer
+                                                <svg class="filter__arrow" width="12px" height="7px">
+                                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="filter__body" data-collapse-content="">
+                                                <div class="filter__container">
+                                                    <div class="filter-list">
+                                                        <div class="filter-list__list">
+                                                            <label class="filter-list__item ">
+                                                                        <span class="filter-list__input input-check">
+                                                                            <span class="input-check__body">
+                                                                                <input class="input-check__input" type="checkbox">
+                                                                                <span class="input-check__box"></span>
+                                                                                <svg class="input-check__icon" width="9px" height="7px">
+                                                                                    <use xlink:href="{{asset('images/sprite.svg#check-9x7')}}"></use>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                <span class="filter-list__title">
+                                                                            Wakita
+                                                                        </span>
+                                                                <span class="filter-list__counter">7</span>
+                                                            </label>
+                                                            <label class="filter-list__item ">
+                                                                        <span class="filter-list__input input-check">
+                                                                            <span class="input-check__body">
+                                                                                <input class="input-check__input" type="checkbox" checked="">
+                                                                                <span class="input-check__box"></span>
+                                                                                <svg class="input-check__icon" width="9px" height="7px">
+                                                                                    <use xlink:href="{{asset('images/sprite.svg#check-9x7')}}"></use>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                <span class="filter-list__title">
+                                                                            Zosch
+                                                                        </span>
+                                                                <span class="filter-list__counter">42</span>
+                                                            </label>
+                                                            <label class="filter-list__item ">
+                                                                        <span class="filter-list__input input-check">
+                                                                            <span class="input-check__body">
+                                                                                <input class="input-check__input" type="checkbox">
+                                                                                <span class="input-check__box"></span>
+                                                                                <svg class="input-check__icon" width="9px" height="7px">
+                                                                                    <use xlink:href="{{asset('images/sprite.svg#check-9x7')}}"></use>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                <span class="filter-list__title">
+                                                                            Mitasia
+                                                                        </span>
+                                                                <span class="filter-list__counter">1</span>
+                                                            </label>
+                                                            <label class="filter-list__item ">
+                                                                        <span class="filter-list__input input-check">
+                                                                            <span class="input-check__body">
+                                                                                <input class="input-check__input" type="checkbox">
+                                                                                <span class="input-check__box"></span>
+                                                                                <svg class="input-check__icon" width="9px" height="7px">
+                                                                                    <use xlink:href="{{asset('images/sprite.svg#check-9x7')}}"></use>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                <span class="filter-list__title">
+                                                                            Metaggo
+                                                                        </span>
+                                                                <span class="filter-list__counter">25</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item>
                                             <button type="button" class="filter__title" data-collapse-trigger>
                                                 Color
                                                 <svg class="filter__arrow" width="12px" height="7px">
-                                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                                    <use xlink:href="{{asset('images/sprite.svg#arrow-rounded-down-12x7')}}"></use>
                                                 </svg>
                                             </button>
                                             <div class="filter__body" data-collapse-content>
@@ -194,7 +305,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -206,7 +317,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -218,7 +329,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -230,7 +341,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -242,7 +353,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -254,7 +365,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -266,7 +377,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -278,7 +389,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox" checked>
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -290,7 +401,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -302,7 +413,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -314,7 +425,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -326,7 +437,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox" checked>
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -338,7 +449,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -350,7 +461,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -362,7 +473,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -374,7 +485,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox" disabled>
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -386,7 +497,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox" checked>
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -398,7 +509,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -410,7 +521,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -422,7 +533,7 @@
                                                                                 <input class="input-check-color__input" type="checkbox">
                                                                                 <span class="input-check-color__box"></span>
                                                                                 <svg class="input-check-color__icon" width="12px" height="9px">
-                                                                                    <use xlink:href="images/sprite.svg#check-12x9"></use>
+                                                                                    <use xlink:href="{{ asset('images/sprite.svg#check-12x9') }}"></use>
                                                                                 </svg>
                                                                                 <span class="input-check-color__stick"></span>
                                                                             </label>
@@ -435,7 +546,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-filters__actions d-flex">
+                                <div class=" widget-filters__list widget-filters__actions d-flex">
                                     <button class="btn btn-primary btn-sm">Filter</button>
                                     <button class="btn btn-secondary btn-sm">Reset</button>
                                 </div>
@@ -574,14 +685,14 @@
                                                                 <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" title="" data-original-title="Wishlist"
                                                                         wire:click="removeWishlist('{{ $id }}')">
                                                                     <svg width="16px" height="16px" style="fill: #ff3333;">
-                                                                        <use xlink:href="images/sprite.svg#wishlist-16"></use>
+                                                                        <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
                                                                     </svg>
                                                                 </button>
                                                             @else
                                                                 <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" title="" data-original-title="Wishlist"
                                                                         wire:click="addToWishlist({{$id}}, '{{$name}}', {{ $sale_price }})">
                                                                     <svg width="16px" height="16px">
-                                                                        <use xlink:href="images/sprite.svg#wishlist-16"></use>
+                                                                        <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
                                                                     </svg>
                                                                 </button>
                                                             @endif
@@ -781,3 +892,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('.filter-categories-alt__item a').click(function() {
+            $('.filter-categories-alt__item a').css('color', 'black');
+
+            $(this).css('color', 'red');
+        });
+    });
+</script>

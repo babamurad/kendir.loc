@@ -248,7 +248,7 @@
                                                     <a class="menu__item-link" href="">
                                                         <div class="menu__item-icon"><img
                                                                 srcset="images/languages/language-2.png 1x, images/languages/language-2@2x.png 2x"
-                                                                src="images/languages/language-2.png" alt=""></div>
+                                                                src="{{ asset('images/languages/language-2.png') }}" alt=""></div>
                                                         French
                                                     </a>
                                                 </li>
@@ -320,56 +320,48 @@
                                             <div class="departments__links-wrapper">
                                                 <div class="departments__submenus-container"></div>
                                                 <ul class="departments__links">
-                                                    @foreach($categories as $category)
+                                                    @foreach($rcategories as $rcategory)
                                                         <li class="departments__item">
-                                                        <a class="departments__item-link" href="{{ route('shop') }}">
-                                                            {{ $category->name }}
+                                                        <a class="departments__item-link" href="{{ route('product.category', ['slug' => $rcategory->slug]) }}">
+                                                            {{ $rcategory->name }}
+                                                            @if($rcategory->children->count()>0)
                                                             <svg class="departments__item-arrow" width="6px" height="9px"> <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use> </svg>
+                                                            @endif
                                                         </a>
+                                                        @if($rcategory->children->count()>0)
                                                         <div class="departments__submenu departments__submenu--type--megamenu departments__submenu--size--lg">
                                                             <!-- .megamenu -->
                                                             <div class="megamenu  megamenu--departments">
                                                                 <div class="megamenu__body">
                                                                     <div class="row">
-                                                                        <div class="col-4">
+                                                                        <div class="col-5">
                                                                             <ul class="megamenu__links megamenu__links--level--0">
-                                                                                <li
-                                                                                    class="megamenu__item  megamenu__item--with-submenu ">
-                                                                                    <a href="">{{ $category->name }}</a>
-                                                                                    <ul
-                                                                                        class="megamenu__links megamenu__links--level--1">
-                                                                                        <li class="megamenu__item"><a
-                                                                                                href="">Engravers</a>
+                                                                                <li class="megamenu__item  megamenu__item--with-submenu">
+                                                                                    <a href="{{ route('product.category', ['slug' => $rcategory->slug]) }}">
+                                                                                        {{ $rcategory->name }}
+                                                                                    </a>
+                                                                                    <ul class="megamenu__links megamenu__links--level--1">
+                                                                                        @foreach($rcategory->children as $category)
+                                                                                        <li class="megamenu__item">
+                                                                                            <a href="{{ route('product.category', ['slug' => $category->slug]) }}">
+                                                                                                {{$category->name}}
+                                                                                            </a>
                                                                                         </li>
-                                                                                        <li class="megamenu__item"><a
-                                                                                                href="">Drills</a></li>
-                                                                                        <li class="megamenu__item"><a
-                                                                                                href="">Wrenches</a>
-                                                                                        </li>
-                                                                                        <li class="megamenu__item"><a
-                                                                                                href="">Plumbing</a>
-                                                                                        </li>
-                                                                                        <li class="megamenu__item"><a
-                                                                                                href="">Wall Chaser</a>
-                                                                                        </li>
-                                                                                        <li class="megamenu__item"><a
-                                                                                                href="">Pneumatic
-                                                                                                Tools</a></li>
-                                                                                        <li class="megamenu__item"><a
-                                                                                                href="">Milling
-                                                                                                Cutters</a></li>
+                                                                                        @endforeach
                                                                                     </ul>
+
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
-                                                                        <div class="col-8">
-                                                                            <img src="{{ asset('images/categories'. '/'. $category->image) }}" alt="" class="img-fluid">
+                                                                        <div class="col-7">
+                                                                            <img src="{{ asset('images/categories'. '/'. $rcategory->image) }}" alt="" class="img-fluid">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <!-- .megamenu / end -->
                                                         </div>
+                                                        @endif
                                                     </li>
                                                     @endforeach
                                                 </ul>

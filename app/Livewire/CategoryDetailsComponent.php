@@ -29,7 +29,9 @@ class CategoryDetailsComponent extends Component
         //dd($products);
         $category = Category::with('products')->where('slug', $this->slug)->first();
         $ccount = Product::all();
-        return view('livewire.category-details-component', compact('latestProducts', 'products', 'category', 'ccount', 'newArrivals'));
+        $rcategories = Category::with('children')->where('parent_id', '=', '0')->get();
+        return view('livewire.category-details-component',
+            compact('latestProducts', 'products', 'category', 'ccount', 'newArrivals', 'rcategories'));
     }
 
     public function mount($slug)

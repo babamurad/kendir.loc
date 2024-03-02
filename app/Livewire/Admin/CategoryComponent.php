@@ -28,7 +28,7 @@ class CategoryComponent extends Component
 
     public $is_popular = 0;
 
-    public $parent;
+    public $parent_id;
 
     public $edit_id, $del_id, $del_name;
     public $edit_mode = 0;
@@ -53,7 +53,9 @@ class CategoryComponent extends Component
             ->orderBy('id', 'desc')
             ->paginate($this->perPage);
 
-        return view('livewire.admin.category-component', compact('categories'))->layout('components.layouts.admin.app');
+        $rcategories = Category::where('parent_id', '=', 0)->get();
+        return view('livewire.admin.category-component', compact('categories', 'rcategories'))
+            ->layout('components.layouts.admin.app');
     }
 
     public function parentName()
@@ -97,7 +99,7 @@ class CategoryComponent extends Component
         $this->image->storeAs('categories', $imageName);
         $category->image = $imageName;
         $category->is_popular = $this->is_popular? $this->is_popular : 0;
-        $category->name = $this->name;
+        $category->parent_id = $this->parent_id;
         $category->save();
         $this->dispatch('closeCreateCategoryModal');
         $this->resetInputFields();
@@ -112,7 +114,8 @@ class CategoryComponent extends Component
         $this->edit_id = $category->id;
         $this->name = $category->name;
         $this->slug = $category->slug;
-        $this->parent = $category->parent;
+
+        $this->parent_id = $category->parent_id;
         $this->image = $category->image;
         $this->is_popular = $category->is_popular;
     }
@@ -129,7 +132,8 @@ class CategoryComponent extends Component
         $category = Category::findOrFail($this->edit_id);
         $category->name = $this->name;
         $category->slug = $this->slug;
-        $category->parent = $this->parent;
+
+        $category->parent_id = $this->parent_id;
         if ($this->newimage){
             if (file_exists('images/categories/'.$this->image)){
                 unlink('images/categories/'.$this->image);
@@ -153,6 +157,7 @@ class CategoryComponent extends Component
         $this->slug = '';
         $this->image = '';
         $this->parent_id = '';
+        $this->parent = '';
         $this->is_popular = '';
     }
 
