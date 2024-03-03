@@ -24,6 +24,7 @@ class ShopComponent extends Component
     public $prodCount;
     public $active_id;
     public $collapce = 0;
+    public $cat_name;
 
     public function render()
     {
@@ -100,6 +101,10 @@ class ShopComponent extends Component
     public function selectCategory($id)
     {
         $this->category_id = $id;
+        $cat = Category::where('id', '=', $this->category_id)->first();
+        $this->cat_name = $cat->name;
+        $this->active_id = $cat->id;
+
     }
 
     public function allCategory()

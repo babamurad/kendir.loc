@@ -76,7 +76,7 @@
                                                     <div class="filter-categories-alt">
                                                         <ul class="filter-categories-alt__list filter-categories-alt__list--level--1" data-collapse-opened-class="filter-categories-alt__item--open">
                                                             @foreach($rcategories as $rcategory)
-                                                                <li class="filter-categories-alt__item" data-collapse-item="">
+                                                                <li class="filter-categories-alt__item" data-collapse-item="" wire:ignore.self>
                                                                     @if($rcategory->children->count()>0)
                                                                         <button class="filter-categories-alt__expander" data-collapse-trigger=""></button>
                                                                     @endif
@@ -100,6 +100,7 @@
                                             </div>
                                         </div>
                                     </div>
+
 
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item="">

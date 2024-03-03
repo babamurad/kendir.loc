@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Category;
+use App\Models\Option;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -27,6 +28,13 @@ class AddProductComponent extends Component
     public $images;
     public $activeTab;
 
+    public $options;
+
+
+    /*
+     *             $table->bigInteger('product_id')->unsigned();
+            $table->bigInteger('option_id')->unsigned();
+     * */
     public function acTab($tabName)
     {
         //dd($tabName);
@@ -133,6 +141,7 @@ class AddProductComponent extends Component
     public function render()
     {
         $categories = Category::OrderBy('name', 'ASC')->get();
+        //$options = Option::with()
         return view('livewire.admin.add-product-component')->layout('components.layouts.admin.app');
     }
 }

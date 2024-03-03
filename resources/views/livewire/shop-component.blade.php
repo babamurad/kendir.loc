@@ -66,7 +66,7 @@
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item="">
                                             <button type="button" class="filter__title" data-collapse-trigger="">
-                                                Categories Alt
+                                                Categories Alt {{ $cat_name }}/{{$active_id}}
                                                 <svg class="filter__arrow" width="12px" height="7px">
                                                     <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
                                                 </svg>
@@ -86,7 +86,7 @@
                                                                     <ul class="filter-categories-alt__list filter-categories-alt__list--level--2">
                                                                         @foreach($rcategory->children as $category)
                                                                         <li class="filter-categories-alt__item" data-collapse-item="">
-                                                                            <a href="{{ route('product.category', ['slug' => $category->slug]) }}" wire:click.prevent="selectCategory('{{ $category->id }}')">{{ $category->name }}</a>
+                                                                            <a href="{{ $active_id=$category->id? 'active-menu':'' }}" wire:click.prevent="selectCategory('{{ $category->id }}')">{{ $category->name }}</a>
                                                                         </li>
                                                                         @endforeach
                                                                     </ul>
