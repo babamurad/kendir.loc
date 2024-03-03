@@ -66,27 +66,38 @@
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item="">
                                             <button type="button" class="filter__title" data-collapse-trigger="">
-                                                Categories Alt {{ $cat_name }}/{{$active_id}}
+                                                Categories Alt {{$active_cat}}== {{ $cat_name }}/{{$active_id}}
                                                 <svg class="filter__arrow" width="12px" height="7px">
                                                     <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
                                                 </svg>
                                             </button>
                                             <div class="filter__body" data-collapse-content="">
                                                 <div class="filter__container">
-                                                    <div class="filter-categories-alt" wire:ignore>
+                                                    <div class="filter-categories-alt">
                                                         <ul class="filter-categories-alt__list filter-categories-alt__list--level--1" data-collapse-opened-class="filter-categories-alt__item--open">
                                                             @foreach($rcategories as $rcategory)
                                                             <li class="filter-categories-alt__item" data-collapse-item="">
                                                                 @if($rcategory->children->count()>0)
-                                                                <button class="filter-categories-alt__expander" data-collapse-trigger="" wire:click="OpenClose"></button>
+                                                                <button  wire:click="OpenClose({{$rcategory->id}})" style="float: right; margin-right: -6px; margin-left: 8px; border: none;">
+                                                                    {{$active_cat}}={{$rcategory->id}}--{{$collapce}}
+                                                                    @if($active_cat==$rcategory->id && $collapce)
+                                                                        <i class="fas fa-minus"></i>
+                                                                    @else
+                                                                        <i class="fas fa-plus"></i>
+                                                                    @endif
+                                                                </button>
                                                                 @endif
                                                                 <a href="{{ route('product.category', ['slug' => $rcategory->slug]) }}">{{ $rcategory->name }}</a>
                                                                 @if($rcategory->children->count()>0)
-                                                                <div class="filter-categories-alt__children" data-collapse-content="">
+                                                                <div class="filter-categories-alt__children" data-collapse-content=""
+                                                                     @if($active_cat==$rcategory->id)
+                                                                         style="{{ $collapce? 'height: auto; opacity: 1; visibility: visible;':''}}">
+                                                                     @endif
                                                                     <ul class="filter-categories-alt__list filter-categories-alt__list--level--2">
                                                                         @foreach($rcategory->children as $category)
-                                                                        <li class="filter-categories-alt__item" data-collapse-item="">
-                                                                            <a href="{{ $active_id=$category->id? 'active-menu':'' }}" wire:click.prevent="selectCategory('{{ $category->id }}')">{{ $category->name }}</a>
+                                                                        <li class="filter-categories-alt__item {{ $active_id==$category->id? 'active-menu':'' }}" wire:click.prevent="selectCategory('{{ $category->id }}')" data-collapse-item="">
+
+                                                                            <a href=""  >{{ $category->name }}</a>
                                                                         </li>
                                                                         @endforeach
                                                                     </ul>

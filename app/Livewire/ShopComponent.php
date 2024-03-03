@@ -22,7 +22,7 @@ class ShopComponent extends Component
 
     public $id, $name, $pqty = 1, $sale_price, $image;
     public $prodCount;
-    public $active_id;
+    public $active_id, $active_cat;
     public $collapce = 0;
     public $cat_name;
 
@@ -55,9 +55,12 @@ class ShopComponent extends Component
             compact('categories', 'latestProducts', 'products', 'newArrivals', 'rcategories'));
     }
 
-    public function OpenClose()
+    public function OpenClose($id)
     {
+        //if ($this->collapce) {$this->collapce = 0;}
         $this->collapce = !$this->collapce;
+        $this->active_cat = $id;
+        //dd($this->collapce);
     }
 
     public function store($product_id, $product_name, $product_price)
