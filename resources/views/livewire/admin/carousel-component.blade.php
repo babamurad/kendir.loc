@@ -62,7 +62,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" wire:click="cancel">Cancel</button>
-                        <button @click="$dispatch('carousel-edit')" @click="$dispatch('carousel-add')" type="button" class="btn btn-primary" wire:click='update'>Save changes</button>
+                        <button @click="$dispatch('carousel-edit')" @click="$dispatch('carousel-add')" type="button" class="btn btn-primary rounded" wire:click='update'>Save changes</button>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                     <div class="modal-body pb-30 pt-30">
                         <div class="col-md-12 text-center">
                             <h4 class="pb-3"> {{ __('Do you want to delete this record?') }} </br>"{{ $del_name }} "</h4>
-                            <button class="btn btn-primary " data-dismiss="modal">Cancel</button>
+                            <button class="btn btn-primary rounded" data-dismiss="modal">Cancel</button>
                             <button @click="$dispatch('carousel-delete')" class="btn btn-danger" wire:click="deleteItem()">Delete</button>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                 <div class="card-body">
                     <div class="row mt-2 mb-0">
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CreateItem">
+                            <button type="button" class="btn btn-primary rounded" data-toggle="modal" data-target="#CreateItem">
                                 {{__('Create Carousel Item')}}
                             </button>
                         </div>

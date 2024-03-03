@@ -16,4 +16,9 @@ class Option extends Model
         return $this->hasMany(Attribute::class, 'attribute_id', 'id');
     }
 
+    public function products()
+    {
+        return $this->hasMany(ProductOption::class, 'id', 'option_id');
+    }
+
 }

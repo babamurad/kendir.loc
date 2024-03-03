@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Livewire\Admin\ProductComponent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,11 +35,12 @@ class Product extends Model
     {
         return $this->hasMany(Review::class, 'product_id');
     }
-
     public function brand()
     {
         return $this->belongsTo(Brand::class, 'id', 'brand_id');
     }
-
-
+    public function options()
+    {
+        return $this->hasMany(ProductComponent::class, 'id', 'product_id');
+    }
 }

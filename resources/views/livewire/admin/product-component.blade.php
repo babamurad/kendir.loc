@@ -18,6 +18,18 @@
             $('#deleteConfirmation').modal('hide');
         })
     </script>
+    <style>
+        .btn-primary {
+            background-color: #179978;
+            border-color: #179978;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background-color: #148367;
+            border-color: #148367;
+            color: #fff;
+        }
+    </style>
 
     <div class="row gutters">
         <div class="col-md-12 col-sm-12">
@@ -29,7 +41,7 @@
                 <div class="card-body">
                     <div class="row mt-2 mb-0">
                         <div class="col-md-4">
-                            <a href="{{ route('admin.create-product') }}" type="button" class="btn btn-primary"> {{__('Create Product')}} </a>
+                            <a href="{{ route('admin.create-product') }}" type="button" class="btn btn-primary rounded"> {{__('Create Product')}} </a>
                         </div>
                         <div class="col-md-4">
                             <div class="d-flex">

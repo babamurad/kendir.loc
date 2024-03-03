@@ -1,29 +1,67 @@
 @section('title', 'Create Product')
 @push('sumcdn')
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+{{--    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>--}}
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+{{--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>--}}
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 @endpush
+
 <div>
     <div class="row gutters">
+        <style>
+            .btn-primary {
+                background-color: #179978;
+                border-color: #179978;
+                color: #fff;
+            }
+            .btn-primary:hover {
+                background-color: #148367;
+                border-color: #148367;
+                color: #fff;
+            }
+        </style>
         <div class="col-md-12 col-sm-12">
             <div class="card">
+                @if ($errors->any())
+                    <div class="alert alert-danger mt-4 alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; ">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>
+{{--                                    {{ $error }}--}}
+                                    <button type="button" class="close {{ request()->is('/') ? '' : ' mt-3' }}" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <h6><i class="icon fas fa-info"></i> {{ $error }}</h6>
+                                </li>
+                            @endforeach
+                        </ul>
+
+                    </div>
+                @endif
                 <div class="card-header">
                     <h4>Create Product</h4>
-                    @include('components.alerts')
+{{--                    @include('components.alerts')--}}
+                    <div class="row">
+                        <div class="col-sm-2 ml-3">
+                            <button type="button" class="btn btn-primary" wire:click="toProductsLis">Back <i class="icon icon-undo2" style="font-size: 14px;"></i></button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-primary" wire:click="subAndBack">Submit&Back <i class="icon icon-undo2" style="font-size: 14px;"></i></button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary float-end" type="submit" wire:click.prevent="addProduct()">Submit&Add<i class="icon icon-plus ml-1" style="font-size: 12px;"></i></button>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <ul class="nav md-tabs">
                         <li class="nav-item waves-effect waves-light">
-                            <a style="color: #2e323c;" class="nav-link {{ $activeTab=='details'? 'active':'' }}" wire:click="acTab('{{ "details" }}')" data-toggle="tab" href="#details" role="tab" aria-selected={{ $activeTab=='details'? "true":"false" }}>Profile</a>
+                            <a style="color: #2e323c;" class="nav-link {{ $activeTab=='details'? 'active':'' }}" wire:click="acTab('{{ "details" }}')" data-toggle="tab" href="#details" role="tab" aria-selected={{ $activeTab=='details'? "true":"false" }}>Product Details</a>
                         </li>
                         <li class="nav-item waves-effect waves-light">
-                            <a style="color: #2e323c;" class="nav-link {{ $activeTab=='imageTab'? 'active':'' }}" wire:click="acTab('{{ "imageTab" }}')" data-toggle="tab" href="#imageTab" role="tab" aria-selected={{ $activeTab=='imageTab'? "true":"false" }}>Follow</a>
+                            <a style="color: #2e323c;" class="nav-link {{ $activeTab=='imageTab'? 'active':'' }}" wire:click="acTab('{{ "imageTab" }}')" data-toggle="tab" href="#imageTab" role="tab" aria-selected={{ $activeTab=='imageTab'? "true":"false" }}>Images</a>
                         </li>
                         <li class="nav-item waves-effect waves-light">
                             <a style="color: #2e323c;" class="nav-link {{ $activeTab=='options'? 'active':'' }}" wire:click="acTab('{{ "options" }}')" data-toggle="tab" href="#options" role="tab" role="tab" aria-selected={{ $activeTab=='options'? "true":"false" }}>Options</a>
@@ -32,7 +70,7 @@
                     <div class="tab-content card">
                         <!-- Panel 1 -->
                         <div class="tab-pane fade in {{ $activeTab=='details'? 'active show':'' }} " id="details" role="tabpanel">
-                            <form >
+
                                 <div class="row mt-2 mb-0">
                                     <div class="col-sm-9">
                                         <div class="row">
@@ -109,27 +147,14 @@
                                                 <input type="number" min="0" class="form-control @error('quantity') is-invalid @enderror" name="quantity" placeholder="Enter product quantity" wire:model="quantity">
                                                 @error('quantity') <p class="text-danger">{{$message}}</p> @enderror
                                             </div>
-                                            <div class="form-group">
-                                                <label for="category_id" class="form-label">Category</label>
-                                                <select class="form-control" name="category_id" wire:model="category_id">
-                                                    <option value="">Select Category</option>
-                                                    @foreach($categories as $category)
-                                                        <option value="{{ $category->id }}">{{ ucfirst($category->name) }}</option>
-                                                    @endforeach
-                                                </select>
-                                                @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
-                                            </div>
+
                                         </div>
-                                        <button class="btn btn-primary float-end" type="submit" wire:click.prevent="addProduct()">Submit<i class="icon icon-plus ml-1" style="font-size: 12px;"></i></button>
-                                        <button type="button" class="btn btn-primary" wire:click="subAndBack">Submit&Back <i class="icon icon-undo2" style="font-size: 14px;"></i></button>
-                                        <button type="button" class="btn btn-primary" wire:click="toProductsLis">Back <i class="icon icon-undo2" style="font-size: 14px;"></i></button>
+
                                     </div>
                                 </div>
 
-                            </form>
                         </div>
-                        <!-- Panel 1 -->
-                        <!-- Panel 2 -->
+
                         <div class="tab-pane fade in {{ $activeTab=='imageTab'? 'active show':'' }}" id="imageTab" role="tabpanel">
                             <div class="col-sm-12">
                                 <div class="form-group">
@@ -162,12 +187,37 @@
                         <!-- Panel 2 -->
                         <!-- Panel 3 -->
                         <div class="tab-pane fade in {{ $activeTab=='options'? 'active show':'' }} " id="options" role="tabpanel">
-                            <div class="card p-3">
-                                <div class="form-group">
-                                    <label for="regular_price" class="form-label">Reqular Price</label>
-                                    <input type="text" class="form-control @error('regular_price') is-invalid @enderror" name="regular_price" placeholder="Enter regular price" wire:model="regular_price">
-                                    @error('regular_price') <p class="text-danger">{{$message}}</p> @enderror
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="regular_price" class="form-label">Reqular Price</label>
+                                            <input type="text" class="form-control @error('regular_price') is-invalid @enderror" name="regular_price" placeholder="Enter regular price" wire:model="regular_price">
+                                            @error('regular_price') <p class="text-danger">{{$message}}</p> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="category_id" class="form-label">Category</label>
+                                            <select class="form-control" name="category_id" wire:model="category_id">
+                                                <option value="">Select Category</option>
+                                                @foreach($categories as $category)
+                                                    @if($category->parent_id==0)
+                                                    <option value="{{ $category->id }}" style="font-weight:500;" disabled>{{ ucfirst($category->name) }}</option>
+                                                        @if($category->children->count()>0)
+                                                            @foreach($category->children as $subcategory)
+                                                                <option value="{{ $subcategory->id }}">-- {{ ucfirst($subcategory->name) }}</option>
+                                                            @endforeach
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                            @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
+                                        </div>
+                                    </div>
+
                                 </div>
+
                             </div>
                         </div>
                         <!-- Panel 3 -->
@@ -176,6 +226,7 @@
                 </div>
 
             </div>
+
         </div>
     </div>
 

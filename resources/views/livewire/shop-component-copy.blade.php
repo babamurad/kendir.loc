@@ -66,7 +66,7 @@
                                             <button type="button" class="filter__title" data-collapse-trigger>
                                                 Categories
                                                 <svg class="filter__arrow" width="12px" height="7px">
-                                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                                 </svg>
                                             </button>
                                             <div class="filter__body" data-collapse-content>
@@ -109,13 +109,13 @@
                                                                 @if($rcategory->children->count()>0)
                                                                 <button class="filter-categories-alt__expander" data-collapse-trigger=""></button>
                                                                 @endif
-                                                                <a href="">{{ $rcategory->name }}</a>
+                                                                <a href="" wire:click="{{ $rcategory->id }}">{{ $rcategory->name }}</a>
                                                                     @if($rcategory->children)
                                                                     <div class="filter-categories-alt__children" data-collapse-content="" style="">
                                                                     <ul class="filter-categories-alt__list filter-categories-alt__list--level--2">
                                                                         @foreach($rcategory->children as $subcategory)
                                                                         <li class="filter-categories-alt__item @if($active_id=='') activecat @endif" data-collapse-item="">
-                                                                            <a href="#" wire:click.prevent="selectCategory('{{ $category->id }}')">{{ $subcategory->name }}</a>
+                                                                            <a href="#" wire:click="{{ $subcategory->id }}" wire:click.prevent="selectCategory('{{ $subcategory->id }}')">{{ $subcategory->name }}</a>
                                                                         </li>
                                                                         @endforeach
                                                                     </ul>

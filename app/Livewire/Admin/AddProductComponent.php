@@ -35,6 +35,17 @@ class AddProductComponent extends Component
      *             $table->bigInteger('product_id')->unsigned();
             $table->bigInteger('option_id')->unsigned();
      * */
+
+    public function render()
+    {
+        $categories = Category::with('cparent')->with('children')->get();
+        //$options = Option::with()
+        return view('livewire.admin.add-product-component', compact('categories'))->layout('components.layouts.admin.app');
+    }
+    public function mount()
+    {
+        $this->activeTab = 'details';
+    }
     public function acTab($tabName)
     {
         //dd($tabName);
@@ -58,7 +69,9 @@ class AddProductComponent extends Component
 
     public function addProduct()
     {
-        $this->validate([
+
+
+        if (!$this->validate([
             'name'              => 'required',
             'slug'              => 'required',
             'short_description' => 'required',
@@ -71,7 +84,11 @@ class AddProductComponent extends Component
             'quantity'          => 'required',
             'image'             => 'required|image|max:1024',
             'category_id'       => 'required',
-        ]);
+        ])){
+            session()->flash('error', 'Product Error!');
+            return;
+        }
+
 
         $product = new Product();
         $product->name = $this->name;
@@ -131,17 +148,7 @@ class AddProductComponent extends Component
 
     public function toProductsLis()
     {
+        //dd('prodlist');
         return redirect()->route('admin.products');
-    }
-
-    public function mount()
-    {
-        $this->activeTab = 'details';
-    }
-    public function render()
-    {
-        $categories = Category::OrderBy('name', 'ASC')->get();
-        //$options = Option::with()
-        return view('livewire.admin.add-product-component')->layout('components.layouts.admin.app');
     }
 }

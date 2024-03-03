@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <div class="row mt-2 mb-0">
                         <div class="col-md-4">
-                            <a href="{{ route('admin.create-post') }}" type="button" class="btn btn-primary">
+                            <a href="{{ route('admin.create-post') }}" type="button" class="btn btn-primary rounded">
                                 {{__('Create Post')}}
                             </a>
                         </div>

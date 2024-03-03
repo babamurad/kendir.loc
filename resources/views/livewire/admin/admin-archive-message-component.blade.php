@@ -7,7 +7,7 @@
                 <div class="modal-body pb-30 pt-30">
                     <div class="col-md-12 text-center">
                         <h4 class="pb-3"> {{ __('Do you want to delete this record?') }} </br>" "</h4>
-                        <button class="btn btn-primary " data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary rounded" data-dismiss="modal">Cancel</button>
                         <button class="btn btn-danger" wire:click="deleteMessage()">Delete</button>
                     </div>
                 </div>

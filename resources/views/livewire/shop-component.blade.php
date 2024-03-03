@@ -87,7 +87,7 @@
                                                                     @endif
                                                                 </button>
                                                                 @endif
-                                                                <a href="{{ route('product.category', ['slug' => $rcategory->slug]) }}">{{ $rcategory->name }}</a>
+                                                                <a href="{{ route('product.category', ['slug' => $rcategory->slug]) }}" wire:click="{{ $rcategory->id }}">{{ $rcategory->name }}</a>
                                                                 @if($rcategory->children->count()>0)
                                                                 <div class="filter-categories-alt__children" data-collapse-content=""
                                                                      @if($active_cat==$rcategory->id)
@@ -97,7 +97,7 @@
                                                                         @foreach($rcategory->children as $category)
                                                                         <li class="filter-categories-alt__item {{ $active_id==$category->id? 'active-menu':'' }}" wire:click.prevent="selectCategory('{{ $category->id }}')" data-collapse-item="">
 
-                                                                            <a href=""  >{{ $category->name }}</a>
+                                                                            <a href="" wire:click="{{ $category->id }}">{{ $category->name }}</a>
                                                                         </li>
                                                                         @endforeach
                                                                     </ul>
