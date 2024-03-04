@@ -83,6 +83,7 @@
                             </ul>
                         </div>
                     </li>
+
                     <li>
                         <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
                             <img class="avatar" src="{{asset('admin/img/user.png')}}" alt="Admin Dashboards" />
@@ -100,19 +101,19 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <div class="icon">
-                                            <i class="icon-account_circle"></i>
-                                        </div>
-                                        <p>Profile</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
+                                    <a href="profile.html">
                                         <div class="icon red">
                                             <i class="icon-cog3"></i>
                                         </div>
                                         <p>Settings</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="filters.html">
+                                        <div class="icon yellow">
+                                            <i class="icon-schedule"></i>
+                                        </div>
+                                        <p>Activity</p>
                                     </a>
                                 </li>
                             </ul>

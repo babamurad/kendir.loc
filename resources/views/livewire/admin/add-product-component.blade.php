@@ -1,11 +1,5 @@
 @section('title', 'Create Product')
 @push('sumcdn')
-{{--    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>--}}
-{{--    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>--}}
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-{{--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>--}}
-
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 @endpush
@@ -24,6 +18,7 @@
                 color: #fff;
             }
         </style>
+        @include('components.partials.options.create-attr')
         <div class="col-md-12 col-sm-12">
             <div class="card">
                 @if ($errors->any())
@@ -187,23 +182,17 @@
                         <!-- Panel 2 -->
                         <!-- Panel 3 -->
                         <div class="tab-pane fade in {{ $activeTab=='options'? 'active show':'' }} " id="options" role="tabpanel">
-                            <div class="">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label for="regular_price" class="form-label">Reqular Price</label>
-                                            <input type="text" class="form-control @error('regular_price') is-invalid @enderror" name="regular_price" placeholder="Enter regular price" wire:model="regular_price">
-                                            @error('regular_price') <p class="text-danger">{{$message}}</p> @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label for="category_id" class="form-label">Category</label>
-                                            <select class="form-control" name="category_id" wire:model="category_id">
+
+                            <div class="row mt-2 mb-0">
+                                <div class="col-sm-6">
+                                    <div class="form-group row">
+                                        <label for="category_id" class="col-sm-2 col-form-label">Category</label>
+                                        <div class="col-sm-8">
+                                            <select name="categories" class="form-control" name="category_id" wire:model.live="category_id">
                                                 <option value="">Select Category</option>
                                                 @foreach($categories as $category)
                                                     @if($category->parent_id==0)
-                                                    <option value="{{ $category->id }}" style="font-weight:500;" disabled>{{ ucfirst($category->name) }}</option>
+                                                        <option value="{{ $category->id }}" style="font-weight:500;" disabled>{{ ucfirst($category->name) }}</option>
                                                         @if($category->children->count()>0)
                                                             @foreach($category->children as $subcategory)
                                                                 <option value="{{ $subcategory->id }}">-- {{ ucfirst($subcategory->name) }}</option>
@@ -214,11 +203,57 @@
                                             </select>
                                             @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
+                                        <div class="col-sm-2">
+                                            <button name="add_attr" class="form-control btn-sm btn btn-primary rounded"
+                                                    data-toggle="modal" data-target="#CreateOption" {{ $category_id? '':'disabled' }}>
+                                                <i class="icon-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                @if($category_id)
+                                    <table class="table table-hover m-0">
+                                        <thead>
+                                        <tr>
+                                            <th>{{__('id')}}</th>
+                                            <th>{{__('Name')}}</th>
+                                            <th>{{__('Value')}}</th>
+                                            <th>{{__('Action')}}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach( $opts as $option )
+                                            <tr>
+                                                <td>{{$option->attribute_id}}</td>
+                                                <td>{{$option->name}}</td>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="{{__('Value')}}">
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-success btn-sm rounded"data-toggle="modal" data-target="#EditBrand"
+                                                            wire:click="editBrand({{ $option->attribute_id }})"> <i class="icon icon-pencil3"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger btn-sm rounded"  data-toggle="modal" data-target="#deleteConfirmation"
+                                                            wire:click="deleteId('{{$option->attribute_id}}')"> <i class="icon icon-bin"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+
+                                        @endforeach
+
+                                        </tbody>
+                                    </table>
+                                @else
+                                    <div class="col-sm-4">
+                                        <p >Please select a category</p>
                                     </div>
 
-                                </div>
-
+                                @endif
                             </div>
+
                         </div>
                         <!-- Panel 3 -->
                     </div>

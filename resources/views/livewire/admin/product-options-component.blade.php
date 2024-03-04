@@ -1,7 +1,7 @@
-@section('title', 'Brands')
+@section('title', 'Options')
 <div>
     <script>
-        window.addEventListener('closeDeleteBrandModal', event=> {
+        window.addEventListener('closeDeleteOptionsModal', event=> {
             $('#deleteConfirmation').modal('hide');
         })
         window.addEventListener('closeEditItemModal', event=> {
@@ -19,12 +19,14 @@
                     <div class="col-md-12 text-center">
                         <h4 class="pb-3"> {{ __('Do you want to delete this record?') }} </br>"{{ $del_name }} "</h4>
                         <button class="btn btn-primary rounded" data-dismiss="modal">Cancel</button>
-                        <button class="btn btn-danger" wire:click="deleteBrand()">Delete</button>
+                        <button class="btn btn-danger" wire:click="destroy()">Delete</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    @include('components.partials.options.create-attr')
 
     <div class="row gutters">
         <div class="col-md-12 col-sm-12">
@@ -35,68 +37,71 @@
                 </div>
                 <div class="card-body">
                     <div class="row mt-2 mb-0">
-                        <div class="col-md-4">
-                            <button type="button" class="btn btn-primary rounded" data-toggle="modal" data-target="#CreateBrand">
-                                {{__('Create Option')}}
-                            </button>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="d-flex">
-                                {{--                                <label>Search:</label>--}}
-                                {{--                                <input type="search" class="form-control form-control-sm ml-1" placeholder="" aria-controls="basicExample" wire:model.live='search'>--}}
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="d-flex">
-                                {{--                                <label>Show</label>--}}
-                                {{--                                <select class="form-control form-control-sm mx-2" wire:model.live='perPage' style="width: 20%;">--}}
-                                {{--                                    <option value="5">5</option>--}}
-                                {{--                                    <option value="10">10</option>--}}
-                                {{--                                    <option value="20">20</option>--}}
-                                {{--                                </select>--}}
-                                {{--                                <label>entries</label>--}}
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <label for="categories" class="col-sm-2 col-form-label">Category</label>
+                                <div class="col-sm-8">
+                                    <select name="categories" class="form-control" name="category_id" wire:model.live="category_id">
+                                        <option value="">Select Category</option>
+                                        @foreach($categories as $category)
+                                            @if($category->parent_id==0)
+                                                <option value="{{ $category->id }}" style="font-weight:500;" disabled>{{ ucfirst($category->name) }}</option>
+                                                @if($category->children->count()>0)
+                                                    @foreach($category->children as $subcategory)
+                                                        <option value="{{ $subcategory->id }}">-- {{ ucfirst($subcategory->name) }}</option>
+                                                    @endforeach
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
+                                </div>
+                                <div class="col-sm-2">
+                                    <button name="add_attr" class="form-control btn-sm btn btn-primary rounded"
+                                            data-toggle="modal" data-target="#CreateOption" {{ $category_id? '':'disabled' }}>
+                                        <i class="icon-plus"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
                     </div>
-{{--                    <table class="table table-hover m-0">--}}
-{{--                        <thead>--}}
-{{--                        <tr>--}}
-{{--                            <th>#</th>--}}
-{{--                            <th>{{__('Image')}}</th>--}}
-{{--                            <th>{{__('Name')}}</th>--}}
-{{--                            <th>{{__('Code')}}</th>--}}
-{{--                            <th>{{__('Action')}}</th>--}}
-{{--                        </tr>--}}
-{{--                        </thead>--}}
-{{--                        <tbody>--}}
-{{--                        @php--}}
-{{--                            if ($brands){--}}
-{{--                                $i = ($brands->currentPage()-1)*$brands->perPage();--}}
-{{--                            }--}}
-{{--                        @endphp--}}
-{{--                        @forelse ( $brands as $brand )--}}
-{{--                            <tr>--}}
-{{--                                <td wire:key="{{$brand->id}}">{{ ++$i }}</td>--}}
-{{--                                <td><img class="rounded" src="{{ asset('images/brands').'/'.$brand->image }}" alt="" width="60"></td>--}}
-{{--                                <td>{{$brand->name}}</td>--}}
-{{--                                <td>{{$brand->code}}</td>--}}
-{{--                                <td>--}}
-{{--                                    <button type="button" class="btn btn-success btn-sm rounded"data-toggle="modal" data-target="#EditBrand"--}}
-{{--                                            wire:click="editBrand({{ $brand->id }})"> <i class="icon icon-pencil3"></i>--}}
-{{--                                    </button>--}}
-{{--                                    <button type="button" class="btn btn-danger btn-sm rounded"  data-toggle="modal" data-target="#deleteConfirmation"--}}
-{{--                                            wire:click="deleteId({{ $brand->id }})"> <i class="icon icon-bin"></i>--}}
-{{--                                    </button>--}}
-{{--                                </td>--}}
-{{--                            </tr>--}}
-{{--                        @empty--}}
-{{--                            <p>Brands table is empty.</p>--}}
-{{--                        @endforelse--}}
-{{--                        </tbody>--}}
-{{--                    </table>--}}
-{{--                    {{ $brands->links() }}--}}
+                    @if($options)
+                    <table class="table table-hover m-0">
+                        <thead>
+                        <tr>
+                            <th>{{__('id')}}</th>
+                            <th>{{__('Name')}}</th>
+                            <th>{{__('Value')}}</th>
+                            <th>{{__('Action')}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @forelse ( $options as $option )
+                            <tr>
+                                <td wire:key="{{$option->id}}">{{$option->attribute_id}}</td>
+                                <td>{{$option->name}}</td>
+                                <td>
+                                    <input type="text" id="disabledInput" class="form-control" disabled placeholder="On the product page">
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-sm rounded"data-toggle="modal" data-target="#EditBrand"
+                                            wire:click="editBrand({{ $option->id }})"> <i class="icon icon-pencil3"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-sm rounded"  data-toggle="modal" data-target="#deleteConfirmation"
+                                            wire:click="deleteId('{{$option->attribute_id}}')"> <i class="icon icon-bin"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        @empty
+                            <p>Options table is empty.</p>
+                        @endforelse
+
+                        </tbody>
+                    </table>
+
+                    @endif
+
 
                 </div>
             </div>

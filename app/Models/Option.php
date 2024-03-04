@@ -13,12 +13,13 @@ class Option extends Model
 
     public function attributes()
     {
-        return $this->hasMany(Attribute::class, 'attribute_id', 'id');
+        return $this->hasMany(Attribute::class, 'id', 'attribute_id');
     }
 
     public function products()
     {
         return $this->hasMany(ProductOption::class, 'id', 'option_id');
     }
+
 
 }

@@ -2,10 +2,12 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\Attribute;
 use App\Models\Category;
 use App\Models\Option;
 use App\Models\Product;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -29,6 +31,7 @@ class AddProductComponent extends Component
     public $activeTab;
 
     public $options;
+    public $attr_name;
 
 
     /*
@@ -39,12 +42,29 @@ class AddProductComponent extends Component
     public function render()
     {
         $categories = Category::with('cparent')->with('children')->get();
-        //$options = Option::with()
-        return view('livewire.admin.add-product-component', compact('categories'))->layout('components.layouts.admin.app');
+        $attributes = Attribute::where('category_id', '=', 24)->get();
+        if ($this->category_id) {
+            $opts = DB::select('SELECT o.attribute_id, a.name, a.category_id FROM options o, attributes a WHERE o.attribute_id=a.id AND a.category_id='
+                . $this->category_id );
+            $opts = Option::hydrate($opts);
+            //dd($options);
+        } else {
+            $opts = '';
+            //dd($options);
+        }
+        //dd($this->category_id);
+        //dd($options);
+        //$options = Option::all();
+
+        return view('livewire.admin.add-product-component',[
+                 'opts' => $opts,
+                 'categories' => $categories,
+                 'attributes' => $attributes,
+        ])->layout('components.layouts.admin.app');
     }
     public function mount()
     {
-        $this->activeTab = 'details';
+        $this->activeTab = 'options';
     }
     public function acTab($tabName)
     {
@@ -69,9 +89,7 @@ class AddProductComponent extends Component
 
     public function addProduct()
     {
-
-
-        if (!$this->validate([
+        $this->validate([
             'name'              => 'required',
             'slug'              => 'required',
             'short_description' => 'required',
@@ -84,11 +102,7 @@ class AddProductComponent extends Component
             'quantity'          => 'required',
             'image'             => 'required|image|max:1024',
             'category_id'       => 'required',
-        ])){
-            session()->flash('error', 'Product Error!');
-            return;
-        }
-
+        ]);
 
         $product = new Product();
         $product->name = $this->name;
@@ -125,6 +139,7 @@ class AddProductComponent extends Component
         $product->brand_id = 1;
         $product->manufacturer_id = 1;
         $product->save();
+
         $this->resetInputFileds();
         session()->flash('success', 'Product has been added!');
     }
@@ -144,6 +159,22 @@ class AddProductComponent extends Component
         $this->image = '';
         $this->images = '';
         $this->category_id = '';
+    }
+
+    public function createAttr()
+    {
+        //dd($this->attr_name);
+        $attr = new Attribute();
+        $attr->name = $this->attr_name;
+        $attr->category_id = $this->category_id;
+        $attr->save();
+        $option = new Option();
+        $option->attribute_id = $attr->id;
+        $option->name = $attr->name;
+        $option->save();
+        $this->attr_name = '';
+        $this->dispatch('closeCreateOptionModal');
+        session()->flash('success', 'The attribute has been added.');
     }
 
     public function toProductsLis()

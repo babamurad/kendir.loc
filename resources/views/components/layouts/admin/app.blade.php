@@ -108,14 +108,14 @@
 										</span>
                                         <span class="nav-title">Contacts</span>
                                         @if(\App\Models\Contact::where('arhiw', '=', 0)->count()>0)
-                                        <span class="count-label red contact-label">{{ \App\Models\Contact::where('arhiw', '=', 0)->count() }}</span>
+                                        <span class="count-label bg-danger contact-label">{{ \App\Models\Contact::where('arhiw', '=', 0)->count() }}</span>
                                         @endif
                                     </a>
                                     <ul aria-expanded="true" class="collapse {{ request()->is('admin/contacts') || request()->is('admin/archive-messages') ? 'in' : '' }}" style="">
                                         <li>
                                             <a class="{{ request()->is('admin/contacts') ? 'current-page' : '' }}" href="{{route('admin.contacts')}}" wire:navigate>Messages
                                                 @if(\App\Models\Contact::where('arhiw', '=', 0)->count()>0)
-                                                <span class="count-label red contact-label">{{ \App\Models\Contact::where('arhiw', '=', 0)->count() }}</span>
+                                                <span class="count-label bg-danger contact-label">{{ \App\Models\Contact::where('arhiw', '=', 0)->count() }}</span>
                                                 @endif
                                             </a>
                                         </li>

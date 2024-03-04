@@ -28,6 +28,12 @@ ul li a .active{
     color: #fff;
     line-height: 16px;
 }
-.red{
-    background: #ef2f1a;
+/*.red{*/
+/*    background: #ef2f1a;*/
+/*}*/
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #8dcebc;
+    border-color: #8dcebc;
 }
