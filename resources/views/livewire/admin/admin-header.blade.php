@@ -101,7 +101,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="profile.html">
+                                    <a href="#">
                                         <div class="icon red">
                                             <i class="icon-cog3"></i>
                                         </div>
@@ -109,7 +109,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="filters.html">
+                                    <a href="#">
                                         <div class="icon yellow">
                                             <i class="icon-schedule"></i>
                                         </div>

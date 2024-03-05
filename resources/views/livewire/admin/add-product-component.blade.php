@@ -3,8 +3,53 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 @endpush
-
 <div>
+    @include('components.partials.options.create-attr')
+    @include('components.partials.options.edit-attr')
+    <header class="main-heading">
+        @if ($errors->any())
+            <div class="alert alert-danger mt-4 alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; ">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>
+                            {{--                                    {{ $error }}--}}
+                            <button type="button" class="close {{ request()->is('/') ? '' : ' mt-3' }}" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h6><i class="icon fas fa-info"></i> {{ $error }}</h6>
+                        </li>
+                    @endforeach
+                </ul>
+
+            </div>
+        @endif
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-icon">
+                        <a href="{{ route('admin.products') }}"><i class="icon-undo2"></i></a>
+                    </div>
+                    <div class="page-title">
+                        <h4>Create Product</h4>
+                        <h6 class="sub-heading">Welcome to Kendir Admin Template</h6>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="row">
+                            <div class="col-sm-4">
+                                <button type="button" class="btn btn-primary float-end rounded" wire:click="subAndBack">Submit&Back
+                                    <i class="icon icon-undo2" style="font-size: 12px;"></i>
+                                </button>
+                            </div>
+                            <div class="col-sm-4">
+                                <button class="btn btn-primary float-end rounded" type="submit" wire:click.prevent="addProduct()">Submit&Add
+                                    <i class="icon icon-plus" style="font-size: 12px;"></i>
+                                </button>
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
     <div class="row gutters">
         <style>
             .btn-primary {
@@ -18,37 +63,12 @@
                 color: #fff;
             }
         </style>
-        @include('components.partials.options.create-attr')
+
         <div class="col-md-12 col-sm-12">
             <div class="card">
-                @if ($errors->any())
-                    <div class="alert alert-danger mt-4 alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; ">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>
-{{--                                    {{ $error }}--}}
-                                    <button type="button" class="close {{ request()->is('/') ? '' : ' mt-3' }}" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <h6><i class="icon fas fa-info"></i> {{ $error }}</h6>
-                                </li>
-                            @endforeach
-                        </ul>
 
-                    </div>
-                @endif
                 <div class="card-header">
-                    <h4>Create Product</h4>
-{{--                    @include('components.alerts')--}}
-                    <div class="row">
-                        <div class="col-sm-2 ml-3">
-                            <button type="button" class="btn btn-primary" wire:click="toProductsLis">Back <i class="icon icon-undo2" style="font-size: 14px;"></i></button>
-                        </div>
-                        <div class="col-sm-2">
-                            <button type="button" class="btn btn-primary" wire:click="subAndBack">Submit&Back <i class="icon icon-undo2" style="font-size: 14px;"></i></button>
-                        </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary float-end" type="submit" wire:click.prevent="addProduct()">Submit&Add<i class="icon icon-plus ml-1" style="font-size: 12px;"></i></button>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="card-body">
                     <ul class="nav md-tabs">
@@ -167,7 +187,7 @@
                                 <div class="form-group">
                                     <div class="custom-file">
                                         <input type="file" id="images" class="custom-file-input @error('images') is-invalid @enderror" wire:model="images" multiple>
-                                        <label class="custom-file-label" for="images" aria-describedby="inputGroupFileAddon02">Product Image Galley</label>
+                                        <label class="custom-file-label" for="images" aria-describedby="inputGroupFileAddon02">Product Image Gallery</label>
                                         @if($images)
                                             @foreach($images as $image)
                                                 <img class="mt-2 mb-5 rounded" src="{{ $image->temporaryUrl() }}" alt="Product Image Galley" style="width: 120px; max-height: 200px;">
@@ -184,10 +204,10 @@
                         <div class="tab-pane fade in {{ $activeTab=='options'? 'active show':'' }} " id="options" role="tabpanel">
 
                             <div class="row mt-2 mb-0">
-                                <div class="col-sm-6">
+                                <div class="col-sm-7">
                                     <div class="form-group row">
                                         <label for="category_id" class="col-sm-2 col-form-label">Category</label>
-                                        <div class="col-sm-8">
+                                        <div class="col-sm-7">
                                             <select name="categories" class="form-control" name="category_id" wire:model.live="category_id">
                                                 <option value="">Select Category</option>
                                                 @foreach($categories as $category)
@@ -203,11 +223,23 @@
                                             </select>
                                             @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
-                                        <div class="col-sm-2">
-                                            <button name="add_attr" class="form-control btn-sm btn btn-primary rounded"
-                                                    data-toggle="modal" data-target="#CreateOption" {{ $category_id? '':'disabled' }}>
-                                                <i class="icon-plus"></i>
-                                            </button>
+                                        <div class="col-sm-3">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <button name="add_attr" class="form-control btn-sm btn btn-primary rounded"
+                                                            data-toggle="modal" data-target="#CreateOption" {{ $category_id? '':'disabled' }}>
+                                                        <i class="icon-plus"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <button name="add_attr" class="form-control btn-sm btn btn-primary rounded" wire:click="saveOpt">
+                                                        <i class="icon-floppy-disk"></i>
+                                                    </button>
+                                                </div>
+
+
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -217,26 +249,26 @@
                                     <table class="table table-hover m-0">
                                         <thead>
                                         <tr>
-                                            <th>{{__('id')}}</th>
+                                            <th>#</th>
+                                            <th>{{__('Attr_id')}}</th>
                                             <th>{{__('Name')}}</th>
                                             <th>{{__('Value')}}</th>
                                             <th>{{__('Action')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach( $opts as $option )
+                                        @foreach( $at_options as $option )
                                             <tr>
-                                                <td>{{$option->attribute_id}}</td>
-                                                <td>{{$option->name}}</td>
+                                                <td>{{ $option->id }}</td>
+                                                <td>{{ $option->attribute_id }}</td>
+                                                <td>{{ $option->name }}</td>
+                                                <td>{{ $option->value }}</td>
                                                 <td>
-                                                    <input type="text" class="form-control" placeholder="{{__('Value')}}">
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-success btn-sm rounded"data-toggle="modal" data-target="#EditBrand"
-                                                            wire:click="editBrand({{ $option->attribute_id }})"> <i class="icon icon-pencil3"></i>
+                                                    <button type="button" class="btn btn-success btn-sm rounded" data-toggle="modal" data-target="#EditOption"
+                                                            wire:click="editOption({{ $option->id }})"> <i class="icon icon-pencil3"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-danger btn-sm rounded"  data-toggle="modal" data-target="#deleteConfirmation"
-                                                            wire:click="deleteId('{{$option->attribute_id}}')"> <i class="icon icon-bin"></i>
+                                                    <button type="button" class="btn btn-danger btn-sm rounded" data-toggle="modal" data-target="#deleteConfirmation"
+                                                            wire:click="deleteId('{{ $option->id }}')"> <i class="icon icon-bin"></i>
                                                     </button>
                                                 </td>
                                             </tr>
@@ -248,7 +280,7 @@
                                     </table>
                                 @else
                                     <div class="col-sm-4">
-                                        <p >Please select a category</p>
+                                        <p>Please select a category</p>
                                     </div>
 
                                 @endif

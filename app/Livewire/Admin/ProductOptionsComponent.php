@@ -14,50 +14,56 @@ class ProductOptionsComponent extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $del_name = '', $del_id;
+    public $edit_name = '', $edit_id;
     public $attr_name;
     public $category_id;
     public function render()
     {
         $categories = Category::with('cparent')->with('children')->get();
-        $attributes = Attribute::with('category')->where('category_id', '=', $this->category_id)->paginate(5);
-        if ($this->category_id) {
-            $options = DB::select('SELECT o.attribute_id, a.name, a.category_id FROM options o, attributes a WHERE o.attribute_id=a.id AND a.category_id='
-                . $this->category_id );
-            $options = Option::hydrate($options);
-        } else {
-            $options = '';
-        }
+        $attributes = Attribute::where('category_id', '=', $this->category_id)->get();
+
         return view('livewire.admin.product-options-component',
-            compact('categories', 'options', 'attributes'))
+            compact('categories', 'attributes'))
             ->layout('components.layouts.admin.app');
     }
 
     public function createAttr()
     {
-        //dd($this->attr_name);
         $attr = new Attribute();
         $attr->name = $this->attr_name;
         $attr->category_id = $this->category_id;
         $attr->save();
-        $option = new Option();
-        $option->attribute_id = $attr->id;
-        $option->name = $attr->name;
-        $option->save();
-        $this->attr_name = '';
+
         $this->dispatch('closeCreateOptionModal');
         session()->flash('success', 'The attribute has been added.');
     }
 
+    public function edit($id)
+    {
+        $edit = Option::findOrFail($id)->first();
+        $this->edit_id = $edit->id;
+        $this->edit_name = $edit->name;
+    }
+
+    public function update()
+    {
+        $opt = Option::findOrFail($this->edit_id)->first();
+        $opt->name = $this->edit_name;
+        $opt->update();
+        $this->dispatch('closeEditOptionModal');
+        session()->flash('success', 'The attribute has been updated.');
+    }
+
     public function deleteId($id)
     {
-        $del_op = Option::where('attribute_id', '=', $id)->first();
+        $del_op = Attribute::findOrFail($id)->first();
         $this->del_name = $del_op->name;
         $this->del_id = $del_op->id;
     }
 
     public function destroy()
     {
-        $del_op = Option::find($this->del_id);
+        $del_op = Attribute::find($this->del_id);
         $del_op->delete();
         $this->dispatch('closeDeleteOptionsModal');
         session()->flash('error', 'Option has been deleted!');

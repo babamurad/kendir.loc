@@ -31,7 +31,14 @@ class AddProductComponent extends Component
     public $activeTab;
 
     public $options;
-    public $attr_name;
+    public $attr_name, $opt_id, $opt_name, $opt_value;
+    public $at_options;
+    public $opts = [];
+    protected $messages = [
+        'required' => 'заполните поле :attribute',
+        'email'    => ':attribute должен быть корректным email адресом',
+        'image'    => ':attribute должно быть изображение',
+    ];
 
 
     /*
@@ -42,29 +49,45 @@ class AddProductComponent extends Component
     public function render()
     {
         $categories = Category::with('cparent')->with('children')->get();
-        $attributes = Attribute::where('category_id', '=', 24)->get();
-        if ($this->category_id) {
-            $opts = DB::select('SELECT o.attribute_id, a.name, a.category_id FROM options o, attributes a WHERE o.attribute_id=a.id AND a.category_id='
-                . $this->category_id );
-            $opts = Option::hydrate($opts);
-            //dd($options);
-        } else {
-            $opts = '';
-            //dd($options);
-        }
-        //dd($this->category_id);
-        //dd($options);
-        //$options = Option::all();
+        $attributes = Attribute::where('category_id', '=', $this->category_id)->get();
+
+//        if ($this->category_id){
+//            DB::select('call procAttr_to_Options("'.$this->category_id.'")');
+//            $this->at_options = Option::all();
+//        } else {
+//            $this->at_options = '';
+//        }
+
+        //dd($this->at_options);
 
         return view('livewire.admin.add-product-component',[
-                 'opts' => $opts,
                  'categories' => $categories,
                  'attributes' => $attributes,
+//                 'at_options' => $at_options,
+
         ])->layout('components.layouts.admin.app');
     }
-    public function mount()
+    public function editOption($id)
     {
-        $this->activeTab = 'options';
+        $option = Option::findOrFail($id);
+        $this->opt_id = $option->id;
+        $this->opt_name = $option->name;
+    }
+
+    public function update()
+    {
+        $option = Option::findOrFail($this->opt_id);
+        //dd($this->opt_value);
+        //$option->name = $this->opt_name;
+        $option->value = $this->opt_value;
+        $option->update();
+        dd($option);
+        $this->dispatch('closeEditOptionModal');
+    }
+
+    public function saveOpt()
+    {
+        dd($this->at_options);
     }
     public function acTab($tabName)
     {
@@ -89,6 +112,7 @@ class AddProductComponent extends Component
 
     public function addProduct()
     {
+        //dd($this->opts);
         $this->validate([
             'name'              => 'required',
             'slug'              => 'required',
@@ -140,7 +164,7 @@ class AddProductComponent extends Component
         $product->manufacturer_id = 1;
         $product->save();
 
-        $this->resetInputFileds();
+        //$this->resetInputFileds();
         session()->flash('success', 'Product has been added!');
     }
 

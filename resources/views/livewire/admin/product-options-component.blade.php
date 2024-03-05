@@ -27,6 +27,7 @@
     </div>
 
     @include('components.partials.options.create-attr')
+    @include('components.partials.options.edit-attr')
 
     <div class="row gutters">
         <div class="col-md-12 col-sm-12">
@@ -66,7 +67,7 @@
                         </div>
 
                     </div>
-                    @if($options)
+                    @if($attributes)
                     <table class="table table-hover m-0">
                         <thead>
                         <tr>
@@ -77,19 +78,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @forelse ( $options as $option )
+                        @forelse ( $attributes as $attr )
                             <tr>
-                                <td wire:key="{{$option->id}}">{{$option->attribute_id}}</td>
-                                <td>{{$option->name}}</td>
+                                <td wire:key="{{$attr->id}}">{{$attr->id}}</td>
+                                <td>{{$attr->name}}</td>
                                 <td>
                                     <input type="text" id="disabledInput" class="form-control" disabled placeholder="On the product page">
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-success btn-sm rounded"data-toggle="modal" data-target="#EditBrand"
-                                            wire:click="editBrand({{ $option->id }})"> <i class="icon icon-pencil3"></i>
+                                    <button type="button" class="btn btn-success btn-sm rounded" data-toggle="modal" data-target="#EditOption"
+                                            wire:click="edit({{ $attr->id }})"> <i class="icon icon-pencil3"></i>
                                     </button>
                                     <button type="button" class="btn btn-danger btn-sm rounded"  data-toggle="modal" data-target="#deleteConfirmation"
-                                            wire:click="deleteId('{{$option->attribute_id}}')"> <i class="icon icon-bin"></i>
+                                            wire:click="deleteId('{{$attr->id}}')"> <i class="icon icon-bin"></i>
                                     </button>
                                 </td>
                             </tr>
