@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Product;
+use App\Models\Specification;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 
@@ -13,6 +14,7 @@ class DetailsComponent extends Component
     public function render()
     {
         $product = Product::where('slug', $this->slug)->first();
+        //dd($product->specification);
         return view('livewire.details-component', compact('product'))->layout('components.layouts.app');
     }
     public function mount($slug)

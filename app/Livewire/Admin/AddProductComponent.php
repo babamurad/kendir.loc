@@ -3,9 +3,12 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Attribute;
+use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Manufacturer;
 use App\Models\Option;
 use App\Models\Product;
+use App\Models\Specification;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -29,28 +32,22 @@ class AddProductComponent extends Component
     public $category_id;
     public $images;
     public $activeTab;
-
-    public $options;
-    public $attr_name, $opt_id, $opt_name, $opt_value;
-    public $at_options;
-    public $opts = [];
     protected $messages = [
         'required' => 'заполните поле :attribute',
         'email'    => ':attribute должен быть корректным email адресом',
         'image'    => ':attribute должно быть изображение',
     ];
+    public $brand_id, $manuf_id;
 
+    public $model, $dl, $dw, $dh, $unit, $weight, $status, $product_id;
 
     /*
-     *             $table->bigInteger('product_id')->unsigned();
+     *      $table->bigInteger('product_id')->unsigned();
             $table->bigInteger('option_id')->unsigned();
      * */
 
     public function render()
     {
-        $categories = Category::with('cparent')->with('children')->get();
-        $attributes = Attribute::where('category_id', '=', $this->category_id)->get();
-
 //        if ($this->category_id){
 //            DB::select('call procAttr_to_Options("'.$this->category_id.'")');
 //            $this->at_options = Option::all();
@@ -58,14 +55,18 @@ class AddProductComponent extends Component
 //            $this->at_options = '';
 //        }
 
-        //dd($this->at_options);
+        $categories = Category::with('cparent')->with('children')->get();
+        $attributes = Attribute::where('category_id', '=', $this->category_id)->get();
+        $brands = Brand::all();
+        $manufacturers = Manufacturer::all();
 
-        return view('livewire.admin.add-product-component',[
-                 'categories' => $categories,
-                 'attributes' => $attributes,
-//                 'at_options' => $at_options,
+        return view('livewire.admin.add-product-component',compact('categories','attributes', 'brands', 'manufacturers'))
+            ->layout('components.layouts.admin.app');
+    }
 
-        ])->layout('components.layouts.admin.app');
+    public function mount()
+    {
+        $this->activeTab = 'details';
     }
     public function editOption($id)
     {
@@ -91,7 +92,6 @@ class AddProductComponent extends Component
     }
     public function acTab($tabName)
     {
-        //dd($tabName);
         $this->activeTab = $tabName;
     }
     public function generateSlug()
@@ -112,7 +112,6 @@ class AddProductComponent extends Component
 
     public function addProduct()
     {
-        //dd($this->opts);
         $this->validate([
             'name'              => 'required',
             'slug'              => 'required',
@@ -160,11 +159,22 @@ class AddProductComponent extends Component
         }
 
         $product->category_id = $this->category_id;
-        $product->brand_id = 1;
-        $product->manufacturer_id = 1;
+        $product->brand_id = $this->brand_id;
+        $product->manufacturer_id = $this->manuf_id;
         $product->save();
 
-        //$this->resetInputFileds();
+        $sprec = new Specification();
+        $sprec->model = $this->model;
+        $sprec->dl = $this->dl;
+        $sprec->dw = $this->dw;
+        $sprec->dh = $this->dh;
+        $sprec->unit = $this->unit;
+        $sprec->weight = $this->weight;
+        $sprec->product_id = $product->id;
+        $sprec->status = $this->status;
+        $sprec->save();
+
+        $this->resetInputFileds();
         session()->flash('success', 'Product has been added!');
     }
 
@@ -183,6 +193,16 @@ class AddProductComponent extends Component
         $this->image = '';
         $this->images = '';
         $this->category_id = '';
+        $this->brand_id = '';
+        $this->manuf_id = '';
+
+        $this->model = '';
+        $this->dl = '';
+        $this->dw = '';
+        $this->dh = '';
+        $this->unit = '';
+        $this->weight = '';
+        $this->status = 1;
     }
 
     public function createAttr()

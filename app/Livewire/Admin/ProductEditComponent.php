@@ -2,7 +2,10 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\Brand;
+use App\Models\Manufacturer;
 use App\Models\Product;
+use App\Models\Specification;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -24,6 +27,15 @@ class ProductEditComponent extends Component
     public $image, $newimage;
     public $category_id;
     public $images, $newimages;
+    public $activeTab;
+    protected $messages = [
+        'required' => 'заполните поле :attribute',
+        'email'    => ':attribute должен быть корректным email адресом',
+        'image'    => ':attribute должно быть изображение',
+    ];
+    public $brand_id, $manuf_id;
+
+    public $model, $dl, $dw, $dh, $unit, $weight, $status;
     public function toProductsLis()
     {
         return redirect()->route('admin.products');
@@ -37,6 +49,10 @@ class ProductEditComponent extends Component
     public function generateSlug()
     {
         $this->slug = Str::slug($this->name);
+    }
+    public function acTab($tabName)
+    {
+        $this->activeTab = $tabName;
     }
     public function updateProduct()
     {
@@ -103,12 +119,28 @@ class ProductEditComponent extends Component
             $product->images = $imagesName;
         }
         $product->category_id = $this->category_id;
-        $product->save();
+        $product->brand_id = $this->brand_id;
+        $product->manufacturer_id = $this->manuf_id;
+        $product->update();
+
+        $spec = Specification::where('product_id', '=', $this->product_id)->first();
+        $spec->model = $this->model;
+        $spec->dl = $this->dl;
+        $spec->dw = $this->dw;
+        $spec->dl = $this->dl;
+        $spec->dh = $this->dh;
+        $spec->unit = $this->unit;
+        $spec->weight = $this->weight;
+        $spec->status = $this->status;
+        $spec->update();
+        redirect()->route('admin.products');
         session()->flash('success', 'Product has been updated!');
 
     }
     public function mount($product_id)
     {
+        $this->activeTab = 'details';
+
         $product = Product::findOrFail($product_id);
         $this->product_id = $product->id;
         $this->name = $product->name;
@@ -124,10 +156,26 @@ class ProductEditComponent extends Component
         $this->image = $product->image;
         $this->images = explode(',', $product->images);
         $this->category_id = $product->category_id;
+        $this->brand_id = $product->brand_id;
+        $this->manuf_id = $product->manufacturer_id;
+
+        $spec = Specification::where('product_id', '=', $product_id)->first();
+        $this->model = $spec->model;
+        $this->dl = $spec->dl;
+        $this->dw = $spec->dw;
+        $this->dl = $spec->dl;
+        $this->dh = $spec->dh;
+        $this->unit = $spec->unit;
+        $this->weight = $spec->weight;
+        $this->status = $spec->status;
     }
 
     public function render()
     {
-        return view('livewire.admin.product-edit-component')->layout('components.layouts.admin.app');
+        $brands = Brand::all();
+        $manufacturers = Manufacturer::all();
+
+        return view('livewire.admin.product-edit-component', compact('brands', 'manufacturers'))
+            ->layout('components.layouts.admin.app');
     }
 }

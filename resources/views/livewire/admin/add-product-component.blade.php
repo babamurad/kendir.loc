@@ -4,8 +4,6 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 @endpush
 <div>
-    @include('components.partials.options.create-attr')
-    @include('components.partials.options.edit-attr')
     <header class="main-heading">
         @if ($errors->any())
             <div class="alert alert-danger mt-4 alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; ">
@@ -108,7 +106,7 @@
                                                 <div class="form-group">
                                                     <label for="short_description" class="form-label">Short Description</label>
                                                     <textarea class="form-control @error('short_description') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
-                                                              wire:model="short_description" minlength="50" maxlength="100"> </textarea>
+                                                              wire:model="short_description" minlength="20" maxlength="100"> </textarea>
                                                     @error('short_description') <p class="text-danger">{{$message}}</p> @enderror
                                                 </div>
                                             </div>
@@ -116,7 +114,7 @@
                                                 <div class="form-group">
                                                     <label for="description" class="form-label">Description</label>
                                                     <div wire:ignore>
-                                        <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" minlength="400" maxlength="5000"
+                                        <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" minlength="20" maxlength="5000"
                                                   placeholder="Enter Description" cols="30" rows="8" wire:model.live="description"> </textarea>
                                                     </div>
                                                     @error('description') <p class="text-danger">{{$message}}</p> @enderror
@@ -144,8 +142,8 @@
                                             <div class="form-group">
                                                 <label for="stock" class="form-label" wire:model="stock_status">Stock Status</label>
                                                 <select class="form-control @error('stock_status') is-invalid @enderror" name="stock">
-                                                    <option value="instock">In Stock</option>
-                                                    <option value="outofstock">Out of Stock</option>
+                                                    <option value="In Stock">In Stock</option>
+                                                    <option value="Out of Stock">Out of Stock</option>
                                                 </select>
                                                 @error('stock_status') <p class="text-danger">{{$message}}</p> @enderror
                                             </div>
@@ -203,88 +201,118 @@
                         <!-- Panel 3 -->
                         <div class="tab-pane fade in {{ $activeTab=='options'? 'active show':'' }} " id="options" role="tabpanel">
 
-                            <div class="row mt-2 mb-0">
-                                <div class="col-sm-7">
-                                    <div class="form-group row">
-                                        <label for="category_id" class="col-sm-2 col-form-label">Category</label>
-                                        <div class="col-sm-7">
-                                            <select name="categories" class="form-control" name="category_id" wire:model.live="category_id">
-                                                <option value="">Select Category</option>
-                                                @foreach($categories as $category)
-                                                    @if($category->parent_id==0)
-                                                        <option value="{{ $category->id }}" style="font-weight:500;" disabled>{{ ucfirst($category->name) }}</option>
-                                                        @if($category->children->count()>0)
-                                                            @foreach($category->children as $subcategory)
-                                                                <option value="{{ $subcategory->id }}">-- {{ ucfirst($subcategory->name) }}</option>
-                                                            @endforeach
-                                                        @endif
+
+                        <div class="row mt-2 mb-0">
+
+                            <div class="col-sm-4">
+                                <div class="form-group row">
+                                    <label for="category_id" class="col-sm-4 col-form-label text-right">Category</label>
+                                    <div class="col-sm-8">
+                                        <select name="categories" class="form-control" name="category_id" wire:model.live="category_id">
+                                            <option value="">Select Category</option>
+                                            @foreach($categories as $category)
+                                                @if($category->parent_id==0)
+                                                    <option value="{{ $category->id }}" style="font-weight:500;" disabled>{{ ucfirst($category->name) }}</option>
+                                                    @if($category->children->count()>0)
+                                                        @foreach($category->children as $subcategory)
+                                                            <option value="{{ $subcategory->id }}">-- {{ ucfirst($subcategory->name) }}</option>
+                                                        @endforeach
                                                     @endif
-                                                @endforeach
-                                            </select>
-                                            @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <button name="add_attr" class="form-control btn-sm btn btn-primary rounded"
-                                                            data-toggle="modal" data-target="#CreateOption" {{ $category_id? '':'disabled' }}>
-                                                        <i class="icon-plus"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <button name="add_attr" class="form-control btn-sm btn btn-primary rounded" wire:click="saveOpt">
-                                                        <i class="icon-floppy-disk"></i>
-                                                    </button>
-                                                </div>
-
-
-                                            </div>
-
-                                        </div>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                @if($category_id)
-                                    <table class="table table-hover m-0">
-                                        <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>{{__('Attr_id')}}</th>
-                                            <th>{{__('Name')}}</th>
-                                            <th>{{__('Value')}}</th>
-                                            <th>{{__('Action')}}</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach( $at_options as $option )
-                                            <tr>
-                                                <td>{{ $option->id }}</td>
-                                                <td>{{ $option->attribute_id }}</td>
-                                                <td>{{ $option->name }}</td>
-                                                <td>{{ $option->value }}</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-success btn-sm rounded" data-toggle="modal" data-target="#EditOption"
-                                                            wire:click="editOption({{ $option->id }})"> <i class="icon icon-pencil3"></i>
-                                                    </button>
-                                                    <button type="button" class="btn btn-danger btn-sm rounded" data-toggle="modal" data-target="#deleteConfirmation"
-                                                            wire:click="deleteId('{{ $option->id }}')"> <i class="icon icon-bin"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-
-
-                                        @endforeach
-
-                                        </tbody>
-                                    </table>
-                                @else
-                                    <div class="col-sm-4">
-                                        <p>Please select a category</p>
+                            <div class="col-sm-4">
+                                <div class="form-group row">
+                                    <label for="brands" class="col-sm-4 col-form-label text-right">Brands</label>
+                                    <div class="col-sm-8">
+                                        <select name="brands" class="form-control" wire:model.live="brand_id">
+                                            <option value="">Select Brand</option>
+                                            @foreach($brands as $brand)
+                                                <option value="{{ $brand->id }}" style="font-weight:500;" >{{ ucfirst($brand->name) }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('brand_id') <p class="text-danger">{{$message}}</p> @enderror
                                     </div>
-
-                                @endif
+                                </div>
                             </div>
+                            <div class="col-sm-4">
+                                <div class="form-group row">
+                                    <label for="manuf_id" class="col-sm-4 col-form-label text-right">Manufacturer</label>
+                                    <div class="col-sm-8">
+                                        <select name="brands" class="form-control" name="manuf_id" wire:model.live="manuf_id">
+                                            <option value="">Select Manufacturer</option>
+                                            @foreach($manufacturers as $manufacturer)
+                                                <option value="{{ $manufacturer->id }}" style="font-weight:500;" >{{ ucfirst($manufacturer->name) }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('manuf_id') <p class="text-danger">{{$message}}</p> @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                                    <form action="">
+                                        <h4>Specification</h4>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="model" class="form-label">Model</label>
+                                                    <input type="text" class="form-control" name="model" placeholder="Model" wire:model="model">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="weight" class="form-label">Weight</label>
+                                                    <input type="number" class="form-control" name="weight" placeholder="Weight" wire:model="weight">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <label for="dl" class="form-label">Dimensions Long</label>
+                                                    <input type="number" class="form-control" name="dl" placeholder="Dimensions Long" wire:model="dl">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <label for="dw" class="form-label">Dimensions Width</label>
+                                                    <input type="number" class="form-control" name="dw" placeholder="Dimensions Width" wire:model="dw">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <label for="dh" class="form-label">Dimensions Hight</label>
+                                                    <input type="number" class="form-control" name="dh" placeholder="Dimensions Hight" wire:model="dh">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <label for="unit" class="form-label">Unit</label>
+                                                    <input type="text" class="form-control" name="unit" placeholder="Unit" wire:model="unit">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <label for="status" class="form-label">Status</label>
+                                                    <select name="status" class="form-control" wire:model="status">
+                                                        <option value="1" selected>Enabled</option>
+                                                        <option value="0">Disabled</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
 
                         </div>
                         <!-- Panel 3 -->

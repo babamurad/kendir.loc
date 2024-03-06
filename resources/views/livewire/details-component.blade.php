@@ -225,10 +225,10 @@
                         <!-- .product__sidebar -->
                         <div class="product__sidebar">
                             <div class="product__availability">
-                                Availability: <span class="text-success">In Stock</span>
+                                Availability: <span class="text-success">{{ $product->stock_status }}</span>
                             </div>
                             <div class="product__prices">
-                                {{ $product->sale_price }}
+                                {{ $product->sale_price }} man
                             </div>
                             <!-- .product__options -->
                             <form class="product__options">
@@ -353,8 +353,8 @@
                                 <div class="spec__section">
                                     <h4 class="spec__section-title">General</h4>
                                     <div class="spec__row">
-                                        <div class="spec__name">Material</div>
-                                        <div class="spec__value">Aluminium, Plastic</div>
+                                        <div class="spec__name">Model</div>
+                                        <div class="spec__value">{{ $product->specification->model }}</div>
                                     </div>
                                     <div class="spec__row">
                                         <div class="spec__name">Engine Type</div>
@@ -902,7 +902,7 @@
                                     </div>
                                     <div class="product-card__actions">
                                         <div class="product-card__availability">
-                                            Availability: <span class="text-success">In Stock</span>
+                                            Availability: <span class="text-success">{{ $product->stock_status }}</span>
                                         </div>
                                         <div class="product-card__prices">
                                             $749.00

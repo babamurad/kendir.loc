@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Product;
+use App\Models\Specification;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -30,7 +31,7 @@ class ProductComponent extends Component
     public $image;
     public $category_id;
     public $images;
-    public $del_name, $del_id;
+    public $del_name, $del_id, $spec_id;
 
     public function deleteId($id)
     {
@@ -42,6 +43,7 @@ class ProductComponent extends Component
     {
         $product = Product::find($this->del_id);
         $product->delete();
+
         $this->dispatch('closeDeleteProductModal');
         session()->flash('error', __('Product has been deleted!'));
     }

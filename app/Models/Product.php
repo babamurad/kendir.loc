@@ -43,4 +43,9 @@ class Product extends Model
     {
         return $this->hasMany(ProductComponent::class, 'id', 'product_id');
     }
+
+    public function specification()
+    {
+        return $this->hasOne(Specification::class);
+    }
 }
