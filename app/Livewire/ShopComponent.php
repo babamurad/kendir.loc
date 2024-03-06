@@ -28,11 +28,6 @@ class ShopComponent extends Component
 
     public function render()
     {
-//        $cat_count =Category::find(36);
-//        dd($cat_count->products->count());
-        //->where('name', 'like', '%'.$this->search.'%')
-//                ->orderBy('id', 'desc')
-//                ->paginate($this->perPage);
         $categories = Category::with('cparent')->with('products')->get();
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
         if ($this->category_id){
@@ -55,19 +50,14 @@ class ShopComponent extends Component
             compact('categories', 'latestProducts', 'products', 'newArrivals', 'rcategories'));
     }
 
-    public function OpenClose($id)
+    public function getCategoryProducts($category_id)
     {
-        //if ($this->collapce) {$this->collapce = 0;}
-        $this->collapce = !$this->collapce;
-        $this->active_cat = $id;
-        //dd($this->collapce);
+        $this->category_id = $category_id;
     }
 
     public function store($product_id, $product_name, $product_price)
     {
-        //dd($this->pqty);
         $pqty = $this->pqty?$this->pqty:1;
-
         Cart::instance('cart')->add($product_id, $product_name, $pqty, $product_price)->associate('App\Models\Product');
         $this->pqty = 1;
         session()->flash('success', 'The product has been added to the cart');

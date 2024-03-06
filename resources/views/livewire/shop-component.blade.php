@@ -66,44 +66,35 @@
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item="">
                                             <button type="button" class="filter__title" data-collapse-trigger="">
-                                                Categories Alt {{$active_cat}}== {{ $cat_name }}/{{$active_id}}
+                                                Categories Alt
                                                 <svg class="filter__arrow" width="12px" height="7px">
-                                                    <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
+                                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                                 </svg>
                                             </button>
                                             <div class="filter__body" data-collapse-content="">
-                                                <div class="filter__container">
+                                                <div class="filter__container"  wire:ignore>
                                                     <div class="filter-categories-alt">
                                                         <ul class="filter-categories-alt__list filter-categories-alt__list--level--1" data-collapse-opened-class="filter-categories-alt__item--open">
-                                                            @foreach($rcategories as $rcategory)
-                                                            <li class="filter-categories-alt__item" data-collapse-item="">
-                                                                @if($rcategory->children->count()>0)
-                                                                <button  wire:click="OpenClose({{$rcategory->id}})" style="float: right; margin-right: -6px; margin-left: 8px; border: none;">
-                                                                    {{$active_cat}}={{$rcategory->id}}--{{$collapce}}
-                                                                    @if($active_cat==$rcategory->id && $collapce)
-                                                                        <i class="fas fa-minus"></i>
-                                                                    @else
-                                                                        <i class="fas fa-plus"></i>
-                                                                    @endif
-                                                                </button>
+                                                            @foreach($categories as $category)
+                                                                @if($category->parent_id == 0)
+                                                                    <li class="filter-categories-alt__item" data-collapse-item="">
+                                                                        @if($category->children->count()>0)
+                                                                        <button class="filter-categories-alt__expander" data-collapse-trigger=""></button>
+                                                                        @endif
+                                                                        <a href="">{{ $category->name }}</a>
+                                                                        @if($category->children->count()>0)
+                                                                            <div class="filter-categories-alt__children" data-collapse-content="">
+                                                                            <ul class="filter-categories-alt__list filter-categories-alt__list--level--2">
+                                                                                @foreach($category->children as $subcategory)
+                                                                                    <li class="filter-categories-alt__item" data-collapse-item="" style="cursor: pointer;">
+                                                                                    <a wire:click="getCategoryProducts({{ $subcategory->id }})">{{ $subcategory->name }}</a>
+                                                                                </li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                            </div>
+                                                                        @endif
+                                                                    </li>
                                                                 @endif
-                                                                <a href="{{ route('product.category', ['slug' => $rcategory->slug]) }}" wire:click="{{ $rcategory->id }}">{{ $rcategory->name }}</a>
-                                                                @if($rcategory->children->count()>0)
-                                                                <div class="filter-categories-alt__children" data-collapse-content=""
-                                                                     @if($active_cat==$rcategory->id)
-                                                                         style="{{ $collapce? 'height: auto; opacity: 1; visibility: visible;':''}}">
-                                                                     @endif
-                                                                    <ul class="filter-categories-alt__list filter-categories-alt__list--level--2">
-                                                                        @foreach($rcategory->children as $category)
-                                                                        <li class="filter-categories-alt__item {{ $active_id==$category->id? 'active-menu':'' }}" wire:click.prevent="selectCategory('{{ $category->id }}')" data-collapse-item="">
-
-                                                                            <a href="" wire:click="{{ $category->id }}">{{ $category->name }}</a>
-                                                                        </li>
-                                                                        @endforeach
-                                                                    </ul>
-                                                                </div>
-                                                                @endif
-                                                            </li>
                                                             @endforeach
                                                         </ul>
                                                     </div>
@@ -571,14 +562,14 @@
                                     <div class="widget-products__item">
                                         <div class="widget-products__image">
                                             <div class="product-image">
-                                                <a href="#" class="product-image__body">
+                                                <a href="{{ route('product.details', ['slug' => $latestProduct->slug]) }}" class="product-image__body">
                                                     <img class="product-image__img" src="{{ asset('images/products').'/'.$latestProduct->image }}" alt="{{ $latestProduct->name }} image" style="margin-top: -10px;">
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="widget-products__info">
                                             <div class="widget-products__name">
-                                                <a href="product.html">{{ $latestProduct->name }}</a>
+                                                <a href="{{ route('product.details', ['slug' => $latestProduct->slug]) }}">{{ $latestProduct->name }}</a>
                                             </div>
                                             <div class="widget-products__prices">
                                                 {{ $latestProduct->sale_price }}
@@ -600,7 +591,7 @@
                                 <div class="view-options__filters-button">
                                     <button type="button" class="filters-button">
                                         <svg class="filters-button__icon" width="16px" height="16px">
-                                            <use xlink:href="images/sprite.svg#filters-16"></use>
+                                            <use xlink:href="{{ asset('images/sprite.svg#filters-16') }}"></use>
                                         </svg>
                                         <span class="filters-button__title">Filters</span>
                                         <span class="filters-button__counter">3</span>
@@ -627,7 +618,7 @@
                                         </div>
                                     </div>
                                 </div>
-                               <div class="view-options__legend">Showing {{ $products->count() }} of {{ $products->total() }} products  </div>
+                                <div class="view-options__legend">Showing {{ $products->count() }} of {{ $products->total() }} products  </div>
                                 <div class="view-options__divider"></div>
                                 <div class="view-options__control">
                                     <label for="">Sort By</label>
@@ -693,19 +684,19 @@
 
                                                         <div class="product__actions-item product__actions-item--wishlist">
                                                             @if($wproducts->contains($id))
-                                                            <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" title="" data-original-title="Wishlist"
-                                                                    wire:click="removeWishlist('{{ $id }}')">
-                                                                <svg width="16px" height="16px" style="fill: #ff3333;">
-                                                                    <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
-                                                                </svg>
-                                                            </button>
+                                                                <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" title="" data-original-title="Wishlist"
+                                                                        wire:click="removeWishlist('{{ $id }}')">
+                                                                    <svg width="16px" height="16px" style="fill: #ff3333;">
+                                                                        <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
+                                                                    </svg>
+                                                                </button>
                                                             @else
-                                                            <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" title="" data-original-title="Wishlist"
+                                                                <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" title="" data-original-title="Wishlist"
                                                                         wire:click="addToWishlist({{$id}}, '{{$name}}', {{ $sale_price }})">
                                                                     <svg width="16px" height="16px">
                                                                         <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
                                                                     </svg>
-                                                            </button>
+                                                                </button>
                                                             @endif
                                                         </div>
 
@@ -742,13 +733,13 @@
                                                 <span class="fake-svg-icon"></span>
                                             </button>
                                             <div class="product-card__badges-list">
-                                            @if($newArrivals->contains($product->id))
-                                                <div class="product-card__badge product-card__badge--new">New</div>
-                                            @elseif($product->featured)
-                                                <div class="product-card__badge product-card__badge--hot">Hot</div>
-                                            @else
-                                                <div class="product-card__badge product-card__badge--sale">Sale</div>
-                                            @endif
+                                                @if($newArrivals->contains($product->id))
+                                                    <div class="product-card__badge product-card__badge--new">New</div>
+                                                @elseif($product->featured)
+                                                    <div class="product-card__badge product-card__badge--hot">Hot</div>
+                                                @else
+                                                    <div class="product-card__badge product-card__badge--sale">Sale</div>
+                                                @endif
                                             </div>
                                             <div class="product-card__image product-image">
                                                 <a href="{{ route('product.details', ['slug' => $product->slug]) }}" class="product-image__body" wire:navigate>
@@ -867,12 +858,12 @@
                                                     <button class="btn btn-primary product-card__addtocart" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
                                                     <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
                                                     @if($wproducts->contains($product->id))
-                                                    <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button" wire:click="removeWishlist('{{ $product->id }}')">
-                                                        <svg width="16px" height="16px" style="fill: #ff3333;">
-                                                            <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
-                                                        </svg>
-                                                        <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                                    </button>
+                                                        <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button" wire:click="removeWishlist('{{ $product->id }}')">
+                                                            <svg width="16px" height="16px" style="fill: #ff3333;">
+                                                                <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
+                                                            </svg>
+                                                            <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                                                        </button>
                                                     @else
                                                         <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button" wire:click="addToWishlist({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">
                                                             <svg width="16px" height="16px">
