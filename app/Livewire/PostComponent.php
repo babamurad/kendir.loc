@@ -18,7 +18,9 @@ class PostComponent extends Component
         //$posts = DB::select('SELECT p.id, p.title, p.text, p.created_at, p.image, u.name FROM posts p, users u WHERE u.id=p.author');
         $posts = DB::table('posts')
             ->join('users', 'users.id', '=', 'posts.author')
-            ->select('posts.id', 'posts.title', 'posts.text', 'posts.image', 'posts.created_at', 'users.name' )->paginate(6);
+            ->select('posts.id', 'posts.title', 'posts.text', 'posts.image', 'posts.created_at', 'users.name' )
+            ->orderBy('id', 'desc')
+            ->paginate(6);
 
         $latestPosts = Post::orderBy('id', 'desc')->limit(3)->get();
 

@@ -35,7 +35,7 @@ class HomeComponent extends Component
         $date = Carbon::now()->subDays(7);
         $newArrivals = Product::where('created_at', '>=', $date)->get();
         //$blya = 'Blyat suka blyat nahuy';
-        $posts = Post::orderBy('id')->get();
+        $posts = Post::orderBy('id', 'desc')->get();
         return view('livewire.home-component',
             compact('categories', 'carousels', 'products', 'newArrivals', 'rcategories', 'posts')
 
