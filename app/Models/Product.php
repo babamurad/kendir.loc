@@ -35,14 +35,16 @@ class Product extends Model
     {
         return $this->hasMany(Review::class, 'product_id');
     }
-    public function brand()
+    public function brands()
     {
-        return $this->belongsTo(Brand::class, 'id', 'brand_id');
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
-    public function options()
+
+    public function manufacturers()
     {
-        return $this->hasMany(ProductComponent::class, 'id', 'product_id');
+        return $this->belongsTo(Manufacturer::class, 'manufacturer_id', 'id');
     }
+
 
     public function specification()
     {

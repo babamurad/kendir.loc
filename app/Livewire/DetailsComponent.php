@@ -13,9 +13,13 @@ class DetailsComponent extends Component
     public $qty = 1;
     public function render()
     {
-        $product = Product::where('slug', $this->slug)->first();
-        //dd($product->specification);
-        return view('livewire.details-component', compact('product'))->layout('components.layouts.app');
+        $product = Product::with('specification')
+            ->with('brands')
+            ->with('manufacturers')
+            ->where('slug', $this->slug)->first();
+        $relatedProducts = Product::with('specification')->where('category_id', '=', $product->category_id)->get();
+        //dd($relatedProducts);
+        return view('livewire.details-component', compact('product', 'relatedProducts'))->layout('components.layouts.app');
     }
     public function mount($slug)
     {

@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Carousel;
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\Product;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -34,8 +35,9 @@ class HomeComponent extends Component
         $date = Carbon::now()->subDays(7);
         $newArrivals = Product::where('created_at', '>=', $date)->get();
         //$blya = 'Blyat suka blyat nahuy';
+        $posts = Post::orderBy('id')->get();
         return view('livewire.home-component',
-            compact('categories', 'carousels', 'products', 'newArrivals', 'rcategories')
+            compact('categories', 'carousels', 'products', 'newArrivals', 'rcategories', 'posts')
 
         )->layout('components.layouts.app', ['rcategories' => $rcategories]);
     }

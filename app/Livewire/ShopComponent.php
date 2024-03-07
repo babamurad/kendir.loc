@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Manufacturer;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -32,11 +34,15 @@ class ShopComponent extends Component
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
         if ($this->category_id){
             $this->active_id = $this->category_id;
-            $products = Product::where('category_id', $this->category_id)
-                ->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
+            $products = Product::with('specification')
+                ->with('brands')
+                ->with('manufacturers')
+                ->where('category_id', '=', $this->category_id)
+                //->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
                 ->orderBy('name', $this->sort)->paginate($this->perPage);
+            //dd($products);
         } else {
-            $products = Product::orderBy('name', $this->sort)
+            $products = Product::with('specification')->orderBy('name', $this->sort)
                 ->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
                 ->paginate($this->perPage);
         }
@@ -45,14 +51,19 @@ class ShopComponent extends Component
         $newArrivals = Product::where('created_at', '>=', $date)->get();
 
         $rcategories = Category::with('children')->where('parent_id', '=', '0')->get();
+        $brands = Brand::with('products')->get();
+        $manufacturers = Manufacturer::with('products')->get();
 
         return view('livewire.shop-component',
-            compact('categories', 'latestProducts', 'products', 'newArrivals', 'rcategories'));
+            compact('categories', 'latestProducts', 'products', 'newArrivals', 'rcategories', 'brands', 'manufacturers'));
     }
 
     public function getCategoryProducts($category_id)
     {
-        $this->category_id = $category_id;
+        $cat = Category::findOrFail($category_id);
+        $this->cat_name = $cat->name;
+        $this->category_id = $cat->id;
+        //dd($this->cat_name);
     }
 
     public function store($product_id, $product_name, $product_price)
@@ -84,8 +95,10 @@ class ShopComponent extends Component
         }
     }
 
-    public function mount()
+    public function mount($id = null)
     {
+        $this->category_id = $id;
+
         $this->prodCount = Product::count();
         $this->minPrice = DB::table('products')->min('sale_price');
         $this->maxPrice = DB::table('products')->max('sale_price');

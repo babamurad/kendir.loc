@@ -1,6 +1,7 @@
 @php
     $wproducts = \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->pluck('id');
 @endphp
+@section('title', __('Shop'))
 <div class="shop-layout__content">
     <div class="block">
         <div class="products-view">

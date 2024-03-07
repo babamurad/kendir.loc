@@ -51,7 +51,7 @@ use App\Livewire\UserPasswordComponent;
 */
 
 Route::get('/', HomeComponent::class)->name('home');
-Route::get('shop', ShopComponent::class)->name('shop');
+Route::get('shop/{id?}', ShopComponent::class)->name('shop');
 Route::get('category/{slug}', CategoryDetailsComponent::class)->name('product.category');
 Route::get('cart', CartComponent::class)->name('cart');
 Route::get('wishlist', WishlistComponent::class)->name('wishlist');

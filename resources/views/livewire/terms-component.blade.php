@@ -1,4 +1,5 @@
 <div>
+    @section('title', __('Privacy Policy'))
     <div class="page-header">
         <div class="page-header__container container">
             <div class="page-header__breadcrumb">

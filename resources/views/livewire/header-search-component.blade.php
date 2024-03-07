@@ -12,7 +12,7 @@
                        aria-label="Site search" type="text" autocomplete="off">
                 <button class="search__button search__button--type--submit" type="submit">
                     <svg width="20px" height="20px">
-                        <use xlink:href="images/sprite.svg#search-20"></use>
+                        <use xlink:href="{{ asset('images/sprite.svg#search-20') }}"></use>
                     </svg>
                 </button>
                 <div class="search__border"></div>

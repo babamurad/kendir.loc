@@ -337,13 +337,13 @@
                                                                         <div class="col-5">
                                                                             <ul class="megamenu__links megamenu__links--level--0">
                                                                                 <li class="megamenu__item  megamenu__item--with-submenu">
-                                                                                    <a href="{{ route('product.category', ['slug' => $rcategory->slug]) }}">
+                                                                                    <a href="{{ route('shop', ['id' => $rcategory->id]) }}">
                                                                                         {{ $rcategory->name }}
                                                                                     </a>
                                                                                     <ul class="megamenu__links megamenu__links--level--1">
                                                                                         @foreach($rcategory->children as $category)
                                                                                         <li class="megamenu__item">
-                                                                                            <a href="{{ route('product.category', ['slug' => $category->slug]) }}">
+                                                                                            <a href="{{ route('shop', ['id' => $category->id]) }}">
                                                                                                 {{$category->name}}
                                                                                             </a>
                                                                                         </li>

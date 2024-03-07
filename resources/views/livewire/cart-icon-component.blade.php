@@ -61,14 +61,14 @@
                     </table>
                 </div>
                 <div class="dropcart__buttons">
-                    <a class="btn btn-secondary" href="{{ route('cart') }}">View Cart</a>
+                    <a class="btn btn-secondary" href="{{ route('cart') }}" wire:navigate>View Cart</a>
                     <a class="btn btn-primary" href="#"  wire:click="checkout">Checkout</a>
                 </div>
                 @else
                     <div class="block-empty__body">
                         <div class="block-empty__message">Your shopping cart is empty!</div>
                         <div class="block-empty__actions">
-                            <a class="btn btn-primary btn-sm" href="{{ route('shop') }}">Continue</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('shop') }}" wire:navigate>Continue</a>
                         </div>
                     </div>
                 @endif

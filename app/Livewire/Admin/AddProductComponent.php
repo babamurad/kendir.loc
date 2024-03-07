@@ -135,7 +135,7 @@ class AddProductComponent extends Component
         $product->regular_price = $this->regular_price;
         $product->sale_price = $this->sale_price;
         $product->SKU = $this->sku;
-        $product->stock_status = $this->stock_status;
+        $product->stock_status = $this->stock_status='In Stock'?:'Out of Stock';
         $product->featured = $this->featured;
         $product->quantity = $this->quantity;
         $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();

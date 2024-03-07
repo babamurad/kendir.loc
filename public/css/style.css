@@ -16305,3 +16305,15 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-origin {
 .active-menu{
     color: #3366cc !important;
 }
+.filter-categories-alt__item > a {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+a .active{
+    color: #3366cc;
+}
+@media (min-width: 992px){
+    .product--layout--columnar .product__description {
+        margin: 10px 8px 12px;
+}}
