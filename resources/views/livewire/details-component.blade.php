@@ -57,7 +57,7 @@
                                             <use xlink:href="{{ asset('images/sprite.svg#zoom-in-24') }}"></use>
                                         </svg>
                                     </button>
-                                    <div class="owl-carousel" id="product-image" wire:ignore>
+                                    <div class="owl-carousel" id="product-image">
                                         <div class="product-image product-image--location--gallery">
                                             <a href="{{ asset('images/products').'/'.$product->image }}" data-width="700" data-height="700" class="product-image__body" target="_blank">
                                                 <img class="product-image__img" src="{{ asset('images/products').'/'.$product->image }}" alt="">
@@ -124,6 +124,7 @@
                                 <li>Dimension W: {{ $product->specification->dw }}</li>
                                 <li>Dimension H: {{ $product->specification->dh }}</li>
                                 <li>Weight: {{ $product->specification->weight }}</li>
+                                <li>Unit: {{ $product->specification->unit }}</li>
                             </ul>
                             <ul class="product__meta">
                                 <li class="product__meta-availability">Availability: <span class="text-success">In Stock</span></li>

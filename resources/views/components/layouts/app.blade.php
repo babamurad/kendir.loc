@@ -303,7 +303,7 @@
                     <livewire:header-search-component />
                     <div class="site-header__phone">
                         <div class="site-header__phone-title">Customer Service</div>
-                        <div class="site-header__phone-number">(800) 060-0730</div>
+                        <div class="site-header__phone-number"><a class="text-white" href="tel:+99312247780" >(+993) 12 24-77-80</a></div>
                     </div>
                 </div>
                 <div class="site-header__nav-panel">
@@ -495,7 +495,7 @@
                                     <ul class="footer-contacts__contacts">
                                         <li><i class="footer-contacts__icon fas fa-globe-americas"></i> 715 Fake Street,
                                             New York 10021 USA</li>
-                                        <li><i class="footer-contacts__icon far fa-envelope"></i> stroyka@example.com
+                                        <li><i class="footer-contacts__icon far fa-envelope"></i>  info@kendirtm.com
                                         </li>
                                         <li><i class="footer-contacts__icon fas fa-mobile-alt"></i> (800) 060-0730,
                                             (800) 060-0730</li>

@@ -533,19 +533,19 @@
             <div class="block-brands__slider">
                 <div class="owl-carousel" wire:ignore>
                     <div class="block-brands__item">
-                        <a href=""><img src="images/logos/logo-1.png" alt=""></a>
+                        <a href=""><img src="{{ asset('images/kendir/logo1.png') }}" alt=""></a>
                     </div>
                     <div class="block-brands__item">
-                        <a href=""><img src="images/logos/logo-2.png" alt=""></a>
+                        <a href=""><img src="{{ asset('images/kendir/logo2.png') }}" alt=""></a>
                     </div>
                     <div class="block-brands__item">
-                        <a href=""><img src="images/logos/logo-3.png" alt=""></a>
+                        <a href=""><img src="{{ asset('images/kendir/logo3.png') }}" alt=""></a>
                     </div>
                     <div class="block-brands__item">
-                        <a href=""><img src="images/logos/logo-4.png" alt=""></a>
+                        <a href=""><img src="{{ asset('images/kendir/logo4.png') }}" alt=""></a>
                     </div>
                     <div class="block-brands__item">
-                        <a href=""><img src="images/logos/logo-5.png" alt=""></a>
+                        <a href=""><img src="{{ asset('images/kendir/logo5.png') }}" alt=""></a>
                     </div>
                     <div class="block-brands__item">
                         <a href=""><img src="images/logos/logo-6.png" alt=""></a>
