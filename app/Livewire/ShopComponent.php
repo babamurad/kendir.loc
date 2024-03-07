@@ -43,7 +43,7 @@ class ShopComponent extends Component
             //dd($products);
         } else {
             $products = Product::with('specification')->orderBy('name', $this->sort)
-                ->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
+                //->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
                 ->paginate($this->perPage);
         }
 

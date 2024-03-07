@@ -19,7 +19,7 @@
                                         </svg>
                                     </li>
                                     <li class="breadcrumb-item">
-                                        <a href="">Breadcrumb</a>
+                                        <a href="{{ route('shop') }}">Shop</a>
                                         <svg class="breadcrumb-arrow" width="6px" height="9px">
                                             <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                                         </svg>
@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
 
-                                <div class="product-gallery__carousel" wire:ignore>
+                                <div class="product-gallery__carousel">
                                     <div class="owl-carousel" id="product-carousel">
                                         <a href="{{ asset('images/products').'/'.$product->image }}" class="product-image product-gallery__carousel-item">
                                             <div class="product-image__body">
@@ -108,7 +108,7 @@
                                         </svg>
                                     </button>
                                 @endif
-                                <button type="button" class="btn btn-sm btn-light btn-svg-icon" data-toggle="tooltip" data-placement="right" title="Compare">
+                                <button type="button" class="btn btn-sm btn-light btn-svg-icon" data-toggle="tooltip" data-placement="right" title="Compare" data-original-title="Compare">
                                     <svg width="16px" height="16px">
                                         <use xlink:href="{{ asset('images/sprite.svg#compare-16') }}"></use>
                                     </svg>
@@ -305,13 +305,23 @@
                                         <div class="product-card__buttons">
                                             <button class="btn btn-primary product-card__addtocart" type="button" wire:click.prevent="storeProduct({{$relproduct->id}}, '{{$relproduct->name}}', {{ $relproduct->sale_price }})">Add To Cart</button>
                                             <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click.prevent="storeProduct({{$relproduct->id}}, '{{$relproduct->name}}', {{ $relproduct->sale_price }})">Add To Cart</button>
-                                            
-                                            <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"  wire:click="addToWishlist({{$relproduct->id}}, '{{$relproduct->name}}', {{ $relproduct->sale_price }})">
-                                                <svg width="16px" height="16px">
-                                                    <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
-                                                </svg>
-                                                <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                                            </button>
+                                            @if($wproducts->contains($relproduct->id))
+                                                <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"
+                                                        wire:click="removeWishlist('{{ $relproduct->id }}')">
+                                                    <svg width="16px" height="16px" style="fill: #ff3333;">
+                                                        <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
+                                                    </svg>
+                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                                                </button>
+                                            @else
+                                                <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"
+                                                        wire:click="addToWishlist({{$relproduct->id}}, '{{$relproduct->name}}', {{ $relproduct->sale_price }})">
+                                                    <svg width="16px" height="16px">
+                                                        <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
+                                                    </svg>
+                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                                                </button>
+                                            @endif
                                             <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare" type="button">
                                                 <svg width="16px" height="16px">
                                                     <use xlink:href="{{ asset('images/sprite.svg#compare-16') }}"></use>

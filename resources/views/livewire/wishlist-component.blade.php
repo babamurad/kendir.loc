@@ -12,7 +12,7 @@
                             </svg>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#">Breadcrumb</a>
+                            <a href="{{ route('shop') }}">Shop</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
                                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
@@ -38,6 +38,7 @@
     </div>
     <div class="block">
         <div class="container">
+            @if(\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->count()>0)
             <table class="wishlist">
                 <thead class="wishlist__head">
                 <tr class="wishlist__row">
@@ -169,6 +170,9 @@
                 @endforeach
                 </tbody>
             </table>
+            @else
+                <p>{{ __('Wishlist is empty.') }}</p>
+            @endif
         </div>
     </div>
 </div>

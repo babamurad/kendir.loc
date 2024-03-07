@@ -317,14 +317,14 @@
 
                                                         <div class="product__actions-item product__actions-item--wishlist">
                                                             @if($wproducts->contains($id))
-                                                                <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" title="" data-original-title="Wishlist"
+                                                                <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" data-placement="right" title="" data-original-title="Wishlist"
                                                                         wire:click="removeWishlist('{{ $id }}')">
                                                                     <svg width="16px" height="16px" style="fill: #ff3333;">
                                                                         <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
                                                                     </svg>
                                                                 </button>
                                                             @else
-                                                                <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" title="" data-original-title="Wishlist"
+                                                                <button type="button" class="btn btn-secondary btn-svg-icon" data-toggle="tooltip" data-placement="right" title="" data-original-title="Wishlist"
                                                                         wire:click="addToWishlist({{$id}}, '{{$name}}', {{ $sale_price }})">
                                                                     <svg width="16px" height="16px">
                                                                         <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
