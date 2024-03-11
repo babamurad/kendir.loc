@@ -165,14 +165,14 @@
                                     </a>
                                 </li>
 
-                                <li class="{{ request()->is('admin/options') ? 'active selected' : '' }}">
-                                    <a href="{{route('admin.options')}}" wire:navigate>
-										<span class="has-icon">
-											<i class="icon-cog"></i>
-										</span>
-                                        <span class="nav-title">Options</span>
-                                    </a>
-                                </li>
+{{--                                <li class="{{ request()->is('admin/options') ? 'active selected' : '' }}">--}}
+{{--                                    <a href="{{route('admin.options')}}" wire:navigate>--}}
+{{--										<span class="has-icon">--}}
+{{--											<i class="icon-cog"></i>--}}
+{{--										</span>--}}
+{{--                                        <span class="nav-title">Options</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
 
                                 <li class=" {{ request()->is('admin/categories') ? 'active selected' : '' }}">
                                     <a href="{{route('admin.categories')}}" wire:navigate>

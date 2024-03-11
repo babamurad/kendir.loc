@@ -49,7 +49,6 @@
                                 <input type="search" class="form-control form-control-sm ml-1" placeholder="" aria-controls="basicExample" wire:model.live='search'>
                             </div>
                         </div>
-
                         <div class="col-md-4">
                             <div class="d-flex">
                                 <label>Show</label>

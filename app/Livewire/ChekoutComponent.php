@@ -94,9 +94,6 @@ class ChekoutComponent extends Component
             Auth::login($user);
         }
 
-    // $uid = Auth::user()->id;
-    // dd($uid);
-
         $this->validate([
             'firstname' => 'required',
             'lastname' => 'required',

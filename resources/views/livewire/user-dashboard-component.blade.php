@@ -76,6 +76,7 @@
                                     <h5>Recent Orders</h5>
                                 </div>
                                 <div class="card-divider"></div>
+                                @if(@$resentOrders->count()>0)
                                 <div class="card-table">
                                     <div class="table-responsive-sm">
                                         <table>
@@ -100,6 +101,7 @@
                                         </table>
                                     </div>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
