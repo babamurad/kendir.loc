@@ -21,7 +21,7 @@
                                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Wish List</li>
+                        <li class="breadcrumb-item active" aria-current="page">Compare List</li>
                     </ol>
                 </nav>
             </div>
@@ -51,7 +51,7 @@
                             @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('compare')->content() as $product)
                             <td>
                                 <a class="compare-table__product-link" href="{{ route('product.details', ['slug' => $product->model->slug]) }}">
-                                    <div class="compare-table__product-image product-image">
+                                    <div class="compare-table__product-image product-image" style="width: 190px;">
                                         <div class="product-image__body">
                                             <img class="product-image__img" src="{{ asset('images/products').'/'.$product->model->image }}" alt="">
                                         </div>
