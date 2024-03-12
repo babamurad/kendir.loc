@@ -40,10 +40,10 @@
                 </div>
                 <div class="card-body">
                     <div class="row mt-2 mb-0">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <a href="{{ route('admin.create-product') }}" type="button" class="btn btn-primary rounded"> {{__('Create Product')}} </a>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="d-flex">
                                 <label>Search:</label>
                                 <input type="search" class="form-control form-control-sm ml-1" placeholder="" aria-controls="basicExample" wire:model.live='search'>
@@ -60,7 +60,7 @@
                                 <label>entries</label>
                             </div>
                         </div>
-
+                        <div class="col-md-2"><label>Count: {{ count($pcount) }}</label></div>
                     </div>
                     <table class="table table-hover m-0">
                         <thead>

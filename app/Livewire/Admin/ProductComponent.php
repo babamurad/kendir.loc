@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Models\Product;
 use App\Models\Specification;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -50,12 +51,14 @@ class ProductComponent extends Component
 
     public function render()
     {
+        $pcount = Product::all();
+        //dd(count($pcount));
         $products = Product::
             where('name', 'LIKE', '%'.$this->search.'%')
             ->orderBy($this->sortBy, $this->sortDirection)
             ->paginate($this->perPage);
         return view('livewire.admin.product-component',
-            compact('products'))
+            compact('products', 'pcount'))
             ->layout('components.layouts.admin.app');
     }
 }

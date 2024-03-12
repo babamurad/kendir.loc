@@ -107,6 +107,8 @@ class ShopComponent extends Component
 
     public function addToCompare($product_id, $product_name, $product_price)
     {
+        $prod = Product::with('specification')->find($product_id);
+        //dd($prod->SKU);
         Cart::instance('compare')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
         $this->dispatch('addToCompare');
     }
