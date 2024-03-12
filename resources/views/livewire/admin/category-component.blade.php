@@ -255,7 +255,7 @@
                             <td>{{$category->name}}</td>
                             <td>{{$category->slug}}</td>
                             <td>{{$category->is_popular? 'Yes':'No'}}</td>
-                            <td>{{ $category->cparent? $category->cparent->name : 'Root'}}</td>
+                            <td>{{$category->cparent?$category->cparent->parent_id:0}}-{{ $category->cparent? $category->cparent->name : 'Root'}}</td>
                             <td>
                                 <button type="button" class="btn btn-success btn-sm rounded"data-toggle="modal" data-target="#EditCategory" wire:click="editCategory({{ $category->id }})">
                                     <i class="icon icon-pencil3"></i>

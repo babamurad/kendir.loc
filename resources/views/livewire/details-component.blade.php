@@ -49,7 +49,7 @@
                 <div class="product product--layout--columnar" data-layout="columnar">
                     <div class="product__content">
                         <!-- .product__gallery -->
-                        <div class="product__gallery">
+                        <div class="product__gallery" wire:ignore>
                             <div class="product-gallery">
                                 <div class="product-gallery__featured">
                                     <button class="product-gallery__zoom">
@@ -266,7 +266,7 @@
                 <div class="block-products-carousel__slider" wire:ignore>
                     <div class="block-products-carousel__preloader"></div>
                     <div class="owl-carousel">
-                        @foreach($relatedProducts as $relproduct)
+                        @foreach($products as $product)
                         <div class="block-products-carousel__column">
                             <div class="block-products-carousel__cell">
                                 <div class="product-card product-card--hidden-actions ">
@@ -280,35 +280,35 @@
                                         <div class="product-card__badge product-card__badge--new">New</div>
                                     </div>
                                     <div class="product-card__image product-image">
-                                        <a href="product.html" class="product-image__body">
-                                            <img class="product-image__img" src="{{ asset('images/products').'/'.$relproduct->image }}" alt="">
+                                        <a href="{{ route('product.details', ['slug' => $product->slug]) }}" class="product-image__body">
+                                            <img class="product-image__img" src="{{ asset('images/products').'/'.$product->image }}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-card__info">
                                         <div class="product-card__name">
-                                            <a href="{{ route('product.details', ['slug' => $relproduct->slug]) }}">{{ $relproduct->name }}</a>
+                                            <a href="{{ route('product.details', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
                                         </div>
                                         <ul class="product-card__features-list">
-                                            <li>Model: {{ $relproduct->specification->model }}</li>
-                                            <li>Dimension L: {{ $relproduct->specification->dl }}</li>
-                                            <li>Dimension W: {{ $relproduct->specification->dw }}</li>
-                                            <li>Dimension H: {{ $relproduct->specification->dh }}</li>
-                                            <li>Weight: {{ $relproduct->specification->weight }}</li>
+                                            <li>Model: {{ $product->specification->model }}</li>
+                                            <li>Dimension L: {{ $product->specification->dl }}</li>
+                                            <li>Dimension W: {{ $product->specification->dw }}</li>
+                                            <li>Dimension H: {{ $product->specification->dh }}</li>
+                                            <li>Weight: {{ $product->specification->weight }}</li>
                                         </ul>
                                     </div>
                                     <div class="product-card__actions">
                                         <div class="product-card__availability">
-                                            Availability: <span class="text-success">{{ $relproduct->stock_status }}</span>
+                                            Availability: <span class="text-success">{{ $product->stock_status }}</span>
                                         </div>
                                         <div class="product-card__prices">
                                             $749.00
                                         </div>
                                         <div class="product-card__buttons">
-                                            <button class="btn btn-primary product-card__addtocart" type="button" wire:click.prevent="storeProduct({{$relproduct->id}}, '{{$relproduct->name}}', {{ $relproduct->sale_price }})">Add To Cart</button>
-                                            <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click.prevent="storeProduct({{$relproduct->id}}, '{{$relproduct->name}}', {{ $relproduct->sale_price }})">Add To Cart</button>
-                                            @if($wproducts->contains($relproduct->id))
+                                            <button class="btn btn-primary product-card__addtocart" type="button" wire:click.prevent="storeProduct({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
+                                            <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click.prevent="storeProduct({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
+                                            @if($wproducts->contains($product->id))
                                                 <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"
-                                                        wire:click="removeWishlist('{{ $relproduct->id }}')">
+                                                        wire:click="removeWishlist('{{ $product->id }}')">
                                                     <svg width="16px" height="16px" style="fill: #ff3333;">
                                                         <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
                                                     </svg>
@@ -316,7 +316,7 @@
                                                 </button>
                                             @else
                                                 <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"
-                                                        wire:click="addToWishlist({{$relproduct->id}}, '{{$relproduct->name}}', {{ $relproduct->sale_price }})">
+                                                        wire:click="addToWishlist({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">
                                                     <svg width="16px" height="16px">
                                                         <use xlink:href="{{ asset('images/sprite.svg#wishlist-16') }}"></use>
                                                     </svg>

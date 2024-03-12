@@ -38,6 +38,7 @@
     </div>
     <div class="block">
         <div class="container">
+
             @if(\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->count()>0)
             <table class="wishlist">
                 <thead class="wishlist__head">

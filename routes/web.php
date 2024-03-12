@@ -42,6 +42,7 @@ use App\Livewire\UserOrderDetailsComponent;
 use App\Livewire\UserAddresessComponent;
 use App\Livewire\UserEditAddresessComponent;
 use App\Livewire\UserPasswordComponent;
+use App\Livewire\CompareComponent;
 
 
 /*
@@ -65,6 +66,7 @@ Route::get('/contacts', ContactComponent::class)->name('contacts');
 Route::get('/posts', Posts::class)->name('posts');
 Route::get('/post/{id}', PostDetailComponent::class)->name('post-detail');
 Route::get('about-us', AboutUsComponent::class)->name('about-us');
+Route::get('compare', CompareComponent::class)->name('compare');
 
 
 Route::get('user', UserComponent::class)->name('user');

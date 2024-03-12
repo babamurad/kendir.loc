@@ -311,9 +311,9 @@
                     <div class="nav-panel nav-panel--sticky" data-sticky-mode="pullToShow">
                         <div class="nav-panel__container container">
                             <div class="nav-panel__row">
+                                @if ( request()->is('/'))
                                 <div class="nav-panel__departments">
                                     <!-- .departments -->
-                                    @if ( request()->is('/'))
                                     <div class="departments  departments--open departments--fixed "
                                         data-departments-fixed-by=".block-slideshow">
                                         <div class="departments__body">
@@ -377,19 +377,11 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    @endif
-
                                     <!-- .departments / end -->
                                 </div>
+                                @endif
                                 @if(!request()->is('/'))
-                                    <div class="nav-panel__departments">
-                                        <!-- .departments -->
-                                        <div class="departments " data-departments-fixed-by="">
-                                            <button class="departments__button">
-                                            </button>
-                                        </div>
-                                        <!-- .departments / end -->
-                                    </div>
+                                <livewire:shop-category-component />
                                 @endif
                                 <!-- .nav-links -->
                                 <div class="nav-panel__nav-links nav-links">
@@ -444,6 +436,9 @@
                                 </div>
                                 <!-- .nav-links / end -->
                                 <div class="nav-panel__indicators">
+                                    <div class="indicator">
+                                        <livewire:compare-icon-component />
+                                    </div>
                                     <div class="indicator">
                                         <livewire:wishlist-icon-component />
                                     </div>

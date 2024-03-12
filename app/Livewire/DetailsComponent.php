@@ -17,9 +17,9 @@ class DetailsComponent extends Component
             ->with('brands')
             ->with('manufacturers')
             ->where('slug', $this->slug)->first();
-        $relatedProducts = Product::with('specification')->where('category_id', '=', $product->category_id)->get();
+        $products = Product::with('specification')->where('category_id', '=', $product->category_id)->get();
         //dd($relatedProducts);
-        return view('livewire.details-component', compact('product', 'relatedProducts'))->layout('components.layouts.app');
+        return view('livewire.details-component', compact('product', 'products'))->layout('components.layouts.app');
     }
     public function mount($slug)
     {
@@ -40,9 +40,25 @@ class DetailsComponent extends Component
 
     public function addToWishlist($product_id, $product_name, $product_price)
     {
-        Cart::instance('wishlist')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
-        $this->dispatch('addToWishlistDetail');
+//        $yes = 0;
+//        foreach (Cart::instance('wishlist')->content() as $witem) {
+//            if ($witem->id == $product_id) {
+//                Cart::instance('wishlist')->remove($witem->rowId);
+//                $this->dispatch('removeFromWishlist');
+//                $yes = 1;
+//                exit();
+//            } else {
+//                $yes = 0;
+//            }
+//        }
+        //if (!$yes)
+        {
+            Cart::instance('wishlist')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
+        }
+
+       $this->dispatch('addToWishlist');
     }
+
 
     public function removeWishlist($id)
     {
@@ -51,9 +67,10 @@ class DetailsComponent extends Component
             if ($witem->id == $id)
             {
                 Cart::instance('wishlist')->remove($witem->rowId);
-                $this->dispatch('removeFromWishlistDetail');
+                $this->dispatch('removeFromWishlist');
                 return;
             }
         }
     }
+
 }

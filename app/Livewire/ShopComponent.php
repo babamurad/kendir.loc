@@ -8,6 +8,7 @@ use App\Models\Manufacturer;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -58,6 +59,15 @@ class ShopComponent extends Component
             compact('categories', 'latestProducts', 'products', 'newArrivals', 'rcategories', 'brands', 'manufacturers'));
     }
 
+    public function mount($id = null)
+    {
+        $this->category_id = $id;
+
+        $this->prodCount = Product::count();
+        $this->minPrice = DB::table('products')->min('sale_price');
+        $this->maxPrice = DB::table('products')->max('sale_price');
+    }
+
     public function getCategoryProducts($category_id)
     {
         $cat = Category::findOrFail($category_id);
@@ -95,13 +105,23 @@ class ShopComponent extends Component
         }
     }
 
-    public function mount($id = null)
+    public function addToCompare($product_id, $product_name, $product_price)
     {
-        $this->category_id = $id;
+        Cart::instance('compare')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
+        $this->dispatch('addToCompare');
+    }
 
-        $this->prodCount = Product::count();
-        $this->minPrice = DB::table('products')->min('sale_price');
-        $this->maxPrice = DB::table('products')->max('sale_price');
+    public function removeCompare($id)
+    {
+        foreach (Cart::instance('compare')->content() as $witem)
+        {
+            if ($witem->id == $id)
+            {
+                Cart::instance('compare')->remove($witem->rowId);
+                $this->dispatch('removeCompare');
+                return;
+            }
+        }
     }
 
     public function selectCategory($id)

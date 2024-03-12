@@ -1,5 +1,5 @@
 <div>
-    <a href="cart.html" class="indicator__button" style="margin-top: 0.4rem;">
+    <a href="#" class="indicator__button" style="margin-top: 0.4rem;">
        <span class="indicator__area">
            <svg width="20px" height="20px">
                <use xlink:href="{{ asset('images/sprite.svg#cart-20') }}"></use>
