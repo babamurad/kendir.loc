@@ -38,7 +38,7 @@
                         <div class="card">
                             <div class="order-header">
                                 <div class="order-header__actions">
-                                    <a href="{{ route('order-history') }}" class="btn btn-xs btn-secondary">Back to list</a>
+                                    <a href="{{ route('order-history') }}" class="btn btn-xs btn-secondary" wire:navigate>Back to list</a>
                                 </div>
                                 <h5 class="order-header__title">Order #{{ $order->id }}</h5>
                                 <div class="order-header__subtitle">

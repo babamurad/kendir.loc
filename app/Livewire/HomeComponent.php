@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Product;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class HomeComponent extends Component
@@ -23,7 +24,7 @@ class HomeComponent extends Component
         //$latestProducts = Product::orderBy('id', "DESC")->limit(9)->get();
         //********
 
-        $categories = Category::with('children')->get();
+        $categories = Category::with('cparent', 'children' )->get();
         //dd($categories->count());
         $rcategories = Category::with('children')->where('parent_id', '=', '0')->get();
         //dd($categories->count());
@@ -102,5 +103,4 @@ class HomeComponent extends Component
             }
         }
     }
-
 }

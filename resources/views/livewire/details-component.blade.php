@@ -5,6 +5,20 @@
     @php
         $wproducts = \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->pluck('id');
     @endphp
+    @push('zoom')
+        <script src="{{asset('js/zoomsl.min.js')}}"></script>
+        <script src="{{asset('js/zoomsl.min.js')}}"></script>
+        <script>
+            $(document).ready(function (){
+                $('.product-image__img').click(function (){
+                    var image=$(this).attr('src');
+                    $('.zoomet img').attr('src',image);
+                });
+                $('.zoomla').imagezoomsl();
+            });
+
+        </script>
+    @endpush
         <div class="page-header">
             <div class="page-header__container container">
                 <div class="page-header__breadcrumb">
@@ -52,21 +66,16 @@
                         <div class="product__gallery" wire:ignore>
                             <div class="product-gallery">
                                 <div class="product-gallery__featured">
-                                    <button class="product-gallery__zoom">
-                                        <svg width="24px" height="24px">
-                                            <use xlink:href="{{ asset('images/sprite.svg#zoom-in-24') }}"></use>
-                                        </svg>
-                                    </button>
                                     <div class="owl-carousel" id="product-image">
-                                        <div class="product-image product-image--location--gallery">
+                                        <div class="product-image product-image--location--gallery zoomet" >
                                             <a href="{{ asset('images/products').'/'.$product->image }}" data-width="700" data-height="700" class="product-image__body" target="_blank">
-                                                <img class="product-image__img" src="{{ asset('images/products').'/'.$product->image }}" alt="">
+                                                <img class="product-image__img zoomla" src="{{ asset('images/products').'/'.$product->image }}" alt="">
                                             </a>
                                         </div>
                                         @foreach($images as $image)
-                                        <div class="product-image product-image--location--gallery">
+                                        <div class="product-image product-image--location--gallery zoomet">
                                             <a href="{{ asset('images/products').'/'.$image }}" data-width="700" data-height="700" class="product-image__body" target="_blank">
-                                                <img class="product-image__img" src="{{ asset('images/products').'/'.$image }}" alt="">
+                                                <img class="product-image__img zoomla" src="{{ asset('images/products').'/'.$image }}" alt="">
                                             </a>
                                         </div>
                                         @endforeach

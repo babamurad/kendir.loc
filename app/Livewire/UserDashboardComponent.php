@@ -11,7 +11,7 @@ class UserDashboardComponent extends Component
     {
         $order = Order::with('strana')->orderBy('id', 'desc')->first();
         $resentOrders = Order::with('orderItems')->orderBy('id', 'desc')->limit(3)->get();
-        dd($resentOrders->orderItems->count());
+
         return view('livewire.user-dashboard-component',
         compact('order', 'resentOrders')
         );

@@ -16317,3 +16317,45 @@ a .active{
     .product--layout--columnar .product__description {
         margin: 10px 8px 12px;
 }}
+
+.topbar-dropdown__btn:hover{
+    background: rgba(255, 255, 255, 0) !important;
+}
+
+.topbar-dropdown__btn{
+    background: rgba(255, 255, 255, 0) !important;
+}
+ul {
+    bottom: 0px;
+    padding: 10px;
+    margin: 0px;
+
+}
+@media only screen and  (max-width: 992px) {
+    .mobile-ul  {
+        font-size: 15px;
+        color: #868686;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        padding: 10px;
+        z-index: 4;
+        background-color: white;
+        list-style-type: none;
+    }
+
+
+}
+.center {
+    text-align: center;
+    width: 100%;
+}
+.mobile-list ul li a.active, .mobile-list ul li a:hover {
+    color: #3366cc !important;
+}
+.mobile-list ul li a, .mobile-list ul li a {
+    color: #363636 !important;
+}

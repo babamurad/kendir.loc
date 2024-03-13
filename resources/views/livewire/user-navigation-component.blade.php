@@ -11,16 +11,16 @@
             <a href="{{ route('order-history') }}" wire:navigate>Order History</a>
         </li>
         <li class="account-nav__item {{ request()->is('order-details') ? 'account-nav__item--active' : '' }}">
-            <a href="{{ route('order-details') }}">Order Details</a>
+            <a href="{{ route('order-details') }}" wire:navigate>Order Details</a>
         </li>
         <li class="account-nav__item {{ request()->is('addresses') ? 'account-nav__item--active' : '' }}">
-            <a href="{{ route('addresses') }}">Addresses</a>
+            <a href="{{ route('addresses') }}" wire:navigate>Addresses</a>
         </li>
         <li class="account-nav__item {{ request()->is('edit-address') ? 'account-nav__item--active' : '' }}">
-            <a href="{{ route('edit-address') }}">Edit Address</a>
+            <a href="{{ route('edit-address') }}" wire:navigate>Edit Address</a>
         </li>
         <li class="account-nav__item {{ request()->is('password') ? 'account-nav__item--active' : '' }}">
-            <a href="{{ route('password') }}">Password</a>
+            <a href="{{ route('password') }}" wire:navigate>Password</a>
         </li>
         <li class="account-nav__item ">
             <a href="#" wire:click="logout">Logout</a>

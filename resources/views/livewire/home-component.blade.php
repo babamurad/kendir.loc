@@ -49,7 +49,7 @@
                     </div>
                     <div class="block-features__content">
                         <div class="block-features__title">Free Shipping</div>
-                        <div class="block-features__subtitle">For orders from $50</div>
+                        <div class="block-features__subtitle">For orders from 100 man.</div>
                     </div>
                 </div>
                 <div class="block-features__divider"></div>

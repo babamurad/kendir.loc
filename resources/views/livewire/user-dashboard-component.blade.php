@@ -14,7 +14,7 @@
                                 </svg>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="">Breadcrumb</a>
+                                <a href="{{ route('dashboard') }}">Dashboard</a>
                                 <svg class="breadcrumb-arrow" width="6px" height="9px">
                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                                 </svg>
@@ -91,10 +91,10 @@
                                             <tbody>
                                             @foreach($resentOrders as $rorder)
                                             <tr>
-                                                <td><a href="{{ route('order-details', ['id' => $order->id]) }}">#{{ $rorder->id }}</a></td>
+                                                <td><a href="{{ route('order-details', ['id' => $order->id]) }}" wire:navigate>#{{ $rorder->id }}</a></td>
                                                 <td>{{ \Carbon\Carbon::create($rorder->created_at)->format('d F, Y') }}</td>
                                                 <td>{{ $rorder->status }}</td>
-                                                <td>{{ $rorder->orderItems[0]->price }} for {{ $rorder->orderItems[0]->quantity }} item(s)</td>
+                                                <td>{{ $rorder->price }} for {{ $rorder->quantity }} item(s)</td>
                                             </tr>
                                             @endforeach
                                             </tbody>

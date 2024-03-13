@@ -106,119 +106,19 @@
         <header class="site__header d-lg-block d-none">
             <div class="site-header">
                 <!-- .topbar -->
-                <div class="site-header__topbar topbar">
-                    <div class="topbar__container container">
-                        <div class="topbar__row">
 
-                            <div class="topbar__spring"></div>
-                            <div class="topbar__item">
-                                <div class="topbar-dropdown">
-                                    <button class="topbar-dropdown__btn" type="button">
-                                        My Account
-                                        <svg width="7px" height="5px">
-                                            <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-7x5') }}"></use>
-                                        </svg>
-                                    </button>
-                                    <div class="topbar-dropdown__body">
-                                        <!-- .menu -->
-                                        <div class="menu menu--layout--topbar ">
-                                            <div class="menu__submenus-container"></div>
-                                            <ul class="menu__list">
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="account-dashboard.html">
-                                                        Dashboard
-                                                    </a>
-                                                </li>
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="account-profile.html">
-                                                        Edit Profile
-                                                    </a>
-                                                </li>
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="account-orders.html">
-                                                        Order History
-                                                    </a>
-                                                </li>
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="account-addresses.html">
-                                                        Addresses
-                                                    </a>
-                                                </li>
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="account-password.html">
-                                                        Password
-                                                    </a>
-                                                </li>
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="account-login.html">
-                                                        Logout
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- .menu / end -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="topbar__item">
-                                <div class="topbar-dropdown">
-                                    <button class="topbar-dropdown__btn" type="button">
-                                        Currency: <span class="topbar__item-value">USD</span>
-                                        <svg width="7px" height="5px">
-                                            <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-7x5') }}"></use>
-                                        </svg>
-                                    </button>
-                                    <div class="topbar-dropdown__body">
-                                        <!-- .menu -->
-                                        <div class="menu menu--layout--topbar ">
-                                            <div class="menu__submenus-container"></div>
-                                            <ul class="menu__list">
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="">
-                                                        € Euro
-                                                    </a>
-                                                </li>
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="">
-                                                        £ Pound Sterling
-                                                    </a>
-                                                </li>
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="">
-                                                        $ US Dollar
-                                                    </a>
-                                                </li>
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="">
-                                                        ₽ Russian Ruble
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- .menu / end -->
-                                    </div>
-                                </div>
-                            </div>
+                <!-- .topbar / end -->
+                <div class="site-header__middle container">
+                    <div class="site-header__logo">
+                        <a href="/">
+                            <!-- logo -->
+                            <img src="{{ asset('images/kendir/kendir-logo-white.png') }}" alt="Kendir Logo" style="width: 14rem;">
+                            <!-- logo / end -->
+                        </a>
+                    </div>
+                    <livewire:header-search-component />
+                    <div class="site-header__phone">
+
                             <div class="topbar__item">
                                 <div class="topbar-dropdown">
                                     <button class="topbar-dropdown__btn" type="button">
@@ -229,7 +129,7 @@
                                     </button>
                                     <div class="topbar-dropdown__body">
                                         <!-- .menu -->
-                                        <div class="menu menu--layout--topbar  menu--with-icons ">
+                                        <div class="menu menu--layout--topbar  menu--with-icons mt-2">
                                             <div class="menu__submenus-container"></div>
                                             <ul class="menu__list">
                                                 <li class="menu__item">
@@ -249,7 +149,7 @@
                                                         <div class="menu__item-icon"><img
                                                                 srcset="images/languages/language-2.png 1x, images/languages/language-2@2x.png 2x"
                                                                 src="{{ asset('images/languages/language-2.png') }}" alt=""></div>
-                                                        French
+                                                        Русский
                                                     </a>
                                                 </li>
                                                 <li class="menu__item">
@@ -259,27 +159,7 @@
                                                         <div class="menu__item-icon"><img
                                                                 srcset="images/languages/language-3.png 1x, images/languages/language-3@2x.png 2x"
                                                                 src="images/languages/language-3.png" alt=""></div>
-                                                        German
-                                                    </a>
-                                                </li>
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="">
-                                                        <div class="menu__item-icon"><img
-                                                                srcset="images/languages/language-4.png 1x, images/languages/language-4@2x.png 2x"
-                                                                src="images/languages/language-4.png" alt=""></div>
-                                                        Russian
-                                                    </a>
-                                                </li>
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="">
-                                                        <div class="menu__item-icon"><img
-                                                                srcset="images/languages/language-5.png 1x, images/languages/language-5@2x.png 2x"
-                                                                src="images/languages/language-5.png" alt=""></div>
-                                                        Italian
+                                                        Turkmence
                                                     </a>
                                                 </li>
                                             </ul>
@@ -288,22 +168,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- .topbar / end -->
-                <div class="site-header__middle container">
-                    <div class="site-header__logo">
-                        <a href="/">
-                            <!-- logo -->
-                            <img src="{{ asset('images/kendir/kendir-logo-white.png') }}" alt="Kendir Logo" style="width: 14rem;">
-                            <!-- logo / end -->
-                        </a>
-                    </div>
-                    <livewire:header-search-component />
-                    <div class="site-header__phone">
-                        <div class="site-header__phone-title">Customer Service</div>
-                        <div class="site-header__phone-number"><a class="text-white" href="tel:+99312247780" >(+993) 12 24-77-80</a></div>
+
                     </div>
                 </div>
                 <div class="site-header__nav-panel">
@@ -488,13 +353,13 @@
                                         lorem. Pellentque ac placerat tellus.
                                     </div>
                                     <ul class="footer-contacts__contacts">
-                                        <li><i class="footer-contacts__icon fas fa-globe-americas"></i> 715 Fake Street,
-                                            New York 10021 USA</li>
+                                        <li><i class="footer-contacts__icon fas fa-globe-americas"></i> Täze zaman köçesi 180/2 jaýy, Bagtyýarlyk etrap, Aşgabat, Türkmenistan</li>
                                         <li><i class="footer-contacts__icon far fa-envelope"></i>  info@kendirtm.com
                                         </li>
-                                        <li><i class="footer-contacts__icon fas fa-mobile-alt"></i> (800) 060-0730,
-                                            (800) 060-0730</li>
-                                        <li><i class="footer-contacts__icon far fa-clock"></i> Mon-Sat 10:00pm - 7:00pm
+                                        <li><i class="footer-contacts__icon fas fa-mobile-alt"></i> (+993) 12 24-77-80,
+                                            (+993) 12 24-77-81</li>
+                                        <li><i class="footer-contacts__icon far fa-clock"></i> Mon-Fri 08:00 - 18:00
+                                            <i class="footer-contacts__icon far fa-clock"></i> Sat 08:00 - 17:00
                                         </li>
                                     </ul>
                                 </div>
@@ -503,7 +368,7 @@
                                 <div class="site-footer__widget footer-links">
                                     <h5 class="footer-links__title">Information</h5>
                                     <ul class="footer-links__list">
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">About
+                                        <li class="footer-links__item"><a href="{{ route('about-us') }}" class="footer-links__link">About
                                                 Us</a></li>
                                         <li class="footer-links__item"><a href="" class="footer-links__link">Delivery
                                                 Information</a></li>
@@ -511,7 +376,7 @@
                                                 Policy</a></li>
                                         <li class="footer-links__item"><a href="" class="footer-links__link">Brands</a>
                                         </li>
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">Contact
+                                        <li class="footer-links__item"><a href="{{ route('contacts') }}" class="footer-links__link">Contact
                                                 Us</a></li>
                                         <li class="footer-links__item"><a href="" class="footer-links__link">Returns</a>
                                         </li>
@@ -526,9 +391,9 @@
                                     <ul class="footer-links__list">
                                         <li class="footer-links__item"><a href="" class="footer-links__link">Store
                                                 Location</a></li>
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">Order
+                                        <li class="footer-links__item"><a href="{{ route('order-history') }}" class="footer-links__link">Order
                                                 History</a></li>
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">Wish
+                                        <li class="footer-links__item"><a href="{{ route('wishlist') }}" class="footer-links__link">Wish
                                                 List</a></li>
                                         <li class="footer-links__item"><a href=""
                                                 class="footer-links__link">Newsletter</a></li>
@@ -654,6 +519,13 @@
                     <li class="mobile-links__item" data-collapse-item>
                         <div class="mobile-links__item-title">
                             <a href="/" class="mobile-links__item-link">Home</a>
+                        </div>
+                    </li>
+                    <li class="mobile-links__item" data-collapse-item>
+                        <div class="mobile-links__item-title">
+                            <a href="" class="mobile-links__item-link">
+                                {{ __('Categories') }}
+                            </a>
                             <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                 <svg class="mobile-links__item-arrow" width="12px" height="7px">
                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
@@ -662,129 +534,50 @@
                         </div>
                         <div class="mobile-links__item-sub-links" data-collapse-content>
                             <ul class="mobile-links mobile-links--level--1">
-                                <li class="mobile-links__item" data-collapse-item>
+                                @foreach($categories as $category)
+                                    @if($category->parent_id == 0)
+                                        <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="index.html" class="mobile-links__item-link">Home 1</a>
+                                        <a href="" class="mobile-links__item-link">
+                                            {{ $category->name }}
+                                        </a>
+                                        @if($category->children->count() > 0)
+                                        <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
+                                            <svg class="mobile-links__item-arrow" width="12px" height="7px">
+                                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
+                                            </svg>
+                                        </button>
+                                        @endif
                                     </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="index-2.html" class="mobile-links__item-link">Home 2</a>
+                                    @if($category->children->count() > 0)
+                                    <div class="mobile-links__item-sub-links" data-collapse-content>
+                                        <ul class="mobile-links mobile-links--level--2">
+                                            @foreach($category->children as $subcategory)
+                                            <li class="mobile-links__item" data-collapse-item>
+                                                <div class="mobile-links__item-title">
+                                                    <a  wire:navigate href="{{ route('shop', ['id' => $subcategory->id]) }}" class="mobile-links__item-link">{{ $subcategory->name }}</a>
+                                                </div>
+                                            </li>
+                                            @endforeach
+                                        </ul>
                                     </div>
+                                    @endif
                                 </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="index-3.html" class="mobile-links__item-link">Home 1 Finder</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="index-4.html" class="mobile-links__item-link">Home 2 Finder</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="offcanvas-cart.html" class="mobile-links__item-link">Offcanvas Cart</a>
-                                    </div>
-                                </li>
+                                    @endif
+                                @endforeach
                             </ul>
                         </div>
                     </li>
                     <li class="mobile-links__item" data-collapse-item>
                         <div class="mobile-links__item-title">
-                            <a href="" class="mobile-links__item-link">Categories</a>
-                            <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
-                                <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="mobile-links__item-sub-links" data-collapse-content>
-                            <ul class="mobile-links mobile-links--level--1">
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="" class="mobile-links__item-link">Power Tools</a>
-                                        <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
-                                            <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="mobile-links__item-sub-links" data-collapse-content>
-                                        <ul class="mobile-links mobile-links--level--2">
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="" class="mobile-links__item-link">Engravers</a>
-                                                </div>
-                                            </li>
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="" class="mobile-links__item-link">Wrenches</a>
-                                                </div>
-                                            </li>
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="" class="mobile-links__item-link">Wall Chaser</a>
-                                                </div>
-                                            </li>
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="" class="mobile-links__item-link">Pneumatic Tools</a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="" class="mobile-links__item-link">Machine Tools</a>
-                                        <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
-                                            <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="mobile-links__item-sub-links" data-collapse-content>
-                                        <ul class="mobile-links mobile-links--level--2">
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="" class="mobile-links__item-link">Thread Cutting</a>
-                                                </div>
-                                            </li>
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="" class="mobile-links__item-link">Chip Blowers</a>
-                                                </div>
-                                            </li>
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="" class="mobile-links__item-link">Sharpening Machines</a>
-                                                </div>
-                                            </li>
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="" class="mobile-links__item-link">Pipe Cutters</a>
-                                                </div>
-                                            </li>
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="" class="mobile-links__item-link">Slotting machines</a>
-                                                </div>
-                                            </li>
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="" class="mobile-links__item-link">Lathes</a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
+                            <a href="{{ route('shop') }}" class="mobile-links__item-link">Shop</a>
                         </div>
                     </li>
                     <li class="mobile-links__item" data-collapse-item>
                         <div class="mobile-links__item-title">
-                            <a href="shop-grid-3-columns-sidebar.html" class="mobile-links__item-link">Shop</a>
+                            <a href="#" class="mobile-links__item-link">
+                                Account
+                            </a>
                             <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                 <svg class="mobile-links__item-arrow" width="12px" height="7px">
                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
@@ -793,174 +586,53 @@
                         </div>
                         <div class="mobile-links__item-sub-links" data-collapse-content>
                             <ul class="mobile-links mobile-links--level--1">
+                                @guest()
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="shop-grid-3-columns-sidebar.html" class="mobile-links__item-link">Shop
-                                            Grid</a>
-                                        <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
-                                            <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
-                                            </svg>
-                                        </button>
+                                        <a href="{{ route('register') }}" class="mobile-links__item-link" wire:navigate>Login/Register</a>
                                     </div>
-                                    <div class="mobile-links__item-sub-links" data-collapse-content>
-                                        <ul class="mobile-links mobile-links--level--2">
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="shop-grid-3-columns-sidebar.html"
-                                                        class="mobile-links__item-link">3 Columns Sidebar</a>
-                                                </div>
-                                            </li>
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="shop-grid-4-columns-full.html"
-                                                        class="mobile-links__item-link">4 Columns Full</a>
-                                                </div>
-                                            </li>
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="shop-grid-5-columns-full.html"
-                                                        class="mobile-links__item-link">5 Columns Full</a>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                </li>
+                                @endguest
+                                @auth()
+                                <li class="mobile-links__item" data-collapse-item>
+                                    <div class="mobile-links__item-title">
+                                        <a href="a{{ route('dashboard') }}" class="mobile-links__item-link" wire:navigate>Dashboard</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="shop-list.html" class="mobile-links__item-link">Shop List</a>
+                                        <a href="{{ route('edit-profile') }}" class="mobile-links__item-link" wire:navigate>Edit Profile</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="shop-right-sidebar.html" class="mobile-links__item-link">Shop Right
-                                            Sidebar</a>
+                                        <a href="{{ route('order-history') }}" class="mobile-links__item-link" wire:navigate>Order History</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="product.html" class="mobile-links__item-link">Product</a>
-                                        <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
-                                            <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="mobile-links__item-sub-links" data-collapse-content>
-                                        <ul class="mobile-links mobile-links--level--2">
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="product.html" class="mobile-links__item-link">Product</a>
-                                                </div>
-                                            </li>
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="product-alt.html" class="mobile-links__item-link">Product
-                                                        Alt</a>
-                                                </div>
-                                            </li>
-                                            <li class="mobile-links__item" data-collapse-item>
-                                                <div class="mobile-links__item-title">
-                                                    <a href="product-sidebar.html"
-                                                        class="mobile-links__item-link">Product Sidebar</a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="cart.html" class="mobile-links__item-link">Cart</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="cart-empty.html" class="mobile-links__item-link">Cart Empty</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="checkout.html" class="mobile-links__item-link">Checkout</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="order-success.html" class="mobile-links__item-link">Order Success</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="{{ route('wishlist') }}" class="mobile-links__item-link">Wishlist</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="compare.html" class="mobile-links__item-link">Compare</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="track-order.html" class="mobile-links__item-link">Track Order</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="mobile-links__item" data-collapse-item>
-                        <div class="mobile-links__item-title">
-                            <a href="account-login.html" class="mobile-links__item-link">Account</a>
-                            <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
-                                <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="mobile-links__item-sub-links" data-collapse-content>
-                            <ul class="mobile-links mobile-links--level--1">
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="account-login.html" class="mobile-links__item-link">Login</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="account-dashboard.html" class="mobile-links__item-link">Dashboard</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="account-profile.html" class="mobile-links__item-link">Edit Profile</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="account-orders.html" class="mobile-links__item-link">Order History</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="account-order-details.html" class="mobile-links__item-link">Order
-                                            Details</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="account-addresses.html" class="mobile-links__item-link">Address
+                                        <a href="{{ route('addresses') }}" class="mobile-links__item-link" wire:navigate>Address
                                             Book</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="account-edit-address.html" class="mobile-links__item-link">Edit
+                                        <a href="{{ route('edit-address') }}" class="mobile-links__item-link" wire:navigate>Edit
                                             Address</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="account-password.html" class="mobile-links__item-link">Change
+                                        <a href="{{ route('password') }}" class="mobile-links__item-link" wire:navigate>Change
                                             Password</a>
                                     </div>
                                 </li>
+                                <li class="mobile-links__item" data-collapse-item>
+                                    <div class="mobile-links__item-title">
+                                        <a href="#" class="mobile-links__item-link">Logout</a>
+                                    </div>
+                                </li>
+                                @endauth
                             </ul>
                         </div>
                     </li>
@@ -1067,40 +739,6 @@
                     </li>
                     <li class="mobile-links__item" data-collapse-item>
                         <div class="mobile-links__item-title">
-                            <a data-collapse-trigger class="mobile-links__item-link">Currency</a>
-                            <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
-                                <svg class="mobile-links__item-arrow" width="12px" height="7px">
-                                    <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="mobile-links__item-sub-links" data-collapse-content>
-                            <ul class="mobile-links mobile-links--level--1">
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="" class="mobile-links__item-link">€ Euro</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="" class="mobile-links__item-link">£ Pound Sterling</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="" class="mobile-links__item-link">$ US Dollar</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="" class="mobile-links__item-link">₽ Russian Ruble</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="mobile-links__item" data-collapse-item>
-                        <div class="mobile-links__item-title">
                             <a data-collapse-trigger class="mobile-links__item-link">Language</a>
                             <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                 <svg class="mobile-links__item-arrow" width="12px" height="7px">
@@ -1117,22 +755,12 @@
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="" class="mobile-links__item-link">French</a>
+                                        <a href="" class="mobile-links__item-link">Русский</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="" class="mobile-links__item-link">German</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="" class="mobile-links__item-link">Russian</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="" class="mobile-links__item-link">Italian</a>
+                                        <a href="" class="mobile-links__item-link">Turkmence</a>
                                     </div>
                                 </li>
                             </ul>
@@ -1143,6 +771,54 @@
         </div>
     </div>
     <!-- mobilemenu / end -->
+
+    <div class="mobile-footer">
+        <div class="mobile-list">
+            <ul class="mobile-ul">
+                <li>
+                    <a href="/" class="{{ request()->is('/')? 'active':'' }}" wire:navigate>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home center"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        <span>{{__('Home')}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('shop') }}" class="{{ request()->is('shop')? 'active':'' }}" wire:navigate>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-align-justify center"><line x1="21" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="3" y2="18"></line></svg>
+                        <span>{{ __('Shop') }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('cart') }}" class="{{ request()->is('cart')? 'active':'' }}" wire:navigate>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag center"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        <span>Cart</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('wishlist') }}" class="{{ request()->is('wishlist')? 'active':'' }}" wire:navigate>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart center"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        <span>Wishlist</span>
+                    </a>
+                </li>
+                @auth()
+                <li>
+                    <a href="{{ route('dashboard') }}" class="{{ request()->is('dashboard')? 'active':'' }}" wire:navigate>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user center"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span>Account</span>
+                    </a>
+                </li>
+                @endauth
+                @guest()
+                <li>
+                    <a href="{{ route('register') }}" class="{{ request()->is('dashboard')? 'active':'' }}" wire:navigate>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user center"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span>Login</span>
+                    </a>
+                </li>
+                @endguest
+            </ul>
+        </div>
+
+    </div>  </body>
 
     <!-- js -->
 
@@ -1160,6 +836,7 @@
         svg4everybody();
     </script>
 @stack('priceFilter')
+@stack('zoom')
 </body>
 
 </html>

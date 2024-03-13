@@ -54,10 +54,10 @@
                                         <tbody>
                                         @foreach($orders as $order)
                                             <tr>
-                                                <td><a href="{{ route('order-details', ['id' => $order->id]) }}">#{{ $order->id }}</a></td>
+                                                <td><a href="{{ route('order-details', ['id' => $order->id]) }}" wire:navigate>#{{ $order->id }}</a></td>
                                                 <td>{{ \Carbon\Carbon::create($order->created_at)->format('d F, Y') }}</td>
                                                 <td>{{ $order->status }}</td>
-                                                <td>{{ $order->orderItems[0]->price }} for {{ $order->orderItems[0]->quantity }} item(s)</td>
+                                                <td>{{ $order->total }} for {{ count($order->orderItems) }} item(s)</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
