@@ -599,11 +599,7 @@
                                             Password</a>
                                     </div>
                                 </li>
-                                <li class="mobile-links__item" data-collapse-item>
-                                    <div class="mobile-links__item-title">
-                                        <a href="#" class="mobile-links__item-link">Logout</a>
-                                    </div>
-                                </li>
+                                    <livewire:mobile-logout-component />
                                 @endauth
                             </ul>
                         </div>
