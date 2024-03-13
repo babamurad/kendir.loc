@@ -16361,3 +16361,8 @@ ul {
 .mobile-list ul li a, .mobile-list ul li a {
     color: #8c9196 !important;
 }
+@media (min-width: 768px) and (max-width: 991px){
+    [dir=ltr] .mobile-header__search {
+        margin-right: 8px;
+        width: 24rem;
+    }}
