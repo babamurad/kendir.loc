@@ -16343,8 +16343,9 @@ ul {
         width: 100%;
         padding: 10px;
         z-index: 4;
-        background-color: white;
+        background-color: #ffffff;
         list-style-type: none;
+        border-top: 1px solid #d5d2d2;
     }
 
 
@@ -16355,7 +16356,8 @@ ul {
 }
 .mobile-list ul li a.active, .mobile-list ul li a:hover {
     color: #3366cc !important;
+    font-weight: 600;
 }
 .mobile-list ul li a, .mobile-list ul li a {
-    color: #363636 !important;
+    color: #8c9196 !important;
 }
