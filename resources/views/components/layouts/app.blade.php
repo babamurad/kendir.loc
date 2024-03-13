@@ -43,28 +43,9 @@
                                 <img src="{{ asset('images/kendir/kendir-logo-white.png') }}" alt="Kendir logo" style="width:120px; height:30px;">
                                 <!-- mobile-logo / end -->
                             </a>
-                            <div class="search search--location--mobile-header mobile-header__search">
-                                <div class="search__body">
-                                    <form class="search__form" action="">
-                                        <input class="search__input" name="search"
-                                            placeholder="Search over 10,000 products" aria-label="Site search"
-                                            type="text" autocomplete="off">
-                                        <button class="search__button search__button--type--submit" type="submit">
-                                            <svg width="20px" height="20px">
-                                                <use xlink:href="{{ asset('images/sprite.svg#search-20') }}"></use>
-                                            </svg>
-                                        </button>
-                                        <button class="search__button search__button--type--close" type="button">
-                                            <svg width="20px" height="20px">
-                                                <use xlink:href="{{ asset('images/sprite.svg#cross-20') }}"></use>
-                                            </svg>
-                                        </button>
-                                        <div class="search__border"></div>
-                                    </form>
-                                    <div class="search__suggestions suggestions suggestions--location--mobile-header">
-                                    </div>
-                                </div>
-                            </div>
+
+                            <livewire:search-mobile-component />
+
                             <div class="mobile-header__indicators">
                                 <div class="indicator indicator--mobile-search indicator--mobile d-sm-none">
                                     <button class="indicator__button">

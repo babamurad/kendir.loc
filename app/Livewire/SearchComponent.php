@@ -27,14 +27,6 @@ class SearchComponent extends Component
 
     public function render()
     {
-//        $cat_count =Category::find(36);
-//        dd($cat_count->products->count());
-        //->where('name', 'like', '%'.$this->search.'%')
-//                ->orderBy('id', 'desc')
-//                ->paginate($this->perPage);
-        /*
-         * ->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
-         * */
         $categories = Category::with('cparent')->with('products')->get();
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
         if ($this->catId){
