@@ -16374,3 +16374,11 @@ ul {
         margin-right: 8px;
         width: 24rem;
     }}
+
+[dir=ltr] .menu--layout--topbar.menu--with-icons .menu__item-icon {
+    left: 9px;
+}
+
+[dir=ltr] .menu--layout--topbar.menu--with-icons .menu__item-link {
+    padding-left: 50px;
+}
