@@ -75,17 +75,17 @@
                             @include('components.alerts')
                             <form wire:submit="registerUser">
                                 <div class="form-group">
-                                    <label class="required-field">Name</label>
+                                    <label class="">Name</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter Name" wire:model="name">
                                     @error('name') <span>{{ session('error') }}</span> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="required-field">Email address</label>
+                                    <label class="">Email address</label>
                                     <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" wire:model="email">
                                     @error('email') <span>{{ session('error') }}</span> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="required-field">Password</label>
+                                    <label class="">Password</label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" wire:model="password">
                                     @error('password') <span>{{ session('error') }}</span> @enderror
                                 </div>
