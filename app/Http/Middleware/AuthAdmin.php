@@ -21,7 +21,7 @@ class AuthAdmin
                 return $next($request);
             }
             else{
-                session()->flash();
+                //session()->flash();
                 return redirect()->route('home');
             }
 

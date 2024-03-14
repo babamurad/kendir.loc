@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
     <title>@yield('title') - Kendir</title>
-    <link rel="icon" type="image/png" href="{{asset('admin/img/favicon.ico')}}">
+    <link rel="icon" type="image/png" href="{{asset('favicon.ico')}}">
     <!-- fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">
     <!-- css -->
@@ -275,7 +275,7 @@
                                         <livewire:wishlist-icon-component />
                                     </div>
                                     <div class="indicator indicator--trigger--click">
-                                    <livewire:cart-icon-component />
+                                        <livewire:cart-icon-component />
 
                                     </div>
                                     <div class="indicator indicator--trigger--click">
