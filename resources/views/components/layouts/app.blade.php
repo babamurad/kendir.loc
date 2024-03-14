@@ -221,7 +221,7 @@
                                         <li class="nav-links__item ">
                                             <a class="nav-links__item-link" href="/" wire:navigate>
                                                 <div class="nav-links__item-body">
-                                                    Home
+                                                    {{__('Home')}}
                                                 </div>
                                             </a>
                                         </li>
@@ -229,14 +229,14 @@
                                         <li class="nav-links__item">
                                             <a class="nav-links__item-link" href="{{ route('shop') }}" wire:navigate>
                                                 <div class="nav-links__item-body">
-                                                    Shop
+                                                    {{__('Shop')}}
                                                 </div>
                                             </a>
                                         </li>
                                         <li class="nav-links__item  nav-links__item--has-submenu ">
                                             <a class="nav-links__item-link" href="/">
                                                 <div class="nav-links__item-body">
-                                                    Services
+                                                    {{__('Services')}}
                                                 </div>
                                             </a>
                                         </li>
@@ -244,7 +244,7 @@
                                         <li class="nav-links__item  nav-links__item--has-submenu ">
                                             <a class="nav-links__item-link" href="{{ route('posts') }}" wire:navigate>
                                                 <div class="nav-links__item-body">
-                                                    News
+                                                    {{__('News')}}
                                                 </div>
                                             </a>
                                         </li>
@@ -252,7 +252,7 @@
                                         <li class="nav-links__item  nav-links__item--has-submenu ">
                                             <a class="nav-links__item-link" href="{{ route('contacts') }}" wire:navigate>
                                                 <div class="nav-links__item-body">
-                                                    Contact us
+                                                    {{__('Contact us')}}
                                                 </div>
                                             </a>
                                         </li>
@@ -260,7 +260,7 @@
                                             <a class="nav-links__item-link"
                                                href="{{ route('about-us') }}" wire:navigate>
                                                 <div class="nav-links__item-body">
-                                                    About us
+                                                    {{__('About us')}}
                                                 </div>
                                             </a>
                                         </li>
