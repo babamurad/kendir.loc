@@ -16350,6 +16350,14 @@ ul {
 
 
 }
+
+@media (min-width: 768px) {
+    .mobile-footer  {
+      display: none;
+    }
+
+}
+
 .center {
     text-align: center;
     width: 100%;

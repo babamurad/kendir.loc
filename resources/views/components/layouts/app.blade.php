@@ -275,7 +275,7 @@
                                         <livewire:wishlist-icon-component />
                                     </div>
                                     <div class="indicator indicator--trigger--click">
-                                    <livewire:cart-icon-component />
+                                        <livewire:cart-icon-component />
 
                                     </div>
                                     <div class="indicator indicator--trigger--click">
