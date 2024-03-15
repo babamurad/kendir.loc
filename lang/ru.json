@@ -4,5 +4,27 @@
     "Services": "Услуги",
     "News": "Новости",
     "Contact us": "Контакты",
-    "About us": "О нас"
+    "About us": "О нас",
+    "Language": "Язык",
+    "All Categories": "Все категории",
+    "Cart": "Корзина",
+    "Wishlist": "Избранные",
+    "Account": "Пользователь",
+    "Categories": "Категории",
+    "Dashboard": "Панель",
+    "Edit Profile": "Редактировать профиль",
+    "Order History": "История заказов",
+    "Address Book": "Адресная книга",
+    "Edit Address": "Изменить адрес",
+    "Change Password": "Изменить пароль",
+    "Logout": "Выйти",
+
+    "Free Shipping": "Бесплатная доставка",
+    "For orders from 100 manat": "Для заказов от 100 манат",
+    "Support 24/7": "Поддержка 24/7",
+    "Call us anytime": "Звоните нам в любое время",
+    "100% Safety": "100% безопасность",
+    "Only secure payments": "Только безопасные платежи",
+    "Hot Offers": "Горячие предложения",
+    "Discounts up to 90%": "Скидки до 90%"
 }

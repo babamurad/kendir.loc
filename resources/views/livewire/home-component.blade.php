@@ -40,6 +40,7 @@
     @include('components.alerts')
     <div class="block block-features block-features--layout--classic">
         <div class="container">
+
             <div class="block-features__list">
                 <div class="block-features__item">
                     <div class="block-features__icon">
@@ -48,8 +49,8 @@
                         </svg>
                     </div>
                     <div class="block-features__content">
-                        <div class="block-features__title">Free Shipping</div>
-                        <div class="block-features__subtitle">For orders from 100 man.</div>
+                        <div class="block-features__title">{{__('Free Shipping')}}</div>
+                        <div class="block-features__subtitle">{{__('For orders from 100 manat')}}</div>
                     </div>
                 </div>
                 <div class="block-features__divider"></div>
@@ -60,8 +61,8 @@
                         </svg>
                     </div>
                     <div class="block-features__content">
-                        <div class="block-features__title">Support 24/7</div>
-                        <div class="block-features__subtitle">Call us anytime</div>
+                        <div class="block-features__title">{{__('Support 24/7')}}</div>
+                        <div class="block-features__subtitle">{{__('Call us anytime')}}</div>
                     </div>
                 </div>
                 <div class="block-features__divider"></div>
@@ -72,8 +73,8 @@
                         </svg>
                     </div>
                     <div class="block-features__content">
-                        <div class="block-features__title">100% Safety</div>
-                        <div class="block-features__subtitle">Only secure payments</div>
+                        <div class="block-features__title">{{__('100% Safety')}}</div>
+                        <div class="block-features__subtitle">{{__('Only secure payments')}}</div>
                     </div>
                 </div>
                 <div class="block-features__divider"></div>
@@ -84,8 +85,8 @@
                         </svg>
                     </div>
                     <div class="block-features__content">
-                        <div class="block-features__title">Hot Offers</div>
-                        <div class="block-features__subtitle">Discounts up to 90%</div>
+                        <div class="block-features__title">{{__('Hot Offers')}}</div>
+                        <div class="block-features__subtitle">{{__('Discounts up to 90%')}}</div>
                     </div>
                 </div>
             </div>
@@ -222,13 +223,13 @@
                                         @endif
                                     </div>
                                     <div class="product-card__image product-image">
-                                        <a href="{{ route('product.details', ['slug' => $product->slug]) }}" class="product-image__body">
+                                        <a href="{{ route('product.details', ['locale' => app()->getLocale(),'slug' => $product->slug]) }}" class="product-image__body">
                                             <img class="product-image__img" src="{{ asset('images/products').'/'.$product->image }}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-card__info">
                                         <div class="product-card__name">
-                                            <a href="{{ route('product.details', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
+                                            <a href="{{ route('product.details', ['locale' => app()->getLocale(),'slug' => $product->slug]) }}">{{ $product->name }}</a>
                                         </div>
                                         <ul class="product-card__features-list">
                                             <li>Speed: 750 RPM</li>
@@ -283,7 +284,7 @@
     <!-- .block-banner -->
     <div class="block block-banner">
         <div class="container">
-            <a href="{{ route('shop') }}" class="block-banner__body">
+            <a href="{{ route('shop', ['locale' => app()->getLocale()]) }}" class="block-banner__body">
                 <div class="block-banner__image block-banner__image--desktop" style="background-image: url('images/kendir/kupit armaturu.jpg'); opacity: 0.7;"></div>
                 <div class="block-banner__image block-banner__image--mobile" style="background-image: url('images/kendir/kupit armaturu.jpg')"></div>
                 <div class="block-banner__title">Hundreds <br class="block-banner__mobile-br"> Hand Tools</div>
@@ -508,7 +509,7 @@
                                 <a href="">Special Offers</a>
                             </div>
                             <div class="post-card__name">
-                                <a href="{{ route('post-detail', ['id' => $post->id]) }}">
+                                <a href="{{ route('post-detail', ['locale' => app()->getLocale(), 'id' => $post->id]) }}">
                                     {{ $post->title }}
                                 </a>
                             </div>
@@ -517,7 +518,7 @@
                                 {{ \Illuminate\Support\Str::of($post->text)->words(25) }}
                             </div>
                             <div class="post-card__read-more">
-                                <a href="{{ route('post-detail', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">Read More</a>
+                                <a href="{{ route('post-detail', ['locale' => app()->getLocale(), 'id' => $post->id]) }}" class="btn btn-secondary btn-sm">Read More</a>
                             </div>
                         </div>
                     </div>

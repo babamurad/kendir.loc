@@ -86,56 +86,56 @@
                     <livewire:header-search-component />
                     <div class="site-header__phone">
 
-                            <div class="topbar__item">
-                                <div class="topbar-dropdown">
-                                    <button class="topbar-dropdown__btn" type="button">
-                                        Language: <span class="topbar__item-value">EN</span>
-                                        <svg width="7px" height="5px">
-                                            <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-7x5') }}"></use>
-                                        </svg>
-                                    </button>
-                                    <div class="topbar-dropdown__body">
-                                        <!-- .menu -->
-                                        <div class="menu menu--layout--topbar  menu--with-icons mt-2">
-                                            <div class="menu__submenus-container"></div>
-                                            <ul class="menu__list">
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="">
-                                                        <div class="menu__item-icon"><img
-                                                                srcset="{{ asset('images/languages/language-1-2.png') }} 1x, {{ asset('images/languages/language-1@2x.png') }} 2x"
-                                                                src="{{ asset('images/languages/language-1.png') }}" alt="" style="width: 88%;"></div>
-                                                        English
-                                                    </a>
-                                                </li>
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="">
-                                                        <div class="menu__item-icon"><img
-                                                                srcset="images/languages/language-6-2.png 1x, images/languages/language-6@2x.png 2x"
-                                                                src="{{ asset('images/languages/language-2.png') }}" alt="" style="width: 88%;"></div>
-                                                        Русский
-                                                    </a>
-                                                </li>
-                                                <li class="menu__item">
-                                                    <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                    <div class="menu__item-submenu-offset"></div>
-                                                    <a class="menu__item-link" href="">
-                                                        <div class="menu__item-icon"><img
-                                                                srcset="images/languages/language-7-3.png 1x, images/languages/language-7@2x.png 2x"
-                                                                src="images/languages/language-7-2.png" alt="" style="width: 88%;"></div>
-                                                        Turkmence
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- .menu / end -->
-                                    </div>
-                                </div>
-                            </div>
-
+                    <livewire:localization-component />
+{{--                        <div class="topbar__item">--}}
+{{--                            <div class="topbar-dropdown">--}}
+{{--                                <button class="topbar-dropdown__btn" type="button">--}}
+{{--                                    {{ __('Language') }}: <span class="topbar__item-value">{{ mb_strtoupper(App::getLocale()) }}</span>--}}
+{{--                                    <svg width="7px" height="5px">--}}
+{{--                                        <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-7x5') }}"></use>--}}
+{{--                                    </svg>--}}
+{{--                                </button>--}}
+{{--                                <div class="topbar-dropdown__body">--}}
+{{--                                    <!-- .menu -->--}}
+{{--                                    <div class="menu menu--layout--topbar  menu--with-icons mt-2">--}}
+{{--                                        <div class="menu__submenus-container"></div>--}}
+{{--                                        <ul class="menu__list">--}}
+{{--                                            <li class="menu__item">--}}
+{{--                                                <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->--}}
+{{--                                                <div class="menu__item-submenu-offset"></div>--}}
+{{--                                                <a class="menu__item-link" href="{{ route('home', ['locale' => 'en']) }}" wire:navigate >--}}
+{{--                                                    <div class="menu__item-icon"><img--}}
+{{--                                                            srcset="{{ asset('images/languages/language-1-2.png') }} 1x, {{ asset('images/languages/language-1@2x.png') }} 2x"--}}
+{{--                                                            src="{{ asset('images/languages/language-1.png') }}" alt="" style="width: 88%;"></div>--}}
+{{--                                                    English--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
+{{--                                            <li class="menu__item">--}}
+{{--                                                <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->--}}
+{{--                                                <div class="menu__item-submenu-offset"></div>--}}
+{{--                                                <a class="menu__item-link" href="{{ route('home', ['locale' => 'ru']) }}" wire:navigate >--}}
+{{--                                                    <div class="menu__item-icon"><img--}}
+{{--                                                            srcset="images/languages/language-6-2.png 1x, images/languages/language-6@2x.png 2x"--}}
+{{--                                                            src="{{ asset('images/languages/language-2.png') }}" alt="" style="width: 88%;"></div>--}}
+{{--                                                    Русский--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
+{{--                                            <li class="menu__item">--}}
+{{--                                                <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->--}}
+{{--                                                <div class="menu__item-submenu-offset"></div>--}}
+{{--                                                <a class="menu__item-link" href="{{ route('home', ['locale' => 'tm']) }}" wire:navigate >--}}
+{{--                                                    <div class="menu__item-icon"><img--}}
+{{--                                                            srcset="images/languages/language-7-3.png 1x, images/languages/language-7@2x.png 2x"--}}
+{{--                                                            src="images/languages/language-7-2.png" alt="" style="width: 88%;"></div>--}}
+{{--                                                    Turkmence--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
+{{--                                    <!-- .menu / end -->--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 <div class="site-header__nav-panel">
@@ -473,7 +473,7 @@
         <div class="mobilemenu__backdrop"></div>
         <div class="mobilemenu__body">
             <div class="mobilemenu__header">
-                <div class="mobilemenu__title">Menu</div>
+                <div class="mobilemenu__title">{{__('Menu')}}</div>
                 <button type="button" class="mobilemenu__close">
                     <svg width="20px" height="20px">
                         <use xlink:href="{{ asset('images/sprite.svg#cross-20') }}"></use>
@@ -485,7 +485,7 @@
                     data-collapse-opened-class="mobile-links__item--open">
                     <li class="mobile-links__item" data-collapse-item>
                         <div class="mobile-links__item-title">
-                            <a href="/" class="mobile-links__item-link">Home</a>
+                            <a href="/" class="mobile-links__item-link">{{__('Home')}}</a>
                         </div>
                     </li>
                     <li class="mobile-links__item" data-collapse-item>
@@ -537,7 +537,7 @@
                     </li>
                     <li class="mobile-links__item" data-collapse-item>
                         <div class="mobile-links__item-title">
-                            <a href="{{ route('shop') }}" class="mobile-links__item-link">Shop</a>
+                            <a href="{{ route('shop') }}" class="mobile-links__item-link">{{__('Shop')}}</a>
                         </div>
                     </li>
                     <li class="mobile-links__item" data-collapse-item>
@@ -548,7 +548,7 @@
                     <li class="mobile-links__item" data-collapse-item>
                         <div class="mobile-links__item-title">
                             <a href="#" class="mobile-links__item-link">
-                                Account
+                                {{__('Account')}}
                             </a>
                             <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                 <svg class="mobile-links__item-arrow" width="12px" height="7px">
@@ -561,42 +561,40 @@
                                 @guest()
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('register') }}" class="mobile-links__item-link" wire:navigate>Login/Register</a>
+                                        <a href="{{ route('register') }}" class="mobile-links__item-link" wire:navigate>{{__('Login')}}/{{__('Register')}}</a>
                                     </div>
                                 </li>
                                 @endguest
                                 @auth()
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="a{{ route('dashboard') }}" class="mobile-links__item-link" wire:navigate>Dashboard</a>
+                                        <a href="a{{ route('dashboard') }}" class="mobile-links__item-link" wire:navigate>{{__('Dashboard')}}</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('edit-profile') }}" class="mobile-links__item-link" wire:navigate>Edit Profile</a>
+                                        <a href="{{ route('edit-profile') }}" class="mobile-links__item-link" wire:navigate>{{__('Edit Profile')}}</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('order-history') }}" class="mobile-links__item-link" wire:navigate>Order History</a>
+                                        <a href="{{ route('order-history') }}" class="mobile-links__item-link" wire:navigate>{{__('Order History')}}</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('addresses') }}" class="mobile-links__item-link" wire:navigate>Address
-                                            Book</a>
+                                        <a href="{{ route('addresses') }}" class="mobile-links__item-link" wire:navigate>{{__('Address Book')}}
+                                            </a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('edit-address') }}" class="mobile-links__item-link" wire:navigate>Edit
-                                            Address</a>
+                                        <a href="{{ route('edit-address') }}" class="mobile-links__item-link" wire:navigate>{{__('Edit Address')}}</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('password') }}" class="mobile-links__item-link" wire:navigate>Change
-                                            Password</a>
+                                        <a href="{{ route('password') }}" class="mobile-links__item-link" wire:navigate>{{__('Change Password')}}</a>
                                     </div>
                                 </li>
                                     <livewire:mobile-logout-component />
@@ -606,7 +604,7 @@
                     </li>
                     <li class="mobile-links__item" data-collapse-item>
                         <div class="mobile-links__item-title">
-                            <a data-collapse-trigger class="mobile-links__item-link">Language</a>
+                            <a data-collapse-trigger class="mobile-links__item-link">{{ __('Language') }}</a>
                             <button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
                                 <svg class="mobile-links__item-arrow" width="12px" height="7px">
                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
@@ -617,17 +615,17 @@
                             <ul class="mobile-links mobile-links--level--1">
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="" class="mobile-links__item-link">English</a>
+                                        <a href="{{ route('home', ['locale' => 'en']) }}" class="mobile-links__item-link" wire:navigate>English</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="" class="mobile-links__item-link">Русский</a>
+                                        <a href="{{ route('home', ['locale' => 'ru']) }}" class="mobile-links__item-link" wire:navigate>Русский</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="" class="mobile-links__item-link">Turkmence</a>
+                                        <a href="{{ route('home', ['locale' => 'tm']) }}" class="mobile-links__item-link" wire:navigate>Turkmence</a>
                                     </div>
                                 </li>
                             </ul>
@@ -657,20 +655,20 @@
                 <li>
                     <a href="{{ route('cart') }}" class="{{ request()->is('cart')? 'active':'' }}" wire:navigate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag center"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                        <span>Cart</span>
+                        <span>{{ __('Cart') }}</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('wishlist') }}" class="{{ request()->is('wishlist')? 'active':'' }}" wire:navigate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart center"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        <span>Wishlist</span>
+                        <span>{{ __('Wishlist') }}</span>
                     </a>
                 </li>
                 @auth()
                 <li>
                     <a href="{{ route('dashboard') }}" class="{{ request()->is('dashboard')? 'active':'' }}" wire:navigate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user center"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                        <span>Account</span>
+                        <span>{{ __('Account') }}</span>
                     </a>
                 </li>
                 @endauth

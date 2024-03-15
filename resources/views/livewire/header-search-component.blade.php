@@ -3,7 +3,7 @@
         <div class="search__body">
             <form class="search__form" action="{{ route('product.search') }}">
                 <select class="search__categories" aria-label="Category" name="catId">
-                    <option value="" selected>All Categories</option>
+                    <option value="" selected>{{__('All Categories')}}</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name}}</option>
                     @endforeach

@@ -51,22 +51,35 @@ use App\Livewire\CompareComponent;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', HomeComponent::class)->name('home');
-Route::get('shop/{id?}', ShopComponent::class)->name('shop');
-Route::get('category/{slug}', CategoryDetailsComponent::class)->name('product.category');
-Route::get('cart', CartComponent::class)->name('cart');
-Route::get('wishlist', WishlistComponent::class)->name('wishlist');
-Route::get('search', SearchComponent::class)->name('product.search');
-Route::get('details/{slug}', DetailsComponent::class)->name('product.details');
-Route::get('checkout', ChekoutComponent::class)->name('checkout');
-Route::get('checkout', ChekoutComponent::class)->name('checkout');
-Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
-Route::get('/terms', TermsComponent::class)->name('terms');
-Route::get('/contacts', ContactComponent::class)->name('contacts');
-Route::get('/posts', Posts::class)->name('posts');
-Route::get('/post/{id}', PostDetailComponent::class)->name('post-detail');
-Route::get('about-us', AboutUsComponent::class)->name('about-us');
-Route::get('compare', CompareComponent::class)->name('compare');
+//Route::get('/', function (){
+//    return redirect(app()->getLocale());
+//});
+//Route::get('shop', function (){
+//    return redirect(app()->getLocale());
+//});
+//
+//Route::prefix('{locale?}')->middleware(\App\Http\Middleware\Localization::class)->group(function (){
+//
+//
+//});
+Route::middleware(\App\Http\Middleware\Localization::class)->group(function (){
+    Route::get('/', HomeComponent::class)->name('home');
+    Route::get('shop/{id?}', ShopComponent::class)->name('shop');
+    Route::get('category/{slug}', CategoryDetailsComponent::class)->name('product.category');
+    Route::get('cart', CartComponent::class)->name('cart');
+    Route::get('wishlist', WishlistComponent::class)->name('wishlist');
+    Route::get('search', SearchComponent::class)->name('product.search');
+    Route::get('details/{slug}', DetailsComponent::class)->name('product.details');
+    Route::get('checkout', ChekoutComponent::class)->name('checkout');
+    Route::get('checkout', ChekoutComponent::class)->name('checkout');
+    Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
+    Route::get('/terms', TermsComponent::class)->name('terms');
+    Route::get('/contacts', ContactComponent::class)->name('contacts');
+    Route::get('/posts', Posts::class)->name('posts');
+    Route::get('/post/{id}', PostDetailComponent::class)->name('post-detail');
+    Route::get('about-us', AboutUsComponent::class)->name('about-us');
+    Route::get('compare', CompareComponent::class)->name('compare');
+});
 
 
 Route::get('user', UserComponent::class)->name('user');

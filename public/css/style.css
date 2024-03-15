@@ -16382,3 +16382,6 @@ ul {
 [dir=ltr] .menu--layout--topbar.menu--with-icons .menu__item-link {
     padding-left: 50px;
 }
+.block-features__title {
+    font-size: 15px !important;
+}
