@@ -17,71 +17,29 @@
                 <ul class="header-actions">
                     <li>
                         <a href="#" id="notifications" data-toggle="dropdown" aria-haspopup="true">
-                            <i class="icon-notifications_none"></i>
-                            <span class="count-label">7</span>
+                            <i class="icon-language"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right lg" aria-labelledby="notifications">
                             <ul class="imp-notify">
                                 <li>
-                                    <div class="icon">W</div>
-                                    <div class="details">
-                                        <p><span>Wilson</span> The best Dashboard design I have seen ever.</p>
-                                    </div>
+                                    <a href="{{ route('locale', ['locale' => 'en']) }}">English</a>
                                 </li>
                                 <li>
-                                    <div class="icon">J</div>
-                                    <div class="details">
-                                        <p><span>John Smith</span> Jhonny sent you a message. Read now!</p>
-                                    </div>
+                                    <a href="{{ route('locale', ['locale' => 'ru']) }}">Русский</a>
                                 </li>
                                 <li>
-                                    <div class="icon secondary">R</div>
-                                    <div class="details">
-                                        <p><span>Justin Mezzell</span> Stella, Added you as a Friend. Accept it!</p>
-                                    </div>
+                                    <a href="{{ route('locale', ['locale' => 'tm']) }}">Türkmençe</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <a href="#" id="todos" data-toggle="dropdown" aria-haspopup="true">
-                            <i class="icon-person_outline"></i>
-                            <span class="count-label red">5</span>
+                        <a href="{{route('admin.contacts')}}">
+                            <i class="icon-envelop"></i>
+                            @if(\App\Models\Contact::where('arhiw', '=', 0)->count()>0)
+                            <span class="count-label red">{{ \App\Models\Contact::where('arhiw', '=', 0)->count() }}</span>
+                            @endif
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right lg" aria-labelledby="todos">
-                            <ul class="stats-widget">
-                                <li>
-                                    <h4>$37895</h4>
-                                    <p>Revenue <span>+2%</span></p>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="87" aria-valuemin="0"
-                                             aria-valuemax="100" style="width: 87%">
-                                            <span class="sr-only">87% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <h4>4,897</h4>
-                                    <p>Downloads <span>+39%</span></p>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0"
-                                             aria-valuemax="100" style="width: 65%">
-                                            <span class="sr-only">65% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <h4>2,219</h4>
-                                    <p>Uploads <span class="text-secondary">-7%</span></p>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="42" aria-valuemin="0"
-                                             aria-valuemax="100" style="width: 42%">
-                                            <span class="sr-only">42% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
 
                     <li>

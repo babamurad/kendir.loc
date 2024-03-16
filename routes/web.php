@@ -84,10 +84,8 @@ Route::middleware(\App\Http\Middleware\Localization::class)->group(function (){
     Route::get('/post/{id}', PostDetailComponent::class)->name('post-detail');
     Route::get('about-us', AboutUsComponent::class)->name('about-us');
     Route::get('compare', CompareComponent::class)->name('compare');
-});
 
-
-Route::get('user', UserComponent::class)->name('user');
+    Route::get('user', UserComponent::class)->name('user');
 Route::get('register', RegisterUserComponent::class)->name('register');
 
 Route::middleware(['auth'])->group(function () {
@@ -120,4 +118,8 @@ Route::middleware(['auth','authadmin'])->prefix('admin')->group(function () {
     Route::get('manufacturers', ManufacturerComponent::class)->name('admin.manufacturers');
     Route::get('options', ProductOptionsComponent::class)->name('admin.options');
 });
+});
+
+
+
 

@@ -9,7 +9,7 @@
             </button>
             <div class="topbar-dropdown__body">
                 <!-- .menu -->
-                <div class="menu menu--layout--topbar  menu--with-icons mt-2">
+                <div class="menu menu--layout--topbar  mt-2">
                     <div class="menu__submenus-container"></div>
                     <ul class="menu__list">
                         <li class="menu__item">
@@ -39,7 +39,7 @@
                                 <div class="menu__item-icon"><img
                                         srcset="images/languages/language-7-3.png 1x, images/languages/language-7@2x.png 2x"
                                         src="images/languages/language-7-2.png" alt="" style="width: 88%;"></div>
-                                Turkmence
+                                Türkmençe
                             </a>
                         </li>
                     </ul>
