@@ -18,12 +18,10 @@ class Localization
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Session::get('locale') != null) {
-            App::setLocale(Session::get('locale'));
-        } else {
-            Session::put('locale', app()->getLocale());
-            App::setLocale(Session::get('locale'));
-        }
+
+        App::setLocale(Session::get('locale'));
+        Session::put('locale', App::getLocale());
+
         //dd(app()->getLocale());
         // Определение языка из URL, заголовков или другой логики
         //app()->setLocale($request->segment(1));

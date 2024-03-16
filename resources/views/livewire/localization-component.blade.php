@@ -2,7 +2,7 @@
     <div class="topbar__item">
         <div class="topbar-dropdown">
             <button class="topbar-dropdown__btn" type="button">
-                {{ __('Language') }}: <span class="topbar__item-value">{{ mb_strtoupper(App::getLocale()) }}</span>
+                {{ __('Language') }}: <span class="topbar__item-value">{{ mb_strtoupper(\Illuminate\Support\Facades\App::getLocale()) }}</span>
                 <svg width="7px" height="5px">
                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-7x5') }}"></use>
                 </svg>
@@ -15,7 +15,7 @@
                         <li class="menu__item">
                             <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
                             <div class="menu__item-submenu-offset"></div>
-                            <a class="menu__item-link" href="" wire:click="setLang('en')">
+                            <a class="menu__item-link" href="{{ route('locale', ['locale' => 'en']) }}">
                                 <div class="menu__item-icon"><img
                                         srcset="{{ asset('images/languages/language-1-2.png') }} 1x, {{ asset('images/languages/language-1@2x.png') }} 2x"
                                         src="{{ asset('images/languages/language-1.png') }}" alt="" style="width: 88%;"></div>
@@ -25,7 +25,7 @@
                         <li class="menu__item">
                             <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
                             <div class="menu__item-submenu-offset"></div>
-                            <a class="menu__item-link" href="" wire:click="setLang('ru')">
+                            <a class="menu__item-link" href="{{ route('locale', ['locale' => 'ru']) }}">
                                 <div class="menu__item-icon"><img
                                         srcset="images/languages/language-6-2.png 1x, images/languages/language-6@2x.png 2x"
                                         src="{{ asset('images/languages/language-2.png') }}" alt="" style="width: 88%;"></div>
@@ -35,7 +35,7 @@
                         <li class="menu__item">
                             <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
                             <div class="menu__item-submenu-offset"></div>
-                            <a class="menu__item-link" href="" wire:click="setLang('tm')">
+                            <a class="menu__item-link" href="{{ route('locale', ['locale' => 'tm']) }}">
                                 <div class="menu__item-icon"><img
                                         srcset="images/languages/language-7-3.png 1x, images/languages/language-7@2x.png 2x"
                                         src="images/languages/language-7-2.png" alt="" style="width: 88%;"></div>

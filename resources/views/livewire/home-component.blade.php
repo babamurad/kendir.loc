@@ -509,7 +509,7 @@
                                 <a href="">Special Offers</a>
                             </div>
                             <div class="post-card__name">
-                                <a href="{{ route('post-detail', ['locale' => app()->getLocale(), 'id' => $post->id]) }}">
+                                <a href="{{ route('post-detail', ['id' => $post->id]) }}">
                                     {{ $post->title }}
                                 </a>
                             </div>
@@ -518,7 +518,7 @@
                                 {{ \Illuminate\Support\Str::of($post->text)->words(25) }}
                             </div>
                             <div class="post-card__read-more">
-                                <a href="{{ route('post-detail', ['locale' => app()->getLocale(), 'id' => $post->id]) }}" class="btn btn-secondary btn-sm">Read More</a>
+                                <a href="{{ route('post-detail', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">Read More</a>
                             </div>
                         </div>
                     </div>
