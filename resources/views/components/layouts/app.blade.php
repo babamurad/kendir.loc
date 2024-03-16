@@ -395,9 +395,10 @@
                                         class="social-links footer-newsletter__social-links social-links--shape--circle">
                                         <ul class="social-links__list">
                                             <li class="social-links__item">
-                                                <a class="social-links__link social-links__link--type--rss" href=""
+                                                <a class="social-links__link social-links__link--type--facebook" href=""
                                                     target="_blank">
-                                                    <i class="fas fa-rss"></i>
+
+                                                    <i class="fab fa-tiktok"></i>
                                                 </a>
                                             </li>
                                             <li class="social-links__item">
