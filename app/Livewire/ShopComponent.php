@@ -12,6 +12,8 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 class ShopComponent extends Component
 {
@@ -29,6 +31,7 @@ class ShopComponent extends Component
     public $collapce = 0;
     public $cat_name;
 
+    #[On('locale')]
     public function render()
     {
         $categories = Category::with('cparent')->with('products')->get();
