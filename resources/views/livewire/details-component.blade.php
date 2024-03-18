@@ -4,6 +4,7 @@
 <div>
     @php
         $wproducts = \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->pluck('id');
+        $cproducts = \Gloudemans\Shoppingcart\Facades\Cart::instance('compare')->content()->pluck('id');
     @endphp
     @push('zoom')
         <script src="{{asset('js/zoomsl.min.js')}}"></script>
@@ -117,11 +118,21 @@
                                         </svg>
                                     </button>
                                 @endif
-                                <button type="button" class="btn btn-sm btn-light btn-svg-icon" data-toggle="tooltip" data-placement="right" title="Compare" data-original-title="Compare">
-                                    <svg width="16px" height="16px">
-                                        <use xlink:href="{{ asset('images/sprite.svg#compare-16') }}"></use>
-                                    </svg>
-                                </button>
+                                @if($cproducts->contains($product->id))
+                                    <button type="button" class="btn btn-sm btn-light btn-svg-icon" data-toggle="tooltip"
+                                            data-placement="right" title="Compare" data-original-title="Compare" wire:click="removeCompare({{$product->id}})">
+                                        <svg width="16px" height="16px" style="fill: #ffd333;">
+                                            <use xlink:href="{{ asset('images/sprite.svg#compare-16') }}"></use>
+                                        </svg>
+                                    </button>
+                                @else
+                                    <button type="button" class="btn btn-sm btn-light btn-svg-icon" data-toggle="tooltip"
+                                            data-placement="right" title="Compare" data-original-title="Compare" wire:click="addToCompare({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">
+                                        <svg width="16px" height="16px">
+                                            <use xlink:href="{{ asset('images/sprite.svg#compare-16') }}"></use>
+                                        </svg>
+                                    </button>
+                                @endif
                             </div>
                             <h1 class="product__name">{{ $product->name }}</h1>
 

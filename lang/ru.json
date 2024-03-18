@@ -3,7 +3,7 @@
     "Shop": "Магазин",
     "Services": "Услуги",
     "News": "Новости",
-    "Contact us": "Контакты",
+    "ContactUs": "Контакты",
     "About us": "О нас",
 
     "Shop By Category": "По категориям",
@@ -41,10 +41,7 @@
     "Create An Account": "Создать аккаунт",
     "Admin Dashboard": "Панель администратора",
     "User Dashboard": "Панель пользователя",
-    "Edit Profile": "Редактировать профиль",
-    "Order History": "История заказов",
-    "Addresses": "Адреса",
-    "Logout": "Выйти"
+    "Addresses": "Адреса"
 
 
 

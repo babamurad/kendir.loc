@@ -3,7 +3,7 @@
     "Shop": "Dükan",
     "Services": "Hyzmatlar",
     "News": "Täzelikler",
-    "Contact us": "Habarlaşmak",
+    "ContactUs": "Habarlaşmak",
     "About us": "Biz barada",
 
     "Shop By Category": "Kategoriýalar boýunça",
@@ -41,9 +41,6 @@
     "Create An Account": "Hasap dörediň",
     "Admin Dashboard": "Admin paneli",
     "User Dashboard": "Ulanyjy paneli",
-    "Edit Profile": "Profili redaktirläň",
-    "Order History": "Sargyt taryhy",
-    "Addresses": "Salgylar",
-    "Logout": "Hasapdan çykmak"
+    "Addresses": "Salgylar"
 
 }

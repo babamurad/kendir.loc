@@ -3,8 +3,8 @@
     "Shop": "Shop",
     "Services": "Services",
     "News": "News",
-    "Contact us": "Contact us",
-    "About us": "About us",
+    "ContactUs": "Contact us",
+    "About us": "About Us",
 
     "Shop By Category": "Shop by category",
     "Featured Products": "Featured Products",
@@ -43,8 +43,7 @@
     "User Dashboard": "User Dashboard",
     "Edit Profile": "Edit Profile",
     "Order History": "Order History",
-    "Addresses": "Addresses",
-    "Logout": "Logout"
+    "Addresses": "Addresses"
 
 
 
