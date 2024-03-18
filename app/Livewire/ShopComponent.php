@@ -31,7 +31,7 @@ class ShopComponent extends Component
     public $collapce = 0;
     public $cat_name;
 
-    #[On('locale')]
+    //#[On('locale')]
     public function render()
     {
         $categories = Category::with('cparent')->with('products')->get();

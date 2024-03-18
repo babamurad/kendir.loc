@@ -1,14 +1,11 @@
 <div>
+
     <div class="topbar__item">
         <div class="topbar-dropdown">
             <button class="topbar-dropdown__btn" type="button">
                 {{ __('Language') }}:
                 <span class="topbar__item-value">
-                    @if (\Illuminate\Support\Facades\App::getLocale() == null)
-                        {{ mb_strtoupper('ru') }}
-                    @else
-                        {{ mb_strtoupper(\Illuminate\Support\Facades\App::getLocale()) }}
-                    @endif
+                    {{ mb_strtoupper(session()->get('locale')) ?? 'RU' }}
                 </span>
                 <svg width="7px" height="5px">
                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-7x5') }}"></use>

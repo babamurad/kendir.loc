@@ -14,9 +14,7 @@ class LocalizationComponent extends Component
 
     public function render()
     {
-        //$currentPath= url()->current();
-        //dd($currentPath);
-        //App::setLocale($this->lang);
+
         return view('livewire.localization-component');
     }
 
