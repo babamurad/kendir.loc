@@ -22,7 +22,7 @@
                 </nav>
             </div>
             <div class="page-header__title">
-                <h1>Contact Us</h1>
+                <h1>{{ __('Contact Us') }}</h1>
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-@section('title', 'Categories')
+@section('title', __('Categories'))
 <div>
     <div wire:ignore.self class="modal" id="deleteConfirmation">
         <div class="modal-dialog">
@@ -51,9 +51,23 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="inputName">Input Category Name</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter name" wire:model.live='name' wire:keyup="generateSlug()">
-                                @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+                                <label for="inputName">Input Category Name En</label>
+                                <input type="text" class="form-control @error('name_en') is-invalid @enderror" placeholder="Enter name" wire:model.live='name_en' wire:keyup="generateSlug()">
+                                @error('name_en') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="inputName">Input Category Name Ru</label>
+                                <input type="text" class="form-control @error('name_ru') is-invalid @enderror" placeholder="Enter name" wire:model.live='name_ru'>
+                                @error('name_ru') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="inputName">Input Category Name Tm</label>
+                                <input type="text" class="form-control @error('name_tm') is-invalid @enderror" placeholder="Enter name" wire:model.live='name_tm'>
+                                @error('name_tm') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
                         <div class="col-12">
@@ -131,13 +145,27 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-12">
-                <div class="form-group">
-                    <label for="inputName">Input Category Name</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter name" wire:model.live='name' wire:keyup="generateSlug()">
-                    @error('name') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>
-            </div>
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="inputName">Input Category Name En</label>
+                      <input type="text" class="form-control @error('name_en') is-invalid @enderror" placeholder="Enter name" wire:model.live='name_en' wire:keyup="generateSlug()">
+                      @error('name_en') <span class="text-danger">{{ $message }}</span> @enderror
+                  </div>
+              </div>
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="inputName">Input Category Name Ru</label>
+                      <input type="text" class="form-control @error('name_ru') is-invalid @enderror" placeholder="Enter name" wire:model.live='name_ru'>
+                      @error('name_ru') <span class="text-danger">{{ $message }}</span> @enderror
+                  </div>
+              </div>
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="inputName">Input Category Name Tm</label>
+                      <input type="text" class="form-control @error('name_tm') is-invalid @enderror" placeholder="Enter name" wire:model.live='name_tm'>
+                      @error('name_tm') <span class="text-danger">{{ $message }}</span> @enderror
+                  </div>
+              </div>
             <div class="col-12">
                 <div class="form-group">
                     <label for="inputName">Slug</label>
@@ -205,19 +233,29 @@
                 </div>
             <div class="card-body">
                 <div class="row mt-2 mb-0">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <button type="button" class="btn btn-primary rounded" data-toggle="modal" data-target="#CreateCategory">
                             {{__('Create Category')}}
                         </button>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3 d-none" >
+                        <div class="d-flex">
+                        <label>Show</label>
+                        <select class="form-control form-control-sm mx-2">
+                            @foreach($rcategories as $category)
+                            <option wire:key="{{$category->id}}" value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
                         <div class="d-flex">
                             <label>Search:</label>
                             <input type="search" class="form-control form-control-sm ml-1" placeholder="" aria-controls="basicExample" wire:model.live='search'>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="d-flex">
                             <label>Show</label>
                                 <select class="form-control form-control-sm mx-2" wire:model.live='perPage' style="width: 20%;">
