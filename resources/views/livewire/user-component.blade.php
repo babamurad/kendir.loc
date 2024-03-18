@@ -16,9 +16,9 @@
         @guest()
         <form class="account-menu__form" wire:submit="login">
             @csrf
-            <div class="account-menu__form-title">Log In to Your Account</div>
+            <div class="account-menu__form-title">{{__("Log In to Your Account")}}</div>
             <div class="form-group">
-                <label for="header-signin-email" class="sr-only">Email address</label>
+                <label for="header-signin-email" class="sr-only">{{__("Email address")}}</label>
                 <input type="email" class="form-control form-control-sm @error('email') is-invalid @enderror" placeholder="Email address" wire:model="email">
             </div>
             <div class="form-group">
