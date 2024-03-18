@@ -34,6 +34,19 @@
     "Hot Offers": "Hot Offers",
     "Discounts up to 90%": "Discounts up to 90%",
     "Log In to Your Account": "Log In to Your Account",
-    "Email address": "Email address"
+    "Email address": "Email address",
+    "Password": "Password",
+    "Forgot?": "Forgot?",
+    "Login": "Login",
+    "Create An Account": "Create An Account",
+    "Admin Dashboard": "Admin Dashboard",
+    "User Dashboard": "User Dashboard",
+    "Edit Profile": "Edit Profile",
+    "Order History": "Order History",
+    "Addresses": "Addresses",
+    "Logout": "Logout"
+
+
+
 
 }

@@ -34,6 +34,22 @@
     "Hot Offers": "Горячие предложения",
     "Discounts up to 90%": "Скидки до 90%",
     "Log In to Your Account": "Войдите в свой аккаунт",
-    "Email address": "Электронная почта"
+    "Email address": "Электронная почта",
+    "Password": "Пароль",
+    "Forgot?": "Забыл?",
+    "Login": "Вход",
+    "Create An Account": "Создать аккаунт",
+    "Admin Dashboard": "Панель администратора",
+    "User Dashboard": "Панель пользователя",
+    "Edit Profile": "Редактировать профиль",
+    "Order History": "История заказов",
+    "Addresses": "Адреса",
+    "Logout": "Выйти"
+
+
+
+
+
+
 
 }
