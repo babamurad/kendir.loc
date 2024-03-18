@@ -64,9 +64,9 @@ use \App\Http\Controllers\LocalizationController;
 //
 //});
 
-Route::get('locale/{locale?}', \App\Livewire\LocalizationComponent::class)->name('locale');
+//Route::get('locale/{locale?}', \App\Livewire\LocalizationComponent::class)->name('locale');
 
-//Route::get('locale/{locale?}', [LocalizationController::class, 'setLang'])->name('locale');
+Route::get('locale/{locale?}', [LocalizationController::class, 'setLang'])->name('locale');
 
 Route::middleware(\App\Http\Middleware\Localization::class)->group(function (){
     Route::get('/', HomeComponent::class)->name('home');

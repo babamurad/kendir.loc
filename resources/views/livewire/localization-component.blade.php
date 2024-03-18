@@ -49,7 +49,7 @@
                         <li class="menu__item">
                             <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
                             <div class="menu__item-submenu-offset"></div>
-                            <a class="menu__item-link" href="#" wire:click="setLang('en')" wire:navigate>
+                            <a class="menu__item-link" href="{{ route('locale', ['locale' => 'en']) }}" wire:navigate>
                                 <div class="menu__item-icon"><img
                                         srcset="images/languages/language-6-2.png 1x, images/languages/language-7@2x.png 2x"
                                         src="images/languages/language-7-2.png" alt="" style="width: 88%;"></div>
@@ -59,7 +59,7 @@
                         <li class="menu__item">
                             <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
                             <div class="menu__item-submenu-offset"></div>
-                            <a class="menu__item-link" href="#" wire:click="setLang('ru')" wire:navigate>
+                            <a class="menu__item-link" href="{{ route('locale', ['locale' => 'ru']) }}" wire:navigate>
                                 <div class="menu__item-icon"><img
                                         srcset="images/languages/language-6-2.png 1x, images/languages/language-7@2x.png 2x"
                                         src="images/languages/language-7-2.png" alt="" style="width: 88%;"></div>
@@ -69,7 +69,7 @@
                         <li class="menu__item">
                             <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
                             <div class="menu__item-submenu-offset"></div>
-                            <a class="menu__item-link" href="#" wire:click="setLang('tm')" wire:navigate>
+                            <a class="menu__item-link" href="{{ route('locale', ['locale' => 'tm']) }}" wire:navigate>
                                 <div class="menu__item-icon"><img
                                         srcset="images/languages/language-7-3.png 1x, images/languages/language-7@2x.png 2x"
                                         src="images/languages/language-7-2.png" alt="" style="width: 88%;"></div>
