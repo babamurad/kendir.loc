@@ -17,6 +17,7 @@
                 <ul class="header-actions">
                     <li>
                         <a href="#" id="notifications" data-toggle="dropdown" aria-haspopup="true">
+                            <span class="mt-1">{{ mb_strtoupper(\Illuminate\Support\Facades\App::getLocale()) }}</span>
                             <i class="icon-language"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right lg" aria-labelledby="notifications">

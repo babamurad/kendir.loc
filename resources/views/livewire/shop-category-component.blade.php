@@ -246,7 +246,8 @@
             <svg class="departments__button-icon" width="18px" height="14px">
                 <use xlink:href="{{ asset('images/sprite.svg#menu-18x14') }}"></use>
             </svg>
-            Shop By Category
+            {{-- {{ __('Shop By Category') }} --}}
+            @lang('Shop By Category')
             <svg class="departments__button-arrow" width="9px" height="6px">
                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-9x6') }}"></use>
             </svg>
