@@ -41,9 +41,20 @@
     "Create An Account": "Hasap dörediň",
     "Admin Dashboard": "Admin paneli",
     "User Dashboard": "Ulanyjy paneli",
-    "Edit Profile": "Profili redaktirläň",
-    "Order History": "Sargyt taryhy",
     "Addresses": "Salgylar",
-    "Logout": "Hasapdan çykmak"
-
+    "Meet Our Team": "Toparymyz bilen tanyş",
+    "Shopping Cart": "Söwda sebedi",
+    "Image": "Surat",
+    "Product": "Haryt",
+    "Price": "Baha",
+    "Quantity": "Mukdar",
+    "Total": "Jemi",
+    "Continue Shopping": "Söwda etmegi dowam et",
+    "Cart Totals": "Sebediň jemi",
+    "Subtotal": "Subtotal",
+    "Shipping": "Eltip bermek",
+    "Tax 10%": "Salgyt 10%",
+    "Proceed to checkout": "Hasaplaşyga geçmek",
+    "Your shopping cart is empty!": "Söwda sebediňiz boş!",
+    "Continue": "Dowam et"
 }
