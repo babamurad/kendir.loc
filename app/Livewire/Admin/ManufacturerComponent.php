@@ -18,7 +18,7 @@ class ManufacturerComponent extends Component
     #[Validate('required')]
     public $code;
     #[Validate('required')]
-    public $name;
+    public $name_en, $name_ru, $name_tm;
     #[Validate('max:1024')]
     public $image;
     #[Validate('max:1024')]
@@ -40,7 +40,9 @@ class ManufacturerComponent extends Component
 
         $manuf = new Manufacturer();
         $manuf->code = $this->code;
-        $manuf->name = $this->name;
+        $manuf->name_en = $this->name_en;
+        $manuf->name_ru = $this->name_ru;
+        $manuf->name_tm = $this->name_tm;
         if ($this->image) {
             $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();
             $this->image->storeAs('manufacturer', $imageName);
@@ -55,7 +57,9 @@ class ManufacturerComponent extends Component
     public function resetInputFields()
     {
         $this->code = '';
-        $this->name = '';
+        $this->name_en = '';
+        $this->name_ru = '';
+        $this->name_tm = '';
         $this->image = '';
     }
 
@@ -86,7 +90,9 @@ class ManufacturerComponent extends Component
         $manuf = Manufacturer::findOrFail($id);
         $this->edit_id = $manuf->id;
         $this->code = $manuf->code;
-        $this->name = $manuf->name;
+        $this->name_en = $manuf->name_en;
+        $this->name_ru = $manuf->name_ru;
+        $this->name_tm = $manuf->name_tm;
         $this->image = $manuf->image;
     }
 
@@ -95,7 +101,9 @@ class ManufacturerComponent extends Component
         $this->validate();
 
         $manuf = Manufacturer::findOrFail($this->edit_id);
-        $manuf->name = $this->name;
+        $manuf->name_en = $this->name_en;
+        $manuf->name_ru = $this->name_ru;
+        $manuf->name_tm = $this->name_tm;
         $manuf->code = $this->code;
         if ($this->newimage){
             if (file_exists('images/manufacturer/'.$this->image)){
