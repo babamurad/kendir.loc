@@ -15,20 +15,21 @@ class PostComponent extends Component
     protected $paginationTheme = 'bootstrap';
     public $perPage = 10;
     public $search = '';
-    public $title, $image, $text;
+
+    public $title_en, $text_en;
+    public $title_ru, $text_ru;
+    public $title_tm, $text_tm;
+
+    public $image;
     public $del_name = '';
     public $del_id;
 
     public function render()
     {
         if ($this->search){
-            $posts = Post::where('title', 'like', '%'.$this->search.'%')->orderBy('id', 'desc')->paginate($this->perPage);
+            $posts = Post::with('authorPost')->where('title', 'like', '%'.$this->search.'%')->orderBy('created_at', 'desc')->paginate($this->perPage);
         } else {
-            $posts = DB::table('posts')
-                ->join('users', 'users.id', '=', 'posts.author')
-                ->select('posts.id', 'posts.title', 'posts.text', 'posts.image', 'posts.created_at', 'users.name')
-                ->orderBy('id', 'desc')
-                ->paginate($this->perPage);
+            $posts = Post::with('authorPost')->orderBy('created_at', 'desc')->paginate($this->perPage);
         }
         return view('livewire.admin.post-component', compact('posts'))
             ->layout('components.layouts.admin.app');
@@ -37,7 +38,6 @@ class PostComponent extends Component
     public function deleteId($id)
     {
         $this->del_id = $id;
-        //dd($this->del_id);
         $post = Post::findOrFail($id);
         $this->del_name = $post->title;
     }
