@@ -355,9 +355,7 @@
 
                             </form>
 
-
                         </div>
-                        <!-- Panel 3 -->
                     </div>
 
                 </div>

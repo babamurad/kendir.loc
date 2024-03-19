@@ -48,50 +48,56 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="name" class="form-label">Title</label>
-                                            <input type="text" class="form-control @error('title') is-invalid @enderror" placeholder="Enter title" wire:model="title"
-                                            {{ $edit? '' : 'readonly' }}>
-                                            @error('title') <p class="text-danger">{{$message}}</p> @enderror
+                                            <label for="name" class="form-label">Title EN</label>
+                                            <input type="text" class="form-control @error('title_en') is-invalid @enderror" placeholder="Enter title" wire:model="title_en">
+                                            @error('title_en') <p class="text-danger">{{$message}}</p> @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="name" class="form-label">Title RU</label>
+                                            <input type="text" class="form-control @error('title_ru') is-invalid @enderror" placeholder="Enter title" wire:model="title_ru">
+                                            @error('title_ru') <p class="text-danger">{{$message}}</p> @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="name" class="form-label">Title TM</label>
+                                            <input type="text" class="form-control @error('title_tm') is-invalid @enderror" placeholder="Enter title" wire:model="title_tm">
+                                            @error('title_tm') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-12">
                                         <div class="form-group">
-                                            <label for="description" class="form-label">About Us Text </label>
+                                            <label for="text_en" class="form-label">About Us Text EN</label>
                                             <div wire:ignore>
-                                                <textarea id="summernote" class="form-control @error('text') is-invalid @enderror" name="text" minlength="255"
-                                                          placeholder="Enter text" cols="30" rows="8" wire:model="text" {{ $edit? '' : 'readonly' }}> </textarea>
+                                        <textarea id="text_en" class="form-control @error('text_en') is-invalid @enderror" name="text_en" minlength="20" maxlength="5000"
+                                                  placeholder="Enter Description" cols="30" rows="12" wire:model.live="text_en"> </textarea>
                                             </div>
-                                            @error('text') <p class="text-danger">{{$message}}</p> @enderror
+                                            @error('text_en') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
-                                        {{ $text }}
+                                        <div class="form-group">
+                                            <label for="text_ru" class="form-label">About Us Text RU</label>
+                                            <div wire:ignore>
+                                                <textarea id="text_ru" class="form-control @error('text_ru') is-invalid @enderror" name="text_ru" minlength="255"
+                                                          placeholder="Enter text" cols="30" rows="6" wire:model="text_ru"> </textarea>
+                                            </div>
+                                            @error('text_ru') <p class="text-danger">{{$message}}</p> @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="text_tm" class="form-label">About Us Text TM</label>
+                                            <div wire:ignore>
+                                                <textarea id="text_tm" class="form-control @error('text_tm') is-invalid @enderror" name="text_tm" minlength="255"
+                                                          placeholder="Enter text" cols="30" rows="6" wire:model="text_tm"> </textarea>
+                                            </div>
+                                            @error('text_tm') <p class="text-danger">{{$message}}</p> @enderror
+                                        </div>
                                     </div>
-{{--                                    <div class="col-sm-6">--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <div class="custom-file">--}}
-{{--                                                <input type="file" id="inputGroupFile02" class="custom-file-input" wire:model="image">--}}
-{{--                                                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Product Image</label>--}}
-{{--                                                @if($image)--}}
-{{--                                                    <img class="mt-2 pb-2 mb-4 rounded" src="{{ $image->temporaryUrl() }}" alt="Post Image" style="width: 120px; max-height: 200px;">--}}
-{{--                                                @endif--}}
-{{--                                                @error('image') <p class="text-danger">{{$message}}</p> @enderror--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
                                     <div class="col-sm-12">
 
                                         <div class="card-footer">
                                             <div class="row">
                                                 <div class="col-md-6 pt-3">
-{{--                                                    <div class="form-group">--}}
-{{--                                                        <div class="custom-control custom-checkbox">--}}
-{{--                                                            <input type="checkbox" class="custom-control-input cpoint" id="ship_to_different" wire:model.live="edit">--}}
-{{--                                                            <label class="custom-control-label" for="ship_to_different" style="display: inline;">Edit?</label>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
                                                 </div>
                                                 <div class="col-md-6 pt-3">
                                                     <button type="submit" class="btn btn-primary rounded">
-                                                        Save Post
+                                                        Save All
                                                     </button>
                                                 </div>
                                             </div>
@@ -105,31 +111,32 @@
             </div>
         </div>
     </div>
-{{--    <script>--}}
-{{--        const quill = new Quill('#editor', {--}}
-{{--            theme: 'snow'--}}
-{{--        });--}}
-{{--    </script>--}}
+
 </div>
 @push('summernote')
     <script>
-        $('#summernote').summernote({
-            placeholder: 'Enter About Us Text',
-            height: 300,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture', 'video']],
-                ['view', ['fullscreen', 'codeview', 'help']]
-            ],
-            callbacks: {
-                onChange: function(contents, $editable) {
-                    @this.set('text', contents);
-                }
-            }
+        $(document).ready(function() {
+            $('#text_en').summernote({
+                height: 200,
+            });
+        });
+        $('#text_en').on('summernote.change', function(we, contents, $editable) {
+        @this.set('text_en', contents)
+        });
+        $(document).ready(function() {
+            $('#text_ru').summernote({
+                height: 200,
+            });
+            $('#text_tm').summernote({
+                height: 200,
+            });
+        });
+
+        $('#text_ru').on('summernote.change', function(we, contents, $editable) {
+        @this.set('text_ru', contents)
+        });
+        $('#text_tm').on('summernote.change', function(we, contents, $editable) {
+        @this.set('text_tm', contents)
         });
     </script>
 @endpush
