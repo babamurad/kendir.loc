@@ -11,12 +11,12 @@
                                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Latest News</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('Latest News')}}</li>
                     </ol>
                 </nav>
             </div>
             <div class="page-header__title">
-                <h1>Latest News</h1>
+                <h1>{{__('Latest News')}}</h1>
             </div>
         </div>
     </div>
@@ -40,14 +40,14 @@
                                                 <a href="{{ route('posts') }}">Posts</a>
                                             </div>
                                             <div class="post-card__date">
-                                                {{ $post->name }}
+                                                {{$post->authorPost->name}}
                                             </div>
                                             <div class="post-card__name">
                                                 <a href="{{ route('post-detail', ['id' => $post->id]) }}">{{ $post->title }}</a>
                                             </div>
                                             <div class="post-card__date">{{ \Carbon\Carbon::create($post->created_at)->format('F d, Y') }}</div>
                                             <div class="post-card__content">
-                                                {{ \Illuminate\Support\Str::of($post->text)->words(25) }}
+                                                {!! \Illuminate\Support\Str::of($post->text)->words(25) !!}
                                             </div>
                                             <div class="post-card__read-more">
                                                 <a href="{{ route('post-detail', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">Read More</a>

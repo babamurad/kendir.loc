@@ -60,8 +60,9 @@
                                             @error('title_tm') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 col-12">
+                                    <div class="col-sm-8 col-8">
                                         <div class="form-group">
+                                            @error('text_en') <p class="text-danger">{{$message}}</p> @enderror
                                             <label for="text_en" class="form-label">Description EN </label>
                                             <div wire:ignore>
                                             <textarea class="form-control @error('text_en') is-invalid @enderror"
@@ -70,7 +71,9 @@
                                                       wire:model="text_en"> </textarea>
                                             @error('text_en') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
+                                        </div>
                                         <div class="form-group">
+                                            @error('text_ru') <p class="text-danger">{{$message}}</p> @enderror
                                             <label for="text_ru" class="form-label">Description RU</label>
                                             <div wire:ignore>
                                             <textarea class="form-control @error('text_ru') is-invalid @enderror"
@@ -79,7 +82,9 @@
                                                       wire:model="text_ru"> </textarea>
                                             @error('text_ru') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
+                                        </div>
                                         <div class="form-group">
+                                            @error('text_tm') <p class="text-danger">{{$message}}</p> @enderror
                                             <label for="text_tm" class="form-label">Description TM</label>
                                             <div wire:ignore>
                                             <textarea class="form-control @error('text_tm') is-invalid @enderror"
@@ -90,40 +95,43 @@
                                             @error('text_tm') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <div class="custom-file">
-                                                <input type="file" id="inputGroupFile02" class="custom-file-input"
-                                                       wire:model="image">
-                                                <label class="custom-file-label" for="inputGroupFile02"
-                                                       aria-describedby="inputGroupFileAddon02">Post Image</label>
-                                                @if($image)
-                                                    <img class="mt-2 pb-2 mb-4 rounded"
-                                                         src="{{ $image->temporaryUrl() }}" alt="Post Image"
-                                                         style="width: 120px; max-height: 200px;">
-                                                @endif
-                                                @error('image') <p class="text-danger">{{$message}}</p> @enderror
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group row">
-                                            <label for="colFormLabel"
-                                                   class="col-sm-2 col-form-label">{{ __('Author') }}</label>
-                                            <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="colFormLabel"
-                                                       placeholder="col-form-label" value="{{ auth()->user()->name }}"
-                                                       readonly="">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="custom-file">
+                                                            <input type="file" id="inputGroupFile02" class="custom-file-input"
+                                                                   wire:model="image">
+                                                            <label class="custom-file-label" for="inputGroupFile02"
+                                                                   aria-describedby="inputGroupFileAddon02">Post Image</label>
+                                                            @if($image)
+                                                                <img class="mt-2 pb-2 mb-4 rounded"
+                                                                     src="{{ $image->temporaryUrl() }}" alt="Post Image"
+                                                                     style="width: 120px; max-height: 200px;">
+                                                            @endif
+                                                            @error('image') <p class="text-danger">{{$message}}</p> @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabel"
+                                                               class="col-sm-2 col-form-label">{{ __('Author') }}</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="email" class="form-control" id="colFormLabel"
+                                                                   placeholder="col-form-label" value="{{ auth()->user()->name }}"
+                                                                   readonly="">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class="col-md-12 pt-3">
-                                                <button type="submit" class="btn btn-primary rounded">
-                                                    Save Post
-                                                </button>
+                                            <div class="card-footer">
+                                                <div class="col-md-12 pt-3">
+                                                    <button type="submit" class="btn btn-primary rounded">
+                                                        Save Post
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
