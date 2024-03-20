@@ -27,6 +27,7 @@ class CategoryComponent extends Component
     public function render()
     {
         $categories = Category::with('cparent')->with('products')->get();
+
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
 
         $category = Category::where('slug', $this->slug)->first();

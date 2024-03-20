@@ -9,12 +9,13 @@ use Livewire\Component;
 
 class RegisterUserComponent extends Component
 {
-    //#[Validate('required|min:3|max:255')]
-    public $name;
-    //#[Validate('required|email')]
-    public $email;
-    //#[Validate('required|min:6')]
-    public $password;
+    public $email, $password;
+    #[Validate('required|min:3|max:50')]
+    public $rname;
+    #[Validate('required|email')]
+    public $remail;
+    #[Validate('required|min:6')]
+    public $rpassword;
 
     public function login()
     {
@@ -36,16 +37,12 @@ class RegisterUserComponent extends Component
 
     public function registerUser()
     {
-        $this->validate([
-            'name' => 'required|max:200',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-        ]);
-
+        $this->validate();
+dd('reg-val');
         $user = new User();
-        $user->name = $this->name;
-        $user->email = $this->email;
-        $user->password = $this->password;
+        $user->name = $this->rname;
+        $user->email = $this->remail;
+        $user->password = $this->rpassword;
         $user->save();
 
         session()->flash('success', 'Successful registration');

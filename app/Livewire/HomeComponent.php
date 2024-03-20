@@ -9,6 +9,7 @@ use App\Models\Product;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class HomeComponent extends Component
@@ -17,6 +18,7 @@ class HomeComponent extends Component
     protected $paginationTheme = 'bootstrap';
     public $id, $name, $pqty = 1, $qty, $sale_price, $image;
 
+    #[On('locale')]
     public function render()
     {
         //вывести товары недельной давности

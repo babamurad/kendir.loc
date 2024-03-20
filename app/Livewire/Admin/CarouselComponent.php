@@ -16,46 +16,69 @@ class CarouselComponent extends Component
 {
     use WithPagination;
     use WithFileUploads;
-    public $items;
-    #[Validate('required|min:3|max:255', as: 'Please provide a carousel title')]
-    public $title;
 
+    #[Validate('required|min:3|max:255', as: 'Please provide a carousel title')]
+    public $title_en;
     #[Rule('required|min:3|max:255')]
-    public $text;
+    public $text_en;
+
+    #[Validate('required|min:3|max:255', as: 'Please provide a carousel title')]
+    public $title_ru;
+    #[Rule('required|min:3|max:255')]
+    public $text_ru;
+
+    #[Validate('required|min:3|max:255', as: 'Please provide a carousel title')]
+    public $title_tm;
+    #[Rule('required|min:3|max:255')]
+    public $text_tm;
 
     #[Rule('required|max:2048')]
     public $image;
+    public $edit_mode = false;
 
     //#[Rule('image|max:2048')]
     public $newimage;
     public $del_id, $del_name, $edit_id;
 
+//    #[On('carousel-add')]
+//    #[On('carousel-edit')]
+//    #[On('carousel-delete')]
     public function render()
     {
-        //dd('render');
         $items = Carousel::all();
-        //dd($items->count());
-        return view('livewire.admin.carousel-component',
-        compact('items')
-        )->layout('components.layouts.admin.app');
+        return view('livewire.admin.carousel-component', compact('items'))->layout('components.layouts.admin.app');
     }
 
-    #[On('carousel-add')]
-    #[On('carousel-edit')]
-    #[On('carousel-delete')]
-    public function mount()
+    public function createItem()
     {
-        //dd('mount');
-        $this->items = Carousel::all();
-        //dd($this->items[0]);
+        $item = new Carousel();
+        $item->title_en = $this->title_en;
+        $item->title_ru = $this->title_ru;
+        $item->title_tm = $this->title_tm;
+        $item->text_en = $this->text_en;
+        $item->text_ru = $this->text_ru;
+        $item->text_tm = $this->text_tm;
+        $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();
+        $this->image->storeAs('carousel', $imageName);
+        $item->image = $imageName;
+        $item->save();
+        $this->resetInputFields();
+        $this->dispatch('closeAddItemModal');
+        $this->dispatch('carousel-add');
+        session()->flash('success', __('Carousel item has been added successfully!'));
     }
 
     public function editItem($id)
     {
+        $this->edit_mode = true;
         $item = Carousel::findOrFail($id);
         $this->edit_id = $item->id;
-        $this->title = $item->title;
-        $this->text = $item->text;
+        $this->title_en = $item->title_en;
+        $this->title_ru = $item->title_ru;
+        $this->title_tm = $item->title_tm;
+        $this->text_en = $item->text_en;
+        $this->text_ru = $item->text_ru;
+        $this->text_tm = $item->text_tm;
         $this->image = $item->image;
     }
 
@@ -63,8 +86,12 @@ class CarouselComponent extends Component
     {
         $this->validate();
         $item = Carousel::findOrFail($this->edit_id);
-        $item->title = $this->title;
-        $item->text = $this->text;
+        $item->title_en = $this->title_en;
+        $item->title_ru = $this->title_ru;
+        $item->title_tm = $this->title_tm;
+        $item->text_en = $this->text_en;
+        $item->text_ru = $this->text_ru;
+        $item->text_tm = $this->text_tm;
         if ($this->newimage){
             unlink('images/carousel/'.$this->image);
             $imageName = Carbon::now()->timestamp.'.'.$this->newimage->extension();
@@ -75,7 +102,8 @@ class CarouselComponent extends Component
         $item->update();
         $this->dispatch('closeEditItemModal');
         $this->resetInputFields();
-        session()->flash('success', __('Carousel item has been added successfully!'));
+        $this->edit_mode = false;
+        session()->flash('success', __('Carousel item has been updated successfully!'));
 
     }
 
@@ -83,8 +111,6 @@ class CarouselComponent extends Component
     {
         $item = Carousel::findOrFail($id);
         $this->del_id = $item->id;
-        $this->title = $item->title;
-        $this->text = $item->text;
         $this->image = $item->image;
         $this->del_name = $item->title;
     }
@@ -104,8 +130,12 @@ class CarouselComponent extends Component
 
     public function resetInputFields()
     {
-        $this->title = '';
-        $this->text = '';
+        $this->title_en = '';
+        $this->text_en = '';
+        $this->title_ru = '';
+        $this->text_ru = '';
+        $this->title_tm = '';
+        $this->text_tm = '';
         $this->image = '';
     }
 }

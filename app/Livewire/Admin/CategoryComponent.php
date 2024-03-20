@@ -19,8 +19,7 @@ class CategoryComponent extends Component
     public $perPage = 10;
     public $search = '';
 
-
-    public $name;
+    public $name, $name_en, $name_ru, $name_tm;
 
     public $slug;
 
@@ -43,9 +42,6 @@ class CategoryComponent extends Component
 
     public function render()
     {
-//        $cat = Category::with('cparent')->find(42);
-//        dd($cat->cparent->name);
-
         $this->slug = Str::slug($this->name);
         $categories =
             Category::with('cparent')
@@ -83,6 +79,9 @@ class CategoryComponent extends Component
     {
         $this->validateOnly($fields,[
             'name' => 'required|min:3',
+            'name_en' => 'required|min:3',
+            'name_ru' => 'required|min:3',
+            'name_tm' => 'required|min:3',
             'slug' => 'required|min:3',
             'image' => 'required|image|mimes:jpeg,png,svg,jpg,gif|max:1024',
         ]);
@@ -94,6 +93,9 @@ class CategoryComponent extends Component
         $this->validate();
         $category = new Category;
         $category->name = $this->name;
+        $category->name_en = $this->name_en;
+        $category->name_ru = $this->name_ru;
+        $category->name_tm = $this->name_tm;
         $category->slug = Str::slug($this->slug);
         $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();
         $this->image->storeAs('categories', $imageName);
@@ -113,6 +115,9 @@ class CategoryComponent extends Component
         $category = Category::findOrFail($id);
         $this->edit_id = $category->id;
         $this->name = $category->name;
+        $category->name_en = $this->name_en;
+        $category->name_ru = $this->name_ru;
+        $category->name_tm = $this->name_tm;
         $this->slug = $category->slug;
 
         $this->parent_id = $category->parent_id;
@@ -131,6 +136,9 @@ class CategoryComponent extends Component
 
         $category = Category::findOrFail($this->edit_id);
         $category->name = $this->name;
+        $category->name_en = $this->name_en;
+        $category->name_ru = $this->name_ru;
+        $category->name_tm = $this->name_tm;
         $category->slug = $this->slug;
 
         $category->parent_id = $this->parent_id;

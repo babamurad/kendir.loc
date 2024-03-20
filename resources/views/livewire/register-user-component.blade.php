@@ -76,18 +76,19 @@
                             <form wire:submit="registerUser">
                                 <div class="form-group">
                                     <label class="required-field">Name</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter Name" wire:model="name">
-                                    @error('name') <span>{{ session('error') }}</span> @enderror
+                                    <input type="text" name="firstname" class="form-control @error('rname') is-invalid @enderror"
+                                           placeholder="Enter Name" wire:model="rname">
+                                    @error('rname') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label class="required-field">Email address</label>
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" wire:model="email">
-                                    @error('email') <span>{{ session('error') }}</span> @enderror
+                                    <input type="email" class="form-control @error('remail') is-invalid @enderror" placeholder="Enter email" wire:model="remail">
+                                    @error('remail') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label class="required-field">Password</label>
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" wire:model="password">
-                                    @error('password') <span>{{ session('error') }}</span> @enderror
+                                    <input type="password" class="form-control @error('rpassword') is-invalid @enderror" placeholder="Password" wire:model="rpassword">
+                                    @error('rpassword') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-4">Register</button>
                             </form>

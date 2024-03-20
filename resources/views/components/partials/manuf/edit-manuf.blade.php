@@ -20,9 +20,19 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="inputName">{{__('Name')}}</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter name" wire:model='name'>
-                                @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+                                <label for="name_en">{{__('Name')}} EN</label>
+                                <input name="name_en" type="text" class="form-control @error('name_en') is-invalid @enderror" placeholder="Enter name" wire:model='name_en'>
+                                @error('name_en') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="name_ru">{{__('Name')}} RU</label>
+                                <input name="name_ru" type="text" class="form-control @error('name_ru') is-invalid @enderror" placeholder="Enter name" wire:model='name_ru'>
+                                @error('name_ru') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="name_tm">{{__('Name')}} TM</label>
+                                <input name="name_tm" type="text" class="form-control @error('name_tm') is-invalid @enderror" placeholder="Enter name" wire:model='name_tm'>
+                                @error('name_tm') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
                         <div class="col-12">

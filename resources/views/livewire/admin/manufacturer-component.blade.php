@@ -12,7 +12,7 @@
     @include('components.partials.manuf.create-manuf')
     @include('components.partials.manuf.edit-manuf')
 
-    <div wire:ignore.self class="modal" id="deleteConfirmation">
+    <div wire:ignore class="modal" id="deleteConfirmation">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body pb-30 pt-30">

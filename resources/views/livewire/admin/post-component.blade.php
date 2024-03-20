@@ -75,7 +75,7 @@
                                 <td>{{ $post->id }}</td>
                                 <td><a href="{{ route('admin.edit-post', ['id' => $post->id]) }}"><img src="{{ asset('images/posts').'/'.$post->image }}" alt="" width="60"></a></td>
                                 <td><a href="{{ route('admin.edit-post', ['id' => $post->id]) }}">{{$post->title}}</a></td>
-                                <td>{{$post->name}}</td>
+                                <td>{{$post->authorPost->name}}</td>
                                 <td>{{ \Carbon\Carbon::create($post->created_at)->format('y.m.Y') }}</td>
                                 <td>
                                     <a href="{{ route('admin.edit-post', ['id' => $post->id]) }}" type="button" class="btn btn-success btn-sm rounded">

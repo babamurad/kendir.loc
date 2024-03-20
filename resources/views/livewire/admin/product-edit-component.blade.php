@@ -100,20 +100,56 @@
                                         </div>
                                         <div class="col-sm-12 col-12">
                                             <div class="form-group">
-                                                <label for="short_description" class="form-label">Short Description</label>
-                                                <textarea class="form-control @error('short_description') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
-                                                          wire:model="short_description" minlength="20" maxlength="100"> </textarea>
-                                                @error('short_description') <p class="text-danger">{{$message}}</p> @enderror
+                                                <label for="short_description" class="form-label">Short Description - <span class="btn-light">EN</span> </label>
+                                                <textarea class="form-control @error('short_description_en') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
+                                                          wire:model="short_description_en" minlength="20" maxlength="100"> </textarea>
+                                                @error('short_description_en') <p class="text-danger">{{$message}}</p> @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-12">
                                             <div class="form-group">
-                                                <label for="description" class="form-label">Description</label>
+                                                <label for="short_description" class="form-label">Short Description - <span class="btn-light">RU</span></label>
+                                                <textarea class="form-control @error('short_description_ru') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
+                                                          wire:model="short_description_ru" minlength="20" maxlength="100"> </textarea>
+                                                @error('short_description_ru') <p class="text-danger">{{$message}}</p> @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label for="short_description" class="form-label">Short Description - <span class="btn-light">TM</span></label>
+                                                <textarea class="form-control @error('short_description_tm') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
+                                                          wire:model="short_description_tm" minlength="20" maxlength="100"> </textarea>
+                                                @error('short_description_tm') <p class="text-danger">{{$message}}</p> @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label for="description_en" class="form-label">Description - <span class="btn-light">EN</span> </label>
                                                 <div wire:ignore>
-                                        <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" minlength="20" maxlength="5000"
-                                                  placeholder="Enter Description" cols="30" rows="12" wire:model="description"> </textarea>
+                                        <textarea id="description_en" class="form-control @error('description_en') is-invalid @enderror" name="description_en" minlength="20" maxlength="5000"
+                                                  placeholder="Enter Description" cols="30" rows="12" wire:model.live="description_en"> </textarea>
                                                 </div>
-                                                @error('description') <p class="text-danger">{{$message}}</p> @enderror
+                                                @error('description_en') <p class="text-danger">{{$message}}</p> @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label for="description_ru" class="form-label">Description - <span class="btn-light">RU</span> </label>
+                                                <div wire:ignore>
+                                        <textarea id="description_ru" class="form-control @error('description_ru') is-invalid @enderror" name="description_ru" minlength="20" maxlength="5000"
+                                                  placeholder="Enter Description" cols="30" rows="12" wire:model.live="description_ru"> </textarea>
+                                                </div>
+                                                @error('description_ru') <p class="text-danger">{{$message}}</p> @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label for="description_tm" class="form-label">Description - <span class="btn-light">TM</span> </label>
+                                                <div wire:ignore>
+                                        <textarea id="description_tm" class="form-control @error('description_tm') is-invalid @enderror" name="description_tm" minlength="20" maxlength="5000"
+                                                  placeholder="Enter Description" cols="30" rows="12" wire:model.live="description_tm"> </textarea>
+                                                </div>
+                                                @error('description_tm') <p class="text-danger">{{$message}}</p> @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -319,9 +355,7 @@
 
                             </form>
 
-
                         </div>
-                        <!-- Panel 3 -->
                     </div>
 
                 </div>
@@ -335,12 +369,28 @@
 @push('summernote')
     <script>
         $(document).ready(function() {
-            $('#description').summernote({
+            $('#description_en').summernote({
                 height: 300,
             });
         });
-        $('#description').on('summernote.change', function(we, contents, $editable) {
-        @this.set('description', contents);
+        $(document).ready(function() {
+            $('#description_ru').summernote({
+                height: 300,
+            });
+        });
+        $(document).ready(function() {
+            $('#description_tm').summernote({
+                height: 300,
+            });
+        });
+        $('#description_en').on('summernote.change', function(we, contents, $editable) {
+        @this.set('description_en', contents)
+        });
+        $('#description_ru').on('summernote.change', function(we, contents, $editable) {
+        @this.set('description_ru', contents)
+        });
+        $('#description_tm').on('summernote.change', function(we, contents, $editable) {
+        @this.set('description_tm', contents)
         });
     </script>
 @endpush

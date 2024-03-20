@@ -12,6 +12,8 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 class ShopComponent extends Component
 {
@@ -28,10 +30,13 @@ class ShopComponent extends Component
     public $active_id, $active_cat;
     public $collapce = 0;
     public $cat_name;
+    public $prCount;
 
+    //#[On('locale')]
     public function render()
     {
         $categories = Category::with('cparent')->with('products')->get();
+        $this->prCount = Product::all()->count();
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
         if ($this->category_id){
             $this->active_id = $this->category_id;
@@ -41,7 +46,6 @@ class ShopComponent extends Component
                 ->where('category_id', '=', $this->category_id)
                 //->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
                 ->orderBy('name', $this->sort)->paginate($this->perPage);
-            //dd($products);
         } else {
             $products = Product::with('specification')->orderBy('name', $this->sort)
                 //->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])

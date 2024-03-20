@@ -40,6 +40,7 @@
     @include('components.alerts')
     <div class="block block-features block-features--layout--classic">
         <div class="container">
+
             <div class="block-features__list">
                 <div class="block-features__item">
                     <div class="block-features__icon">
@@ -48,8 +49,8 @@
                         </svg>
                     </div>
                     <div class="block-features__content">
-                        <div class="block-features__title">Free Shipping</div>
-                        <div class="block-features__subtitle">For orders from 100 man.</div>
+                        <div class="block-features__title">{{__('Free Shipping')}}</div>
+                        <div class="block-features__subtitle">{{__('For orders from 100 manat')}}</div>
                     </div>
                 </div>
                 <div class="block-features__divider"></div>
@@ -60,8 +61,8 @@
                         </svg>
                     </div>
                     <div class="block-features__content">
-                        <div class="block-features__title">Support 24/7</div>
-                        <div class="block-features__subtitle">Call us anytime</div>
+                        <div class="block-features__title">{{__('Support 24/7')}}</div>
+                        <div class="block-features__subtitle">{{__('Call us anytime')}}</div>
                     </div>
                 </div>
                 <div class="block-features__divider"></div>
@@ -72,8 +73,8 @@
                         </svg>
                     </div>
                     <div class="block-features__content">
-                        <div class="block-features__title">100% Safety</div>
-                        <div class="block-features__subtitle">Only secure payments</div>
+                        <div class="block-features__title">{{__('100% Safety')}}</div>
+                        <div class="block-features__subtitle">{{__('Only secure payments')}}</div>
                     </div>
                 </div>
                 <div class="block-features__divider"></div>
@@ -84,8 +85,8 @@
                         </svg>
                     </div>
                     <div class="block-features__content">
-                        <div class="block-features__title">Hot Offers</div>
-                        <div class="block-features__subtitle">Discounts up to 90%</div>
+                        <div class="block-features__title">{{__('Hot Offers')}}</div>
+                        <div class="block-features__subtitle">{{__('Discounts up to 90%')}}</div>
                     </div>
                 </div>
             </div>
@@ -177,17 +178,11 @@
     <div class="block block-products-carousel" data-layout="grid-4" data-mobile-grid-columns="2">
         <div class="container">
             <div class="block-header">
-{{--                @if(session('success'))--}}
-{{--                <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; top: -2rem;">--}}
-{{--                    <button type="button" class="close  mt-3" data-dismiss="alert" aria-hidden="true" style="top: -16px;">×</button>--}}
-{{--                    <h6><i class="icon fas fa-check"></i> {{ session('success') }}</h6>--}}
-{{--                </div>--}}
-{{--                @endif--}}
-                <h3 class="block-header__title">Featured Products</h3>
+                <h3 class="block-header__title">{{ __('Featured Products') }}</h3>
                 <div class="block-header__divider"></div>
                 <ul class="block-header__groups-list">
-                    <li><bu\tton type="button" class="block-header__group  block-header__group--active ">All</button></li>
-                    <li><button type="button" class="block-header__group ">Power Tools</button></li>
+                    <li><bu\tton type="button" class="block-header__group  block-header__group--active ">{{ __('All') }}</button></li>
+                    <li><button type="button" class="block-header__group ">{{ __('Power Tools') }}</button></li>
                     <li><button type="button" class="block-header__group ">Hand Tools</button></li>
                     <li><button type="button" class="block-header__group ">Plumbing</button></li>
                 </ul>
@@ -222,13 +217,13 @@
                                         @endif
                                     </div>
                                     <div class="product-card__image product-image">
-                                        <a href="{{ route('product.details', ['slug' => $product->slug]) }}" class="product-image__body">
+                                        <a href="{{ route('product.details', ['locale' => app()->getLocale(),'slug' => $product->slug]) }}" class="product-image__body">
                                             <img class="product-image__img" src="{{ asset('images/products').'/'.$product->image }}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-card__info">
                                         <div class="product-card__name">
-                                            <a href="{{ route('product.details', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
+                                            <a href="{{ route('product.details', ['locale' => app()->getLocale(),'slug' => $product->slug]) }}">{{ $product->name }}</a>
                                         </div>
                                         <ul class="product-card__features-list">
                                             <li>Speed: 750 RPM</li>
@@ -283,7 +278,7 @@
     <!-- .block-banner -->
     <div class="block block-banner">
         <div class="container">
-            <a href="{{ route('shop') }}" class="block-banner__body">
+            <a href="{{ route('shop', ['locale' => app()->getLocale()]) }}" class="block-banner__body">
                 <div class="block-banner__image block-banner__image--desktop" style="background-image: url('images/kendir/kupit armaturu.jpg'); opacity: 0.7;"></div>
                 <div class="block-banner__image block-banner__image--mobile" style="background-image: url('images/kendir/kupit armaturu.jpg')"></div>
                 <div class="block-banner__title">Hundreds <br class="block-banner__mobile-br"> Hand Tools</div>
