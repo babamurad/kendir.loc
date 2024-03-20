@@ -3,7 +3,7 @@
     "Shop": "Dükan",
     "Services": "Hyzmatlar",
     "News": "Täzelikler",
-    "Contact us": "Habarlaşmak",
+    "ContactUs": "Habarlaşmak",
     "About us": "Biz barada",
 
     "Shop By Category": "Kategoriýalar boýunça",
@@ -56,5 +56,7 @@
     "Tax 10%": "Salgyt 10%",
     "Proceed to checkout": "Hasaplaşyga geçmek",
     "Your shopping cart is empty!": "Söwda sebediňiz boş!",
-    "Continue": "Dowam et"
+    "Continue": "Dowam et",
+    "Filters": "Filterler"
+
 }

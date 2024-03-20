@@ -1,5 +1,5 @@
 <div>
-    @section('title', __('Contacts'))
+    @section('title', __('ContactUs'))
     <div class="page-header">
         <div class="page-header__container container">
             <div class="page-header__breadcrumb">
@@ -11,18 +11,12 @@
                                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
                         </li>
-                        <li class="breadcrumb-item">
-                            <a href="#">Breadcrumb</a>
-                            <svg class="breadcrumb-arrow" width="6px" height="9px">
-                                <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
-                            </svg>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ __('ContactUs') }}</li>
                     </ol>
                 </nav>
             </div>
             <div class="page-header__title">
-                <h1>Contact Us</h1>
+                <h1>{{ __('ContactUs') }}</h1>
             </div>
         </div>
     </div>

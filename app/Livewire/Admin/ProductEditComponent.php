@@ -3,10 +3,12 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Brand;
+use App\Models\Carousel;
 use App\Models\Manufacturer;
 use App\Models\Product;
 use App\Models\Specification;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -16,8 +18,8 @@ class ProductEditComponent extends Component
     use WithFileUploads;
     public $name, $product_id;
     public $slug;
-    public $short_description;
-    public $description;
+    public $short_description, $short_description_en, $short_description_ru, $short_description_tm;
+    public $description, $description_en, $description_ru, $description_tm;
     public $regular_price;
     public $sale_price;
     public $sku;
@@ -59,8 +61,12 @@ class ProductEditComponent extends Component
         $this->validate([
             'name'              => 'required',
             'slug'              => 'required',
-            'short_description' => 'required',
-            'description'       => 'required',
+            'short_description_en' => 'required',
+            'description_en'       => 'required',
+            'short_description_ru' => 'required',
+            'description_ru'       => 'required',
+            'short_description_tm' => 'required',
+            'description_tm'       => 'required',
             'regular_price'     => 'required|numeric',
             'sale_price'        => 'numeric',
             'sku'               => 'required',
@@ -75,8 +81,12 @@ class ProductEditComponent extends Component
         $product = Product::find($this->product_id);
         $product->name = $this->name;
         $product->slug = $this->slug;
-        $product->short_description = $this->short_description;
-        $product->description = $this->description;
+        $product->short_description_en = $this->short_description_en;
+        $product->description_en = $this->description_en;
+        $product->short_description_ru = $this->short_description_ru;
+        $product->description_ru = $this->description_ru;
+        $product->short_description_tm = $this->short_description_tm;
+        $product->description_tm = $this->description_tm;
         $product->regular_price = $this->regular_price;
         $product->sale_price = $this->sale_price;
         $product->sku = $this->sku;
@@ -141,12 +151,18 @@ class ProductEditComponent extends Component
     {
         $this->activeTab = 'details';
 
-        $product = Product::findOrFail($product_id);
+        //$product = DB::select('select * from products where id=?', [$product_id]); //Product::findOrFail($product_id);
+        //where('id', '=', $product_id)->first();
+        $product = Product::find($product_id);
         $this->product_id = $product->id;
         $this->name = $product->name;
         $this->slug = $product->slug;
-        $this->short_description = $product->short_description;
-        $this->description = $product->description;
+        $this->short_description_en = $product->short_description_en;
+        $this->description_en = $product->description_en;
+        $this->short_description_ru = $product->short_description_ru;
+        $this->description_ru = $product->description_ru;
+        $this->short_description_tm = $product->short_description_tm;
+        $this->description_tm = $product->description_tm;
         $this->regular_price = $product->regular_price;
         $this->sale_price = $product->sale_price;//dd($product->sku);
         $this->sku = $product->SKU;
@@ -158,7 +174,7 @@ class ProductEditComponent extends Component
         $this->category_id = $product->category_id;
         $this->brand_id = $product->brand_id;
         $this->manuf_id = $product->manufacturer_id;
-
+//dd($product->short_description_tm);
         $spec = Specification::where('product_id', '=', $product_id)->first();
         $this->model = $spec->model;
         $this->dl = $spec->dl;
@@ -168,6 +184,7 @@ class ProductEditComponent extends Component
         $this->unit = $spec->unit;
         $this->weight = $spec->weight;
         $this->status = $spec->status;
+
     }
 
     public function render()

@@ -65,17 +65,19 @@
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item="">
                                             <button type="button" class="filter__title" data-collapse-trigger="">
-                                                Categories Alt
+                                                {{__('Categories')}}
                                                 <svg class="filter__arrow" width="12px" height="7px">
                                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                                 </svg>
+
                                             </button>
                                             <div class="filter__body" data-collapse-content="">
                                                 <div class="filter__container"  wire:ignore>
                                                     <div class="filter-categories-alt">
                                                         <ul class="filter-categories-alt__list filter-categories-alt__list--level--1" data-collapse-opened-class="filter-categories-alt__item--open">
-                                                            <li class="filter-categories-alt__item" data-collapse-item="">
+                                                            <li class="filter-categories-alt__item d-flex" data-collapse-item="">
                                                                 <a href="{{route('shop')}}"><strong>{{ __('All Categories') }}</strong></a>
+                                                                <div class="filter-categories__counter">{{$prCount}}</div>
                                                             </li>
                                                             @foreach($categories as $category)
                                                                 @if($category->parent_id == 0)
@@ -90,7 +92,7 @@
                                                                                 @foreach($category->children as $subcategory)
                                                                                     <li class="filter-categories-alt__item d-flex" data-collapse-item="" style="cursor: pointer;" wire:key="{{$subcategory->id}}">
                                                                                     <a class="cat " wire:click="getCategoryProducts({{ $subcategory->id }})">{{ $subcategory->name }}</a>
-                                                                                    <div class="filter-categories__counter">{{ $subcategory->products->count() }}</div>
+                                                                                    <div class="filter-categories__counter">{{ $subcategory->products->count() ?? '0' }}</div>
                                                                                 </li>
                                                                                 @endforeach
                                                                             </ul>

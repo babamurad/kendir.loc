@@ -9,12 +9,22 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
 
     protected $fillable = [
       'name',
+      'name_en',
+      'name_ru',
+      'name_tm',
       'slug',
       'short_description',
+      'short_description_en',
+      'short_description_ru',
+      'short_description_tm',
       'description',
+      'description_en',
+      'description_ru',
+      'description_tm',
       'regular_price',
       'sale_price',
       'SKU',
@@ -49,5 +59,17 @@ class Product extends Model
     public function specification()
     {
         return $this->hasOne(Specification::class);
+    }
+
+    protected $lang_fileds = ['name', 'short_description', 'description'];
+
+    public function getAttribute($key)
+    {
+        $default = parent::getAttribute($key);
+        if ( isset($this->lang_fileds) && is_array($this->lang_fileds) && in_array($key, $this->lang_fileds) ) {
+            return $this->{ $key.'_'.app()->getLocale() } ?? '';
+        }
+
+        return $default;
     }
 }

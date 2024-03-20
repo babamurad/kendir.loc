@@ -3,8 +3,8 @@
     "Shop": "Shop",
     "Services": "Services",
     "News": "News",
-    "Contact us": "Contact us",
-    "About us": "About us",
+    "ContactUs": "Contact us",
+    "About us": "About Us",
 
     "Shop By Category": "Shop by category",
     "Featured Products": "Featured Products",
@@ -41,19 +41,12 @@
     "Create An Account": "Create An Account",
     "Admin Dashboard": "Admin Dashboard",
     "User Dashboard": "User Dashboard",
+    "Edit Profile": "Edit Profile",
+    "Order History": "Order History",
     "Addresses": "Addresses",
-    "Meet Our Team": "Meet Our Team",
-    "Shopping Cart": "Shopping Cart",
-    "Image": "Image",
-    "Product": "Product",
-    "Price": "Price",
-    "Quantity": "Quantity",
-    "Total": "Total",
-    "Continue Shopping": "Continue Shopping",
-    "Subtotal": "Subtotal",
-    "Shipping": "Shipping",
-    "Tax 10%": "Tax 10%",
-    "Proceed to checkout": "Proceed to checkout",
-    "Your shopping cart is empty!": "Your shopping cart is empty!",
-    "Continue": "Continue"
+    "Logout": "Logout"
+
+
+
+
 }

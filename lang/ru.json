@@ -3,7 +3,7 @@
     "Shop": "Магазин",
     "Services": "Услуги",
     "News": "Новости",
-    "Contact us": "Контакты",
+    "ContactUs": "Контакты",
     "About us": "О нас",
 
     "Shop By Category": "По категориям",
@@ -56,5 +56,7 @@
     "Tax 10%": "Налог 10%",
     "Proceed to checkout": "Перейти к оформлению заказа",
     "Your shopping cart is empty!": "Ваша корзина пуста!",
-    "Continue": "Продолжать"
+    "Continue": "Продолжать",
+    "Filters": "Фильтры"
+
 }
