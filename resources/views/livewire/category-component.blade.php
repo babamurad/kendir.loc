@@ -10,7 +10,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="/">Home</a>
+                            <a href="/">{{__('Home')}}</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
                                 <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
                             </svg>
@@ -21,13 +21,13 @@
                                 <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
                             </svg>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('Categories')}}</li>
                     </ol>
                 </nav>
             </div>
             <div class="page-header__title">
                 <div class="row">
-                    <div class="col-md-6"><h1>Shop</h1></div>
+                    <div class="col-md-6"><h1>{{__('Shop')}}</h1></div>
                     <div class="col-md-6">
                         @if(session('success'))
                             <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; top: -2rem;">
@@ -50,7 +50,7 @@
                     <div class="block-sidebar__backdrop"></div>
                     <div class="block-sidebar__body">
                         <div class="block-sidebar__header">
-                            <div class="block-sidebar__title">Filters</div>
+                            <div class="block-sidebar__title">{{__('Filters')}}</div>
                             <button class="block-sidebar__close" type="button">
                                 <svg width="20px" height="20px">
                                     <use xlink:href="images/sprite.svg#cross-20"></use>
@@ -60,7 +60,7 @@
 
                         <div class="block-sidebar__item">
                             <div class="widget-filters widget widget-filters--offcanvas--mobile" data-collapse data-collapse-opened-class="filter--opened">
-                                <h4 class="widget-filters__title widget__title">Filters</h4>
+                                <h4 class="widget-filters__title widget__title">{{__('Filters')}}</h4>
                                 <div class="widget-filters__list">
 
                                     <div class="widget-filters__item">
@@ -104,7 +104,7 @@
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item="">
                                             <button type="button" class="filter__title" data-collapse-trigger="">
-                                                Brand
+                                                {{__('Brand')}}
                                                 <svg class="filter__arrow" width="12px" height="7px">
                                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                                 </svg>
@@ -211,7 +211,7 @@
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item="">
                                             <button type="button" class="filter__title" data-collapse-trigger="">
-                                                Manufacturer
+                                                {{__('Manufacturer')}}
                                                 <svg class="filter__arrow" width="12px" height="7px">
                                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                                 </svg>
@@ -290,7 +290,7 @@
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item>
                                             <button type="button" class="filter__title" data-collapse-trigger>
-                                                Color
+                                                {{__('Color')}}
                                                 <svg class="filter__arrow" width="12px" height="7px">
                                                     <use xlink:href="{{asset('images/sprite.svg#arrow-rounded-down-12x7')}}"></use>
                                                 </svg>
@@ -547,14 +547,14 @@
                                     </div>
                                 </div>
                                 <div class=" widget-filters__list widget-filters__actions d-flex">
-                                    <button class="btn btn-primary btn-sm">Filter</button>
-                                    <button class="btn btn-secondary btn-sm">Reset</button>
+                                    <button class="btn btn-primary btn-sm">{{__('Filter')}}</button>
+                                    <button class="btn btn-secondary btn-sm">{{__('Reset')}}</button>
                                 </div>
                             </div>
                         </div>
                         <div class="block-sidebar__item d-none d-lg-block">
                             <div class="widget-products widget">
-                                <h4 class="widget__title">Latest Products</h4>
+                                <h4 class="widget__title">{{__('Latest Products')}}</h4>
                                 <div class="widget-products__list">
                                     @foreach($latestProducts as $latestProduct)
                                         <div class="widget-products__item">
@@ -619,17 +619,17 @@
                                 <div class="view-options__legend">Showing {{ $products->count() }} of {{ $products->total() }} products  </div>
                                 <div class="view-options__divider"></div>
                                 <div class="view-options__control">
-                                    <label for="">Sort By</label>
+                                    <label for="">{{__('Sort By')}}</label>
                                     <div>
                                         <select class="form-control form-control-sm" name="" id="" wire:model.live="sort">
-                                            <option value="ASC">Default</option>
-                                            <option value="ASC">Name (A-Z)</option>
-                                            <option value="DESC">Name (Z-A)</option>
+                                            <option value="ASC">{{__('Default')}}</option>
+                                            <option value="ASC">{{__('Name')}} (A-Z)</option>
+                                            <option value="DESC">{{__('Name')}} (Z-A)</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="view-options__control">
-                                    <label for="">Show</label>
+                                    <label for="">{{__('Show')}}</label>
                                     <div>
                                         <select class="form-control form-control-sm" name="" id="" wire:model.live="perPage">
                                             <option value="12">12</option>
@@ -667,7 +667,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group product__option">
-                                                    <label class="product__option-label" for="product-quantity">Quantity</label>
+                                                    <label class="product__option-label" for="product-quantity">{{__('Quantity')}}</label>
                                                     <div class="product__actions">
                                                         <div class="product__actions-item">
                                                             <div class="input-number product__quantity">
@@ -677,7 +677,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="product__actions-item product__actions-item--addtocart">
-                                                            <button class="btn btn-primary" wire:click="store({{$id}}, '{{$name}}', {{ $sale_price }})">Add to cart</button>
+                                                            <button class="btn btn-primary" wire:click="store({{$id}}, '{{$name}}', {{ $sale_price }})">{{__('Add to cart')}}</button>
                                                         </div>
 
                                                         <div class="product__actions-item product__actions-item--wishlist">
@@ -732,11 +732,11 @@
                                             </button>
                                             <div class="product-card__badges-list">
                                                 @if($newArrivals->contains($product->id))
-                                                    <div class="product-card__badge product-card__badge--new">New</div>
+                                                    <div class="product-card__badge product-card__badge--new">{{_('New')}}</div>
                                                 @elseif($product->featured)
-                                                    <div class="product-card__badge product-card__badge--hot">Hot</div>
+                                                    <div class="product-card__badge product-card__badge--hot">{{_('Hot')}}</div>
                                                 @else
-                                                    <div class="product-card__badge product-card__badge--sale">Sale</div>
+                                                    <div class="product-card__badge product-card__badge--sale">{{_('Sale')}}</div>
                                                 @endif
                                             </div>
                                             <div class="product-card__image product-image">
@@ -847,14 +847,14 @@
                                             </div>
                                             <div class="product-card__actions">
                                                 <div class="product-card__availability">
-                                                    Availability: <span class="text-success">{{ $product->stock_status }}</span>
+                                                    {{__('Availability')}}: <span class="text-success">{{ $product->stock_status }}</span>
                                                 </div>
                                                 <div class="product-card__prices">
                                                     {{ $product->sale_price }}
                                                 </div>
                                                 <div class="product-card__buttons">
-                                                    <button class="btn btn-primary product-card__addtocart" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
-                                                    <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
+                                                    <button class="btn btn-primary product-card__addtocart" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">{{__('Add to cart')}}</button>
+                                                    <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">{{__('Add to cart')}}</button>
                                                     @if($wproducts->contains($product->id))
                                                         <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button" wire:click="removeWishlist('{{ $product->id }}')">
                                                             <svg width="16px" height="16px" style="fill: #ff3333;">

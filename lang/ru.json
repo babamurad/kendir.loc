@@ -57,6 +57,29 @@
     "Proceed to checkout": "Перейти к оформлению заказа",
     "Your shopping cart is empty!": "Ваша корзина пуста!",
     "Continue": "Продолжать",
-    "Filters": "Фильтры"
+    "Filters": "Фильтры",
+    "Brand": "Бренд",
+    "Manufacturer": "Производитель",
+    "Color": "Цвет",
+    "Filter": "Фильтр",
+    "Reset": "Сброс",
+    "Latest Products": "Последние товары",
+    "Sort By": "Сортировать по",
+    "Default": "По умолчанию",
+    "Name": "Имя",
+    "Show": "Показывать",
+    "Add to cart": "Добавить в корзину",
+    "Close": "Закрыть",
+    "Read more...": "Читать далее...",
+    "New": "Новый",
+    "Hot": "Горячий",
+    "Sale": "Распродажа",
+    "Availability": "Доступность"
+
+
+
+
+
+
 
 }

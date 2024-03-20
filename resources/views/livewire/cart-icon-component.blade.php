@@ -43,7 +43,7 @@
                 <div class="dropcart__totals">
                     <table>
                         <tr>
-                            <th>Subtotal</th>
+                            <th>{{__('Subtotal')}}</th>
                             <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->subtotal() }}</td>
                         </tr>
                         <tr>
