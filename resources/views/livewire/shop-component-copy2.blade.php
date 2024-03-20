@@ -121,23 +121,28 @@
                                                 <svg class="filter__arrow" width="12px" height="7px">
                                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                                 </svg>
-{{--                                                <button class="btn btn-outline-danger btn-sm mb-1" wire:click="dbr">ChBr</button>--}}
                                             </button>
                                             <div class="filter__body" data-collapse-content="">
                                                 <div class="filter__container">
                                                     <div class="filter-list">
                                                         <div class="filter-list__list">
-
                                                             @foreach($brands as $brand)
-                                                                <div class="form-check mb-2" style="font-size: 14px;">
-                                                                    <input class="form-check-input" type="checkbox" value="{{ $brand->id }}" id="brand{{ $brand->id }}"
-                                                                           wire:click="checkBrand('{{ $brand->id }}')">
-                                                                    <label class="form-check-label" for="defaultCheck{{ $brand->id }}">
-                                                                        {{ $brand->name }}
-                                                                    </label>
-                                                                </div>
+                                                            <label class="filter-list__item ">
+                                                                        <span class="filter-list__input input-check">
+                                                                            <span class="input-check__body" wire:click="checkBrand('{{ $brand->id }}')">
+                                                                                <input class="input-check__input" type="checkbox">
+                                                                                <span class="input-check__box"></span>
+                                                                                <svg class="input-check__icon" width="9px" height="7px">
+                                                                                    <use xlink:href="{{asset('images/sprite.svg#check-9x7')}}"></use>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                <span class="filter-list__title" wire:key="{{ $brand->id }}">
+                                                                            {{ $brand->name }}
+                                                                        </span>
+                                                                <span class="filter-list__counter">{{ $brand->products->count() }}</span>
+                                                            </label>
                                                             @endforeach
-
                                                         </div>
                                                     </div>
                                                 </div>
@@ -158,13 +163,21 @@
                                                     <div class="filter-list">
                                                         <div class="filter-list__list">
                                                             @foreach($manufacturers as $manufacturer)
-                                                                <div class="form-check mb-2" style="font-size: 14px;">
-                                                                    <input class="form-check-input" type="checkbox" value="{{ $manufacturer->id }}"
-                                                                           id="manuf{{ $manufacturer->id }}" wire:click="checkManuf('{{ $manufacturer->id }}')">
-                                                                    <label class="form-check-label" for="defaultCheck{{ $manufacturer->id }}">
-                                                                        {{ $manufacturer->name }}
-                                                                    </label>
-                                                                </div>
+                                                            <label class="filter-list__item ">
+                                                                        <span class="filter-list__input input-check">
+                                                                            <span class="input-check__body">
+                                                                                <input class="input-check__input" type="checkbox">
+                                                                                <span class="input-check__box"></span>
+                                                                                <svg class="input-check__icon" width="9px" height="7px">
+                                                                                    <use xlink:href="{{asset('images/sprite.svg#check-9x7')}}"></use>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                <span class="filter-list__title">
+                                                                            {{ $manufacturer->name }}
+                                                                        </span>
+                                                                <span class="filter-list__counter">{{ $manufacturer->products?$manufacturer->products->count():'0' }}</span>
+                                                            </label>
                                                             @endforeach
                                                         </div>
                                                     </div>
@@ -388,8 +401,93 @@
                                                     <a href="{{ route('product.details', ['slug' => $product->slug]) }}" wire:navigate>{{ $product->name }}</a>
                                                 </div>
                                                 <div class="product-card__rating">
-                                                    <div class="product-card__rating-legend"> <strong>Brand: </strong> {{ $product->brands->name }} </div>
-                                                    <div class="product-card__rating-legend"> <strong>Manufacturer: </strong> {{ $product->manufacturers->name }} </div>
+                                                    <div class="product-card__rating-stars">
+                                                        <div class="rating">
+                                                            <div class="rating__body">
+                                                                <svg class="rating__star rating__star--active" width="13px" height="12px">
+                                                                    <g class="rating__fill">
+                                                                        <use xlink:href="{{ asset('images/sprite.svg#star-normal') }}"></use>
+                                                                    </g>
+                                                                    <g class="rating__stroke">
+                                                                        <use xlink:href="{{ asset('images/sprite.svg#star-normal-stroke') }}"></use>
+                                                                    </g>
+                                                                </svg>
+                                                                <div class="rating__star rating__star--only-edge rating__star--active">
+                                                                    <div class="rating__fill">
+                                                                        <div class="fake-svg-icon"></div>
+                                                                    </div>
+                                                                    <div class="rating__stroke">
+                                                                        <div class="fake-svg-icon"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <svg class="rating__star rating__star--active" width="13px" height="12px">
+                                                                    <g class="rating__fill">
+                                                                        <use xlink:href="{{ asset('images/sprite.svg#star-normal') }}"></use>
+                                                                    </g>
+                                                                    <g class="rating__stroke">
+                                                                        <use xlink:href="{{ asset('images/sprite.svg#star-normal-stroke') }}"></use>
+                                                                    </g>
+                                                                </svg>
+                                                                <div class="rating__star rating__star--only-edge rating__star--active">
+                                                                    <div class="rating__fill">
+                                                                        <div class="fake-svg-icon"></div>
+                                                                    </div>
+                                                                    <div class="rating__stroke">
+                                                                        <div class="fake-svg-icon"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <svg class="rating__star rating__star--active" width="13px" height="12px">
+                                                                    <g class="rating__fill">
+                                                                        <use xlink:href="{{ asset('images/sprite.svg#star-normal') }}"></use>
+                                                                    </g>
+                                                                    <g class="rating__stroke">
+                                                                        <use xlink:href="{{ asset('images/sprite.svg#star-normal-stroke') }}"></use>
+                                                                    </g>
+                                                                </svg>
+                                                                <div class="rating__star rating__star--only-edge rating__star--active">
+                                                                    <div class="rating__fill">
+                                                                        <div class="fake-svg-icon"></div>
+                                                                    </div>
+                                                                    <div class="rating__stroke">
+                                                                        <div class="fake-svg-icon"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <svg class="rating__star rating__star--active" width="13px" height="12px">
+                                                                    <g class="rating__fill">
+                                                                        <use xlink:href="{{ asset('images/sprite.svg#star-normal') }}"></use>
+                                                                    </g>
+                                                                    <g class="rating__stroke">
+                                                                        <use xlink:href="{{ asset('images/sprite.svg#star-normal-stroke') }}"></use>
+                                                                    </g>
+                                                                </svg>
+                                                                <div class="rating__star rating__star--only-edge rating__star--active">
+                                                                    <div class="rating__fill">
+                                                                        <div class="fake-svg-icon"></div>
+                                                                    </div>
+                                                                    <div class="rating__stroke">
+                                                                        <div class="fake-svg-icon"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <svg class="rating__star " width="13px" height="12px">
+                                                                    <g class="rating__fill">
+                                                                        <use xlink:href="{{ asset('images/sprite.svg#star-normal') }}"></use>
+                                                                    </g>
+                                                                    <g class="rating__stroke">
+                                                                        <use xlink:href="{{ asset('images/sprite.svg#star-normal-stroke') }}"></use>
+                                                                    </g>
+                                                                </svg>
+                                                                <div class="rating__star rating__star--only-edge ">
+                                                                    <div class="rating__fill">
+                                                                        <div class="fake-svg-icon"></div>
+                                                                    </div>
+                                                                    <div class="rating__stroke">
+                                                                        <div class="fake-svg-icon"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-card__rating-legend">9 Reviews</div>
                                                 </div>
                                                 <ul class="product-card__features-list">
                                                     <li>Model: {{ $product->specification->model }}</li>
@@ -496,3 +594,28 @@
         // });
     </script>
 @endpush
+
+<div class="form-check mb-2">
+    <input class="form-check-input" type="checkbox" value="{{ $brand->id }}" id="defaultCheck{{ $brand->id }}"
+           wire:click="checkBrand('{{ $brand->id }}')">
+    <label class="form-check-label" for="defaultCheck{{ $brand->id }}">
+        {{ $brand->name }}
+    </label>
+</div>
+
+
+<label class="filter-list__item ">
+ <span class="filter-list__input input-check">
+     <span class="input-check__body">
+         <input class="input-check__input" type="checkbox">
+         <span class="input-check__box"></span>
+         <svg class="input-check__icon" width="9px" height="7px">
+             <use xlink:href="{{asset('images/sprite.svg#check-9x7')}}"></use>
+         </svg>
+     </span>
+ </span>
+    <span class="filter-list__title">
+        {{ $manufacturer->name }}
+     </span>
+    <span class="filter-list__counter">{{ $manufacturer->products?$manufacturer->products->count():'0' }}</span>
+</label>

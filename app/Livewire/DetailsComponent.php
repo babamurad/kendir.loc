@@ -18,7 +18,7 @@ class DetailsComponent extends Component
             ->with('manufacturers')
             ->where('slug', $this->slug)->first();
         $products = Product::with('specification')->where('category_id', '=', $product->category_id)->get();
-        //dd($relatedProducts);
+        //dd($product->manufacturers);
         return view('livewire.details-component', compact('product', 'products'))->layout('components.layouts.app');
     }
     public function mount($slug)

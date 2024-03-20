@@ -147,9 +147,9 @@
                                 <li>Unit: {{ $product->specification->unit }}</li>
                             </ul>
                             <ul class="product__meta">
-                                <li class="product__meta-availability">Availability: <span class="text-success">In Stock</span></li>
-                                <li><strong>Brand:</strong>  <a href="">{{ $product->brands->name }}</a></li>
-                                <li><strong>Manufacturer:</strong> {{ $product->manufacturers->name }}</li>
+                                <li class="product__meta-availability">Availability: <span class="text-success">{{ $product->stock_status }}</span></li>
+                                <li class="mr-4"><strong>Brand: </strong>  <a href="#">{{ $product->brands->name }}</a></li>
+                                <li><strong>Manufacturer: </strong><a href="#">{{ $product->manufacturers->name }}</a> </li>
                             </ul>
                         </div>
                         <!-- .product__info / end -->

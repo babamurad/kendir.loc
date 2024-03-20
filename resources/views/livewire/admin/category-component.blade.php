@@ -51,21 +51,21 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="inputName">Input Category Name En</label>
+                                <label for="inputName">Category Name En</label>
                                 <input type="text" class="form-control @error('name_en') is-invalid @enderror" placeholder="Enter name" wire:model.live='name_en' wire:keyup="generateSlug()">
                                 @error('name_en') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="inputName">Input Category Name Ru</label>
+                                <label for="inputName">Category Name Ru</label>
                                 <input type="text" class="form-control @error('name_ru') is-invalid @enderror" placeholder="Enter name" wire:model.live='name_ru'>
                                 @error('name_ru') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="inputName">Input Category Name Tm</label>
+                                <label for="inputName">Category Name Tm</label>
                                 <input type="text" class="form-control @error('name_tm') is-invalid @enderror" placeholder="Enter name" wire:model.live='name_tm'>
                                 @error('name_tm') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
@@ -293,7 +293,7 @@
                             <td>{{$category->name}}</td>
                             <td>{{$category->slug}}</td>
                             <td>{{$category->is_popular? 'Yes':'No'}}</td>
-                            <td>{{$category->cparent?$category->cparent->parent_id:0}}-{{ $category->cparent? $category->cparent->name : 'Root'}}</td>
+                            <td>{{ $category->cparent? $category->cparent->name : 'Root'}}</td>
                             <td>
                                 <button type="button" class="btn btn-success btn-sm rounded"data-toggle="modal" data-target="#EditCategory" wire:click="editCategory({{ $category->id }})">
                                     <i class="icon icon-pencil3"></i>

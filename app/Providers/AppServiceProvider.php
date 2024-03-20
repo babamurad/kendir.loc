@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        app()->setLocale('ru');
         view()->share('categories', Category::all());
 //        composer(
 //            'layouts.app',

@@ -38,7 +38,6 @@ class RegisterUserComponent extends Component
     public function registerUser()
     {
         $this->validate();
-dd('reg-val');
         $user = new User();
         $user->name = $this->rname;
         $user->email = $this->remail;

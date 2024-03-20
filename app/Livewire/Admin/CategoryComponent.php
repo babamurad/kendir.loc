@@ -115,9 +115,9 @@ class CategoryComponent extends Component
         $category = Category::findOrFail($id);
         $this->edit_id = $category->id;
         $this->name = $category->name;
-        $category->name_en = $this->name_en;
-        $category->name_ru = $this->name_ru;
-        $category->name_tm = $this->name_tm;
+        $this->name_en = $category->name_en;
+        $this->name_ru = $category->name_ru;
+        $this->name_tm = $category->name_tm;
         $this->slug = $category->slug;
 
         $this->parent_id = $category->parent_id;
@@ -161,7 +161,9 @@ class CategoryComponent extends Component
 
     public function resetInputFields()
     {
-        $this->name = '';
+        $this->name_en = '';
+        $this->name_ru = '';
+        $this->name_tm = '';
         $this->slug = '';
         $this->image = '';
         $this->parent_id = '';
