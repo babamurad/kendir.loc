@@ -85,10 +85,10 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="name" class="form-label">Name</label>
-                                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"  placeholder="Enter product name" wire:model="name"
+                                                <label for="name_en" class="form-label">Name - <span class="btn-light">EN</span></label>
+                                                <input type="text" class="form-control @error('name_en') is-invalid @enderror" name="name_en"  placeholder="Enter product name" wire:model="name_en"
                                                        wire:keyup="generateSlug()">
-                                                @error('name') <p class="text-danger">{{$message}}</p> @enderror
+                                                @error('name_en') <p class="text-danger">{{$message}}</p> @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -98,11 +98,27 @@
                                                 @error('slug') <p class="text-danger">{{$message}}</p> @enderror
                                             </div>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="name_ru" class="form-label">Name - <span class="btn-light">RU</span></label>
+                                                <input type="text" class="form-control @error('name_ru') is-invalid @enderror" name="name_ru"  placeholder="Enter product name" wire:model="name_ru"
+                                                       wire:keyup="generateSlug()">
+                                                @error('name_ru') <p class="text-danger">{{$message}}</p> @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="name_tm" class="form-label">Name - <span class="btn-light">TM</span></label>
+                                                <input type="text" class="form-control @error('name_tm') is-invalid @enderror" name="name_tm"  placeholder="Enter product name" wire:model="name_tm"
+                                                       wire:keyup="generateSlug()">
+                                                @error('name_tm') <p class="text-danger">{{$message}}</p> @enderror
+                                            </div>
+                                        </div>
                                         <div class="col-sm-12 col-12">
                                             <div class="form-group">
                                                 <label for="short_description" class="form-label">Short Description - <span class="btn-light">EN</span> </label>
                                                 <textarea class="form-control @error('short_description_en') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
-                                                          wire:model="short_description_en" minlength="20" maxlength="100"> </textarea>
+                                                          wire:model="short_description_en" minlength="20" maxlength="10000"> </textarea>
                                                 @error('short_description_en') <p class="text-danger">{{$message}}</p> @enderror
                                             </div>
                                         </div>
@@ -110,7 +126,7 @@
                                             <div class="form-group">
                                                 <label for="short_description" class="form-label">Short Description - <span class="btn-light">RU</span></label>
                                                 <textarea class="form-control @error('short_description_ru') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
-                                                          wire:model="short_description_ru" minlength="20" maxlength="100"> </textarea>
+                                                          wire:model="short_description_ru" minlength="20" maxlength="10000"> </textarea>
                                                 @error('short_description_ru') <p class="text-danger">{{$message}}</p> @enderror
                                             </div>
                                         </div>
@@ -118,7 +134,7 @@
                                             <div class="form-group">
                                                 <label for="short_description" class="form-label">Short Description - <span class="btn-light">TM</span></label>
                                                 <textarea class="form-control @error('short_description_tm') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
-                                                          wire:model="short_description_tm" minlength="20" maxlength="100"> </textarea>
+                                                          wire:model="short_description_tm" minlength="20" maxlength="10000"> </textarea>
                                                 @error('short_description_tm') <p class="text-danger">{{$message}}</p> @enderror
                                             </div>
                                         </div>
@@ -126,7 +142,7 @@
                                             <div class="form-group">
                                                 <label for="description_en" class="form-label">Description - <span class="btn-light">EN</span> </label>
                                                 <div wire:ignore>
-                                        <textarea id="description_en" class="form-control @error('description_en') is-invalid @enderror" name="description_en" minlength="20" maxlength="5000"
+                                        <textarea id="description_en" class="form-control @error('description_en') is-invalid @enderror" name="description_en" minlength="20" maxlength="15000"
                                                   placeholder="Enter Description" cols="30" rows="12" wire:model.live="description_en"> </textarea>
                                                 </div>
                                                 @error('description_en') <p class="text-danger">{{$message}}</p> @enderror
@@ -136,7 +152,7 @@
                                             <div class="form-group">
                                                 <label for="description_ru" class="form-label">Description - <span class="btn-light">RU</span> </label>
                                                 <div wire:ignore>
-                                        <textarea id="description_ru" class="form-control @error('description_ru') is-invalid @enderror" name="description_ru" minlength="20" maxlength="5000"
+                                        <textarea id="description_ru" class="form-control @error('description_ru') is-invalid @enderror" name="description_ru" minlength="20" maxlength="15000"
                                                   placeholder="Enter Description" cols="30" rows="12" wire:model.live="description_ru"> </textarea>
                                                 </div>
                                                 @error('description_ru') <p class="text-danger">{{$message}}</p> @enderror
@@ -146,7 +162,7 @@
                                             <div class="form-group">
                                                 <label for="description_tm" class="form-label">Description - <span class="btn-light">TM</span> </label>
                                                 <div wire:ignore>
-                                        <textarea id="description_tm" class="form-control @error('description_tm') is-invalid @enderror" name="description_tm" minlength="20" maxlength="5000"
+                                        <textarea id="description_tm" class="form-control @error('description_tm') is-invalid @enderror" name="description_tm" minlength="20" maxlength="15000"
                                                   placeholder="Enter Description" cols="30" rows="12" wire:model.live="description_tm"> </textarea>
                                                 </div>
                                                 @error('description_tm') <p class="text-danger">{{$message}}</p> @enderror

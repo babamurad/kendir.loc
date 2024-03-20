@@ -18,6 +18,7 @@ class ProductEditComponent extends Component
     use WithFileUploads;
     public $name, $product_id;
     public $slug;
+    public $name_en, $name_ru, $name_tm;
     public $short_description, $short_description_en, $short_description_ru, $short_description_tm;
     public $description, $description_en, $description_ru, $description_tm;
     public $regular_price;
@@ -159,8 +160,13 @@ class ProductEditComponent extends Component
         $product = Product::find($product_id);
         $this->product_id = $product->id;
         $this->name = $product->name;
+        $this->name_en = $product->name_en;
+        $this->name_ru = $product->name_ru;
+        $this->name_tm = $product->name_tm;
         $this->slug = $product->slug;
+        $this->short_description= $product->short_description;
         $this->short_description_en = $product->short_description_en;
+        $this->description = $product->description;
         $this->description_en = $product->description_en;
         $this->short_description_ru = $product->short_description_ru;
         $this->description_ru = $product->description_ru;

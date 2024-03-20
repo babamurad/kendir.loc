@@ -14,10 +14,10 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="name" class="form-label">Name</label>
-                                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"  placeholder="Enter product name" wire:model="name"
+                                            <label for="name_en" class="form-label">Name EN</label>
+                                            <input type="text" class="form-control @error('name_en') is-invalid @enderror" name="name_en"  placeholder="Enter product name" wire:model="name_en"
                                                    wire:keyup="generateSlug()">
-                                            @error('name') <p class="text-danger">{{$message}}</p> @enderror
+                                            @error('name_en') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -27,6 +27,23 @@
                                             @error('slug') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
                                     </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="name_ru" class="form-label">Name RU</label>
+                                            <input type="text" class="form-control @error('name_ru') is-invalid @enderror" name="name_ru"  placeholder="Enter product name" wire:model="name_ru"
+                                                   wire:keyup="generateSlug()">
+                                            @error('name_ru') <p class="text-danger">{{$message}}</p> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="name_tm" class="form-label">Name TM</label>
+                                            <input type="text" class="form-control @error('name_tm') is-invalid @enderror" name="name_tm"  placeholder="Enter product name" wire:model="name_tm"
+                                                   wire:keyup="generateSlug()">
+                                            @error('name_tm') <p class="text-danger">{{$message}}</p> @enderror
+                                        </div>
+                                    </div>
+
                                     <div class="col-sm-12 col-12">
                                         <div class="form-group">
                                             <label for="short_description" class="form-label">Short Description</label>
