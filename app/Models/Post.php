@@ -14,4 +14,16 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'author', 'id');
     }
+
+    protected $lang_fileds = ['title', 'text'];
+
+    public function getAttribute($key)
+    {
+        $default = parent::getAttribute($key);
+        if ( isset($this->lang_fileds) && is_array($this->lang_fileds) && in_array($key, $this->lang_fileds) ) {
+            return $this->{ $key.'_'.app()->getLocale() } ?? '';
+        }
+
+        return $default;
+    }
 }

@@ -15,4 +15,15 @@ class Manufacturer extends Model
         return $this->hasMany(Product::class,'manufacturer_id', 'id');
     }
 
+    protected $lang_fileds = ['name'];
+
+    public function getAttribute($key)
+    {
+        $default = parent::getAttribute($key);
+        if ( isset($this->lang_fileds) && is_array($this->lang_fileds) && in_array($key, $this->lang_fileds) ) {
+            return $this->{ $key.'_'.app()->getLocale() } ?? '';
+        }
+
+        return $default;
+    }
 }

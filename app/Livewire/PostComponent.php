@@ -14,13 +14,7 @@ class PostComponent extends Component
     protected $paginationTheme = 'bootstrap';
     public function render()
     {
-        //$posts = Post::orderBy('id', 'desc')->paginate(6);
-        //$posts = DB::select('SELECT p.id, p.title, p.text, p.created_at, p.image, u.name FROM posts p, users u WHERE u.id=p.author');
-        $posts = DB::table('posts')
-            ->join('users', 'users.id', '=', 'posts.author')
-            ->select('posts.id', 'posts.title', 'posts.text', 'posts.image', 'posts.created_at', 'users.name' )
-            ->orderBy('id', 'desc')
-            ->paginate(6);
+        $posts = Post::with('authorPost')->orderBy('created_at', 'desc')->paginate(6);
 
         $latestPosts = Post::orderBy('id', 'desc')->limit(3)->get();
 

@@ -79,7 +79,10 @@ class ProductEditComponent extends Component
         ]);
 
         $product = Product::find($this->product_id);
-        $product->name = $this->name;
+        $product->name = $this->name_en;
+        $product->name_en = $this->name_en;
+        $product->name_ru = $this->name_ru;
+        $product->name_tm = $this->name_tm;
         $product->slug = $this->slug;
         $product->short_description_en = $this->short_description_en;
         $product->description_en = $this->description_en;

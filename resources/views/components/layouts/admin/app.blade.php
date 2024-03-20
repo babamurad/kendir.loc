@@ -130,7 +130,7 @@
                                 </li>
 
                                 <li class=" {{ request()->is('admin/about-us') ? 'active selected' : '' }}">
-                                    <a href="{{route('admin.about-us')}}" wire:navigate>
+                                    <a href="{{route('admin.about-us')}}">
 										<span class="has-icon">
 											<i class="icon-info-with-circle"></i>
 										</span>
@@ -219,7 +219,7 @@
 			<!-- END: .app-container -->
 			<!-- BEGIN .main-footer -->
 			<footer class="main-footer fixed-btm">
-				© Kendir HJ 2024
+				© Kendir HJ {{ date("Y") }}
 			</footer>
 			<!-- END: .main-footer -->
 		</div>

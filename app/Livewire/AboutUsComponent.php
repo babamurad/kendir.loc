@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class AboutUsComponent extends Component
 {
+
     public function render()
     {
         $about = About::first();
