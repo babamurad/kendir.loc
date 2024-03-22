@@ -21,7 +21,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         app()->setLocale('ru');
-        view()->share('categories', Category::all());
+        session()->put('locale', 'ru');
+
+        $categories = Category::with('cparent', 'children' )->get();
+        view()->share('categories', $categories);
+
+        //dd(Category::with('cparent', 'children' )->get());
 //        composer(
 //            'layouts.app',
 //            function ($view) {
