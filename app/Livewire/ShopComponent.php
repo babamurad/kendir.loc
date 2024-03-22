@@ -36,6 +36,7 @@ class ShopComponent extends Component
 
     #[On('selectBrand')]
     #[On('selectManuf')]
+    #[On('resetAll')]
     public function render()
     {
         //->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
@@ -267,5 +268,13 @@ class ShopComponent extends Component
     public function qtyDec()
     {
         --$this->pqty;
+    }
+
+    public function resetAll()
+    {
+        $this->category_id = '';
+        $this->check_brands = [];
+        $this->check_manufs = [];
+        redirect()->route('shop');
     }
 }

@@ -117,7 +117,7 @@
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item="">
                                             <button type="button" class="filter__title" data-collapse-trigger="">
-                                                Brand
+                                                {{__('Brand')}}
                                                 <svg class="filter__arrow" width="12px" height="7px">
                                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                                 </svg>
@@ -148,7 +148,7 @@
                                     <div class="widget-filters__item">
                                         <div class="filter filter--opened" data-collapse-item="">
                                             <button type="button" class="filter__title" data-collapse-trigger="">
-                                                Manufacturer
+                                                {{__('Manufacturer')}}
                                                 <svg class="filter__arrow" width="12px" height="7px">
                                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-12x7') }}"></use>
                                                 </svg>
@@ -175,8 +175,8 @@
 
                                 </div>
                                 <div class=" widget-filters__list widget-filters__actions d-flex">
-                                    <button class="btn btn-primary btn-sm">Filter</button>
-                                    <button class="btn btn-secondary btn-sm">Reset</button>
+{{--                                    <button class="btn btn-primary btn-sm">Filter</button>--}}
+                                    <button class="btn btn-secondary btn-sm" wire:click="resetAll" wire:navigate>Reset</button>
                                 </div>
                             </div>
                         </div>
@@ -388,8 +388,8 @@
                                                     <a href="{{ route('product.details', ['slug' => $product->slug]) }}" wire:navigate>{{ $product->name }}</a>
                                                 </div>
                                                 <div class="product-card__rating">
-                                                    <div class="product-card__rating-legend"> <strong>Brand: </strong> {{ $product->brands->name }} </div>
-                                                    <div class="product-card__rating-legend"> <strong>Manufacturer: </strong> {{ $product->manufacturers->name }} </div>
+                                                    <div class="product-card__rating-legend"> <strong>{{__('Brand')}}: </strong> {{ $product->brands->name }} </div>
+                                                    <div class="product-card__rating-legend"> <strong>{{__('Manufacturer')}}: </strong> {{ $product->manufacturers->name }} </div>
                                                 </div>
                                                 <ul class="product-card__features-list">
                                                     <li>Model: {{ $product->specification->model }}</li>
