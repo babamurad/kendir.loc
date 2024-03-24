@@ -16388,3 +16388,6 @@ ul {
 .product__meta {
     display: block !important;
 }
+.add-to-cart{
+    height: calc(1.875rem + 14px) !important;
+}

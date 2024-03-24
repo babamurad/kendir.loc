@@ -293,17 +293,17 @@
                                     <ul class="footer-links__list">
                                         <li class="footer-links__item"><a href="{{ route('about-us') }}" class="footer-links__link">About
                                                 Us</a></li>
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">Delivery
+                                        <li class="footer-links__item"><a href="#" class="footer-links__link">Delivery
                                                 Information</a></li>
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">Privacy
+                                        <li class="footer-links__item"><a href="{{ route('terms') }}" class="footer-links__link">Privacy
                                                 Policy</a></li>
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">Brands</a>
+                                        <li class="footer-links__item"><a href="#" class="footer-links__link">Brands</a>
                                         </li>
                                         <li class="footer-links__item"><a href="{{ route('contacts') }}" class="footer-links__link">Contact
                                                 Us</a></li>
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">Returns</a>
+                                        <li class="footer-links__item"><a href="#" class="footer-links__link">Returns</a>
                                         </li>
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">Site
+                                        <li class="footer-links__item"><a href="#" class="footer-links__link">Site
                                                 Map</a></li>
                                     </ul>
                                 </div>

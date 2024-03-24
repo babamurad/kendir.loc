@@ -29,7 +29,7 @@
                 <div class="block post post--layout--classic">
                     <div class="post__header post-header post-header--layout--classic">
                         <div class="post-header__categories">
-                            <a href="">Latest news</a>
+                            <a href="">{{__('Latest news')}}</a>
                         </div>
                         <h1 class="post-header__title">{{ $post->title }}</h1>
                         <div class="post-header__meta">

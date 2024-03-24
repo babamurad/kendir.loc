@@ -10,7 +10,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="/">Home</a>
+                            <a href="/">{{__('Home')}}</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
                                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
@@ -27,7 +27,7 @@
             </div>
             <div class="page-header__title">
                 <div class="row">
-                    <div class="col-md-6"><h1>Shop</h1></div>
+                    <div class="col-md-6"><h1>{{ __('Shop') }}</h1></div>
                     <div class="col-md-6">
                         @if(session('success'))
                             <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; top: -2rem;">
@@ -59,7 +59,7 @@
 
                         <div class="block-sidebar__item d-none d-lg-block">
                             <div class="widget-products widget">
-                                <h4 class="widget__title">Latest Products</h4>
+                                <h4 class="widget__title">{{__('Latest Products')}}</h4>
                                 <div class="widget-products__list">
                                     @foreach($latestProducts as $latestProduct)
                                         <div class="widget-products__item">
@@ -121,10 +121,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="view-options__legend">Showing {{ $products->count() }} of {{ $products->total() }} products  </div>
+                                <div class="view-options__legend">{{__('Showing')}} {{ $products->count() }} {{__('of')}} {{ $products->total() }} {{__('products')}}  </div>
                                 <div class="view-options__divider"></div>
                                 <div class="view-options__control">
-                                    <label for="">Sort By</label>
+                                    <label for="">{{__('Sort By')}}</label>
                                     <div>
                                         <select class="form-control form-control-sm" name="" id="" wire:model.live="sort">
                                             <option value="ASC">Default</option>
@@ -134,7 +134,7 @@
                                     </div>
                                 </div>
                                 <div class="view-options__control">
-                                    <label for="">Show</label>
+                                    <label for="">{{__('Show')}}</label>
                                     <div>
                                         <select class="form-control form-control-sm" name="" id="" wire:model.live="perPage">
                                             <option value="12">12</option>

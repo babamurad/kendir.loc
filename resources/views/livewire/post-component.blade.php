@@ -6,7 +6,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="/">Home</a>
+                            <a href="/">{{__('Home')}}</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
                                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="post-card__info">
                                             <div class="post-card__category">
-                                                <a href="{{ route('posts') }}">Posts</a>
+                                                <a href="{{ route('posts') }}">{{__('Posts')}}</a>
                                             </div>
                                             <div class="post-card__date">
                                                 {{$post->authorPost->name}}
@@ -45,7 +45,13 @@
                                             <div class="post-card__name">
                                                 <a href="{{ route('post-detail', ['id' => $post->id]) }}">{{ $post->title }}</a>
                                             </div>
-                                            <div class="post-card__date">{{ \Carbon\Carbon::create($post->created_at)->format('F d, Y') }}</div>
+
+                                            @if(session()->get('locale') != 'en')
+{{--                                                <div class="post-card__date">{{ \Carbon\Carbon::create($post->created_at)->translatedFormat('F d, Y') }}</div>--}}
+                                                <div class="post-card__date">{{ \Carbon\Carbon::create($post->created_at)->translatedFormat('F d, Y') }}</div>
+                                            @else
+                                                <div class="post-card__date">{{ \Carbon\Carbon::create($post->created_at)->Format('F d, Y') }}</div>
+                                            @endif
                                             <div class="post-card__content">
                                                 {!! \Illuminate\Support\Str::of($post->text)->words(25) !!}
                                             </div>

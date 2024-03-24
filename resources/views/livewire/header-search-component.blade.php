@@ -8,7 +8,7 @@
                         <option value="{{ $category->id }}">{{ $category->name}}</option>
                     @endforeach
                 </select>
-                <input class="search__input" name="q" placeholder="Search over 10,000 products"
+                <input class="search__input" name="q" placeholder="{{__('Search products')}}"
                        aria-label="Site search" type="text" autocomplete="off">
                 <button class="search__button search__button--type--submit" type="submit">
                     <svg width="20px" height="20px">

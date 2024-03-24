@@ -11,7 +11,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="/">Home</a>
+                            <a href="/">{{__('Home')}}</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
                                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
@@ -244,20 +244,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="view-options__legend">Showing {{ $products->count() }} of {{ $products->total() }} products  </div>
+                                @if(session()->get('locale') != 'tm')
+                                    <div class="view-options__legend">{{__('Showing')}} {{ $products->count() }} {{__('of')}} {{ $products->total() }} {{__('products')}}  </div>
+                                @else
+                                    <div class="view-options__legend">{{ $products->total() }} Harytdan {{ $products->count() }} -si görkezildi  </div>
+                                @endif
                                 <div class="view-options__divider"></div>
                                 <div class="view-options__control">
-                                    <label for="">Sort By</label>
+                                    <label for="">{{__('Sort By')}}</label>
                                     <div>
                                         <select class="form-control form-control-sm" name="" id="" wire:model.live="sort">
-                                            <option value="ASC">Default</option>
-                                            <option value="ASC">Name (A-Z)</option>
-                                            <option value="DESC">Name (Z-A)</option>
+                                            <option value="ASC">{{__('Default')}}</option>
+                                            <option value="ASC">{{__('Name (A-Z)')}}</option>
+                                            <option value="DESC">{{__('Name (Z-A)')}}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="view-options__control">
-                                    <label for="">Show</label>
+                                    <label for="">{{__('Show')}}</label>
                                     <div>
                                         <select class="form-control form-control-sm" name="" id="" wire:model.live="perPage">
                                             <option value="12">12</option>
@@ -305,7 +309,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="product__actions-item product__actions-item--addtocart">
-                                                            <button class="btn btn-primary" wire:click="store({{$id}}, '{{$name}}', {{ $sale_price }})">Add to cart</button>
+                                                            <button class="btn btn-primary" wire:click="store({{$id}}, '{{$name}}', {{ $sale_price }})">{{__('Add to cart')}}</button>
                                                         </div>
 
                                                         <div class="product__actions-item product__actions-item--wishlist">
@@ -401,14 +405,14 @@
                                             </div>
                                             <div class="product-card__actions">
                                                 <div class="product-card__availability">
-                                                    Availability: <span class="text-success {{ $product->stock_status=='In Stock'? '': 'text-danger' }}"> <br> {{ $product->stock_status }}</span>
+                                                    {{__('Availability')}}: <span class="text-success {{ $product->stock_status=='In Stock'? '': 'text-danger' }}"> <br> {{ __($product->stock_status) }}</span>
                                                 </div>
                                                 <div class="product-card__prices">
                                                     {{ $product->sale_price }}
                                                 </div>
                                                 <div class="product-card__buttons">
-                                                    <button class="btn btn-primary product-card__addtocart" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
-                                                    <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
+                                                    <button class="btn btn-primary product-card__addtocart" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">{{__('Add to cart')}}</button>
+                                                    <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">{{__('Add to cart')}}</button>
                                                     @if($wproducts->contains($product->id))
                                                         <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"
                                                                 wire:click="removeWishlist('{{ $product->id }}')">

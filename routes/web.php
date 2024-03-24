@@ -87,7 +87,7 @@ Route::middleware(\App\Http\Middleware\Localization::class)->group(function (){
     Route::get('compare', CompareComponent::class)->name('compare');
 
     Route::get('user', UserComponent::class)->name('user');
-Route::get('register', RegisterUserComponent::class)->name('register');
+    Route::get('register', RegisterUserComponent::class)->name('register');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', UserDashboardComponent::class)->name('dashboard');
