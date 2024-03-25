@@ -56,7 +56,7 @@
                                                 {!! \Illuminate\Support\Str::of($post->text)->words(25) !!}
                                             </div>
                                             <div class="post-card__read-more">
-                                                <a href="{{ route('post-detail', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">Read More</a>
+                                                <a href="{{ route('post-detail', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">{{__('Read more...')}}</a>
                                             </div>
                                         </div>
                                     </div>

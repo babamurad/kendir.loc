@@ -16,7 +16,7 @@ class PostDetailComponent extends Component
         $author = User::where('id', '=', $post->author)->get();
         $posts = Post::where('author', '=', $post->author)->limit(2)->get();
         //dd($author);
-        $lposts = Post::limit(3)->get();
+        $lposts = Post::orderBy('id', 'desc')->limit(3)->get();
         return view('livewire.post-detail-component', compact('post', 'lposts', 'author', 'posts'));
     }
 

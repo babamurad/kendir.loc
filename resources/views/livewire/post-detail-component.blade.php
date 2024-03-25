@@ -6,13 +6,13 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="/">Home</a>
+                            <a href="/">{{__('Home')}}</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
                                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('posts') }}">Posts</a>
+                            <a href="{{ route('posts') }}">{{__('Posts')}}</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
                                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
@@ -29,7 +29,7 @@
                 <div class="block post post--layout--classic">
                     <div class="post__header post-header post-header--layout--classic">
                         <div class="post-header__categories">
-                            <a href="">{{__('Latest news')}}</a>
+                            <a href="{{ route('posts') }}">{{__('Latest news')}}</a>
                         </div>
                         <h1 class="post-header__title">{{ $post->title }}</h1>
                         <div class="post-header__meta">
@@ -44,7 +44,7 @@
                         </a>
                     </div>
                     <div class="post__content typography ">
-                        {{ $post->text }}
+                        {!! $post->text !!}
                     </div>
                     <div class="post__footer">
                         <div class="post-author">
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <section class="post__section">
-                        <h4 class="post__section-title">Related Posts</h4>
+                        <h4 class="post__section-title">{{__('Related Posts')}}</h4>
                         <div class="related-posts">
                             <div class="related-posts__list">
                                 @foreach($posts as $rpost)
@@ -102,16 +102,15 @@
                     </div>
                     <div class="block-sidebar__item">
                         <div class="widget-aboutus widget">
-                            <h4 class="widget__title">About Blog</h4>
+                            <h4 class="widget__title">{{__('about-page')}}</h4>
                             <div class="widget-aboutus__text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt, erat in malesuada aliquam, est erat faucibus purus,
-                                eget viverra nulla sem vitae neque. Quisque id sodales libero.
+                                {!! __('blog-text') !!}
                             </div>
                         </div>
                     </div>
                     <div class="block-sidebar__item">
                         <div class="widget-posts widget">
-                            <h4 class="widget__title">Latest Posts</h4>
+                            <h4 class="widget__title">{{__('Latest Posts')}}</h4>
                             <div class="widget-posts__list">
                                 @foreach($lposts as $lpost)
                                 <div class="widget-posts__item">
@@ -129,19 +128,6 @@
                                 </div>
                                 @endforeach
                             </div>
-                        </div>
-                    </div>
-                    <div class="block-sidebar__item">
-                        <div class="widget-newsletter widget">
-                            <h4 class="widget-newsletter__title">Our Newsletter</h4>
-                            <div class="widget-newsletter__text">
-                                Phasellus eleifend sapien felis, at sollicitudin arcu semper mattis. Mauris quis mi quis ipsum tristique lobortis. Nulla vitae est blandit rutrum.
-                            </div>
-                            <form class="widget-newsletter__form" action="">
-                                <label for="widget-newsletter-email" class="sr-only">Email Address</label>
-                                <input id="widget-newsletter-email" type="text" class="form-control" placeholder="Email Address">
-                                <button type="submit" class="btn btn-primary mt-3">Subscribe</button>
-                            </form>
                         </div>
                     </div>
                 </div>

@@ -28,7 +28,7 @@
             </div>
             <div class="page-header__title">
                 <div class="row">
-                    <div class="col-md-6"><h1>Shop</h1></div>
+                    <div class="col-md-6"><h1>{{ __('Shop') }}</h1></div>
                     <div class="col-md-6">
                         @if(session('success'))
                         <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; top: -2rem;">
@@ -299,7 +299,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group product__option">
-                                                    <label class="product__option-label" for="product-quantity">Quantity</label>
+                                                    <label class="product__option-label" for="product-quantity">{{__('Quantity')}}</label>
                                                     <div class="product__actions">
                                                         <div class="product__actions-item">
                                                             <div class="input-number product__quantity">
@@ -354,9 +354,15 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            {{__('Close')}}
                                         </button>
-                                        <button type="button" class="btn btn-primary">{{__('Read more...')}}</button>
+                                        @if($sslug)
+                                            <a href="{{ route('product.details', ['slug' => $sslug]) }}" class="btn btn-primary">
+                                                {{__('Read more...')}}
+                                            </a>
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>

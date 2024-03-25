@@ -6,7 +6,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="/">Home</a>
+                            <a href="/">{{__('Home')}}</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
                                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
@@ -29,34 +29,33 @@
                     <div class="contact-us__container">
                         <div class="row">
                             <div class="col-12 col-lg-6 pb-4 pb-lg-0">
-                                <h4 class="contact-us__header card-title">Biziň salgymyz</h4>
+                                <h4 class="contact-us__header card-title">{{__('Address')}}</h4>
                                 <div class="contact-us__address">
                                     <p>
                                         Täze zaman köçesi 180/2 jaýy, Bagtyýarlyk etrap, Aşgabat, Türkmenistan<br>
-                                        Email: <a href="mailto:info@kendirtm.com">info@kendirtm.com</a>
+                                        {{__('Email')}}: <a href="mailto:info@kendirtm.com">info@kendirtm.com</a>
                                         <br>
-                                        Phone Number: <a href="tel:+99312247780">+993 12 24-77-80</a><br>
+                                        {{__('Phone Number')}}: <a href="tel:+99312247780">+993 12 24-77-80</a><br>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <a href="tel:+99312247781">+993 12 24-77-81</a><br>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <a href="tel:+99361105249">+993 61 10-52-49</a><br>
                                     </p>
                                     <p>
-                                        <strong>Iş wagtymyz</strong><br>
-                                        Duşenbe - Anna: 8:00-18:00<br>
-                                        Şenbe: 8:00-17:00<br>
-                                        Ýekşenbe dynç güni
+                                        <strong>{{__('Work time')}} </strong><br>
+                                        {{__('Mon-Fri')}}: 8:00-18:00<br>
+                                        {{__('Sat')}}: 8:00-17:00<br>
+                                        {{__('Day off sunday')}}
                                     </p>
                                     <p>
-                                        <strong>Goşmaça</strong><br>
-                                        Uly binalar üçin ýa-da öz hojalygyňyza gerek ähli gurluşyk harytlaryny bir ýerde jemledik.
-                                        Binanyň esasy üçin gerek bolan polat armaturdan, jaýyň üçegini ýapmak üçin demir çerepisalara çenli ähli harytlar bizde bar.
+                                        <strong>{{__('Additionally')}}</strong><br>
+                                        {{__('additional-text')}}
                                     </p>
                                 </div>
                             </div>
                             <div class="col-12 col-lg-6">
 {{--                                    top: -17px;--}}
-                                <h4 class="contact-us__header card-title">Bize ýazyň</h4>
+                                <h4 class="contact-us__header card-title">{{__('Write to Us')}}</h4>
                                 @if(session('success'))
                                     <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; ">
                                         <button type="button" class="close {{ request()->is('/') ? '' : ' mt-3' }}" data-dismiss="alert" aria-hidden="true" style="top: -17px;">×</button>
@@ -66,24 +65,24 @@
                                 <form wire:submit="sendMessage">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="form-name">{{ __('Your Name') }}</label>
-                                            <input type="text" id="form-name" class="form-control @error('name') is-invalid @enderror" placeholder="Your Name" wire:model="name">
+                                            <label for="form-name">{{ __('First Name') }}</label>
+                                            <input type="text" id="form-name" class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('First Name') }}" wire:model="name">
                                             @error('name') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="form-email">{{__('Email')}}</label>
-                                            <input type="email" id="form-email" class="form-control @error('email') is-invalid @enderror" placeholder="Email Address" wire:model="email">
+                                            <label for="form-email">{{__('Email address')}}</label>
+                                            <input type="email" id="form-email" class="form-control @error('email') is-invalid @enderror" placeholder="{{__('Email address')}}" wire:model="email">
                                             @error('email') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="form-subject">{{__('Phone')}}</label>
-                                        <input type="text" id="form-subject" class="form-control @error('phone') is-invalid @enderror" placeholder="Phone" wire:model="phone">
+                                        <label for="form-subject">{{__('Phone Number')}}</label>
+                                        <input type="text" id="form-subject" class="form-control @error('phone') is-invalid @enderror" placeholder="{{__('Phone Number')}}" wire:model="phone">
                                         @error('phone') <p class="text-danger">{{$message}}</p> @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="form-subject">{{__('Subject')}}</label>
-                                        <input type="text" id="form-subject" class="form-control @error('subject') is-invalid @enderror" placeholder="Subject" wire:model="subject">
+                                        <input type="text" id="form-subject" class="form-control @error('subject') is-invalid @enderror" placeholder="{{__('Subject')}}" wire:model="subject">
                                         @error('subject') <p class="text-danger">{{$message}}</p> @enderror
                                     </div>
                                     <div class="form-group">

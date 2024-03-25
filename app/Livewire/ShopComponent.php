@@ -25,7 +25,7 @@ class ShopComponent extends Component
 
     public $minPrice, $maxPrice;
 
-    public $id, $name, $pqty = 1, $sale_price, $image;
+    public $id, $name, $pqty = 1, $sale_price, $image, $sslug;
     public $prodCount;
     public $active_id, $active_cat;
     public $collapce = 0;
@@ -191,7 +191,7 @@ class ShopComponent extends Component
         $pqty = $this->pqty?$this->pqty:1;
         Cart::instance('cart')->add($product_id, $product_name, $pqty, $product_price)->associate('App\Models\Product');
         $this->pqty = 1;
-        session()->flash('success', 'The product has been added to the cart');
+        session()->flash('success', __('The product has been added to the cart'));
         $this->dispatch('addToCart');
         return redirect()->back();
     }
@@ -255,7 +255,8 @@ class ShopComponent extends Component
         $product = Product::find($id);
         $this->id = $product->id;
         $this->name = $product->name;
-        //$this->qty = $product->qty;
+        $this->sslug = $product->slug;
+        //dd($this->sslug);
         $this->image = $product->image;
         $this->sale_price = $product->sale_price;
     }

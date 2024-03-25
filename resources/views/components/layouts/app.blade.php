@@ -208,7 +208,7 @@
                                         <li class="nav-links__item  nav-links__item--has-submenu ">
                                             <a class="nav-links__item-link" href="{{ route('contacts') }}" wire:navigate>
                                                 <div class="nav-links__item-body">
-                                                    {{__('Contact us')}}
+                                                    {{__('ContactUs')}}
                                                 </div>
                                             </a>
                                         </li>
