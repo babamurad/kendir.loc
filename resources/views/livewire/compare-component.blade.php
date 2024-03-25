@@ -10,24 +10,24 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="/">Home</a>
+                            <a href="/">{{__('Home')}}</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
                                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('shop') }}">Shop</a>
+                            <a href="{{ route('shop') }}">{{__('Shop')}}</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
                                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Compare List</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('Compare List')}}</li>
                     </ol>
                 </nav>
             </div>
             <div class="page-header__title">
                 <div class="row">
-                    <div class="col-md-6"><h1>Compare List</h1></div>
+                    <div class="col-md-6"><h1>{{__('Compare List')}}</h1></div>
                     <div class="col-md-6">
                         @if(session('success'))
                             <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; top: -2rem;">
@@ -112,7 +112,7 @@
                         <tr>
                             <th></th>
                             @foreach(\Gloudemans\Shoppingcart\Facades\Cart::instance('compare')->content() as $product)
-                            <td><button class="btn btn-secondary btn-sm" wire:click="removeCompare({{$product->id}})">Remove</button></td>
+                            <td><button class="btn btn-secondary btn-sm" wire:click="removeCompare({{$product->id}})">{{__('Remove')}}</button></td>
                             @endforeach
                         </tr>
 

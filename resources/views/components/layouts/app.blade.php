@@ -270,81 +270,56 @@
                         <div class="row">
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="site-footer__widget footer-contacts">
-                                    <h5 class="footer-contacts__title">Contact Us</h5>
+                                    <h5 class="footer-contacts__title">{{__('kendir_hk')}}</h5>
                                     <div class="footer-contacts__text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in feugiat
-                                        lorem. Pellentque ac placerat tellus.
+                                        {{ __('kendir') }}
                                     </div>
+
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2">
+                                <div class="site-footer__widget footer-links">
+                                    <h5 class="footer-links__title">{{__('Information')}}</h5>
+                                    <ul class="footer-links__list">
+                                        <li class="footer-links__item"><a href="{{ route('about-us') }}" class="footer-links__link">{{__('About Us')}}</a></li>
+                                        <li class="footer-links__item"><a href="#" class="footer-links__link">{{__('Delivery Information')}}</a></li>
+                                        <li class="footer-links__item"><a href="{{ route('terms') }}" class="footer-links__link">{{__('Privacy Policy')}}</a></li>
+                                        <li class="footer-links__item"><a href="#" class="footer-links__link">{{__('Brands')}}</a>
+                                        </li>
+                                        <li class="footer-links__item"><a href="{{ route('contacts') }}" class="footer-links__link">{{__('Contact Us')}}</a></li>
+                                        <li class="footer-links__item"><a href="#" class="footer-links__link">{{__('Returns')}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2">
+                                <div class="site-footer__widget footer-links">
+                                    <h5 class="footer-links__title">{{__('My Account')}}</h5>
+                                    <ul class="footer-links__list">
+                                        <li class="footer-links__item"><a href="" class="footer-links__link">{{__('Store Location')}}</a></li>
+                                        <li class="footer-links__item"><a href="{{ route('order-history') }}" class="footer-links__link">{{__('Order History')}}</a></li>
+                                        <li class="footer-links__item"><a href="{{ route('wishlist') }}" class="footer-links__link">{{__('Wish List')}}</a></li>
+                                        <li class="footer-links__item"><a href="" class="footer-links__link">{{__('Specials')}}</a></li>
+                                        <li class="footer-links__item"><a href="" class="footer-links__link">{{__('Gift Certificates')}}</a></li>
+                                        <li class="footer-links__item"><a href="" class="footer-links__link">{{__('Affiliate')}}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-12 col-lg-4">
+                                <div class="site-footer__widget footer-newsletter">
+                                    <h5 class="footer-contacts__title">{{__('Contact Us')}}</h5>
                                     <ul class="footer-contacts__contacts">
                                         <li><i class="footer-contacts__icon fas fa-globe-americas"></i> Täze zaman köçesi 180/2 jaýy, Bagtyýarlyk etrap, Aşgabat, Türkmenistan</li>
                                         <li><i class="footer-contacts__icon far fa-envelope"></i>  info@kendirtm.com
                                         </li>
                                         <li><i class="footer-contacts__icon fas fa-mobile-alt"></i> (+993) 12 24-77-80,
                                             (+993) 12 24-77-81</li>
-                                        <li><i class="footer-contacts__icon far fa-clock"></i> Mon-Fri 08:00 - 18:00
-                                            <i class="footer-contacts__icon far fa-clock"></i> Sat 08:00 - 17:00
+                                        <li><i class="footer-contacts__icon far fa-clock"></i> {{__('Mon-Fri')}} 08:00 - 18:00
+                                            <i class="footer-contacts__icon far fa-clock"></i> {{__('Sat')}} 08:00 - 17:00
                                         </li>
                                     </ul>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3 col-lg-2">
-                                <div class="site-footer__widget footer-links">
-                                    <h5 class="footer-links__title">Information</h5>
-                                    <ul class="footer-links__list">
-                                        <li class="footer-links__item"><a href="{{ route('about-us') }}" class="footer-links__link">About
-                                                Us</a></li>
-                                        <li class="footer-links__item"><a href="#" class="footer-links__link">Delivery
-                                                Information</a></li>
-                                        <li class="footer-links__item"><a href="{{ route('terms') }}" class="footer-links__link">Privacy
-                                                Policy</a></li>
-                                        <li class="footer-links__item"><a href="#" class="footer-links__link">Brands</a>
-                                        </li>
-                                        <li class="footer-links__item"><a href="{{ route('contacts') }}" class="footer-links__link">Contact
-                                                Us</a></li>
-                                        <li class="footer-links__item"><a href="#" class="footer-links__link">Returns</a>
-                                        </li>
-                                        <li class="footer-links__item"><a href="#" class="footer-links__link">Site
-                                                Map</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3 col-lg-2">
-                                <div class="site-footer__widget footer-links">
-                                    <h5 class="footer-links__title">My Account</h5>
-                                    <ul class="footer-links__list">
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">Store
-                                                Location</a></li>
-                                        <li class="footer-links__item"><a href="{{ route('order-history') }}" class="footer-links__link">Order
-                                                History</a></li>
-                                        <li class="footer-links__item"><a href="{{ route('wishlist') }}" class="footer-links__link">Wish
-                                                List</a></li>
-                                        <li class="footer-links__item"><a href=""
-                                                class="footer-links__link">Newsletter</a></li>
-                                        <li class="footer-links__item"><a href=""
-                                                class="footer-links__link">Specials</a></li>
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">Gift
-                                                Certificates</a></li>
-                                        <li class="footer-links__item"><a href=""
-                                                class="footer-links__link">Affiliate</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-12 col-lg-4">
-                                <div class="site-footer__widget footer-newsletter">
-                                    <h5 class="footer-newsletter__title">Newsletter</h5>
-                                    <div class="footer-newsletter__text">
-                                        Praesent pellentesque volutpat ex, vitae auctor lorem pulvinar mollis felis at
-                                        lacinia.
-                                    </div>
-                                    <form action="" class="footer-newsletter__form">
-                                        <label class="sr-only" for="footer-newsletter-address">Email Address</label>
-                                        <input type="text" class="footer-newsletter__form-input form-control"
-                                            id="footer-newsletter-address" placeholder="Email Address...">
-                                        <button
-                                            class="footer-newsletter__form-button btn btn-primary">Subscribe</button>
-                                    </form>
                                     <div class="footer-newsletter__text footer-newsletter__text--social">
-                                        Follow us on social networks
+                                        {{__('Follow us on social networks')}}
                                     </div>
                                     <!-- social-links -->
                                     <div

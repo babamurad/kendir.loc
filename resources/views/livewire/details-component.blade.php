@@ -147,16 +147,16 @@
                                 <li>Unit: {{ $product->specification->unit }}</li>
                             </ul>
                             <ul class="product__meta">
-                                <li class="product__meta-availability">Availability: <span class="text-success">{{ $product->stock_status }}</span></li>
-                                <li class="mr-4"><strong>Brand: </strong>  <a href="#">{{ $product->brands->name }}</a></li>
-                                <li><strong>Manufacturer: </strong><a href="#">{{ $product->manufacturers->name }}</a> </li>
+                                <li class="product__meta-availability">{{__('Availability')}}: <span class="text-success">{{ __($product->stock_status) }}</span></li>
+                                <li class="mr-4"><strong>{{__('Brand')}}: </strong>  <a href="#">{{ $product->brands->name }}</a></li>
+                                <li><strong>{{__('Manufacturer')}}: </strong><a href="#">{{ $product->manufacturers->name }}</a> </li>
                             </ul>
                         </div>
                         <!-- .product__info / end -->
                         <!-- .product__sidebar -->
                         <div class="product__sidebar">
                             <div class="product__availability">
-                                Availability: <span class="text-success">{{ $product->stock_status }}</span>
+                                {{__('Availability')}}: <span class="text-success">{{ __($product->stock_status) }}</span>
                             </div>
                             <div class="product__prices">
                                 {{ $product->sale_price }} man
@@ -165,7 +165,7 @@
                             <form class="product__options">
 
                                 <div class="form-group product__option">
-                                    <label class="product__option-label" for="product-quantity">Quantity {{$qty}}</label>
+                                    <label class="product__option-label" for="product-quantity">{{__('Quantity')}} </label>
                                     <div class="product__actions">
                                         <script>
                                             $(document).ready(function () {
@@ -193,7 +193,7 @@
                                             </div>
                                         </div>
                                         <div class="product__actions-item product__actions-item--addtocart">
-                                            <button class="btn btn-primary" wire:click.prevent="storeProduct({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
+                                            <button class="btn btn-primary" wire:click.prevent="storeProduct({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})"> {{__('Add_to_cart')}} </button>
                                         </div>
                                     </div>
                                 </div>
@@ -208,25 +208,24 @@
                     <div class="product-tabs__list">
                         <div class="product-tabs__list-body">
                             <div class="product-tabs__list-container container">
-                                <a href="#tab-description" class="product-tabs__item product-tabs__item--active">Description</a>
-                                <a href="#tab-specification" class="product-tabs__item">Specification</a>
+                                <a href="#tab-description" class="product-tabs__item product-tabs__item--active">{{__('Description')}}</a>
+                                <a href="#tab-specification" class="product-tabs__item">{{__('Specification')}}</a>
                             </div>
                         </div>
                     </div>
                     <div class="product-tabs__content">
                         <div class="product-tabs__pane product-tabs__pane--active" id="tab-description">
                             <div class="typography">
-                                <h3>Product Full Description</h3>
+                                <h3>{{__('Product Full Description')}}</h3>
                                     {!! $product->description !!}
                             </div>
                         </div>
                         <div class="product-tabs__pane" id="tab-specification">
                             <div class="spec">
-                                <h3 class="spec__header">Specification</h3>
+                                <h3 class="spec__header">{{__('Specification')}}</h3>
                                 <div class="spec__section">
-                                    <h4 class="spec__section-title">General</h4>
                                     <div class="spec__row">
-                                        <div class="spec__name">Model</div>
+                                        <div class="spec__name">{{__('Model')}}</div>
                                         <div class="spec__value">{{ $product->specification->model }}</div>
                                     </div>
                                     <div class="spec__row">
@@ -255,8 +254,7 @@
                                     </div>
                                 </div>
                                 <div class="spec__disclaimer">
-                                    Information on technical characteristics, the delivery set, the country of manufacture and the appearance
-                                    of the goods is for reference only and is based on the latest information available at the time of publication.
+                                    {{__('Info')}}
                                 </div>
                             </div>
                         </div>
@@ -268,7 +266,7 @@
         <div class="block block-products-carousel" data-layout="grid-5" data-mobile-grid-columns="2">
             <div class="container">
                 <div class="block-header">
-                    <h3 class="block-header__title">Related Products</h3>
+                    <h3 class="block-header__title">{{__('Related Products')}}</h3>
                     <div class="block-header__divider"></div>
                     <div class="block-header__arrows-list">
                         <button class="block-header__arrow block-header__arrow--left" type="button">
@@ -318,14 +316,14 @@
                                     </div>
                                     <div class="product-card__actions">
                                         <div class="product-card__availability">
-                                            Availability: <span class="text-success">{{ $product->stock_status }}</span>
+                                            {{__('Availability')}}: <span class="text-success">{{ __($product->stock_status) }}</span>
                                         </div>
                                         <div class="product-card__prices">
-                                            $749.00
+                                            {{ $product->sale_price }} {{__('manat')}}
                                         </div>
                                         <div class="product-card__buttons">
-                                            <button class="btn btn-primary product-card__addtocart" type="button" wire:click.prevent="storeProduct({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
-                                            <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click.prevent="storeProduct({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
+                                            <button class="btn btn-primary product-card__addtocart" type="button" wire:click.prevent="storeProduct({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">{{__('Add_to_cart')}}</button>
+                                            <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click.prevent="storeProduct({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">{{__('Add_to_cart')}}</button>
                                             @if($wproducts->contains($product->id))
                                                 <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"
                                                         wire:click="removeWishlist('{{ $product->id }}')">

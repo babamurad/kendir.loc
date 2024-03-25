@@ -6,29 +6,29 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="/">Home</a>
+                            <a href="/">{{__('Home')}}</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
                                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('shop') }}">Shop</a>
+                            <a href="{{ route('shop') }}">{{__('Shop')}}</a>
                             <svg class="breadcrumb-arrow" width="6px" height="9px">
                                 <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                             </svg>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Wish List</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('Wish List')}}</li>
                     </ol>
                 </nav>
             </div>
             <div class="page-header__title">
                 <div class="row">
-                    <div class="col-md-6"><h1>Wish List</h1></div>
+                    <div class="col-md-6"><h1>{{__('Wish List')}}</h1></div>
                     <div class="col-md-6">
                         @if(session('success'))
                             <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; top: -2rem;">
                                 <button type="button" class="close  mt-3" data-dismiss="alert" aria-hidden="true" style="top: -16px;">×</button>
-                                <h6><i class="icon fas fa-check"></i> Item added in Cart</h6>
+                                <h6><i class="icon fas fa-check"></i> </h6>
                             </div>
                         @endif
                     </div>

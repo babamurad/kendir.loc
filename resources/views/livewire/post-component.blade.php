@@ -73,8 +73,9 @@
                 <div class="block block-sidebar block-sidebar--position--end">
                     <div class="block-sidebar__item">
                         <div class="widget-search">
-                            <form class="widget-search__body">
-                                <input class="widget-search__input" placeholder="Blog search..." type="text" autocomplete="off" spellcheck="false">
+                            <form class="widget-search__body" wire:submit="search">
+                                <input class="widget-search__input" placeholder="{{__('Blog search...')}}" type="text"
+                                       autocomplete="off" spellcheck="false" wire:model.live="searchTerm">
                                 <button class="widget-search__button" type="submit">
                                     <svg width="20px" height="20px">
                                         <use xlink:href="images/sprite.svg#search-20"></use>
@@ -85,16 +86,15 @@
                     </div>
                     <div class="block-sidebar__item">
                         <div class="widget-aboutus widget">
-                            <h4 class="widget__title">About Blog</h4>
+                            <h4 class="widget__title">{{__('about-page')}}</h4>
                             <div class="widget-aboutus__text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt, erat in malesuada aliquam, est erat faucibus purus,
-                                eget viverra nulla sem vitae neque. Quisque id sodales libero.
+                                {!! __('blog-text') !!}
                             </div>
                         </div>
                     </div>
                     <div class="block-sidebar__item">
                         <div class="widget-posts widget">
-                            <h4 class="widget__title">Latest Posts</h4>
+                            <h4 class="widget__title">{{__('Latest Posts')}}</h4>
                             <div class="widget-posts__list">
                                 @foreach($latestPosts as $latestPost)
                                     <div class="widget-posts__item">
@@ -113,19 +113,6 @@
                                 @endforeach
 
                             </div>
-                        </div>
-                    </div>
-                    <div class="block-sidebar__item">
-                        <div class="widget-newsletter widget">
-                            <h4 class="widget-newsletter__title">Our Newsletter</h4>
-                            <div class="widget-newsletter__text">
-                                Phasellus eleifend sapien felis, at sollicitudin arcu semper mattis. Mauris quis mi quis ipsum tristique lobortis. Nulla vitae est blandit rutrum.
-                            </div>
-                            <form class="widget-newsletter__form" action="">
-                                <label for="widget-newsletter-email" class="sr-only">Email Address</label>
-                                <input id="widget-newsletter-email" type="text" class="form-control" placeholder="Email Address">
-                                <button type="submit" class="btn btn-primary mt-3">Subscribe</button>
-                            </form>
                         </div>
                     </div>
                 </div>
