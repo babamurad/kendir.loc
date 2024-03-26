@@ -18,10 +18,12 @@ use Livewire\WithFileUploads;
 class AddProductComponent extends Component
 {
     use WithFileUploads;
+
     public $name;
     public $slug;
-    public $short_description;
-    public $description;
+    public $name_en, $name_ru, $name_tm;
+    public $short_description, $short_description_en, $short_description_ru, $short_description_tm;
+    public $description, $description_en, $description_ru, $description_tm;
     public $regular_price;
     public $sale_price;
     public $sku;
@@ -38,8 +40,8 @@ class AddProductComponent extends Component
         'image'    => ':attribute должно быть изображение',
     ];
     public $brand_id, $manuf_id;
-
-    public $model, $dl, $dw, $dh, $unit, $weight, $status, $product_id;
+    // Specification
+    public $model, $dl, $dw, $dh, $unit, $weight, $status, $product_id, $type_roll, $dept, $diameter, $meter_int, $reinforcement_class, $articles;
 
     /*
      *      $table->bigInteger('product_id')->unsigned();
@@ -96,7 +98,7 @@ class AddProductComponent extends Component
     }
     public function generateSlug()
     {
-        $this->slug = Str::slug($this->name);
+        $this->slug = Str::slug($this->name_en);
     }
 
     public function subAndAdd()
@@ -113,10 +115,16 @@ class AddProductComponent extends Component
     public function addProduct()
     {
         $this->validate([
-            'name'              => 'required',
+            'name_en'              => 'required',
+            'name_ru'              => 'required',
+            'name_tm'              => 'required',
             'slug'              => 'required',
-            'short_description' => 'required',
-            'description'       => 'required',
+            'short_description_en' => 'required',
+            'short_description_ru' => 'required',
+            'short_description_tm' => 'required',
+            'description_en'       => 'required',
+            'description_ru'       => 'required',
+            'description_tm'       => 'required',
             'regular_price'     => 'required',
             'sale_price'        => 'required',
             'sku'               => 'required',
@@ -128,10 +136,17 @@ class AddProductComponent extends Component
         ]);
 
         $product = new Product();
-        $product->name = $this->name;
+        $product->name = $this->name_en;
+        $product->name_en = $this->name_en;
+        $product->name_ru = $this->name_ru;
+        $product->name_tm = $this->name_tm;
         $product->slug = $this->slug;
-        $product->short_description = $this->short_description;
-        $product->description = $this->description;
+        $product->short_description_en = $this->short_description_en;
+        $product->short_description_ru = $this->short_description_ru;
+        $product->short_description_tm = $this->short_description_tm;
+        $product->description_en = $this->description_en;
+        $product->description_ru = $this->description_ru;
+        $product->description_tm = $this->description_tm;
         $product->regular_price = $this->regular_price;
         $product->sale_price = $this->sale_price;
         $product->SKU = $this->sku;
@@ -170,8 +185,14 @@ class AddProductComponent extends Component
         $sprec->dh = $this->dh;
         $sprec->unit = $this->unit;
         $sprec->weight = $this->weight;
-        $sprec->product_id = $product->id;
         $sprec->status = $this->status;
+        $sprec->product_id = $product->id;
+        //************
+        $sprec->type_roll = $this->type_roll;
+        $sprec->dept = $this->dept;
+        $sprec->diameter = $this->diameter;
+        $sprec->meter_int = $this->meter_int;
+        $sprec->articles = $this->articles;
         $sprec->save();
 
         $this->resetInputFileds();

@@ -89,10 +89,10 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="name" class="form-label">Name</label>
-                                                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"  placeholder="Enter product name" wire:model="name"
+                                                    <label for="name_en" class="form-label">Name - <span class="btn-light">EN</span></label>
+                                                    <input type="text" class="form-control @error('name_en') is-invalid @enderror" name="name_en"  placeholder="Enter product name" wire:model="name_en"
                                                            wire:keyup="generateSlug()">
-                                                    @error('name') <p class="text-danger">{{$message}}</p> @enderror
+                                                    @error('name_en') <p class="text-danger">{{$message}}</p> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
@@ -102,22 +102,74 @@
                                                     @error('slug') <p class="text-danger">{{$message}}</p> @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-12">
+                                            <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="short_description" class="form-label">Short Description</label>
-                                                    <textarea class="form-control @error('short_description') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
-                                                              wire:model="short_description" minlength="20" maxlength="100"> </textarea>
-                                                    @error('short_description') <p class="text-danger">{{$message}}</p> @enderror
+                                                    <label for="name_ru" class="form-label">Name - <span class="btn-light">RU</span></label>
+                                                    <input type="text" class="form-control @error('name_ru') is-invalid @enderror" name="name_ru"  placeholder="Enter product name" wire:model="name_ru"
+                                                           wire:keyup="generateSlug()">
+                                                    @error('name_ru') <p class="text-danger">{{$message}}</p> @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="name_tm" class="form-label">Name - <span class="btn-light">TM</span></label>
+                                                    <input type="text" class="form-control @error('name_tm') is-invalid @enderror" name="name_tm"  placeholder="Enter product name" wire:model="name_tm"
+                                                           wire:keyup="generateSlug()">
+                                                    @error('name_tm') <p class="text-danger">{{$message}}</p> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-12">
                                                 <div class="form-group">
-                                                    <label for="description" class="form-label">Description</label>
+                                                    <label for="short_description" class="form-label">Short Description - <span class="btn-light">EN</span> </label>
+                                                    <textarea class="form-control @error('short_description_en') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
+                                                              wire:model="short_description_en" minlength="20" maxlength="10000"> </textarea>
+                                                    @error('short_description_en') <p class="text-danger">{{$message}}</p> @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-12">
+                                                <div class="form-group">
+                                                    <label for="short_description" class="form-label">Short Description - <span class="btn-light">RU</span></label>
+                                                    <textarea class="form-control @error('short_description_ru') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
+                                                              wire:model="short_description_ru" minlength="20" maxlength="10000"> </textarea>
+                                                    @error('short_description_ru') <p class="text-danger">{{$message}}</p> @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-12">
+                                                <div class="form-group">
+                                                    <label for="short_description" class="form-label">Short Description - <span class="btn-light">TM</span></label>
+                                                    <textarea class="form-control @error('short_description_tm') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
+                                                              wire:model="short_description_tm" minlength="20" maxlength="10000"> </textarea>
+                                                    @error('short_description_tm') <p class="text-danger">{{$message}}</p> @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-12">
+                                                <div class="form-group">
+                                                    <label for="description_en" class="form-label">Description - <span class="btn-light">EN</span> </label>
                                                     <div wire:ignore>
-                                        <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" minlength="20" maxlength="5000"
-                                                  placeholder="Enter Description" cols="30" rows="8" wire:model.live="description"> </textarea>
+                                        <textarea id="description_en" class="form-control @error('description_en') is-invalid @enderror" name="description_en" minlength="20" maxlength="15000"
+                                                  placeholder="Enter Description" cols="30" rows="12" wire:model.live="description_en"> </textarea>
                                                     </div>
-                                                    @error('description') <p class="text-danger">{{$message}}</p> @enderror
+                                                    @error('description_en') <p class="text-danger">{{$message}}</p> @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-12">
+                                                <div class="form-group">
+                                                    <label for="description_ru" class="form-label">Description - <span class="btn-light">RU</span> </label>
+                                                    <div wire:ignore>
+                                        <textarea id="description_ru" class="form-control @error('description_ru') is-invalid @enderror" name="description_ru" minlength="20" maxlength="15000"
+                                                  placeholder="Enter Description" cols="30" rows="12" wire:model.live="description_ru"> </textarea>
+                                                    </div>
+                                                    @error('description_ru') <p class="text-danger">{{$message}}</p> @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-12">
+                                                <div class="form-group">
+                                                    <label for="description_tm" class="form-label">Description - <span class="btn-light">TM</span> </label>
+                                                    <div wire:ignore>
+                                        <textarea id="description_tm" class="form-control @error('description_tm') is-invalid @enderror" name="description_tm" minlength="20" maxlength="15000"
+                                                  placeholder="Enter Description" cols="30" rows="12" wire:model.live="description_tm"> </textarea>
+                                                    </div>
+                                                    @error('description_tm') <p class="text-danger">{{$message}}</p> @enderror
                                                 </div>
                                             </div>
                                         </div>
@@ -272,26 +324,53 @@
                                                     <input type="number" class="form-control" name="weight" placeholder="Weight" wire:model="weight">
                                                 </div>
                                             </div>
+                                        <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="type_roll" class="form-label">Type of roll</label>
+                                                    <select name="type_roll" class="form-control" wire:model="type_roll">
+                                                        <option value="0" selected>Select Type of roll</option>
+                                                        <option value="1">Hot</option>
+                                                        <option value="2">Cold</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="dept" class="form-label">Depth</label>
+                                                    <input type="text" class="form-control" name="dept" placeholder="dept" wire:model="dept">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <label for="dl" class="form-label">Dimensions Long</label>
-                                                    <input type="number" class="form-control" name="dl" placeholder="Dimensions Long" wire:model="dl">
+                                                    <input type="number" class="form-control" name="dl"
+                                                           placeholder="Dimensions Long" wire:model="dl">
                                                 </div>
                                             </div>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <label for="dw" class="form-label">Dimensions Width</label>
-                                                    <input type="number" class="form-control" name="dw" placeholder="Dimensions Width" wire:model="dw">
+                                                    <input type="number" class="form-control" name="dw"
+                                                           placeholder="Dimensions Width" wire:model="dw">
                                                 </div>
                                             </div>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <label for="dh" class="form-label">Dimensions Hight</label>
-                                                    <input type="number" class="form-control" name="dh" placeholder="Dimensions Hight" wire:model="dh">
+                                                    <input type="number" class="form-control" name="dh"
+                                                           placeholder="Dimensions Hight" wire:model="dh">
                                                 </div>
                                             </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="diameter" class="form-label">Diameter</label>
+                                                    <input type="number" class="form-control" name="diameter"
+                                                           placeholder="Diameter" wire:model="diameter">
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-2">
@@ -307,6 +386,27 @@
                                                         <option value="1" selected>Enabled</option>
                                                         <option value="0">Disabled</option>
                                                     </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <label for="meter_int" class="form-label">Meters per ton</label>
+                                                    <input type="number" class="form-control" name="meter_int"
+                                                           placeholder="Meters per ton" wire:model="meter_int">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="reinforcement_class" class="form-label">Reinforcement class</label>
+                                                    <input type="text" class="form-control" name="reinforcement_class"
+                                                           placeholder="Reinforcement class" wire:model="reinforcement_class">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="articles" class="form-label">Articles</label>
+                                                    <input type="text" class="form-control" name="articles"
+                                                           placeholder="Articles" wire:model="articles">
                                                 </div>
                                             </div>
                                         </div>
@@ -328,23 +428,29 @@
 </div>
 @push('summernote')
     <script>
-        $('#description').summernote({
-            placeholder: 'Enter About Us Text',
-            height: 300,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture', 'video']],
-                ['view', ['fullscreen', 'codeview', 'help']]
-            ],
-            callbacks: {
-                onChange: function(contents, $editable) {
-                @this.set('description', contents);
-                }
-            }
+        $(document).ready(function() {
+            $('#description_en').summernote({
+                height: 300,
+            });
+        });
+        $(document).ready(function() {
+            $('#description_ru').summernote({
+                height: 300,
+            });
+        });
+        $(document).ready(function() {
+            $('#description_tm').summernote({
+                height: 300,
+            });
+        });
+        $('#description_en').on('summernote.change', function(we, contents, $editable) {
+        @this.set('description_en', contents)
+        });
+        $('#description_ru').on('summernote.change', function(we, contents, $editable) {
+        @this.set('description_ru', contents)
+        });
+        $('#description_tm').on('summernote.change', function(we, contents, $editable) {
+        @this.set('description_tm', contents)
         });
     </script>
 @endpush

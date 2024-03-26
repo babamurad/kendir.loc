@@ -1,5 +1,3 @@
-
-
 @section('title', __('Product Details').': '.$product->name)
 <div>
     @php
@@ -28,13 +26,13 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="/">Home</a>
+                                        <a href="/">{{__('Home')}}</a>
                                         <svg class="breadcrumb-arrow" width="6px" height="9px">
                                             <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                                         </svg>
                                     </li>
                                     <li class="breadcrumb-item">
-                                        <a href="{{ route('shop') }}">Shop</a>
+                                        <a href="{{ route('shop') }}">{{__('Shop')}}</a>
                                         <svg class="breadcrumb-arrow" width="6px" height="9px">
                                             <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                                         </svg>
@@ -159,7 +157,7 @@
                                 {{__('Availability')}}: <span class="text-success">{{ __($product->stock_status) }}</span>
                             </div>
                             <div class="product__prices">
-                                {{ $product->sale_price }} man
+                                {{ $product->sale_price }}
                             </div>
                             <!-- .product__options -->
                             <form class="product__options">
@@ -319,7 +317,7 @@
                                             {{__('Availability')}}: <span class="text-success">{{ __($product->stock_status) }}</span>
                                         </div>
                                         <div class="product-card__prices">
-                                            {{ $product->sale_price }} {{__('manat')}}
+                                            {{ $product->sale_price }}
                                         </div>
                                         <div class="product-card__buttons">
                                             <button class="btn btn-primary product-card__addtocart" type="button" wire:click.prevent="storeProduct({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">{{__('Add_to_cart')}}</button>

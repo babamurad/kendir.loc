@@ -330,26 +330,49 @@
                                             <input type="number" class="form-control" name="weight" placeholder="Weight" wire:model="weight">
                                         </div>
                                     </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="type_roll" class="form-label">Type of roll</label>
+                                            <input type="text" class="form-control" name="type_roll" placeholder="Type of roll" wire:model="type_roll">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="dept" class="form-label">Depth</label>
+                                            <input type="text" class="form-control" name="dept" placeholder="dept" wire:model="dept">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label for="dl" class="form-label">Dimensions Long</label>
-                                            <input type="number" class="form-control" name="dl" placeholder="Dimensions Long" wire:model="dl">
+                                            <input type="number" class="form-control" name="dl"
+                                                   placeholder="Dimensions Long" wire:model="dl">
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label for="dw" class="form-label">Dimensions Width</label>
-                                            <input type="number" class="form-control" name="dw" placeholder="Dimensions Width" wire:model="dw">
+                                            <input type="number" class="form-control" name="dw"
+                                                   placeholder="Dimensions Width" wire:model="dw">
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label for="dh" class="form-label">Dimensions Hight</label>
-                                            <input type="number" class="form-control" name="dh" placeholder="Dimensions Hight" wire:model="dh">
+                                            <input type="number" class="form-control" name="dh"
+                                                   placeholder="Dimensions Hight" wire:model="dh">
                                         </div>
                                     </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="diameter" class="form-label">Diameter</label>
+                                            <input type="number" class="form-control" name="diameter"
+                                                   placeholder="Diameter" wire:model="diameter">
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-2">
@@ -365,6 +388,27 @@
                                                 <option value="1" selected>Enabled</option>
                                                 <option value="0">Disabled</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label for="meter_int" class="form-label">Meters per ton</label>
+                                            <input type="number" class="form-control" name="meter_int"
+                                                   placeholder="Meters per ton" wire:model="meter_int">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="reinforcement_class" class="form-label">Reinforcement class</label>
+                                            <input type="text" class="form-control" name="reinforcement_class"
+                                                   placeholder="Reinforcement class" wire:model="reinforcement_class">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="articles" class="form-label">Articles</label>
+                                            <input type="text" class="form-control" name="articles"
+                                                   placeholder="Articles" wire:model="articles">
                                         </div>
                                     </div>
                                 </div>

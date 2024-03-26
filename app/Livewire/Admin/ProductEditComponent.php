@@ -38,7 +38,7 @@ class ProductEditComponent extends Component
     ];
     public $brand_id, $manuf_id;
 
-    public $model, $dl, $dw, $dh, $unit, $weight, $status;
+    public $model, $dl, $dw, $dh, $unit, $weight, $status, $type_roll, $dept, $diameter, $meter_int, $reinforcement_class, $articles;
     public function toProductsLis()
     {
         return redirect()->route('admin.products');
@@ -146,6 +146,11 @@ class ProductEditComponent extends Component
         $spec->unit = $this->unit;
         $spec->weight = $this->weight;
         $spec->status = $this->status;
+        $spec->type_roll = $this->type_roll;
+        $spec->dept = $this->dept;
+        $spec->diameter = $this->diameter;
+        $spec->meter_int = $this->meter_int;
+        $spec->articles = $this->articles;
         $spec->update();
         redirect()->route('admin.products');
         session()->flash('success', 'Product has been updated!');
@@ -155,8 +160,6 @@ class ProductEditComponent extends Component
     {
         $this->activeTab = 'details';
 
-        //$product = DB::select('select * from products where id=?', [$product_id]); //Product::findOrFail($product_id);
-        //where('id', '=', $product_id)->first();
         $product = Product::find($product_id);
         $this->product_id = $product->id;
         $this->name = $product->name;
@@ -183,7 +186,7 @@ class ProductEditComponent extends Component
         $this->category_id = $product->category_id;
         $this->brand_id = $product->brand_id;
         $this->manuf_id = $product->manufacturer_id;
-//dd($product->short_description_tm);
+        // Specification
         $spec = Specification::where('product_id', '=', $product_id)->first();
         $this->model = $spec->model;
         $this->dl = $spec->dl;
@@ -193,7 +196,11 @@ class ProductEditComponent extends Component
         $this->unit = $spec->unit;
         $this->weight = $spec->weight;
         $this->status = $spec->status;
-
+        $this->type_roll = $spec->type_roll;
+        $this->dept = $spec->dept;
+        $this->diameter = $spec->diameter;
+        $this->meter_int = $spec->meter_int;
+        $this->articles = $spec->articles;
     }
 
     public function render()
