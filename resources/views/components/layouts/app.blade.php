@@ -175,13 +175,10 @@
                                         <li class="nav-links__item ">
                                             <a class="nav-links__item-link" href="/" wire:navigate>
                                                 <div class="nav-links__item-body">
-                                                    {{-- {{__('Home')}} --}}
-
                                                     @lang('Home')
                                                 </div>
                                             </a>
                                         </li>
-
                                         <li class="nav-links__item">
                                             <a class="nav-links__item-link" href="{{ route('shop') }}" wire:navigate>
                                                 <div class="nav-links__item-body">
@@ -189,14 +186,13 @@
                                                 </div>
                                             </a>
                                         </li>
-                                        <li class="nav-links__item  nav-links__item--has-submenu ">
-                                            <a class="nav-links__item-link" href="/">
+                                        <li class="nav-links__item">
+                                            <a class="nav-links__item-link" href="{{ route('calculator') }}" wire:navigate>
                                                 <div class="nav-links__item-body">
-                                                    {{__('Services')}}
+                                                    {{__('Calculator')}}
                                                 </div>
                                             </a>
                                         </li>
-
                                         <li class="nav-links__item  nav-links__item--has-submenu ">
                                             <a class="nav-links__item-link" href="{{ route('posts') }}" wire:navigate>
                                                 <div class="nav-links__item-body">
@@ -204,7 +200,6 @@
                                                 </div>
                                             </a>
                                         </li>
-
                                         <li class="nav-links__item  nav-links__item--has-submenu ">
                                             <a class="nav-links__item-link" href="{{ route('contacts') }}" wire:navigate>
                                                 <div class="nav-links__item-body">

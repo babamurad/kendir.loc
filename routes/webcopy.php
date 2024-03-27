@@ -55,15 +55,7 @@ Route::get('/', function (){
     return redirect(app()->getLocale());
 });
 Route::prefix('{locale}')->middleware(\App\Http\Middleware\Localization::class)->group(function (){
-    Route::get('/', HomeComponent::class)->name('home');
-    Route::get('shop/{id?}', ShopComponent::class)->name('shop');
-    Route::get('category/{slug}', CategoryDetailsComponent::class)->name('product.category');
-    Route::get('cart', CartComponent::class)->name('cart');
-    Route::get('wishlist', WishlistComponent::class)->name('wishlist');
-    Route::get('search', SearchComponent::class)->name('product.search');
-    Route::get('details/{slug}', DetailsComponent::class)->name('product.details');
-    Route::get('checkout', ChekoutComponent::class)->name('checkout');
-    Route::get('checkout', ChekoutComponent::class)->name('checkout');
+    extracted();
     Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
     Route::get('/terms', TermsComponent::class)->name('terms');
     Route::get('/contacts', ContactComponent::class)->name('contacts');

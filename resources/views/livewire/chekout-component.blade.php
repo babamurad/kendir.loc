@@ -296,15 +296,16 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12 col-lg-6 col-xl-5 mt-4 mt-lg-0">
                     <div class="card mb-0">
                         <div class="card-body">
-                            <h3 class="card-title">Your Order</h3>
+                            <h3 class="card-title">{{__('Your Order')}}</h3>
                             <table class="checkout__totals">
                                 <thead class="checkout__totals-header">
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Total</th>
+                                    <th>{{__('Product')}}</th>
+                                    <th>{{__('Total')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody class="checkout__totals-products">

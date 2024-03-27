@@ -16391,3 +16391,15 @@ ul {
 .add-to-cart{
     height: calc(1.875rem + 14px) !important;
 }
+.calculator_nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    color: #595f6f;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #f3f3f3;
+    box-shadow: 2px 8px 10px rgba(207,221,244,.5) !important;
+}
