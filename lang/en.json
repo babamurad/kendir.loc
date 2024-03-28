@@ -162,7 +162,25 @@
     "Send Message": "Send Message",
 
     "Latest news": "Latest Posts",
-    "Related Posts": "Related Posts"
+    "Related Posts": "Related Posts",
+    "Your Order" :"Your Order",
+    "Direct bank transfer":"Direct bank transfer",
+    "Street Address":"Street Address",
+    "Address Line":"Address Line",
+    "Postcode /ZIP":"Postcode /ZIP",
+    "makeyourpayment":" Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.",
+    "Check payments":"check payments",
+    "Cash on delivery":"Cash on delivery",
+    "pls send check":"Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.",
+    "paywithcash":" Pay with cash upon delivery.",
+    "termcondition":"I have read and agree to the website",
+    "termsandconditions":"terms and conditions",
+    "placeorder":"Place Order"
+
+
+
+
+
 
 
 

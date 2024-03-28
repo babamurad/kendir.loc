@@ -185,7 +185,9 @@
                                     @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="required-field" for="checkout-phone">{{__('Phone Number')}}</label>
+                                    <label class="required-field" for="checkout-phone">
+
+                                        {{__('Phone Number')}}</label>
                                     <input type="text" class="form-control @error('phone') is-invalid @enderror" id="checkout-phone" placeholder="{{__('Phone Number')}}" wire:model="phone">
                                     @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
@@ -214,26 +216,26 @@
                             </div>
                             @if ($ship_to_different)
                             <div class="ship-diff">
-                                <h3 class="card-title">Billing details</h3>
+                                <h5 class="card-title">{{__('Billing details')}}</h5>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="checkout-first-name">First Name</label>
-                                        <input type="text" class="form-control" id="checkout-first-name" placeholder="First Name" wire:model="s_firstname">
+                                        <label for="checkout-first-name">{{__('First Name')}}</label>
+                                        <input type="text" class="form-control" id="checkout-first-name" placeholder="{{__('First Name')}}" wire:model="s_firstname">
                                         @error('s_firstname') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="checkout-last-name">Last Name</label>
-                                        <input type="text" class="form-control" id="checkout-last-name" placeholder="Last Name" wire:model="s_lastname">
+                                        <label for="checkout-last-name">{{__('Last Name')}}</label>
+                                        <input type="text" class="form-control" id="checkout-last-name" placeholder="{{__('Last Name')}}" wire:model="s_lastname">
                                         @error('s_lastname') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="" for="checkout-company-name">Company Name <span class="text-muted">(Optional)</span></label>
-                                    <input type="text" class="form-control" id="checkout-company-name" placeholder="Company Name" wire:model="s_companyname">
+                                    <label class="" for="checkout-company-name">{{__('Company Name')}} <span class="text-muted">({{__('Optional')}})</span></label>
+                                    <input type="text" class="form-control" id="checkout-company-name" placeholder="{{__('Company Name')}}" wire:model="s_companyname">
                                     @error('s_companyname') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="required-field" for="checkout-country">Country</label>
+                                    <label class="required-field" for="checkout-country">{{__('Country')}}</label>
                                     <select id="checkout-country" class="form-control form-control-select2" wire:model="s_country">
                                         <option value="0">{{ __('Select a country...') }}</option>
                                         <option value="1" selected>{{ __('Turkmenistan') }}</option>
@@ -251,39 +253,39 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="required-field" for="checkout-state">State / County</label>
+                                    <label class="required-field" for="checkout-state">{{__('State')}} / {{__('County')}}</label>
                                     <input type="text" class="form-control" id="checkout-state" wire:model="s_state">
                                     @error('state') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="required-field" for="checkout-city">Town / City</label>
+                                    <label class="required-field" for="checkout-city">{{__('Town / City')}}</label>
                                     <input type="text" class="form-control" id="checkout-city" wire:model="s_city">
                                     @error('city') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="required-field" for="checkout-street-address">Address</label>
-                                    <input type="text" class="form-control" id="checkout-street-address" placeholder="Street Address"  wire:model="s_address1">
+                                    <label class="required-field" for="checkout-street-address">{{__('Address')}}</label>
+                                    <input type="text" class="form-control" id="checkout-street-address" placeholder="{{__('Street Address')}}"  wire:model="s_address1">
                                     @error('address1') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="" for="checkout-address">Address Line 2 <span class="text-muted">(Optional)</span></label>
+                                    <label class="" for="checkout-address">{{__('Address Line')}} 2 <span class="text-muted">({{__('Optional')}})</span></label>
                                     <input type="text" class="form-control" id="checkout-address"  wire:model="s_address2">
                                     @error('address2') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="required-field" for="checkout-postcode">Postcode / ZIP</label>
+                                    <label class="required-field" for="checkout-postcode">{{__('Postcode / ZIP')}}</label>
                                     <input type="text" class="form-control" id="checkout-postcode" wire:model="s_zipcode">
                                     @error('zipcode') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label class="required-field" for="checkout-email">Email address</label>
-                                        <input type="email" class="form-control" id="checkout-email" placeholder="Email address" wire:model="s_email">
+                                        <label class="required-field" for="checkout-email">{{__('Email address')}}</label>
+                                        <input type="email" class="form-control" id="checkout-email" placeholder="{{__('Email address')}}" wire:model="s_email">
                                         @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label class="required-field" for="checkout-phone">Phone</label>
-                                        <input type="text" class="form-control" id="checkout-phone" placeholder="Phone" wire:model="s_phone">
+                                        <label class="required-field" for="checkout-phone">{{__('Phone Number')}}</label>
+                                        <input type="text" class="form-control" id="checkout-phone" placeholder="{{__('Phone Number')}}" wire:model="s_phone">
                                         @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
@@ -296,15 +298,16 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12 col-lg-6 col-xl-5 mt-4 mt-lg-0">
                     <div class="card mb-0">
                         <div class="card-body">
-                            <h3 class="card-title">Your Order</h3>
+                            <h3 class="card-title">{{__('Your Order')}}</h3>
                             <table class="checkout__totals">
                                 <thead class="checkout__totals-header">
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Total</th>
+                                    <th>{{__('Product')}}</th>
+                                    <th>{{__('Total')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody class="checkout__totals-products">
@@ -317,7 +320,7 @@
                                 </tbody>
                                 <tbody class="checkout__totals-subtotals">
                                 <tr>
-                                    <th>Subtotal</th>
+                                    <th>{{__('Subtotal')}} </th>
                                     <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->subtotal() }}</td>
                                 </tr>
                                 {{-- <tr>
@@ -325,8 +328,8 @@
                                     <td>$-20.00</td>
                                 </tr> --}}
                                 <tr>
-                                    <th>Shipping</th>
-                                    <td>Free Shipping</td>
+                                    <th>{{__('Shipping')}}</th>
+                                    <td>{{__('Free Shipping')}}</td>
                                 </tr>
                                 <tr>
                                     <th>Tax 10%</th>
@@ -335,7 +338,7 @@
                                 </tbody>
                                 <tfoot class="checkout__totals-footer">
                                 <tr>
-                                    <th>Total</th>
+                                    <th>{{__('Total')}}</th>
                                     <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->total() }}</td>
                                 </tr>
                                 </tfoot>
@@ -350,12 +353,11 @@
                                                             <span class="input-radio__circle"></span>
                                                         </span>
                                                     </span>
-                                            <span class="payment-methods__item-title">Direct bank transfer</span>
+                                            <span class="payment-methods__item-title">{{__('Direct bank transfer')}}</span>
                                         </label>
                                         <div class="payment-methods__item-container">
                                             <div class="payment-methods__item-description text-muted">
-                                                Make your payment directly into our bank account. Please use your Order ID as the payment
-                                                reference. Your order will not be shipped until the funds have cleared in our account.
+                                               {{__('makeyourpayment')}}
                                             </div>
                                         </div>
                                     </li>
@@ -367,11 +369,11 @@
                                                             <span class="input-radio__circle"></span>
                                                         </span>
                                                     </span>
-                                            <span class="payment-methods__item-title">Check payments</span>
+                                            <span class="payment-methods__item-title">{{__('Check payments')}}</span>
                                         </label>
                                         <div class="payment-methods__item-container">
                                             <div class="payment-methods__item-description text-muted">
-                                                Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
+                                                {{__('pls send check')}}
                                             </div>
                                         </div>
                                     </li>
@@ -383,15 +385,16 @@
                                                             <span class="input-radio__circle"></span>
                                                         </span>
                                                     </span>
-                                            <span class="payment-methods__item-title">Cash on delivery</span>
+                                            <span class="payment-methods__item-title">{{__('Cash on delivery')}}</span>
                                         </label>
                                         <div class="payment-methods__item-container">
                                             <div class="payment-methods__item-description text-muted">
-                                                Pay with cash upon delivery.
+                                               {{__('paywithcash')}}
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="payment-methods__item">
+
+                                    <!--<li class="payment-methods__item">
                                         <label class="payment-methods__item-header">
                                                     <span class="payment-methods__item-radio input-radio">
                                                         <span class="input-radio__body">
@@ -407,19 +410,20 @@
                                             </div>
                                         </div>
                                     </li>
+                                -->
                                 </ul>
                             </div>
                             <div class="checkout__agree form-group">
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input cpoint" id="ship_to_different" wire:model.live="terms">
-                                        <label class="custom-control-label cpoint" for="ship_to_different">I have read and agree to the website
-                                            <a href="{{ route('terms') }}">terms and conditions*</a>
+                                        <label class="custom-control-label cpoint" for="ship_to_different">{{__('termcondition')}}
+                                            <a href="{{ route('terms') }}">{{__('termsandconditions')}}*</a>
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-xl btn-block" wire:click="placeOrder">Place Order</button>
+                            <button type="submit" class="btn btn-primary btn-xl btn-block" wire:click="placeOrder">{{__('placeorder')}}</button>
                         </div>
                     </div>
                 </div>
