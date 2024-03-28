@@ -54,14 +54,14 @@ class ArmatureComponent extends Component
         $this->CalcLength();
     }
 
-    public function updateWeight()
+    public function updatedWeight()
     {
+        //dd('weight');
         $this->CalcLength();
     }
 
     public function CalcLength()
     {
-        //dd($this->weight);
         $s = floatval($this->diameter);
         $s= $s/2;
         $s = ($s*$s);
