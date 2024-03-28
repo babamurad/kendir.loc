@@ -166,7 +166,7 @@
 
     "Latest news": "Последние статьи",
     "Related Posts": "Похожие статьи",
-<<<<<<< HEAD
+
     "Your Order" :"Ваш заказ",
     "Direct bank transfer":"Прямой банковский перевод",
     "County":"Район",
@@ -180,10 +180,10 @@
     "paywithcash":"Оплата наличными при получении.",
     "termcondition":"Я прочитал и согласен с сайтом",
     "termsandconditions":"условия и положения",
-    "placeorder":"Заказать"
-=======
+    "placeorder":"Заказать",
+
 
     "Calculator": "Калькулятор"
->>>>>>> d750cf9657b52b0c826c6a682c8650e92eb6f290
+
 
 }
