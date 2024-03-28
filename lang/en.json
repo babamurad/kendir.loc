@@ -163,6 +163,7 @@
 
     "Latest news": "Latest Posts",
     "Related Posts": "Related Posts",
+<<<<<<< HEAD
     "Your Order" :"Your Order",
     "Direct bank transfer":"Direct bank transfer",
     "Street Address":"Street Address",
@@ -181,7 +182,10 @@
 
 
 
+=======
+>>>>>>> d750cf9657b52b0c826c6a682c8650e92eb6f290
 
+    "Calculator": "Calculator"
 
 
 }
