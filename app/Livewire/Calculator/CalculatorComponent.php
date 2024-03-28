@@ -23,6 +23,7 @@ class CalculatorComponent extends Component
 
     public function mount()
     {
+        //session()->put('active_metal', 'arm');
         $this->showArmature = true;
     }
 

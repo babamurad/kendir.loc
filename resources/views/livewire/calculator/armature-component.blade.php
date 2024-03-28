@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row calc">
-                                <label class="col-sm-4 control-label" for="inputFirstName">{{__('calc.Weight, kg.')}}</label>
+                                <label class="col-sm-4 control-label" for="inputFirstName">{{__('calc.Weight')}}</label>
                                 <div class="col-sm-8">
                                     <input class="form-control" type="number" id="inputFirstName"wire:model.live="weight">
                                 </div>

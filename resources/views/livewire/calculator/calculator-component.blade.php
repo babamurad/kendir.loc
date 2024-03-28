@@ -68,7 +68,7 @@
 
         </div>
     </div>
-    <div class="row">
+
         @if($showArmature) <livewire:calculator.armature-component /> @endif
         @if($showTube) <livewire:calculator.tube-component /> @endif
         @if($showSteelPlate) <livewire:calculator.steel-plate-component /> @endif
@@ -78,7 +78,7 @@
         @if($showAngle) <livewire:calculator.angle-component /> @endif
         @if($showChannel) <livewire:calculator.channel-component /> @endif
         @if($showHBeam) <livewire:calculator.h-beam-component /> @endif
-    </div>
+
 </div>
 
 
