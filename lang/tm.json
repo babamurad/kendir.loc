@@ -165,7 +165,23 @@
 
     "Latest news": "Iň soňky habarlar",
     "Related Posts": "Baglanyşykly habarlar",
+<<<<<<< HEAD
+    "Your Order" :"Siziň sargydyňyz",
+    "Direct bank transfer":"Göni bank geçirmesi",
+    "County":"Etrap",
+    "Street Address":"Köçesi",
+    "Address Line":"Salgy",
+    "makeyourpayment":"Tölegiňizi göni bank hasabymyza giriziň. Sargyt belgisini töleg salgysy hökmünde ulanyň. Hasabymyzdaky serişdeler arassalanýança sargydyňyz iberilmez.",
+    "Check payments":"Tölegleri barlaň",
+    "Cash on delivery":"Ýerinde töleg",
+    "pls send check":"Dükanyň ady, Dükan köçesi, Dükan şäheri, Dükan ştaty / okrugy, dükan poçta kody üçin çek iberiň.",
+    "paywithcash":" Ýerine baranda nagt töleg",
+    "termcondition":"Okadym, düzgünler bilen",
+    "termsandconditions":"tanysşdym we ylalşýaryn",
+    "placeorder":"Sargyt et"
+=======
 
     "Calculator": "Kalkulýator"
+>>>>>>> d750cf9657b52b0c826c6a682c8650e92eb6f290
 
 }

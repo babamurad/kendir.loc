@@ -16,9 +16,7 @@
             <div class="tab-content card" style="margin-top: -12px;">
                 <!-- Panel 1 -->
                 <div class="tab-pane fade in active show" id="panel1" role="tabpanel">
-                    <p class="d-flex">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta
-                        doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur.
-                        Tempora, placeat ratione porro voluptate odit minima.</p>
+                     {!! __('calc.armature') !!}
                     <div class="form-group">
                         <div class="row calc">
                             <label class="col-sm-4 control-label" for="inputFirstName">{{__('Diameter mm.')}}</label>
@@ -39,9 +37,7 @@
                 <!-- Panel 1 -->
                 <!-- Panel 2 -->
                 <div class="tab-pane fade" id="panel2" role="tabpanel">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta
-                        doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur.
-                        Tempora, placeat ratione porro voluptate odit minima.</p>
+                    {!! __('calc.armature') !!}
                     <div class="tab-pane fade in active show" id="panel1" role="tabpanel">
                         <div class="form-group">
                             <div class="row calc">
