@@ -20,7 +20,9 @@
                                             <h4 class="shadow-lg">{{ $carousel->title }}</h4>
                                         </div>
                                         <div class="block-slideshow__slide-text">
-                                            <h6 class="h3-responsive text-white">{!! \Illuminate\Support\Str::wordWrap($carousel->text, characters: 70, break: "<br />\n"); !!}</h6>
+                                            <h6 class="h3-responsive text-white">
+                                                {!! \Illuminate\Support\Str::wordWrap($carousel->text, characters: 70, break: "<br />\n"); !!}
+                                            </h6>
 
                                         </div>
                                         <div class="block-slideshow__slide-button">
@@ -509,7 +511,7 @@
                             </div>
                             <div class="post-card__date">{{ \Carbon\Carbon::create($post->created_at)->format('F d, Y') }}</div>
                             <div class="post-card__content">
-                                {{ \Illuminate\Support\Str::of($post->text)->words(25) }}
+                                {!! \Illuminate\Support\Str::of($post->text)->words(25) !!}
                             </div>
                             <div class="post-card__read-more">
                                 <a href="{{ route('post-detail', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">Read More</a>

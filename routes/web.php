@@ -44,6 +44,7 @@ use App\Livewire\UserEditAddresessComponent;
 use App\Livewire\UserPasswordComponent;
 use App\Livewire\CompareComponent;
 use \App\Http\Controllers\LocalizationController;
+use \App\Livewire\Calculator\CalculatorComponent;
 
 
 /*
@@ -66,7 +67,7 @@ Route::middleware(\App\Http\Middleware\Localization::class)->group(function (){
     Route::get('details/{slug}', DetailsComponent::class)->name('product.details');
     Route::get('checkout', ChekoutComponent::class)->name('checkout');
 
-    Route::get('calculator', \App\Livewire\Calculator\CalculatorComponent::class)->name('calculator');
+    Route::get('calculator', CalculatorComponent::class)->name('calculator');
 
     Route::get('thank-you', ThankyouComponent::class)->name('thankyou');
     Route::get('terms', TermsComponent::class)->name('terms');

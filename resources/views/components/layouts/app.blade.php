@@ -252,6 +252,7 @@
         <!-- site__body -->
         <div class="site__body">
             <!-- .block-slideshow -->
+
             {{ $slot}}
 
             <!-- .block-product-columns / end -->

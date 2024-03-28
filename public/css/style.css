@@ -16403,3 +16403,125 @@ ul {
     border: 1px solid #f3f3f3;
     box-shadow: 2px 8px 10px rgba(207,221,244,.5) !important;
 }
+.md-tabs {
+    position: relative;
+    z-index: 1;
+    padding: 0.7rem;
+    margin-bottom: -20px;
+    margin-left: 1rem;
+    background-color: #4285f4;
+    /* #3366cc */
+    border: 0;
+    border-radius: 0.25rem;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+}
+.nav-justified .nav-item {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    text-align: center;
+}
+.waves-effect {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+}
+.md-tabs .nav-item.open .nav-link, .md-tabs .nav-link.active {
+    color: #fff;
+    background-color: rgba(0,0,0,.2);
+    border-radius: 0.25rem;
+    transition: all 1s;
+}
+.md-tabs .nav-link {
+    color: #fff;
+    border: 0;
+    transition: all .4s;
+}
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+.md-tabs .nav-item+.nav-item {
+    margin-left: 0;
+}
+.tab-content {
+    padding: 2rem 1rem 1rem;
+}
+.card {
+    font-weight: 400;
+    border: 0;
+}
+.card, .navbar, .pagination .page-item.active .page-link {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.chip, .md-tabs, .modal-dialog.cascading-modal .modal-header .close {
+    margin-right: 1rem;
+}
+.nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+/***/
+.card, .navbar, .pagination .page-item.active .page-link {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+
+.diameter{
+    text-align: right;
+    border: none;
+    background-color: transparent;
+    padding: 16px;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    color: #333;
+}
+.calc{
+    background-color: #eef3fb;
+    border: 1px solid #eef3fb;
+    border-radius: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.calc label{
+    margin-top: 6px;
+}
+.calc input{
+    border: none;
+    background-color: #eef3fb;
+    text-align: right;
+    padding-right: 2px;
+}
+.calc input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+    margin-left: 15px;
+}
+.calc input:focus {
+    background-color: #eef3fb;
+    border: none !important;
+    margin-left: 2px;
+    margin-right: 2px;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0);
+}
