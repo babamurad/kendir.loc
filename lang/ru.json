@@ -163,10 +163,8 @@
     "Subject": "Тема",
     "Message": "Сообщение",
     "Send Message": "Отправить",
-
     "Latest news": "Последние статьи",
     "Related Posts": "Похожие статьи",
-
     "Your Order" :"Ваш заказ",
     "Direct bank transfer":"Прямой банковский перевод",
     "County":"Район",
@@ -180,9 +178,7 @@
     "paywithcash":"Оплата наличными при получении.",
     "termcondition":"Я прочитал и согласен с сайтом",
     "termsandconditions":"условия и положения",
-    "placeorder":"Заказать"
-=======
-
+    "placeorder":"Заказать",
     "Calculator": "Калькулятор"
 
 
