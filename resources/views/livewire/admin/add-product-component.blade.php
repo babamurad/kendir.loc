@@ -19,6 +19,13 @@
 
             </div>
         @endif
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; ">
+                    <button type="button" class="close {{ request()->is('/') ? '' : ' mt-3' }}" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h6><i class="icon fas fa-check"></i> {{ session('success') }}</h6>
+                </div>
+
+            @endif
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
@@ -337,7 +344,7 @@
                                         <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <label for="dept" class="form-label">Depth</label>
-                                                    <input type="text" class="form-control" name="dept" placeholder="dept" wire:model="dept">
+                                                    <input type="text" class="form-control" name="dept" placeholder="Depth" wire:model="dept">
                                                 </div>
                                             </div>
                                         </div>

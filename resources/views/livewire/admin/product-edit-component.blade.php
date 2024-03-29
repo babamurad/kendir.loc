@@ -339,7 +339,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label for="dept" class="form-label">Depth</label>
-                                            <input type="text" class="form-control" name="dept" placeholder="dept" wire:model="dept">
+                                            <input type="text" class="form-control" name="dept" placeholder="Depth" wire:model="dept">
                                         </div>
                                     </div>
                                 </div>

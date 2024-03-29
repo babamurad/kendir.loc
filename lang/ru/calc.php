@@ -8,7 +8,7 @@ return [
     'Diameter mm.' => 'Диаметр мм.',
     'Length, m.' => 'Длина мм.',
     'Weight Armature' => 'Вес арматуры',
-    'Length armature' => 'Length armature',
+    'Length armature' => 'Длина арматуры',
     'text-tube' => 'Формула расчета веса стальной трубы. <br>  m = π/1000 × (D - t) × t × ρ 1000 <br> π – число Пи, ρ – плотность металла, кг/м3, D – диаметр трубы (мм), t – толщина стенки (мм)',
     'tube' => 'Труба',
     'Thickness S, mm.' => 'Толщина мм.',

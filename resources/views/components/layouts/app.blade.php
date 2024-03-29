@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" dir="ltr">
+<html lang="{{ session()->get('locale') }}" dir="ltr">
 
 <head>
     <meta charset="UTF-8">

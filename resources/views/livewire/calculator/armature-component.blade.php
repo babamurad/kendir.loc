@@ -29,7 +29,7 @@
                         <div class="row calc">
                             <label class="col-sm-4 control-label" for="inputFirstName">{{__('calc.Length, m.')}}</label>
                             <div class="col-sm-8">
-                                <input class="form-control" type="number" id="inputFirstName"wire:model.live="length">
+                                <input class="form-control" type="number" id="inputFirstName" wire:model.live="length">
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                 <!-- Panel 1 -->
                 <!-- Panel 2 -->
                 <div class="tab-pane fade" id="panel2" role="tabpanel">
-                    {!! __('calc.text') !!}
+                    {!! __('calc.text-len') !!}
                     <div class="tab-pane fade in active show" id="panel1" role="tabpanel">
                         <div class="form-group">
                             <div class="row calc">
@@ -51,7 +51,7 @@
                             <div class="row calc">
                                 <label class="col-sm-4 control-label" for="inputFirstName">{{__('calc.Weight')}}</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="number" id="inputFirstName"wire:model.live="weight">
+                                    <input class="form-control" type="number" id="inputFirstName" wire:model.live="weight">
                                 </div>
                             </div>
                         </div>

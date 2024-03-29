@@ -40,6 +40,7 @@ class ShopComponent extends Component
     public function render()
     {
         //->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
+        $name = 'name_'.Session::get('locale');
         $categories = Category::with('cparent')->with('products')->get();
         $this->prCount = Product::all()->count();
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
@@ -50,7 +51,7 @@ class ShopComponent extends Component
                 ->with('brands')
                 ->with('manufacturers')
                 ->where('category_id', '=', $this->category_id)
-                ->orderBy('name', $this->sort)
+                ->orderBy($name, $this->sort)
                 ->paginate($this->perPage);
         } // 1 1 0
         elseif ($this->category_id && !empty($this->check_brands) && empty($this->check_manufs)) {
@@ -60,7 +61,7 @@ class ShopComponent extends Component
                 ->with('manufacturers')
                 ->where('category_id', '=', $this->category_id)
                 ->whereIn('brand_id', $this->check_brands)
-                ->orderBy('name', $this->sort)
+                ->orderBy($name, $this->sort)
                 ->paginate($this->perPage);
         } // 1 1 1
         elseif ($this->category_id && !empty($this->check_brands) && !empty($this->check_manufs)){
@@ -71,7 +72,7 @@ class ShopComponent extends Component
                 ->where('category_id', '=', $this->category_id)
                 ->whereIn('brand_id', $this->check_brands)
                 ->whereIn('manufacturer_id', $this->check_manufs)
-                ->orderBy('name', $this->sort)
+                ->orderBy($name, $this->sort)
                 ->paginate($this->perPage);
         }// 0 1 1
         elseif (!$this->category_id && !empty($this->check_brands) && !empty($this->check_manufs)){
@@ -81,7 +82,7 @@ class ShopComponent extends Component
                 ->with('manufacturers')
                 ->whereIn('brand_id', $this->check_brands)
                 ->whereIn('manufacturer_id', $this->check_manufs)
-                ->orderBy('name', $this->sort)
+                ->orderBy($name, $this->sort)
                 ->paginate($this->perPage);
         }// 0 0 1
         elseif (!$this->category_id && empty($this->check_brands) && !empty($this->check_manufs)){
@@ -90,7 +91,7 @@ class ShopComponent extends Component
                 ->with('brands')
                 ->with('manufacturers')
                 ->whereIn('manufacturer_id', $this->check_manufs)
-                ->orderBy('name', $this->sort)
+                ->orderBy($name, $this->sort)
                 ->paginate($this->perPage);
         }// 1 0 1
         elseif ($this->category_id && empty($this->check_brands) && !empty($this->check_manufs)){
@@ -100,7 +101,7 @@ class ShopComponent extends Component
                 ->with('manufacturers')
                 ->where('category_id', '=', $this->category_id)
                 ->whereIn('manufacturer_id', $this->check_manufs)
-                ->orderBy('name', $this->sort)
+                ->orderBy($name, $this->sort)
                 ->paginate($this->perPage);
         }// 0 1 0
         elseif (!$this->category_id && !empty($this->check_brands) && empty($this->check_manufs)){
@@ -109,7 +110,7 @@ class ShopComponent extends Component
                 ->with('brands')
                 ->with('manufacturers')
                 ->whereIn('brand_id', $this->check_brands)
-                ->orderBy('name', $this->sort)
+                ->orderBy($name, $this->sort)
                 ->paginate($this->perPage);
         }
         //0 0 0
@@ -117,7 +118,7 @@ class ShopComponent extends Component
             $products = Product::with('specification')
                 ->with('brands')
                 ->with('manufacturers')
-                ->orderBy('name', $this->sort)
+                ->orderBy($name, $this->sort)
                 ->paginate($this->perPage);
         }
 

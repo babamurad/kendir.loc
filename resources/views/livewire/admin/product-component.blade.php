@@ -29,6 +29,7 @@
             border-color: #148367;
             color: #fff;
         }
+
     </style>
 
     <div class="row gutters">
@@ -40,8 +41,29 @@
                 </div>
                 <div class="card-body">
                     <div class="row mt-2 mb-0">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <a href="{{ route('admin.create-product') }}" type="button" class="btn btn-primary rounded"> {{__('Create Product')}} </a>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group row">
+                                <label for="category_id" class="col-sm-4 col-form-label text-right">Category</label>
+                                <div class="col-sm-8">
+                                    <select name="categories" class="form-control" name="category_id" wire:model.live="category_id" id="mySelect">
+                                        <option value="">All Categories</option>
+                                        @foreach($categories as $category)
+                                            @if($category->parent_id==0)
+                                                <option value="{{ $category->id }}" style="font-weight:500;" disabled>{{ ucfirst($category->name) }}</option>
+                                                @if($category->children->count()>0)
+                                                    @foreach($category->children as $subcategory)
+                                                        <option value="{{ $subcategory->id }}">-- {{ ucfirst($subcategory->name) }}  {{$subcategory->products->count()}} </option>
+                                                    @endforeach
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <div class="d-flex">
@@ -57,10 +79,10 @@
                                     <option value="20">20</option>
                                     <option value="40">40</option>
                                 </select>
-                                <label>entries</label>
+                                <label>entries.  Count: {{ $catc }} / {{ count($pcount) }} </label>
                             </div>
                         </div>
-                        <div class="col-md-2"><label>Count: {{ count($pcount) }}</label></div>
+
                     </div>
                     <table class="table table-hover m-0">
                         <thead>
@@ -68,7 +90,7 @@
                             <th>#</th>
                             <th>{{__('Image')}}</th>
                             <th>{{__('Product Name')}}</th>
-                            <th>{{__('Slug')}}</th>
+                            <th>{{__('Category')}}</th>
                             <th>{{__('Stock Status')}}</th>
                             <th>{{__('Sale Price')}}</th>
                             <th>{{__('Action')}}</th>
@@ -83,7 +105,7 @@
                                 <td>{{ ++$i }}</td>
                                 <td><img src="{{ asset('images/products').'/'.$product->image }}" alt="" width="60"></td>
                                 <td>{{$product->name}}</td>
-                                <td>{{$product->slug}}</td>
+                                <td>{{$product->category->name }}</td>
                                 <td>{{$product->stock_status}}</td>
                                 <td>{{$product->sale_price}}</td>
                                 <td>

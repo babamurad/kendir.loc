@@ -283,7 +283,7 @@
                     <div class="block-products-carousel__preloader"></div>
                     <div class="owl-carousel">
                         @foreach($products as $product)
-                        <div class="block-products-carousel__column">
+                        <div class="block-products-carousel__column" wire:key="product-{{ $product->id }}">
                             <div class="block-products-carousel__cell">
                                 <div class="product-card product-card--hidden-actions ">
                                     <button class="product-card__quickview" type="button">

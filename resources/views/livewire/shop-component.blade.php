@@ -402,11 +402,11 @@
                                                     <div class="product-card__rating-legend"> <strong>{{__('Manufacturer')}}: </strong> {{ $product->manufacturers->name }} </div>
                                                 </div>
                                                 <ul class="product-card__features-list">
-                                                    <li>Model: {{ $product->specification->model }}</li>
-                                                    <li>Dimension L: {{ $product->specification->dl }}</li>
-                                                    <li>Dimension W: {{ $product->specification->dw }}</li>
-                                                    <li>Dimension H: {{ $product->specification->dh }}</li>
-                                                    <li>Weight: {{ $product->specification->weight }}</li>
+                                                    <li>Model: {{ $product->specification->model??'' }}</li>
+                                                    <li>Dimension L: {{ $product->specification->dl??0 }}</li>
+                                                    <li>Dimension W: {{ $product->specification->dw??0 }}</li>
+                                                    <li>Dimension H: {{ $product->specification->dh??0 }}</li>
+                                                    <li>Weight: {{ $product->specification->weight??0 }}</li>
                                                 </ul>
                                             </div>
                                             <div class="product-card__actions">

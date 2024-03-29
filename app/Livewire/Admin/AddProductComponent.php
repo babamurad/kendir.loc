@@ -118,25 +118,30 @@ class AddProductComponent extends Component
             'name_en'              => 'required',
             'name_ru'              => 'required',
             'name_tm'              => 'required',
-            'slug'              => 'required',
+            'slug'                 => 'required|unique:products',
             'short_description_en' => 'required',
             'short_description_ru' => 'required',
             'short_description_tm' => 'required',
             'description_en'       => 'required',
             'description_ru'       => 'required',
             'description_tm'       => 'required',
-            'regular_price'     => 'required',
-            'sale_price'        => 'required',
-            'sku'               => 'required',
-            'stock_status'      => 'required',
-            'featured'          => 'required',
-            'quantity'          => 'required',
-            'image'             => 'required|image|max:1024',
-            'category_id'       => 'required',
+            'regular_price'        => 'required',
+            'sale_price'           => 'required',
+            'sku'                  => 'required',
+            'stock_status'         => 'required',
+            'featured'             => 'required',
+            'quantity'             => 'required',
+            'image'                => 'required|image|max:1024',
+            'category_id'          => 'required',
+            'dl'                   => 'nullable|integer|default:0',
+            'dw'                   => 'nullable|integer|default:0',
+            'dh'                   => 'nullable|integer|default:0',
+            'weight'               => 'nullable|integer|default:0',
+            'status'               => 'nullable|default:1',
+            'type_roll'            => 'nullable|string|default:Hot',
         ]);
 
         $product = new Product();
-        $product->name = $this->name_en;
         $product->name_en = $this->name_en;
         $product->name_ru = $this->name_ru;
         $product->name_tm = $this->name_tm;
@@ -180,15 +185,15 @@ class AddProductComponent extends Component
 
         $sprec = new Specification();
         $sprec->model = $this->model;
-        $sprec->dl = $this->dl;
-        $sprec->dw = $this->dw;
-        $sprec->dh = $this->dh;
+        $sprec->dl = $this->dl??0;
+        $sprec->dw = $this->dw??0;
+        $sprec->dh = $this->dh??0;
         $sprec->unit = $this->unit;
-        $sprec->weight = $this->weight;
-        $sprec->status = $this->status;
+        $sprec->weight = $this->weight??0;
+        $sprec->status = $this->status??1;
         $sprec->product_id = $product->id;
         //************
-        $sprec->type_roll = $this->type_roll;
+        $sprec->type_roll = $this->type_roll??'Hot';
         $sprec->dept = $this->dept;
         $sprec->diameter = $this->diameter;
         $sprec->meter_int = $this->meter_int;
@@ -201,10 +206,16 @@ class AddProductComponent extends Component
 
     public function resetInputFileds()
     {
-        $this->name = '';
+        $this->name_en = '';
+        $this->name_ru = '';
+        $this->name_tm = '';
         $this->slug = '';
-        $this->short_description = '';
-        $this->description = '';
+        $this->short_description_en = '';
+        $this->short_description_ru = '';
+        $this->short_description_tm = '';
+        $this->description_en = '';
+        $this->description_ru = '';
+        $this->description_tm = '';
         $this->regular_price = '';
         $this->sale_price = '';
         $this->sku = '';
@@ -224,6 +235,13 @@ class AddProductComponent extends Component
         $this->unit = '';
         $this->weight = '';
         $this->status = 1;
+
+        //************
+        $this->type_roll = 'Hot';
+        $this->dept = '';
+        $this->diameter = '';
+        $this->meter_int = '';
+        $this->articles = '';
     }
 
     public function createAttr()

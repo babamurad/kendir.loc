@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Specification;
 use Illuminate\Support\Facades\DB;
@@ -49,16 +50,37 @@ class ProductComponent extends Component
         session()->flash('error', __('Product has been deleted!'));
     }
 
+    public function mount()
+    {
+        $this->category_id = '';
+    }
+
     public function render()
     {
         $pcount = Product::all();
-        //dd(count($pcount));
-        $products = Product::
-            where('name', 'LIKE', '%'.$this->search.'%')
-            ->orderBy($this->sortBy, $this->sortDirection)
-            ->paginate($this->perPage);
+        $categories = Category::with('children', 'products')->get();
+
+        $name = 'name_' . session()->get('locale');
+
+        if ($this->category_id){
+            $products = Product::
+            where($name, 'LIKE', '%'.$this->search.'%')
+                ->with('category')
+                ->where('category_id', '=', $this->category_id)
+                ->orderBy($this->sortBy, $this->sortDirection)
+                ->paginate($this->perPage);
+            $catc = Product::where('category_id', '=', $this->category_id)->count();
+        } else {
+            $products = Product::
+            where($name, 'LIKE', '%'.$this->search.'%')
+                ->with('category')
+                ->orderBy($this->sortBy, $this->sortDirection)
+                ->paginate($this->perPage);
+            $catc = Product::count();
+        }
+
         return view('livewire.admin.product-component',
-            compact('products', 'pcount'))
+            compact('products', 'pcount', 'categories', 'catc'))
             ->layout('components.layouts.admin.app');
     }
 }

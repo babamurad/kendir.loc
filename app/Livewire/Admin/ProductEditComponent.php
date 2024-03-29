@@ -60,7 +60,6 @@ class ProductEditComponent extends Component
     public function updateProduct()
     {
         $this->validate([
-            'name'              => 'required',
             'slug'              => 'required',
             'short_description_en' => 'required',
             'description_en'       => 'required',
@@ -80,7 +79,6 @@ class ProductEditComponent extends Component
         ]);
 
         $product = Product::find($this->product_id);
-        $product->name = $this->name_en;
         $product->name_en = $this->name_en;
         $product->name_ru = $this->name_ru;
         $product->name_tm = $this->name_tm;

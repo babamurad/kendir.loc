@@ -15,6 +15,7 @@ class CalculatorComponent extends Component
     public $showAngle = false;
     public $showChannel = false;
     public $showHBeam = false;
+    public $metals = [];
     public function render()
     {
 
@@ -25,6 +26,62 @@ class CalculatorComponent extends Component
     {
         //session()->put('active_metal', 'arm');
         $this->showArmature = true;
+        $this->metals = [
+            [
+                'id' => 1,
+                'title' => 'Armature',
+                'name' => 'clickShowArmature',
+                'image' => 'images/calculator/armatura.svg'
+            ],
+            [
+                'id' => 2,
+                'title' => 'Tube',
+                'name' => 'clickTube',
+                'image' => 'images/calculator/truba.svg'
+            ],
+            [
+                'id' => 3,
+                'title' => 'Steel Plate',
+                'name' => 'clickSteelPlate',
+                'image' => 'images/calculator/list.svg'
+            ],
+            [
+                'id' => 4,
+                'title' => 'Round bar',
+                'name' => 'clickRoubdBar',
+                'image' => 'images/calculator/krug.svg'
+            ],
+            [
+                'id' => 5,
+                'title' => 'Profil tube',
+                'name' => 'clickProfileTube',
+                'image' => 'images/calculator/profil.svg'
+            ],
+            [
+                'id' => 6,
+                'title' => 'Square bar',
+                'name' => 'clickSquareBar',
+                'image' => 'images/calculator/kvadrat.svg'
+            ],
+            [
+                'id' => 7,
+                'title' => 'Angle',
+                'name' => 'clickAngle',
+                'image' => 'images/calculator/ugolok.svg'
+            ],
+            [
+                'id' => 8,
+                'title' => 'Channel',
+                'name' => 'clickChannel',
+                'image' => 'images/calculator/shveller.svg'
+            ],
+            [
+                'id' => 9,
+                'title' => 'H Beam',
+                'name' => 'clickHBeam',
+                'image' => 'images/calculator/dvutavr.svg'
+            ],
+        ];
     }
 
     public function clickShowArmature()

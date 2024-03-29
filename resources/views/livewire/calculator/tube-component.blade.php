@@ -90,10 +90,10 @@
                     <div class="card-img-top mt-2 p-3 h-50"><img src="{{ asset('images/calculator/truba_calc.svg') }}" alt=""></div>
                     <div class="card-title">
                         @if($lw)
-                            <span> <strong>{{__('calc.Weight Armature')}}:</strong> </span>
+                            <span> <strong>{{__('calc.Weight')}}:</strong> </span>
                             <h3 class="text-primary ">{{ $resWeight }} {{__('kg')}}</h3>
                         @else
-                            <span> <strong>{{__('calc.Length armature')}}:</strong> </span>
+                            <span> <strong>{{__('calc.Length')}}:</strong> </span>
                             <h3 class="text-primary ">{{ $resLength }} {{__('meter')}}</h3>
                         @endif
                     </div>
