@@ -9,7 +9,7 @@
                     {{ session()->put('locale', 'ru') }}
                 @endif
 
-                {{ mb_strtoupper(session()->get('locale')) }}
+                {{ mb_strtoupper(session()->get('locale', default: 'ru')) }}
                 </span>
                 <svg width="7px" height="5px">
                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-down-7x5') }}"></use>

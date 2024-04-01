@@ -16487,17 +16487,6 @@ ul {
     border: 1px solid rgba(0,0,0,.125);
     border-radius: 0.25rem;
 }
-
-.diameter{
-    text-align: right;
-    border: none;
-    background-color: transparent;
-    padding: 16px;
-    width: 100%;
-    height: 100%;
-    outline: none;
-    color: #333;
-}
 .calc{
     background-color: #eef3fb;
     border: 1px solid #eef3fb;

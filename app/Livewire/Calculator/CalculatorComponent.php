@@ -31,55 +31,64 @@ class CalculatorComponent extends Component
                 'id' => 1,
                 'title' => 'Armature',
                 'name' => 'clickShowArmature',
-                'image' => 'images/calculator/armatura.svg'
+                'image' => 'images/calculator/armatura.svg',
+                'slug' => 'armatura-jq'
             ],
             [
                 'id' => 2,
                 'title' => 'Tube',
                 'name' => 'clickTube',
-                'image' => 'images/calculator/truba.svg'
+                'image' => 'images/calculator/truba.svg',
+                'slug' => 'truba-jq'
             ],
             [
                 'id' => 3,
                 'title' => 'Steel Plate',
                 'name' => 'clickSteelPlate',
-                'image' => 'images/calculator/list.svg'
+                'image' => 'images/calculator/list.svg',
+                'slug' => 'steel-plate-jq'
             ],
             [
                 'id' => 4,
                 'title' => 'Round bar',
                 'name' => 'clickRoubdBar',
-                'image' => 'images/calculator/krug.svg'
+                'image' => 'images/calculator/krug.svg',
+                'slug' => 'krug-jq'
             ],
             [
                 'id' => 5,
                 'title' => 'Profil tube',
                 'name' => 'clickProfileTube',
-                'image' => 'images/calculator/profil.svg'
+                'image' => 'images/calculator/profil.svg',
+                'slug' => 'profil-jq'
             ],
             [
                 'id' => 6,
                 'title' => 'Square bar',
                 'name' => 'clickSquareBar',
-                'image' => 'images/calculator/kvadrat.svg'
+                'image' => 'images/calculator/kvadrat.svg',
+                'slug' => 'kvadrat-jq'
             ],
             [
                 'id' => 7,
                 'title' => 'Angle',
                 'name' => 'clickAngle',
-                'image' => 'images/calculator/ugolok.svg'
+                'image' => 'images/calculator/ugolok.svg',
+                'slug' => 'ugolok-jq'
             ],
             [
                 'id' => 8,
                 'title' => 'Channel',
                 'name' => 'clickChannel',
-                'image' => 'images/calculator/shveller.svg'
+                'image' => 'images/calculator/shveller.svg',
+                'slug' => 'shveller-jq'
             ],
             [
                 'id' => 9,
                 'title' => 'H Beam',
                 'name' => 'clickHBeam',
-                'image' => 'images/calculator/dvutavr.svg'
+                'image' => 'images/calculator/dvutavr.svg',
+                'slug' => 'dvutavr-jq'
             ],
         ];
     }

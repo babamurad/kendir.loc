@@ -51,7 +51,7 @@
                     <!-- Panel 2 -->
                     <div class="tab-pane fade" id="panel2" role="tabpanel">
                         <div class="mb-2">
-                            {!! __('calc.text-tube') !!}
+                            {!! __('calc.tube-length') !!}
                         </div>
 
                         <div class="tab-pane fade in active show" id="panel1" role="tabpanel">

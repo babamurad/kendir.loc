@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ session()->get('locale') }}" dir="ltr">
+<html lang="{{ session()->get('locale', default: 'ru') }}" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
@@ -465,6 +465,11 @@
                     <li class="mobile-links__item" data-collapse-item>
                         <div class="mobile-links__item-title">
                             <a href="{{ route('shop') }}" class="mobile-links__item-link">{{__('Shop')}}</a>
+                        </div>
+                    </li>
+                    <li class="mobile-links__item" data-collapse-item>
+                        <div class="mobile-links__item-title">
+                            <a href="{{ route('calculator') }}" class="mobile-links__item-link">{{__('Calculator')}}</a>
                         </div>
                     </li>
                     <li class="mobile-links__item" data-collapse-item>

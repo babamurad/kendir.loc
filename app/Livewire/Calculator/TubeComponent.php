@@ -16,8 +16,8 @@ class TubeComponent extends Component
     }
     public function mount()
     {
-        $this->diameter = 0;
-        $this->tickness = 0;
+        $this->diameter = 1;
+        $this->tickness = 1;
         $this->length = 1;
         $this->weight =1000;
         $this->resWeight = 0;
@@ -39,10 +39,21 @@ class TubeComponent extends Component
         $this->tickness = floatval($this->tickness);
         $this->length = floatval($this->length);
         $sec_stenki = (pi()*($this->diameter-(2*$this->tickness)))*($this->tickness/2);
-        //M = (удельный вес кг/м3 * 0.000001 * 3.141592 * L) * S (Dн — S) S — толщина стенки Dн — наружный диаметр L — длина трубы.
-        $w = (0.785*0.01*pi()*$this->length)*$this->tickness*($this->diameter-$this->tickness);
 
-        $this->resWeight = round($w, 3);
+        $ur = ($this->diameter/1000)/2;
+
+        $kr = (($this->diameter/2 - $this->tickness)/1000);
+
+        $skrug = pi() * ($ur**2 - $kr**2);
+        $w = $skrug * $this->length*7850;
+
+        $this->resWeight = number_format(round($w, 2), '2', '.', ' ');
+
+        //L = (m * 1000) / (π * ρ * (R^2 - r^2))
+        $dlina = ( $this->weight ) / ( pi() * 7850 * ( $ur**2 - $kr**2 ) );
+
+        $this->resLength = number_format(round($dlina, 2), '2', '.', ' ');
+
     }
 
     public function updatedDiameter()
@@ -56,6 +67,11 @@ class TubeComponent extends Component
     }
 
     public function updatedLength()
+    {
+        $this->CalcWeight();
+    }
+
+    public function updatedWeight()
     {
         $this->CalcWeight();
     }

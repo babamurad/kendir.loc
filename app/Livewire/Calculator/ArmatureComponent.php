@@ -39,7 +39,7 @@ class ArmatureComponent extends Component
         $s= $s/2;
         $s = ($s*$s);
         $s = pi()*$s;
-        $this->resWeight = round($s * $this->length * (0.00785), 3);
+        $this->resWeight = number_format(round($s * $this->length * (0.00785), 2), '2', '.', ' ');
     }
 
     public function updatedDiameter()
