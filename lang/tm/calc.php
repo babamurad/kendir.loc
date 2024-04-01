@@ -24,6 +24,17 @@ return [
     'Quantity' => 'Mukdary',
     'piece' => 'sany',
     'm²' => 'm²',
-    'kg.' => 'kg.'
+    'kg.' => 'kg.',
+    'm' => 'm',
+    'Side A' => 'Tarap A',
+    'Side B' => 'Tarap B',
+    'Profil tube' => 'Profil',
+    'Square' => 'Kwadrat',
+    'Angle' => 'Burç',
+    'Channel' => 'Şweller',
+    'Height H' => 'Beýiklik H',
+    'Shelf width S' => 'Galyňlygy S',
+    'Wall thickness S' => 'Diwaryň ini S',
+    'Shelf thickness T' => 'Diwaryň galyňlygy',
 
 ];

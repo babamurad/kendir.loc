@@ -87,10 +87,10 @@
                     <div class="card-title">
                         @if($lw)
                             <span> <strong>{{__('calc.Weight')}}:</strong> </span>
-                            <h3 class="text-primary ">{{ $resWeight }} {{__('kg')}}</h3>
+                            <h3 class="text-primary ">{{ $resWeight }} {{__('calc.kg.')}}</h3>
                         @else
                             <span> <strong>{{__('calc.Length')}}:</strong> </span>
-                            <h3 class="text-primary ">{{ $resLength }} {{__('meter')}}</h3>
+                            <h3 class="text-primary ">{{ $resLength }} {{__('calc.m.')}}</h3>
                         @endif
                     </div>
                 </div>

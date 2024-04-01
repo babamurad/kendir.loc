@@ -23,6 +23,18 @@ return [
     'Quantity' => 'Количество',
     'piece' => 'штук',
     'm²' => 'м²',
-    'kg.' => 'кг.'
+    'kg.' => 'кг.',
+    'm' => 'м',
+    'Side A' => 'Сторона A',
+    'Side B' => 'Сторона B',
+    'Profil tube' => 'Профиль',
+    'Square' => 'Квадрат',
+    'Angle' => 'Уголок',
+
+    'Channel' => 'Швеллер',
+    'Height H' => 'Высота швеллера H',
+    'Shelf width S' => 'Ширина полки S',
+    'Wall thickness S' => 'Толщина стенки S',
+    'Shelf thickness T' => 'Толщина полки T',
 
 ];

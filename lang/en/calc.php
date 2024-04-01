@@ -25,7 +25,18 @@ return [
     'Quantity' => 'Quantity',
     'piece' => 'piece',
     'm²' => 'm²',
-    'kg.' => 'kg.'
+    'kg.' => 'kg.',
+    'm' => 'm',
+    'Side A' => 'Side A',
+    'Side B' => 'Side B',
+    'Profil tube' => 'Profil tube',
+    'Square' => 'Square',
+    'Angle' => 'Angle',
+    'Channel' => 'Channel',
+    'Height H' => 'Height H',
+    'Shelf width S' => 'Shelf Width S',
+    'Wall thickness S' => 'Wall thickness S',
+    'Shelf thickness T' => 'Shelf thickness',
 
 
 ];

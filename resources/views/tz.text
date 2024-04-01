@@ -153,3 +153,16 @@ HTML, CSS
 Email: babamurad2010@yandex.ru
 Telegram: babamurad2010
 Github: github.com/babamurad
+
+snippet pubf
+
+"Create public function": {
+    "prefix": "pubf",
+    "body": [
+        "public function $1()",
+        "{",
+        "\t$2",
+        "}",
+    ],
+    "description": "create public function"
+}
