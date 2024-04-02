@@ -8,7 +8,7 @@ class ChannelComponent extends Component
 {
     public $height, $sbold, $wtikness, $stikness;
 
-    public $length, $width;
+    public $length, $weight;
 
     public $resWeight, $resLength;
     public $lw = true;
@@ -26,8 +26,8 @@ class ChannelComponent extends Component
         $this->wtikness = 0;
         $this->stikness = 0;
 
-        $this->length = 0;
-        $this->width = 0;
+        $this->length = 1;
+        $this->weight = 1000;
 
         $this->resWeight = 0;
         $this->resLength = 0;
@@ -35,30 +35,34 @@ class ChannelComponent extends Component
 
     public function calcChannel()
     {
-        $this->height = floatval($this->height);
-        $this->sbold = floatval($this->sbold);
+        $this->height = (float) $this->height;
+        $this->sbold = (float) $this->sbold;
         $this->wtikness = (float) $this->wtikness;
 
-        $this->stikness = floatval($this->stikness);
+        $this->stikness = (float) $this->stikness;
         $this->length = (float) $this->length;
-        $this->width = (float) $this->width;
+        $this->weight = (float) $this->weight;
 
         $h = $this->height;
         $b = $this->sbold;
-        $wt = $this->wtikness;
+        $ht = $this->wtikness;
         $bt = $this->stikness;
-        $l = $this->length / 1000;
+        $l = $this->length / 100;
+        $we = $this->weight;
 
-        $s = $h * $wt + ($b * ($b - $bt));
-        $this->resWeight = $s;
+        $s1 = $h * $ht;
+        $s2 = $bt * ($b - $ht);
+        $s = $s1 + 2 * $s2;
 
-        //S = 2 * b * t + (h - 2 * t) * s
-        //$s = $wt * $h - 2 * $bt * ($b - $wt);
-        //M = (46 + 46 + 100 - 4 * 4.2) / 1000 * 4.2 * L * 7850
-        $m = ($b + $b + $h - 4 * $bt) / 1000 * $wt * $l * 7850;
+        $ww = (2*$b + 2*$ht);
+        //dd($we*1000/$s);
+        if ($s != 0) {
+            $len = $we * 100 / ($s * 0.7850);
+            $this->resLength = number_format(round($len, 3), 2, '.', ' ');
+        }
 
-        //$m = $s * 0.7850 * $l;
-        // $this->resWeight = number_format(round($m, 3), 3, '.', '');
+        $w = $s * 0.7850 * $l;
+        $this->resWeight = number_format(round($w, 2), 2, '.', ' ');
     }
 
     public function updatedLength()
@@ -86,7 +90,7 @@ class ChannelComponent extends Component
         $this->calcChannel();
     }
 
-    public function updatedWidth()
+    public function updatedWeight()
     {
         $this->calcChannel();
     }

@@ -38,5 +38,7 @@ return [
     'Wall thickness S' => 'Wall thickness S',
     'Shelf thickness T' => 'Shelf thickness',
 
+    'HBeam' => 'HBeam',
+    'Height Hh' => 'Height H',
 
 ];

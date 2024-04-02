@@ -37,4 +37,7 @@ return [
     'Wall thickness S' => 'Толщина стенки S',
     'Shelf thickness T' => 'Толщина полки T',
 
+    'HBeam' => 'Балка/Двутавр',
+    'Height Hh' => 'Высота двутавра H',
+
 ];

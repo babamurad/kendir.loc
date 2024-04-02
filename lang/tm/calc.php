@@ -37,4 +37,7 @@ return [
     'Wall thickness S' => 'Diwaryň ini S',
     'Shelf thickness T' => 'Diwaryň galyňlygy',
 
+    'HBeam' => 'Balka',
+    'Height Hh' => 'Height H',
+
 ];

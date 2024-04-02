@@ -74,29 +74,36 @@
                             <span>Формула для расчета веса металлического уголка </span><br>
                             <span>M = (A + B - t) * t * 7.85 / 1000</span>
                         </div>
-
                         <div class="tab-pane fade in active show" id="panel1" role="tabpanel">
                             <div class="form-group">
                                 <div class="row calc">
-                                    <label class="col-sm-4 control-label" for="isideA">{{__('calc.Side A')}} {{ __('calc.mm.') }}</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="number" id="sideA" wire:model.live="sideA">
+                                    <label class="col-sm-6 control-label" for="height">{{__('calc.Height H')}} {{ __('calc.mm.') }}</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" type="number" id="height" wire:model.live="height" min="1">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="row calc">
-                                    <label class="col-sm-4 control-label" for="sideB">{{__('calc.Side B')}} {{ __('calc.mm.') }}</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="number" id="sideA" wire:model.live="sideB">
+                                    <label class="col-sm-6 control-label" for="sbold">{{__('calc.Shelf width S')}} {{ __('calc.mm.') }}</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" type="number" id="sbold" wire:model.live="sbold" min="1">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="row calc">
-                                    <label class="col-sm-4 control-label" for="tikness">{{__('calc.Thickness S, mm.')}}</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="number" id="tikness" wire:model.live="tikness">
+                                    <label class="col-sm-6 control-label" for="wtikness">{{__('calc.Wall thickness S')}} {{ __('calc.mm.') }}</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" type="number" id="wtikness" wire:model.live="wtikness" min="1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row calc">
+                                    <label class="col-sm-6 control-label" for="stikness">{{__('calc.Shelf thickness T')}} {{ __('calc.mm.') }}</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" type="number" id="stikness" wire:model.live="stikness" min="1">
                                     </div>
                                 </div>
                             </div>
