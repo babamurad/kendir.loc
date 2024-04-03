@@ -25,8 +25,8 @@
                             <div class="menu__item-submenu-offset"></div>
                             <a class="menu__item-link" href="{{ route('locale', ['locale' => 'en']) }}" wire:navigate>
                                 <div class="menu__item-icon"><img
-                                        srcset="images/languages/language-6-2.png 1x, images/languages/language-7@2x.png 2x"
-                                        src="images/languages/language-7-2.png" alt="" style="width: 88%;"></div>
+                                        srcset="images/languages/language-1-2.png 1x, images/languages/language-1@2x.png 2x"
+                                        src="images/languages/language-1-2.png" alt="" style="width: 88%;"></div>
                             English
                             </a>
                         </li>
@@ -35,8 +35,8 @@
                             <div class="menu__item-submenu-offset"></div>
                             <a class="menu__item-link" href="{{ route('locale', ['locale' => 'ru']) }}" wire:navigate>
                                 <div class="menu__item-icon"><img
-                                        srcset="images/languages/language-6-2.png 1x, images/languages/language-7@2x.png 2x"
-                                        src="images/languages/language-7-2.png" alt="" style="width: 88%;"></div>
+                                        srcset="images/languages/language-6-2.png 1x, images/languages/language-6@2x.png 2x"
+                                        src="images/languages/language-6-2.png" alt="" style="width: 88%;"></div>
                             Русский
                             </a>
                         </li>
