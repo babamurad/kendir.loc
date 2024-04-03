@@ -23,7 +23,7 @@ class CategoryComponent extends Component
 
     public $slug;
 
-    public $image = '';
+    public $image;
 
     public $is_popular = 0;
 
@@ -42,7 +42,7 @@ class CategoryComponent extends Component
 
     public function render()
     {
-        $this->slug = Str::slug($this->name);
+        $this->slug = Str::slug($this->name_en);
         $categories =
             Category::with('cparent')
             ->where('name', 'like', '%'.$this->search.'%')
@@ -72,7 +72,8 @@ class CategoryComponent extends Component
 
     public function generateSlug()
     {
-        $this->slug = Str::slug($this->name);
+        $this->slug = Str::slug($this->name_en);
+        //dd($this->slug);
     }
 
     public function updated($fields)
@@ -82,7 +83,7 @@ class CategoryComponent extends Component
             'name_en' => 'required|min:3',
             'name_ru' => 'required|min:3',
             'name_tm' => 'required|min:3',
-            'slug' => 'required|min:3',
+            //'slug' => 'required|min:3',
             'image' => 'required|image|mimes:jpeg,png,svg,jpg,gif|max:1024',
         ]);
     }
@@ -96,7 +97,7 @@ class CategoryComponent extends Component
         $category->name_en = $this->name_en;
         $category->name_ru = $this->name_ru;
         $category->name_tm = $this->name_tm;
-        $category->slug = Str::slug($this->slug);
+        $category->slug = $this->slug;
         $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();
         $this->image->storeAs('categories', $imageName);
         $category->image = $imageName;
@@ -122,6 +123,7 @@ class CategoryComponent extends Component
 
         $this->parent_id = $category->parent_id;
         $this->image = $category->image;
+        //dd(asset('images/categories').'/'.$this->image);
         $this->is_popular = $category->is_popular;
     }
 

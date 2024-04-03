@@ -39,6 +39,7 @@ class ProductEditComponent extends Component
     public $brand_id, $manuf_id;
 
     public $model, $dl, $dw, $dh, $unit, $weight, $status, $type_roll, $dept, $diameter, $meter_int, $reinforcement_class, $articles;
+
     public function toProductsLis()
     {
         return redirect()->route('admin.products');
@@ -49,14 +50,17 @@ class ProductEditComponent extends Component
         $this->updateProduct();
         return redirect()->route('admin.products');
     }
+
     public function generateSlug()
     {
         $this->slug = Str::slug($this->name);
     }
+
     public function acTab($tabName)
     {
         $this->activeTab = $tabName;
     }
+
     public function updateProduct()
     {
         $this->validate([
@@ -96,37 +100,39 @@ class ProductEditComponent extends Component
         $product->featured = $this->featured;
         $product->quantity = $this->quantity;
 
-        if ($this->newimage){
-            unlink('images/products/'.$product->image);
-            $imageName = Carbon::now()->timestamp.'.'.$this->newimage->extension();
+        if ($this->newimage) {
+            if (file_exists('images/products/' . $product->image)) {
+                // Удалить файл
+                unlink('images/products/' . $product->image);
+            }
+
+            $imageName = Carbon::now()->timestamp . '.' . $this->newimage->extension();
             $this->newimage->storeAs('products', $imageName);
             $product->image = $imageName;
         }
 
-        if ($this->newimages)
-        {
-            if ($product->images)
-            {
+        if ($this->newimages) {
+            if ($product->images) {
                 $images = explode(',', $product->images);
-                foreach ($images as $image)
-                {
-                    if ($image)
-                    {
-                        unlink('images/products/'.$product->image);
+                foreach ($images as $image) {
+                    if ($image) {
+                        if (file_exists('images/products/' . $product->image)) {
+                            // Удалить файл
+                            unlink('images/products/' . $product->image);
+                        }
                     }
                 }
             }
             //***
             $imagesName = '';
-            foreach ($this->newimages as $key=>$image)
-            {
+            foreach ($this->newimages as $key => $image) {
                 $imageName = Carbon::now()->timestamp . $key . '.' . $image->extension();
                 $image->storeAs('products', $imageName);
-                if ($imagesName == '')
-                {
+                if ($imagesName == '') {
                     $imagesName = $imageName;
-                } else { $imagesName =$imagesName.','. $imageName; }
-
+                } else {
+                    $imagesName = $imagesName . ',' . $imageName;
+                }
             }
             $product->images = $imagesName;
         }
@@ -152,10 +158,11 @@ class ProductEditComponent extends Component
         $spec->update();
         redirect()->route('admin.products');
         session()->flash('success', 'Product has been updated!');
-
     }
+
     public function mount($product_id)
     {
+
         $this->activeTab = 'details';
 
         $product = Product::find($product_id);
@@ -165,7 +172,7 @@ class ProductEditComponent extends Component
         $this->name_ru = $product->name_ru;
         $this->name_tm = $product->name_tm;
         $this->slug = $product->slug;
-        $this->short_description= $product->short_description;
+        $this->short_description = $product->short_description;
         $this->short_description_en = $product->short_description_en;
         $this->description = $product->description;
         $this->description_en = $product->description_en;
@@ -174,7 +181,7 @@ class ProductEditComponent extends Component
         $this->short_description_tm = $product->short_description_tm;
         $this->description_tm = $product->description_tm;
         $this->regular_price = $product->regular_price;
-        $this->sale_price = $product->sale_price;//dd($product->sku);
+        $this->sale_price = $product->sale_price; //dd($product->sku);
         $this->sku = $product->SKU;
         $this->stock_status = $product->stock_status;
         $this->featured = $product->featured;

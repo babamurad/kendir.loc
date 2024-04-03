@@ -37,7 +37,7 @@
      </script>
 
     <!-- Edit Modal -->
-    <div wire:ignore.self class="modal fade" id="EditCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div wire:ignore class="modal fade" id="EditCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -72,7 +72,7 @@
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="inputName">Slug</label>
+                                <label for="inputName">Slug{{ $image }}</label>
                                 <input type="text" class="form-control @error('slug') is-invalid @enderror" readonly  wire:model.live='slug' >
                                 @error('slug') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
@@ -100,7 +100,7 @@
                                     </div>
                                     <div class="custom-file">
                                         <input type="file" accept="image/png, image/jpeg" class="custom-file-input  @error('image') is-invalid @enderror" wire:model.live="newimage">
-                                        <label class="custom-file-label" for="inputGroupFile01">{{__('Image')}}</label>
+                                        <label class="custom-file-label" for="inputGroupFile01">{{__('Image')}} </label>
                                     </div>
                                 </div>
                                 <div wire:loading wire:target="newimage" class="text-sm text-gray-500 italic">Uploading...</div>
@@ -168,7 +168,7 @@
               </div>
             <div class="col-12">
                 <div class="form-group">
-                    <label for="inputName">Slug</label>
+                    <label for="inputName">Slug {{ $slug }}</label>
                     <input type="text" class="form-control @error('slug') is-invalid @enderror" readonly  wire:model.live='slug' >
                     @error('slug') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
@@ -195,7 +195,7 @@
                         </div>
                         <div class="custom-file">
                             <input type="file" accept="image/png, image/jpeg" class="custom-file-input  @error('image') is-invalid @enderror" wire:model.live="image">
-                            <label class="custom-file-label" for="inputGroupFile01">{{__('Image')}}</label>
+                            <label class="custom-file-label" for="inputGroupFile01">{{__('Image')}} </label>
                         </div>
                     </div>
                     <div wire:loading wire:target="image" class="text-sm text-gray-500 italic">Uploading...</div>
@@ -228,7 +228,7 @@
     <div class="col-md-12 col-sm-12">
         <div class="card">
             <div class="card-header">
-                <h4>Categories</h4>
+                <h4>Categories</h4> {{ $edit_mode }}
                 @include('components.alerts')
                 </div>
             <div class="card-body">

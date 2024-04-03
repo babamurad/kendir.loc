@@ -52,7 +52,14 @@ class ProductComponent extends Component
 
     public function mount()
     {
-        $this->category_id = '';
+        $this->category_id = session()->get('category', default: '');
+    }
+
+    public function updatedСategory_id()
+    {
+        dd('cat');
+        session()->put('category', $this->category_id);
+        dd(session()->get('category', default: ''));
     }
 
     public function render()

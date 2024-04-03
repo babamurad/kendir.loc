@@ -48,20 +48,19 @@
                             <div class="form-group row">
                                 <label for="category_id" class="col-sm-4 col-form-label text-right">Category</label>
                                 <div class="col-sm-8">
-                                    <select name="categories" class="form-control" name="category_id" wire:model.live="category_id" id="mySelect">
+                                    <select class="form-control" name="category_id" wire:model.live="category_id" id="mySelect">
                                         <option value="">All Categories</option>
                                         @foreach($categories as $category)
-                                            @if($category->parent_id==0)
-                                                <option value="{{ $category->id }}" style="font-weight:500;" disabled>{{ ucfirst($category->name) }}</option>
+                                            @if($category->parent_id == 0)
+                                                <option wire:key="{{ $category->id }}" value="{{ $category->id }}" style="font-weight:500;" disabled>{{ ucfirst($category->name) }}</option>
                                                 @if($category->children->count()>0)
                                                     @foreach($category->children as $subcategory)
-                                                        <option value="{{ $subcategory->id }}">-- {{ ucfirst($subcategory->name) }}  {{$subcategory->products->count()}} </option>
+                                                        <option wire:key="{{ $subcategory->id }}" value="{{ $subcategory->id }}">-- {{ ucfirst($subcategory->name) }}  {{$subcategory->products->count()}} </option>
                                                     @endforeach
                                                 @endif
                                             @endif
                                         @endforeach
                                     </select>
-                                    @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
                         </div>
@@ -101,10 +100,11 @@
                             $i = ($products->currentPage()-1)*$products->perPage();
                         @endphp
                         @forelse ( $products as $product )
+
                             <tr>
                                 <td>{{ ++$i }}</td>
                                 <td><img src="{{ asset('images/products').'/'.$product->image }}" alt="" width="60"></td>
-                                <td>{{$product->name}}</td>
+                                <td><a class="text-primary" href="{{ route('admin.edit-product', ['product_id' => $product->id] ) }}">{{$product->name}}</a></td>
                                 <td>{{$product->category->name }}</td>
                                 <td>{{$product->stock_status}}</td>
                                 <td>{{$product->sale_price}}</td>
