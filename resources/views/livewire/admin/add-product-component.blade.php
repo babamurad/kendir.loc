@@ -99,14 +99,14 @@
                                                     <label for="name_en" class="form-label">Name - <span class="btn-light">EN</span></label>
                                                     <input type="text" class="form-control @error('name_en') is-invalid @enderror" name="name_en"  placeholder="Enter product name" wire:model="name_en"
                                                            wire:keyup="generateSlug()">
-                                                    @error('name_en') <p class="text-danger">{{$message}}</p> @enderror
+                                                    @error('name_en') <div class="invalid-feedback">{{$message}}</div> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="slug" class="form-label">Slug</label>
                                                     <input type="text" class="form-control @error('slug') is-invalid @enderror" name="slug" placeholder="Enter product slug" wire:model="slug" disabled>
-                                                    @error('slug') <p class="text-danger">{{$message}}</p> @enderror
+                                                    @error('slug') <div class="invalid-feedback">{{$message}}</div> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
@@ -114,7 +114,7 @@
                                                     <label for="name_ru" class="form-label">Name - <span class="btn-light">RU</span></label>
                                                     <input type="text" class="form-control @error('name_ru') is-invalid @enderror" name="name_ru"  placeholder="Enter product name" wire:model="name_ru"
                                                            wire:keyup="generateSlug()">
-                                                    @error('name_ru') <p class="text-danger">{{$message}}</p> @enderror
+                                                    @error('name_ru') <div class="invalid-feedback">{{$message}}</div> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
@@ -122,7 +122,7 @@
                                                     <label for="name_tm" class="form-label">Name - <span class="btn-light">TM</span></label>
                                                     <input type="text" class="form-control @error('name_tm') is-invalid @enderror" name="name_tm"  placeholder="Enter product name" wire:model="name_tm"
                                                            wire:keyup="generateSlug()">
-                                                    @error('name_tm') <p class="text-danger">{{$message}}</p> @enderror
+                                                    @error('name_tm') <div class="invalid-feedback">{{$message}}</div> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-12">
@@ -130,7 +130,7 @@
                                                     <label for="short_description" class="form-label">Short Description - <span class="btn-light">EN</span> </label>
                                                     <textarea class="form-control @error('short_description_en') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
                                                               wire:model="short_description_en" minlength="20" maxlength="10000"> </textarea>
-                                                    @error('short_description_en') <p class="text-danger">{{$message}}</p> @enderror
+                                                    @error('short_description_en') <div class="invalid-feedback">{{$message}}</div> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-12">
@@ -138,7 +138,7 @@
                                                     <label for="short_description" class="form-label">Short Description - <span class="btn-light">RU</span></label>
                                                     <textarea class="form-control @error('short_description_ru') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
                                                               wire:model="short_description_ru" minlength="20" maxlength="10000"> </textarea>
-                                                    @error('short_description_ru') <p class="text-danger">{{$message}}</p> @enderror
+                                                    @error('short_description_ru') <div class="invalid-feedback">{{$message}}</div> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-12">
@@ -146,7 +146,7 @@
                                                     <label for="short_description" class="form-label">Short Description - <span class="btn-light">TM</span></label>
                                                     <textarea class="form-control @error('short_description_tm') is-invalid @enderror" name="short_description" placeholder="Enter Short Description" cols="20" rows="4"
                                                               wire:model="short_description_tm" minlength="20" maxlength="10000"> </textarea>
-                                                    @error('short_description_tm') <p class="text-danger">{{$message}}</p> @enderror
+                                                    @error('short_description_tm') <div class="invalid-feedback">{{$message}}</div> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-12">
@@ -156,7 +156,7 @@
                                         <textarea id="description_en" class="form-control @error('description_en') is-invalid @enderror" name="description_en" minlength="20" maxlength="15000"
                                                   placeholder="Enter Description" cols="30" rows="12" wire:model.live="description_en"> </textarea>
                                                     </div>
-                                                    @error('description_en') <p class="text-danger">{{$message}}</p> @enderror
+                                                    @error('description_en') <div class="invalid-feedback">{{$message}}</div> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-12">
@@ -166,7 +166,7 @@
                                         <textarea id="description_ru" class="form-control @error('description_ru') is-invalid @enderror" name="description_ru" minlength="20" maxlength="15000"
                                                   placeholder="Enter Description" cols="30" rows="12" wire:model.live="description_ru"> </textarea>
                                                     </div>
-                                                    @error('description_ru') <p class="text-danger">{{$message}}</p> @enderror
+                                                    @error('description_ru') <div class="invalid-feedback">{{$message}}</div> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-12">
@@ -176,7 +176,7 @@
                                         <textarea id="description_tm" class="form-control @error('description_tm') is-invalid @enderror" name="description_tm" minlength="20" maxlength="15000"
                                                   placeholder="Enter Description" cols="30" rows="12" wire:model.live="description_tm"> </textarea>
                                                     </div>
-                                                    @error('description_tm') <p class="text-danger">{{$message}}</p> @enderror
+                                                    @error('description_tm') <div class="invalid-feedback">{{$message}}</div> @enderror
                                                 </div>
                                             </div>
                                         </div>
@@ -186,17 +186,17 @@
                                             <div class="form-group">
                                                 <label for="regular_price" class="form-label">Reqular Price</label>
                                                 <input type="text" class="form-control @error('regular_price') is-invalid @enderror" name="regular_price" placeholder="Enter regular price" wire:model="regular_price">
-                                                @error('regular_price') <p class="text-danger">{{$message}}</p> @enderror
+                                                @error('regular_price') <div class="invalid-feedback">{{$message}}</div> @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label for="sale_price" class="form-label">Sale Price</label>
                                                 <input type="text" class="form-control @error('sale_price') is-invalid @enderror" name="sale_price" placeholder="Enter sale price" wire:model="sale_price">
-                                                @error('sale_price') <p class="text-danger">{{$message}}</p> @enderror
+                                                @error('sale_price') <div class="invalid-feedback">{{$message}}</div> @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label for="sku" class="form-label">SKU</label>
                                                 <input type="text" class="form-control @error('sale_price') is-invalid @enderror" name="sku" placeholder="Enter sku" wire:model="sku">
-                                                @error('sku') <p class="text-danger">{{$message}}</p> @enderror
+                                                @error('sku') <div class="invalid-feedback">{{$message}}</div> @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label for="stock" class="form-label" wire:model="stock_status">Stock Status</label>
@@ -204,7 +204,7 @@
                                                     <option value="In Stock">In Stock</option>
                                                     <option value="Out of Stock">Out of Stock</option>
                                                 </select>
-                                                @error('stock_status') <p class="text-danger">{{$message}}</p> @enderror
+                                                @error('stock_status') <div class="invalid-feedback">{{$message}}</div> @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label for="featured" class="form-label">Featured</label>
@@ -212,12 +212,12 @@
                                                     <option value="0">No</option>
                                                     <option value="1">Yes</option>
                                                 </select>
-                                                @error('featured') <p class="text-danger">{{$message}}</p> @enderror
+                                                @error('featured') <div class="invalid-feedback">{{$message}}</div> @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label for="quantity" class="form-label">Quantity</label>
                                                 <input type="number" min="0" class="form-control @error('quantity') is-invalid @enderror" name="quantity" placeholder="Enter product quantity" wire:model="quantity">
-                                                @error('quantity') <p class="text-danger">{{$message}}</p> @enderror
+                                                @error('quantity') <div class="invalid-feedback">{{$message}}</div> @enderror
                                             </div>
 
                                         </div>
@@ -236,7 +236,7 @@
                                         @if($image)
                                             <img class="mt-2 mb-4 rounded" src="{{ $image->temporaryUrl() }}" alt="Product Image" style="width: 120px; max-height: 200px;">
                                         @endif
-                                        @error('image') <p class="text-danger">{{$message}}</p> @enderror
+                                        @error('image') <div class="invalid-feedback">{{$message}}</div> @enderror
                                     </div>
                                 </div>
                             </div>
@@ -250,7 +250,7 @@
                                                 <img class="mt-2 mb-5 rounded" src="{{ $image->temporaryUrl() }}" alt="Product Image Galley" style="width: 120px; max-height: 200px;">
                                             @endforeach
                                         @endif
-                                        @error('images') <p class="text-danger">{{$message}}</p> @enderror
+                                        @error('images') <div class="invalid-feedback">{{$message}}</div> @enderror
                                     </div>
                                 </div>
                             </div>
@@ -267,7 +267,7 @@
                                 <div class="form-group row">
                                     <label for="category_id" class="col-sm-4 col-form-label text-right">Category</label>
                                     <div class="col-sm-8">
-                                        <select name="categories" class="form-control" name="category_id" wire:model.live="category_id">
+                                        <select name="categories" class="form-control @error('category_id') is-invalid @enderror" name="category_id" wire:model.live="category_id">
                                             <option value="">Select Category</option>
                                             @foreach($categories as $category)
                                                 @if($category->parent_id==0)
@@ -280,7 +280,7 @@
                                                 @endif
                                             @endforeach
                                         </select>
-                                        @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
+                                        @error('category_id') <div class="invalid-feedback">{{$message}}</div> @enderror
                                     </div>
                                 </div>
                             </div>
@@ -288,13 +288,13 @@
                                 <div class="form-group row">
                                     <label for="brands" class="col-sm-4 col-form-label text-right">Brands</label>
                                     <div class="col-sm-8">
-                                        <select name="brands" class="form-control" wire:model.live="brand_id">
+                                        <select name="brands" class="form-control @error('brand_id') is-invalid @enderror" wire:model.live="brand_id">
                                             <option value="">Select Brand</option>
                                             @foreach($brands as $brand)
                                                 <option value="{{ $brand->id }}" style="font-weight:500;" >{{ ucfirst($brand->name) }}</option>
                                             @endforeach
                                         </select>
-                                        @error('brand_id') <p class="text-danger">{{$message}}</p> @enderror
+                                        @error('brand_id') <div class="invalid-feedback">{{$message}}</div> @enderror
                                     </div>
                                 </div>
                             </div>
@@ -302,13 +302,13 @@
                                 <div class="form-group row">
                                     <label for="manuf_id" class="col-sm-4 col-form-label text-right">Manufacturer</label>
                                     <div class="col-sm-8">
-                                        <select name="brands" class="form-control" name="manuf_id" wire:model.live="manuf_id">
+                                        <select name="brands" class="form-control @error('manuf_id') is-invalid @enderror" name="manuf_id" wire:model.live="manuf_id">
                                             <option value="">Select Manufacturer</option>
                                             @foreach($manufacturers as $manufacturer)
                                                 <option value="{{ $manufacturer->id }}" style="font-weight:500;" >{{ ucfirst($manufacturer->name) }}</option>
                                             @endforeach
                                         </select>
-                                        @error('manuf_id') <p class="text-danger">{{$message}}</p> @enderror
+                                        @error('manuf_id') <div class="invalid-feedback">{{$message}}</div> @enderror
                                     </div>
                                 </div>
                             </div>

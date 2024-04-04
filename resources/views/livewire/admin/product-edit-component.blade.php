@@ -265,9 +265,9 @@
 
                                 <div class="col-sm-4">
                                     <div class="form-group row">
-                                        <label for="category_id" class="col-sm-4 col-form-label text-right">Category</label>
+                                        <label for="category_id" class="col-sm-4 col-form-label text-right required">Category</label>
                                         <div class="col-sm-8">
-                                            <select name="categories" class="form-control" name="category_id" wire:model.live="category_id">
+                                            <select name="categories" class="form-control @error('category_id') 'is-invalid' @enderror" name="category_id" wire:model.live="category_id">
                                                 <option value="">Select Category</option>
                                                 @foreach($categories as $category)
                                                     @if($category->parent_id==0)
@@ -280,7 +280,8 @@
                                                     @endif
                                                 @endforeach
                                             </select>
-                                            @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
+                                            @error('category_id') <div class="invalid-feedback">{{$message}}</div> @enderror
+
                                         </div>
                                     </div>
                                 </div>
@@ -288,7 +289,7 @@
                                     <div class="form-group row">
                                         <label for="brands" class="col-sm-4 col-form-label text-right">Brands</label>
                                         <div class="col-sm-8">
-                                            <select name="brands" class="form-control" wire:model.live="brand_id">
+                                            <select name="brands" class="form-control @error('brand_id') 'is-invalid' @enderror" wire:model.live="brand_id">
                                                 <option value="">Select Brand</option>
                                                 @foreach($brands as $brand)
                                                     <option value="{{ $brand->id }}" style="font-weight:500;" >{{ ucfirst($brand->name) }}</option>

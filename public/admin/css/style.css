@@ -37,3 +37,9 @@ ul li a .active{
     background-color: #8dcebc;
     border-color: #8dcebc;
 }
+
+.btn-light {
+    padding: 5px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}

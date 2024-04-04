@@ -1,4 +1,4 @@
-@section('title', 'Messages')
+@section('title', __('Messages'))
 
 <div>
     <div wire:ignore.self class="modal" id="deleteConfirmation">

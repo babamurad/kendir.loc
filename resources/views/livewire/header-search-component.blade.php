@@ -5,9 +5,17 @@
                 <select class="search__categories" aria-label="Category" name="catId">
                     <option value="" selected>{{__('All Categories')}}</option>
                     @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name}}</option>
+                        @if($category->parent_id == 0)
+                        <option class="font-weight-bold" value="{{ $category->id }}" disabled>{{ $category->name }} </option>
+                            @if($category->children->count() > 0)
+                                @foreach($category->children as $subcategory)
+                                <option value="{{ $subcategory->id }}"> -- {{ $subcategory->name }} </option>
+                                @endforeach
+                            @endif
+                        @endif
                     @endforeach
                 </select>
+
                 <input class="search__input" name="q" placeholder="{{__('Search products')}}"
                        aria-label="Site search" type="text" autocomplete="off">
                 <button class="search__button search__button--type--submit" type="submit">

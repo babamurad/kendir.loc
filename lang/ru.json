@@ -11,6 +11,9 @@
     "Power Tools": "Электроинструменты",
     "All": "Все",
 
+    "Category": "Категория",
+    "Search": "Поиск по",
+
     "Language": "Язык",
     "All Categories": "Все категории",
     "Cart": "Корзина",
@@ -162,6 +165,7 @@
     "Write to Us": "Пшите нам",
     "Subject": "Тема",
     "Message": "Сообщение",
+    "Messages": "Новые Сообщения",
     "Send Message": "Отправить",
 
     "Latest news": "Последние статьи",
@@ -183,7 +187,9 @@
     "placeorder":"Заказать",
 
 
-    "Calculator": "Калькулятор"
+    "Calculator": "Калькулятор",
+
+    "Return Policy": "Правила возврата"
 
 
 }

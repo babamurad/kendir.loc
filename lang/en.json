@@ -10,6 +10,8 @@
     "Featured Products": "Featured Products",
     "Power Tools": "Power Tools",
     "All": "All",
+    "Category": "Category",
+    "Search": "Search By",
 
     "Language": "Language",
     "All Categories": "All Categories",
@@ -159,6 +161,7 @@
     "Write to Us": "Write to Us",
     "Subject": "Subject",
     "Message": "Message",
+    "Messages": "New Messages",
     "Send Message": "Send Message",
 
     "Latest news": "Latest Posts",
@@ -177,7 +180,8 @@
     "termcondition":"I have read and agree to the website",
     "termsandconditions":"terms and conditions",
     "placeorder":"Place Order",
-    "Calculator": "Calculator"
+    "Calculator": "Calculator",
+    "Return Policy": "Return Policy"
 
 
 }

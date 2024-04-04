@@ -11,6 +11,9 @@
     "Power Tools": "Güýç gurallary",
     "All": "Hemmesi",
 
+    "Category": "Kategoriýa",
+    "Search": "Gözleg",
+
     "Language": "Dil",
     "All Categories": "Ähli kategoriýalar",
     "Cart": "Sebet",
@@ -161,6 +164,7 @@
     "Write to Us": "Bize ýazyň",
     "Subject": "Tema",
     "Message": "Tekst",
+    "Messages": "Täze hatlar",
     "Send Message": "Ugrat",
 
     "Latest news": "Iň soňky habarlar",
@@ -180,6 +184,8 @@
     "termsandconditions":"tanysşdym we ylalşýaryn",
     "placeorder":"Sargyt et",
 
-    "Calculator": "Kalkulýator"
+    "Calculator": "Kalkulýator",
+
+    "Return Policy": "Yzyna gaýtarmak syýasaty"
 
 }

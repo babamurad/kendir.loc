@@ -27,30 +27,35 @@ class SearchComponent extends Component
 
     public function render()
     {
+        $name = 'name_' . session()->get('locale', default: 'ru');
+        $selectedCat = Category::where('id', $this->catId)->first();
         $categories = Category::with('cparent')->with('products')->get();
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
         if ($this->catId){
             if (!$this->searchTerm=='') {
-                $products = DB::table('products')
+                $products = Product::
+                    with('specification')
                     ->where('category_id', '=', $this->catId)
-                    ->where('name', 'like', $this->searchTerm)
-                    ->orderBy('name', $this->sort)
-                    ->paginate($this->perPage);
-            } else {
-                $products = DB::table('products')
-                    ->where('category_id', '=', $this->catId)
-                    ->orderBy('name', $this->sort)
-                    ->paginate($this->perPage);
-            }
-            //dd($products->count());
-        } else {
-            if (!$this->searchTerm==''){
-                $products = Product::where('name', 'like', $this->searchTerm)
-                    ->orderBy('name', $this->sort)
+                    ->where($name, 'like', $this->searchTerm)
+                    ->orderBy($name, $this->sort)
                     ->paginate($this->perPage);
             } else {
                 $products = Product::
-                    orderBy('name', $this->sort)
+                    with('specification')
+                    ->where('category_id', '=', $this->catId)
+                    ->orderBy($name, $this->sort)
+                    ->paginate($this->perPage);
+            }
+        } else {
+            if (!$this->searchTerm==''){
+                $products = Product::where($name, 'like', $this->searchTerm)
+                    ->with('specification')
+                    ->orderBy($name, $this->sort)
+                    ->paginate($this->perPage);
+            } else {
+                $products = Product::
+                    with('specification')
+                    ->orderBy($name, $this->sort)
                     ->paginate($this->perPage);
             }
         }
@@ -59,7 +64,7 @@ class SearchComponent extends Component
         $newArrivals = Product::where('created_at', '>=', $date)->get();
 
 
-        return view('livewire.search-component', compact('categories', 'latestProducts', 'products', 'newArrivals'));
+        return view('livewire.search-component', compact('categories', 'latestProducts', 'products', 'newArrivals', 'selectedCat'));
     }
 
 
@@ -103,8 +108,8 @@ class SearchComponent extends Component
         $this->fill(request()->only('catId'));
         //$this->catId =
         //dd($this->catId . '-' . $this->searchTerm);
-        $this->minPrice = DB::table('products')->min('sale_price');
-        $this->maxPrice = DB::table('products')->max('sale_price');
+//        $this->minPrice = DB::table('products')->min('sale_price');
+//        $this->maxPrice = DB::table('products')->max('sale_price');
     }
 
     public function selectCategory($id = '')

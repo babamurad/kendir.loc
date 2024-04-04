@@ -63,11 +63,13 @@ class ArmatureComponent extends Component
     public function CalcLength()
     {
         $s = floatval($this->diameter);
+        $this->weight = (float) $this->weight;
         $s= $s/2;
         $s = ($s*$s);
         $s = pi()*$s;
-        //dd((1000/$s));
-        $this->resLength = number_format($this->weight/($s*0.00785), 2, '.', ' ') ;
+        if ($s != 0) {
+            $this->resLength = number_format($this->weight/($s*0.00785), 2, '.', ' ') ;
+        }
     }
 
 

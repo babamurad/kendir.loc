@@ -176,7 +176,7 @@
                                 </div>
                                 <div class=" widget-filters__list widget-filters__actions d-flex">
 {{--                                    <button class="btn btn-primary btn-sm">Filter</button>--}}
-                                    <button class="btn btn-secondary btn-sm" wire:click="resetAll" wire:navigate>Reset</button>
+                                    <a class="btn btn-secondary btn-sm" href="{{ route('shop') }}" wire:navigate wire:navigate>Reset</a>
                                 </div>
                             </div>
                         </div>

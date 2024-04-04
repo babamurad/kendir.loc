@@ -133,6 +133,8 @@ class AddProductComponent extends Component
             'quantity'             => 'required',
             'image'                => 'required|image|max:1024',
             'category_id'          => 'required',
+            'brand_id'          => 'required',
+            'manuf_id'          => 'required',
             'dl'                   => 'nullable|integer|default:0',
             'dw'                   => 'nullable|integer|default:0',
             'dh'                   => 'nullable|integer|default:0',

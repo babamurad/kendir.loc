@@ -27,8 +27,10 @@
             </div>
             <div class="page-header__title">
                 <div class="row">
-                    <div class="col-md-6"><h1>{{ __('Shop') }}</h1></div>
+                    <div class="col-md-6"><h1>{{ __('Search Results') }}</h1></div>
                     <div class="col-md-6">
+                        <span>{{__('Category')}}: <strong>{{ $catId? $selectedCat->name:'All Categories'}}</strong></span> <br>
+                        <span>{{ __('Search') }}: <strong>"{{ $searchTerm }}"</strong></span>
                         @if(session('success'))
                             <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; top: -2rem;">
                                 <button type="button" class="close  mt-3" data-dismiss="alert" aria-hidden="true" style="top: -16px;">×</button>
@@ -250,8 +252,9 @@
                                                 </a>
                                             </div>
                                             <div class="product-card__info">
+                                               @php $name = 'name_'.session()->get('locale') @endphp
                                                 <div class="product-card__name">
-                                                    <a href="{{ route('product.details', ['slug' => $product->slug]) }}" wire:navigate>{{ $product->name }}</a>
+                                                    <a href="{{ route('product.details', ['slug' => $product->slug]) }}" wire:navigate>{{ $product->$name }}</a>
                                                 </div>
                                                 <div class="product-card__rating">
                                                     <div class="product-card__rating-stars">

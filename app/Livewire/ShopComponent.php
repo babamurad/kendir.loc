@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Manufacturer;
+use App\Models\Post;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -129,8 +130,9 @@ class ShopComponent extends Component
         $brands = Brand::with('products')->get();
         $manufacturers = Manufacturer::with('products')->get();
 
+        $post = Post::first();
         return view('livewire.shop-component',
-            compact('categories', 'latestProducts', 'products', 'newArrivals', 'rcategories', 'brands', 'manufacturers'));
+            compact('categories', 'latestProducts', 'products', 'newArrivals', 'rcategories', 'brands', 'manufacturers', 'post'));
     }
 
     public function mount($id = null)
@@ -138,8 +140,8 @@ class ShopComponent extends Component
         $this->category_id = $id;
 
         $this->prodCount = Product::count();
-        $this->minPrice = DB::table('products')->min('sale_price');
-        $this->maxPrice = DB::table('products')->max('sale_price');
+//        $this->minPrice = DB::table('products')->min('sale_price');
+//        $this->maxPrice = DB::table('products')->max('sale_price');
     }
 
     public function checkBrand($id)
@@ -270,13 +272,5 @@ class ShopComponent extends Component
     public function qtyDec()
     {
         --$this->pqty;
-    }
-
-    public function resetAll()
-    {
-        $this->category_id = '';
-        $this->check_brands = [];
-        $this->check_manufs = [];
-        redirect()->route('shop');
     }
 }

@@ -283,7 +283,7 @@
                                         <li class="footer-links__item"><a href="#" class="footer-links__link">{{__('Brands')}}</a>
                                         </li>
                                         <li class="footer-links__item"><a href="{{ route('contacts') }}" class="footer-links__link">{{__('Contact Us')}}</a></li>
-                                        <li class="footer-links__item"><a href="#" class="footer-links__link">{{__('Returns')}}</a>
+                                        <li class="footer-links__item"><a href="{{ route('return') }}" class="footer-links__link">{{__('Returns')}}</a>
                                         </li>
                                     </ul>
                                 </div>

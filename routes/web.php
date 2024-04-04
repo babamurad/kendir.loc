@@ -43,7 +43,10 @@ use App\Livewire\UserAddresessComponent;
 use App\Livewire\UserEditAddresessComponent;
 use App\Livewire\UserPasswordComponent;
 use App\Livewire\CompareComponent;
+use \App\Livewire\ReturnComponent;
+
 use \App\Http\Controllers\LocalizationController;
+
 use \App\Livewire\Calculator\CalculatorComponent;
 
 
@@ -76,6 +79,8 @@ Route::middleware(\App\Http\Middleware\Localization::class)->group(function (){
     Route::get('post/{id}', PostDetailComponent::class)->name('post-detail');
     Route::get('about-us', AboutUsComponent::class)->name('about-us');
     Route::get('compare', CompareComponent::class)->name('compare');
+
+    Route::get('return', ReturnComponent::class)->name('return');
 
     Route::get('user', UserComponent::class)->name('user');
     Route::get('register', RegisterUserComponent::class)->name('register');
