@@ -278,7 +278,7 @@
                                     <h5 class="footer-links__title">{{__('Information')}}</h5>
                                     <ul class="footer-links__list">
                                         <li class="footer-links__item"><a href="{{ route('about-us') }}" class="footer-links__link">{{__('About Us')}}</a></li>
-                                        <li class="footer-links__item"><a href="#" class="footer-links__link">{{__('Delivery Information')}}</a></li>
+                                        <li class="footer-links__item"><a href="{{route('delivery')}}" class="footer-links__link">{{__('Delivery Information')}}</a></li>
                                         <li class="footer-links__item"><a href="{{ route('terms') }}" class="footer-links__link">{{__('Privacy Policy')}}</a></li>
                                         <li class="footer-links__item"><a href="#" class="footer-links__link">{{__('Brands')}}</a>
                                         </li>

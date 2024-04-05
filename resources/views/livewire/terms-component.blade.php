@@ -88,6 +88,8 @@
                     </ol>
 
                     <p>For information about how to contact us, please visit our <a href="{{ route('contacts') }}">contact page</a>.</p>
+                    <p>Для получения информации о том, как с нами связаться, посетите нашу <a href="{{ route('contacts') }}">страницу контактов</a>.</p>
+                    <p> Biziň bilen nädip habarlaşmalydygymyz barada maglumat almak üçin <a href="{{ route('contacts') }}"> aragatnaşyk sahypasy </a>. </p>
                 </div>
             </div>
         </div>
