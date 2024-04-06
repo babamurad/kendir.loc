@@ -8,23 +8,23 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="/">Home</a>
+                                <a href="/">{{__('Home')}}</a>
                                 <svg class="breadcrumb-arrow" width="6px" height="9px">
                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                                 </svg>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="">Breadcrumb</a>
+                                <a href="{{ route('shop') }}">{{__('Shop')}}</a>
                                 <svg class="breadcrumb-arrow" width="6px" height="9px">
                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                                 </svg>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{__('My Account')}}</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="page-header__title">
-                    <h1>My Account</h1>
+                    <h1>{{__('My Account')}}</h1>
                 </div>
             </div>
         </div>

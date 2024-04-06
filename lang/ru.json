@@ -201,7 +201,10 @@
     "Save": "Сохранить",
     "Was placed on": "Был помещен на",
     "and is currently": "и в настоящее время",
-    "Back to list": "К списку"
+    "Back to list": "К списку",
+    "Register": "Регистрация",
+    "Enter Name": "Введите имя",
+    "Enter email": "Введите адрес"
 
 
 }
