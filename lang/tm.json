@@ -187,6 +187,18 @@
     "Calculator": "Kalkulýator",
 
     "Return Policy": "Yzyna gaýtarmak syýasaty",
-    "Delivery": "Eltip berme hyzmaty"
+    "Delivery": "Eltip berme hyzmaty",
+
+    "No Address": "Salgy ýok",
+    "Default": "Bellenen",
+    "Edit Address": "Salgyny redaktirläň",
+    "Current Password": "Hazirki parolynyz",
+    "New Password": "Täze parol",
+    "Reenter New Password": "Täze parol gaýtadan",
+    "Change": "Üýtget",
+    "Save": "Ýatda sakla",
+    "Was placed on": "Goýuldy",
+    "and is currently": "we häzirki wagtda",
+    "Back to list": "Sanawa"
 
 }

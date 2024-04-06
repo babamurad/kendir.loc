@@ -42,9 +42,10 @@
 {{--                            </a>--}}
 {{--                            <div class="addresses-list__divider"></div>--}}
                             <div class="addresses-list__item card address-card">
-                                <div class="address-card__badge">Default</div>
+                                <div class="address-card__badge">{{__('Default')}}</div>
                                 <div class="address-card__body">
-                                    <div class="address-card__name">{{ $order->firstname . ' ' . $order->lastname }}</div>
+                                    @if($order != null)
+                                    <div class="address-card__name"> {{ $order->firstname }}  {{ $order->lastname }}</div>
                                     <div class="address-card__row">
                                         {{ $order->strana->name }}<br>
                                         Zip Code: {{ $order->zipcode }}, <br>
@@ -57,12 +58,15 @@
                                     </div>
                                     <div class="address-card__row">
                                         <div class="address-card__row-title">Email Address</div>
-                                        <div class="address-card__row-content">{{ $order->email }}</div>
+                                        <div class="address-card__row-content">{{ $order->email??$order->email }}</div>
                                     </div>
                                     <div class="address-card__footer">
                                         <a href="{{ route('edit-address') }}">Edit</a>&nbsp;&nbsp;
                                         <a href="#">Remove</a>
                                     </div>
+                                    @else
+                                        <div class="address-card__row"> {{ __('No Address') }}</div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="addresses-list__divider"></div>

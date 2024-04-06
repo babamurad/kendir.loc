@@ -8,23 +8,23 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="/">Home</a>
+                                <a href="/">{{__('Home')}}</a>
                                 <svg class="breadcrumb-arrow" width="6px" height="9px">
                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                                 </svg>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="">Breadcrumb</a>
+                                <a href="{{ route('shop') }}">{{__('Shop')}}</a>
                                 <svg class="breadcrumb-arrow" width="6px" height="9px">
                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                                 </svg>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{__('My Account')}}</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="page-header__title">
-                    <h1>My Account</h1>
+                    <h1>{{__('My Account')}}</h1>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     <div class="col-12 col-lg-9 mt-4 mt-lg-0">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Order History</h5>
+                                <h5>{{__('Order History')}}</h5>
                             </div>
                             <div class="card-divider"></div>
                             <div class="card-table">
@@ -45,10 +45,10 @@
                                     <table>
                                         <thead>
                                         <tr>
-                                            <th>Order</th>
-                                            <th>Date</th>
-                                            <th>Status</th>
-                                            <th>Total</th>
+                                            <th>{{__('Order')}}</th>
+                                            <th>{{__('Date')}}</th>
+                                            <th>{{__('Status')}}</th>
+                                            <th>{{__('Total')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>

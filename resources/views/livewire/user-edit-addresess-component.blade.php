@@ -38,12 +38,13 @@
                     <div class="col-12 col-lg-9 mt-4 mt-lg-0">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Edit Address</h5>
+                                <h5>{{__('Edit Address')}}</h5>
                             </div>
                             <div class="card-divider"></div>
                             <div class="card-body">
                                 <div class="row no-gutters">
                                     <div class="col-12 col-lg-10 col-xl-8">
+                                        @if($order != null)
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label class="required-field" for="checkout-first-name">First Name</label>
@@ -110,6 +111,9 @@
                                         <div class="form-group mt-3 mb-0">
                                             <button class="btn btn-primary" wire:click="updateAddress">Save</button>
                                         </div>
+                                        @else
+                                            <div class="address-card__name"> {{__('No Address')}}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

@@ -3,11 +3,11 @@
 
     <div class="container">
         <div class="row">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap flex-lg-nowrap">
+            <div class="d-flex justify-content-center flex-wrap flex-md-nowrap flex-lg-nowrap">
                 @foreach($metals as $metal)
                     <div class="p-2 ">
                         <a id="{{$metal['slug']}}"  role="button" wire:click="{{$metal['name']}}">
-                            <div class="card pt-3 m-2 calculator_nav h-100 w-100 pb-0">
+                            <div class="card pt-3 m-2 calculator_nav w-100 pb-0 mobile-calc">
                                 <div class="card-image"><img src="{{ asset($metal['image']) }}" alt="{{__('Armatura')}}">
                                 </div>
                                 <div class="card-title mb-0 mt-2"><span>{{__($metal['title'] )}}</span></div>

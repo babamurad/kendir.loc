@@ -372,7 +372,7 @@
                             <div class="products-list__body">
                                 @foreach($products as $product)
                                     <div class="products-list__item">
-                                        <div class="product-card product-card--hidden-actions ">
+                                        <div class="product-card ">
                                             <button class="product-card__quickview" type="button" data-toggle="modal" data-target="#productDetails" wire:click="productDetails('{{$product->id}}')">
                                                 <svg width="16px" height="16px">
                                                     <use xlink:href="{{ asset('images/sprite.svg#quickview-16') }}"></use>

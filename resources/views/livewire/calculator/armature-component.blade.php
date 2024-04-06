@@ -44,11 +44,9 @@
                     <div class="tab-pane fade in active show" id="panel1" role="tabpanel">
                         <div class="form-group">
                             <div class="row calc">
-                                <label class="col-sm-4 control-label"
-                                       for="inputFirstName">{{__('calc.Diameter mm.')}}</label>
+                                <label class="col-sm-4 control-label" for="inputFirstName">{{__('calc.Diameter mm.')}}</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="number" id="inputFirstName"
-                                           wire:model.live="diameter">
+                                    <input class="form-control" type="number" id="inputFirstName" wire:model.live="diameter">
                                 </div>
                             </div>
                         </div>
@@ -56,8 +54,7 @@
                             <div class="row calc">
                                 <label class="col-sm-4 control-label" for="inputFirstName">{{__('calc.Weight')}}</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="number" id="inputFirstName"
-                                           wire:model.live="weight">
+                                    <input class="form-control" type="number" id="inputFirstName" wire:model.live="weight">
                                 </div>
                             </div>
                         </div>
@@ -69,8 +66,7 @@
         </div>
         <div class="col-sm-6 mb-4">
             <div class="card text-center">
-                <div class="card-img-top mt-2 p-3 h-50"><img src="{{ asset('images/calculator/armatura_calc.svg') }}"
-                                                             alt=""></div>
+                <div class="card-img-top mt-2 p-3 h-50"><img src="{{ asset('images/calculator/armatura_calc.svg') }}" alt=""></div>
                 <div class="card-title">
                     @if($lw)
                         <span> <strong>{{__('calc.Weight Armature')}}:</strong> </span>

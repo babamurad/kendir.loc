@@ -57,9 +57,9 @@
     "Subtotal": "Промежуточный итог",
     "Shipping": "Перевозки",
     "Tax 10%": "Налог 10%",
-    "Proceed to checkout": "Перейти к оформлению заказа",
+    "Proceed to checkout": "Оформление заказа",
     "Your shopping cart is empty!": "Ваша корзина пуста!",
-    "Continue": "Продолжать",
+    "Continue": "Продолжить",
     "Filters": "Фильтры",
     "Brand": "Бренд",
     "Manufacturer": "Производитель",
@@ -190,7 +190,18 @@
     "Calculator": "Калькулятор",
 
     "Return Policy": "Правила возврата",
-    "Delivery": "Доставка"
+    "Delivery": "Доставка",
+    "No Address": "Нет адреса",
+    "Default": "ПО УМОЛЧАНИЮ",
+    "Edit Address": "Изменить адрес",
+    "Current Password": "Текущий пароль",
+    "New Password": "Новый пароль",
+    "Reenter New Password": "Повторите пароль",
+    "Change": "Изменить",
+    "Save": "Сохранить",
+    "Was placed on": "Был помещен на",
+    "and is currently": "и в настоящее время",
+    "Back to list": "К списку"
 
 
 }

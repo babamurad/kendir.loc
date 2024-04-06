@@ -182,12 +182,7 @@
             <div class="block-header">
                 <h3 class="block-header__title">{{ __('Featured Products') }}</h3>
                 <div class="block-header__divider"></div>
-                <ul class="block-header__groups-list">
-                    <li><bu\tton type="button" class="block-header__group  block-header__group--active ">{{ __('All') }}</button></li>
-                    <li><button type="button" class="block-header__group ">{{ __('Power Tools') }}</button></li>
-                    <li><button type="button" class="block-header__group ">Hand Tools</button></li>
-                    <li><button type="button" class="block-header__group ">Plumbing</button></li>
-                </ul>
+
                 <div class="block-header__arrows-list">
                     <button class="block-header__arrow block-header__arrow--left" type="button">
                         <svg width="7px" height="11px">

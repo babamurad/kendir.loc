@@ -16514,3 +16514,9 @@ ul {
     margin-right: 2px;
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,0);
 }
+
+@media (max-width: 430px) {
+    .mobile-calc{
+        width: 140px !important;
+    }
+}

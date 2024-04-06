@@ -8,23 +8,23 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="/">Home</a>
+                                <a href="/">{{__('Home')}}</a>
                                 <svg class="breadcrumb-arrow" width="6px" height="9px">
                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                                 </svg>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="">Breadcrumb</a>
+                                <a href="{{ route('shop') }}">{{__('Shop')}}</a>
                                 <svg class="breadcrumb-arrow" width="6px" height="9px">
                                     <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use>
                                 </svg>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{__('My Account')}}</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="page-header__title">
-                    <h1>My Account</h1>
+                    <h1>{{__('My Account')}}</h1>
                 </div>
             </div>
         </div>
@@ -38,12 +38,12 @@
                         <div class="card">
                             <div class="order-header">
                                 <div class="order-header__actions">
-                                    <a href="{{ route('order-history') }}" class="btn btn-xs btn-secondary" wire:navigate>Back to list</a>
+                                    <a href="{{ route('order-history') }}" class="btn btn-xs btn-secondary" wire:navigate>{{__('Back to list')}}</a>
                                 </div>
-                                <h5 class="order-header__title">Order #{{ $order->id }}</h5>
+                                <h5 class="order-header__title">{{__('Order')}} #{{ $order->id }}</h5>
                                 <div class="order-header__subtitle">
-                                    Was placed on <mark class="order-header__date">{{ \Carbon\Carbon::create($order->created_at)->format('d F, Y') }}</mark>
-                                    and is currently <mark class="order-header__status">{{ $order->status }}</mark>.
+                                    {{__('Was placed on')}} <mark class="order-header__date">{{ \Carbon\Carbon::create($order->created_at)->format('d F, Y') }}</mark>
+                                    {{__('and is currently')}} <mark class="order-header__status">{{ $order->status }}</mark>.
                                 </div>
                             </div>
                             <div class="card-divider"></div>
@@ -52,9 +52,9 @@
                                     <table>
                                         <thead>
                                         <tr>
-                                            <th>Product</th>
-                                            <th>Price</th>
-                                            <th>Total</th>
+                                            <th>{{__('Product')}}</th>
+                                            <th>{{__('Price')}}</th>
+                                            <th>{{__('Total')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody class="card-table__body card-table__body--merge-rows">

@@ -182,7 +182,18 @@
     "placeorder":"Place Order",
     "Calculator": "Calculator",
     "Return Policy": "Return Policy",
-    "Delivery": "Delivery"
+    "Delivery": "Delivery",
+    "No Address": "No Address",
+    "Default": "Default",
+    "Edit Address": "Edit Address",
+    "Current Password": "Current Password",
+    "New Password": "New Password",
+    "Reenter New Password": "Reenter New Password",
+    "Change": "Change",
+    "Save": "Save",
+    "Was placed on": "Was placed on",
+    "and is currently": "and is currently",
+    "Back to list": "Back to list"
 
 
 }

@@ -30,17 +30,21 @@ class UserEditAddresessComponent extends Component
     public function mount()
     {
         $order = Order::with('strana')->where('user_id', '=', auth()->user()->id)->orderBy('id', 'desc')->first();
-        $this->firstname = $order->firstname;
-        $this->lastname = $order->lastname;
-        $this->companyname = $order->companyname;
-        $this->country = $order->country;
-        $this->address1 = $order->line1;
-        $this->address2 = $order->line2;
-        $this->city = $order->city;
-        $this->state = $order->province;
-        $this->zipcode = $order->zipcode;
-        $this->phone = $order->mobile;
-        $this->email = $order->email;
+        if($order != null) {
+            $this->firstname = $order->firstname;
+            $this->lastname = $order->lastname;
+            $this->companyname = $order->companyname;
+            $this->country = $order->country;
+            $this->address1 = $order->line1;
+            $this->address2 = $order->line2;
+            $this->city = $order->city;
+            $this->state = $order->province;
+            $this->zipcode = $order->zipcode;
+            $this->phone = $order->mobile;
+            $this->email = $order->email;
+        }
+
+
     }
 
     public function updateAddress()

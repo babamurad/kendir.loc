@@ -45,6 +45,7 @@ use App\Livewire\UserPasswordComponent;
 use App\Livewire\CompareComponent;
 use \App\Livewire\ReturnComponent;
 use \App\Livewire\DeliveryComponent;
+use \App\Livewire\Roof\RoofComponent;
 
 use \App\Http\Controllers\LocalizationController;
 
@@ -87,9 +88,7 @@ Route::middleware(\App\Http\Middleware\Localization::class)->group(function (){
     Route::get('user', UserComponent::class)->name('user');
     Route::get('register', RegisterUserComponent::class)->name('register');
 
-//    Route::prefix('calculator')->group(function () {
-//
-//    });
+    Route::get('roof', RoofComponent::class)->name('roof');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', UserDashboardComponent::class)->name('dashboard');
