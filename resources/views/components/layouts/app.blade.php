@@ -280,7 +280,7 @@
                                         <li class="footer-links__item"><a href="{{ route('about-us') }}" class="footer-links__link">{{__('About Us')}}</a></li>
                                         <li class="footer-links__item"><a href="{{route('delivery')}}" class="footer-links__link">{{__('Delivery Information')}}</a></li>
                                         <li class="footer-links__item"><a href="{{ route('terms') }}" class="footer-links__link">{{__('Privacy Policy')}}</a></li>
-                                        <li class="footer-links__item"><a href="#" class="footer-links__link">{{__('Brands')}}</a>
+{{--                                        <li class="footer-links__item"><a href="#" class="footer-links__link">{{__('Brands')}}</a>--}}
                                         </li>
                                         <li class="footer-links__item"><a href="{{ route('contacts') }}" class="footer-links__link">{{__('Contact Us')}}</a></li>
                                         <li class="footer-links__item"><a href="{{ route('return') }}" class="footer-links__link">{{__('Returns')}}</a>
@@ -292,12 +292,12 @@
                                 <div class="site-footer__widget footer-links">
                                     <h5 class="footer-links__title">{{__('My Account')}}</h5>
                                     <ul class="footer-links__list">
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">{{__('Store Location')}}</a></li>
+                                        <li class="footer-links__item"><a href="{{ route('contacts') }}" class="footer-links__link">{{__('Store Location')}}</a></li>
                                         <li class="footer-links__item"><a href="{{ route('order-history') }}" class="footer-links__link">{{__('Order History')}}</a></li>
                                         <li class="footer-links__item"><a href="{{ route('wishlist') }}" class="footer-links__link">{{__('Wish List')}}</a></li>
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">{{__('Specials')}}</a></li>
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">{{__('Gift Certificates')}}</a></li>
-                                        <li class="footer-links__item"><a href="" class="footer-links__link">{{__('Affiliate')}}</a></li>
+{{--                                        <li class="footer-links__item"><a href="" class="footer-links__link">{{__('Specials')}}</a></li>--}}
+{{--                                        <li class="footer-links__item"><a href="" class="footer-links__link">{{__('Gift Certificates')}}</a></li>--}}
+{{--                                        <li class="footer-links__item"><a href="" class="footer-links__link">{{__('Affiliate')}}</a></li>--}}
                                     </ul>
                                 </div>
                             </div>
@@ -361,12 +361,13 @@
                     <div class="site-footer__bottom">
                         <div class="site-footer__copyright">
                             <!-- copyright -->
-                            Powered by <a href="/"
-                                target="_blank">Kendir</a>
+                            Powered by Kendir
                             <!-- copyright / end -->
                         </div>
                         <div class="site-footer__payments">
-                            <img src="{{ asset('images/payments.png') }}" alt="">
+{{--                            <img src="{{ asset('images/payments.png') }}" alt="">--}}
+                            <a href="/"><img src="{{ asset('images/kendir/footer-logo.png') }}" alt="Kendir logo" style="width: 50%;"></a>
+
                         </div>
                     </div>
                 </div>

@@ -234,19 +234,32 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <div class="custom-file">
+                                    <div class="custom-file"
+                                         x-data="{ uploading: false, progress: 0 }"
+                                         x-on:livewire-upload-start="uploading = true"
+                                         x-on:livewire-upload-finish="uploading = false"
+                                         x-on:livewire-upload-cancel="uploading = false"
+                                         x-on:livewire-upload-error="uploading = false"
+                                         x-on:livewire-upload-progress="progress = $event.detail.progress"
+                                    >
                                         <input type="file" id="images" class="custom-file-input @error('images') is-invalid @enderror" wire:model="newimages" multiple>
+                                        <!-- Progress Bar -->
+                                        <div x-show="uploading">
+                                            <progress max="100" x-bind:value="progress"></progress>
+                                        </div>
                                         <label class="custom-file-label" for="images" aria-describedby="inputGroupFileAddon02">Product Image Galley</label>
                                         @if($newimages)
                                             @foreach($newimages as $newimage)
                                                 @if($newimage)
                                                     <img class="mt-2 mb-5 rounded" src="{{ $newimage->temporaryUrl() }}" alt="" width="120">
+                                                    <button class="text-danger mx-2 btn rounded btn-sm" style="margin-top: -110px;"><strong>x</strong> </button>
                                                 @endif
                                             @endforeach
                                         @else
                                             @foreach($images as $image)
                                                 @if($image)
                                                     <img class="mt-2 mb-5 rounded" src="{{ asset('images/products') }}/{{ $image }}" alt="" width="120">
+                                                    <button class="text-danger mx-2 btn rounded btn-sm" style="margin-top: -110px;" wire:click="delImage({{$loop->index}})"><strong>x</strong> </button>
                                                 @endif
                                             @endforeach
                                         @endif

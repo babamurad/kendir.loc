@@ -105,7 +105,7 @@ class ProductEditComponent extends Component
                 // Удалить файл
                 unlink('images/products/' . $product->image);
             }
-
+//dd('new Image???');
             $imageName = Carbon::now()->timestamp . '.' . $this->newimage->extension();
             $this->newimage->storeAs('products', $imageName);
             $product->image = $imageName;
@@ -136,6 +136,7 @@ class ProductEditComponent extends Component
             }
             $product->images = $imagesName;
         }
+        $this->reset('images');
         $product->category_id = $this->category_id;
         $product->brand_id = $this->brand_id;
         $product->manufacturer_id = $this->manuf_id;
@@ -206,6 +207,27 @@ class ProductEditComponent extends Component
         $this->diameter = $spec->diameter;
         $this->meter_int = $spec->meter_int;
         $this->articles = $spec->articles;
+    }
+
+    public function delImage($id)
+    {
+        $product = Product::find($this->product_id);
+        $images = explode(',', $product->images);
+        //dd($images[$id]);
+        $img = $images[$id];//название файла которое нужно удалить
+        unset($images[$id]);//удалить название выбранного изображение с поля таблицы images
+        if (file_exists('images/products/' . $img)) {
+            // Удалить файл если существует
+            unlink('images/products/' . $img);
+        }
+        $imeNames = '';
+        foreach ($images as $image) {
+            $imeNames = $imeNames . ',' . $image;
+        }
+        $product->images = $imeNames;
+
+        $product->update();
+        $this->images = explode(',', $imeNames);
     }
 
     public function render()

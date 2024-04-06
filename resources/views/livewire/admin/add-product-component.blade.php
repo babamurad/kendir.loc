@@ -248,6 +248,7 @@
                                         @if($images)
                                             @foreach($images as $image)
                                                 <img class="mt-2 mb-5 rounded" src="{{ $image->temporaryUrl() }}" alt="Product Image Galley" style="width: 120px; max-height: 200px;">
+                                                <span class="text-danger">x</span>
                                             @endforeach
                                         @endif
                                         @error('images') <div class="invalid-feedback">{{$message}}</div> @enderror

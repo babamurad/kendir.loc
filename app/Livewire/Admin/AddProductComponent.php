@@ -19,11 +19,10 @@ class AddProductComponent extends Component
 {
     use WithFileUploads;
 
-    public $name;
     public $slug;
     public $name_en, $name_ru, $name_tm;
-    public $short_description, $short_description_en, $short_description_ru, $short_description_tm;
-    public $description, $description_en, $description_ru, $description_tm;
+    public $short_description_en, $short_description_ru, $short_description_tm;
+    public $description_en, $description_ru, $description_tm;
     public $regular_price;
     public $sale_price;
     public $sku;
@@ -50,13 +49,6 @@ class AddProductComponent extends Component
 
     public function render()
     {
-//        if ($this->category_id){
-//            DB::select('call procAttr_to_Options("'.$this->category_id.'")');
-//            $this->at_options = Option::all();
-//        } else {
-//            $this->at_options = '';
-//        }
-
         $categories = Category::with('cparent')->with('children')->get();
         $attributes = Attribute::where('category_id', '=', $this->category_id)->get();
         $brands = Brand::all();
@@ -84,14 +76,10 @@ class AddProductComponent extends Component
         //$option->name = $this->opt_name;
         $option->value = $this->opt_value;
         $option->update();
-        dd($option);
+//        dd($option);
         $this->dispatch('closeEditOptionModal');
     }
 
-    public function saveOpt()
-    {
-        dd($this->at_options);
-    }
     public function acTab($tabName)
     {
         $this->activeTab = $tabName;
@@ -135,14 +123,15 @@ class AddProductComponent extends Component
             'category_id'          => 'required',
             'brand_id'          => 'required',
             'manuf_id'          => 'required',
-            'dl'                   => 'nullable|integer|default:0',
-            'dw'                   => 'nullable|integer|default:0',
-            'dh'                   => 'nullable|integer|default:0',
-            'weight'               => 'nullable|integer|default:0',
-            'status'               => 'nullable|default:1',
-            'type_roll'            => 'nullable|string|default:Hot',
+//            'dl'                   => 'nullable|integer|default:0',
+//            'dw'                   => 'nullable|integer|default:0',
+//            'dh'                   => 'nullable|integer|default:0',
+//            'weight'               => 'nullable|integer|default:0',
+//            'status'               => 'nullable|default:1',
+//            'type_roll'            => 'nullable|string|default:Hot',
         ]);
 
+        //dd($this->name_en);
         $product = new Product();
         $product->name_en = $this->name_en;
         $product->name_ru = $this->name_ru;
