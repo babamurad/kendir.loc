@@ -204,6 +204,18 @@
     "Enter Name": "Adyny giriziň",
     "Enter email": "E-poçta giriziň",
     "Remember Me": "Ýatda sakla",
-    "Forgotten Password": "Parol ýatda ýok"
+    "Forgotten Password": "Parol ýatda ýok",
+    "Password reset email has been sent.": "Paroly täzeden düzmek e-poçta iberildi.",
+    "Error sending email.": "E-poçta ibermekde säwlik.",
+    "Password reset link": "Paroly täzeden düzmek",
+    "Send": "Ugratmak",
+    "A user with this email was not found.": "Bu e-poçta salgysy bilen ulanyjy tapylmady.",
+    "Your message successfully sent!": "Habaryňyz üstünlikli iberildi!",
+    "Check your email address.": "E-poçta salgyňyzy barlaň.",
+    "NPass": "New Password",
+    "ReenterPassword": "Reenter New Password",
+    "NPass": "Täze parol",
+    "ReenterPassword": "Täze parolyňyzy tassyklaň",
+    "Reset Password": "Paroly täzeden ýazmak"
 
 }

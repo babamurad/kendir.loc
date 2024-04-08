@@ -206,7 +206,17 @@
     "Enter Name": "Введите имя",
     "Enter email": "Введите адрес",
     "Remember Me": "Запомнить меня",
-    "Forgotten Password": "Забыли пароль"
+    "Forgotten Password": "Забыли пароль",
+    "Password reset email has been sent.": "Письмо сброса пароля отправлено.",
+    "Error sending email.": "Ошибка при отправке письма.",
+    "Password reset link": "Ссылка для сброса пароля",
+    "Send": "Отправить",
+    "A user with this email was not found.": "Мы не можем найти пользователя с таким адресом электронной почты.",
+    "Your message successfully sent!": "Ваше сообщение успешно отправлено!",
+    "Check your email address.": "Проверьте свой адрес электронной почты.",
+    "NPass": "Новый пароль",
+    "ReenterPassword": "Подтвердите новый пароль",
+    "Reset Password": "Сброс пароля"
 
 
 }

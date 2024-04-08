@@ -73,6 +73,7 @@ Route::middleware(\App\Http\Middleware\Localization::class)->group(function (){
     Route::get('checkout', ChekoutComponent::class)->name('checkout');
 
     Route::get('calculator', CalculatorComponent::class)->name('calculator');
+    Route::get('roof', RoofComponent::class)->name('roof');
 
     Route::get('thank-you', ThankyouComponent::class)->name('thankyou');
     Route::get('terms', TermsComponent::class)->name('terms');
@@ -88,7 +89,9 @@ Route::middleware(\App\Http\Middleware\Localization::class)->group(function (){
     Route::get('user', UserComponent::class)->name('user');
     Route::get('register', RegisterUserComponent::class)->name('register');
 
-    Route::get('roof', RoofComponent::class)->name('roof');
+    Route::get('forgotten-password', \App\Livewire\ForgotPasswordComponent::class)->name('forgotten-password');
+    Route::get('password.reset/{token?}/{email?}', \App\Livewire\ResetPasswordComponent::class)->name('password.reset');
+//
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', UserDashboardComponent::class)->name('dashboard');

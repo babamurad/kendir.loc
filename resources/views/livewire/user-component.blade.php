@@ -25,7 +25,7 @@
                 <label for="header-sign-in-password" class="sr-only">{{__('Password')}}</label>
                 <div class="account-menu__form-forgot">
                     <input id="header-sign-in-password" name="header-sign-in-password" type="password" class="form-control form-control-sm @error('password') is-invalid @enderror" placeholder={{__('Password')}} wire:model="password">
-                    <a href="" class="account-menu__form-forgot-link">{{__('Forgot?')}}</a>
+                    <a href="{{ route('forgotten-password') }}" class="account-menu__form-forgot-link">{{__('Forgot?')}}</a>
                 </div>
             </div>
             <div class="form-group account-menu__form-button">

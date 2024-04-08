@@ -197,8 +197,17 @@
     "Register": "Register",
     "Enter Name": "Enter Name",
     "Enter email": "Enter email",
+
     "Remember Me": "Remember Me",
-    "Forgotten Password": "Forgotten Password"
-
-
+    "Forgotten Password": "Forgotten Password",
+    "Password reset email has been sent.": "Password reset email has been sent.",
+    "Error sending email.": "Error sending email.",
+    "Password reset link": "Password reset link",
+    "Send": "Send",
+    "A user with this email was not found.": "We can't find a user with that email address.",
+    "Your message successfully sent!": "Your message successfully sent!",
+    "Check your email address.": "Check your email address.",
+    "NPass": "New Password",
+    "ReenterPassword": "Reenter New Password",
+    "Reset Password": "Reset Password"
 }

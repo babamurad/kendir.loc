@@ -46,7 +46,7 @@
                                     <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{__('Password')}}" wire:model="password">
                                     @error('password') <p class="text-danger">{{$message}}</p> @enderror
                                     <small class="form-text text-muted">
-                                        <a href="">{{__('Forgotten Password')}}</a>
+                                        <a href="{{ route('forgotten-password') }}">{{__('Forgotten Password')}}</a>
                                     </small>
                                 </div>
                                 <div class="form-group">
