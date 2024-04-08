@@ -18,13 +18,13 @@
             @csrf
             <div class="account-menu__form-title">{{__('Log In to Your Account')}}</div>
             <div class="form-group">
-                <label for="header-signin-email" class="sr-only">{{__('Email address')}}</label>
-                <input type="email" class="form-control form-control-sm @error('email') is-invalid @enderror" placeholder={{__('Email address')}} wire:model="email">
+                <label for="header-sign-in-email" class="sr-only">{{__('Email address')}}</label>
+                <input id="header-sign-in-email" name="header-sign-in-email" type="email" class="form-control form-control-sm @error('email') is-invalid @enderror" placeholder={{__('Email address')}} wire:model="email">
             </div>
             <div class="form-group">
-                <label for="header-signin-password" class="sr-only">{{__('Password')}}</label>
+                <label for="header-sign-in-password" class="sr-only">{{__('Password')}}</label>
                 <div class="account-menu__form-forgot">
-                    <input type="password" class="form-control form-control-sm @error('password') is-invalid @enderror" placeholder={{__('Password')}} wire:model="password">
+                    <input id="header-sign-in-password" name="header-sign-in-password" type="password" class="form-control form-control-sm @error('password') is-invalid @enderror" placeholder={{__('Password')}} wire:model="password">
                     <a href="" class="account-menu__form-forgot-link">{{__('Forgot?')}}</a>
                 </div>
             </div>

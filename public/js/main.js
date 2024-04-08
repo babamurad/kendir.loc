@@ -827,9 +827,9 @@
     /*
     // select2
     */
-    $(function () {
-        $('.form-control-select2, .block-finder__select').select2({width: ''});
-    });
+    // $(function () {
+    //     $('.form-control-select2, .block-finder__select').select2({width: ''});
+    // });
 
     /*
     // totop

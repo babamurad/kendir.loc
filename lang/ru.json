@@ -204,7 +204,9 @@
     "Back to list": "К списку",
     "Register": "Регистрация",
     "Enter Name": "Введите имя",
-    "Enter email": "Введите адрес"
+    "Enter email": "Введите адрес",
+    "Remember Me": "Запомнить меня",
+    "Forgotten Password": "Забыли пароль"
 
 
 }

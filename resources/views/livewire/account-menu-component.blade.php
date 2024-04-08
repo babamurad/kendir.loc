@@ -3,13 +3,13 @@
         <form class="account-menu__form">
             <div class="account-menu__form-title">{{__('Log In to Your Account')}}</div>
             <div class="form-group">
-                <label for="header-signin-email" class="sr-only">{{__('Email address')}}</label>
-                <input id="header-signin-email" type="email" class="form-control form-control-sm" placeholder={{__('Email address')}}>
+                <label for="header-sign-in-email" class="sr-only">{{__('Email address')}}</label>
+                <input id="header-sign-in-email" name="header-sign-in-email" type="email" class="form-control form-control-sm" placeholder={{__('Email address')}}>
             </div>
             <div class="form-group">
-                <label for="header-signin-password" class="sr-only">{{__('Password')}}</label>
+                <label for="header-sign-in-password" class="sr-only">{{__('Password')}}</label>
                 <div class="account-menu__form-forgot">
-                    <input id="header-signin-password" type="password" class="form-control form-control-sm" placeholder={{__('Password')}}>
+                    <input id="header-sign-in-password" name="header-sign-in-password" type="password" class="form-control form-control-sm" placeholder={{__('Password')}}>
                     <a href="" class="account-menu__form-forgot-link">{{__('Forgot?')}}</a>
                 </div>
             </div>

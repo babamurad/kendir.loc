@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="{{asset('vendor/owl-carousel/assets/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/photoswipe/photoswipe.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/photoswipe/default-skin/default-skin.css')}}">
-    <link rel="stylesheet" href="{{asset('vendor/select2/css/select2.min.css')}}">
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <!-- font - fontawesome -->
@@ -29,7 +28,7 @@
         <!-- mobile site__header -->
         <header class="site__header d-lg-none">
             <!-- data-sticky-mode - one of [pullToShow, alwaysOnTop] -->
-            <div class="mobile-header mobile-header--sticky" data-sticky-mode="pullToShow">
+            <div class="mobile-header mobile-header--sticky" data-sticky-mode="alwaysOnTop">
                 <div class="mobile-header__panel">
                     <div class="container">
                         <div class="mobile-header__body">
@@ -93,7 +92,7 @@
                 </div>
                 <div class="site-header__nav-panel">
                     <!-- data-sticky-mode - one of [pullToShow, alwaysOnTop] -->
-                    <div class="nav-panel nav-panel--sticky" data-sticky-mode="pullToShow">
+                    <div class="nav-panel nav-panel--sticky" data-sticky-mode="alwaysOnTop">
                         <div class="nav-panel__container container">
                             <div class="nav-panel__row">
                                 @if ( request()->is('/'))
@@ -626,7 +625,7 @@
     <script src="{{asset('vendor/nouislider/nouislider.min.js')}}"></script>
     <script src="{{asset('vendor/photoswipe/photoswipe.min.js')}}"></script>
     <script src="{{asset('vendor/photoswipe/photoswipe-ui-default.min.js')}}"></script>
-    {{-- <script src="{{asset('vendor/select2/js/select2.min.js')}}"></script> --}}
+
     <script src="{{asset('js/number.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
     <script src="{{asset('js/header.js')}}"></script>
@@ -634,8 +633,10 @@
     <script>
         svg4everybody();
     </script>
-@stack('priceFilter')
+
 @stack('zoom')
+@stack('roof')
+
 </body>
 
 </html>
