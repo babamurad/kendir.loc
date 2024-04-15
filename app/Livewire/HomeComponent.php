@@ -57,7 +57,7 @@ class HomeComponent extends Component
         return redirect()->back();
     }
 
-    public function toShop()
+    public function toShop ()
     {
         return redirect()->route('shop');
     }
