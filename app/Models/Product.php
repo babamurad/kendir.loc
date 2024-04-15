@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Livewire\Admin\ProductComponent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Product extends Model
 {
@@ -71,5 +72,13 @@ class Product extends Model
         }
 
         return $default;
+    }
+
+    protected function salePrice(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $value == 0 ? __('Price is negotiable') : $value,
+            set: fn($value) => $value
+        );
     }
 }
