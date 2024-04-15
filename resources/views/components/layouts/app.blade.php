@@ -106,7 +106,8 @@
                                                 <ul class="departments__links">
                                                     @foreach($rcategories as $rcategory)
                                                         <li class="departments__item">
-                                                        <a class="departments__item-link" href="{{ route('product.category', ['slug' => $rcategory->slug]) }}">
+                                                        <a class="departments__item-link" href="{{ route('shop', ['id' => $rcategory->id]) }}">
+{{--                                                        <a class="departments__item-link" href="#">--}}
                                                             {{ $rcategory->name }}
                                                             @if($rcategory->children->count()>0)
                                                             <svg class="departments__item-arrow" width="6px" height="9px"> <use xlink:href="{{ asset('images/sprite.svg#arrow-rounded-right-6x9') }}"></use> </svg>
@@ -166,7 +167,7 @@
                                 </div>
                                 @endif
                                 @if(!request()->is('/'))
-                                <livewire:shop-category-component />
+{{--                                <livewire:shop-category-component />--}}
                                 @endif
                                 <!-- .nav-links -->
                                 <div class="nav-panel__nav-links nav-links">

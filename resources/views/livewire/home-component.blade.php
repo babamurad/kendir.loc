@@ -16,17 +16,17 @@
                                         <img src="{{asset('images/carousel').'/'.$carousel->image}}" alt="" class="img-fluid">
                                     </div>
                                     <div class="block-slideshow__slide-content">
-                                        <div class="block-slideshow__slide-title text-white">
+                                        <div class="block-slideshow__slide-title text-white p-1" style="background-color: rgba(0,0,0,0.3);">
                                             <h4 class="shadow-lg">{{ $carousel->title }}</h4>
                                         </div>
-                                        <div class="block-slideshow__slide-text">
+                                        <div class="block-slideshow__slide-text p-1" style="background-color: rgba(0,0,0,0.3);">
                                             <h6 class="h3-responsive text-white">
                                                 {!! \Illuminate\Support\Str::wordWrap($carousel->text, characters: 70, break: "<br />\n"); !!}
                                             </h6>
 
                                         </div>
                                         <div class="block-slideshow__slide-button">
-                                            <span class="btn btn-primary btn-lg" wire:click='toShop'>Shop Now</span>
+                                            <span class="btn btn-primary btn-lg" wire:click='toShop' wire:navigate>Shop Now</span>
                                         </div>
                                     </div>
                                 </a>

@@ -67,6 +67,15 @@ class SearchComponent extends Component
         return view('livewire.search-component', compact('categories', 'latestProducts', 'products', 'newArrivals', 'selectedCat'));
     }
 
+    public function mount()
+    {
+        $this->prodCount = Product::count();
+        $this->fill(request()->only('q'));
+        $this->searchTerm = '%' . $this->q . '%';
+        //
+        $this->fill(request()->only('catId'));
+
+    }
 
     public function store($product_id, $product_name, $product_price)
     {
@@ -97,19 +106,6 @@ class SearchComponent extends Component
                 return;
             }
         }
-    }
-
-    public function mount()
-    {
-        $this->prodCount = Product::count();
-        $this->fill(request()->only('q'));
-        $this->searchTerm = '%' . $this->q . '%';
-        //
-        $this->fill(request()->only('catId'));
-        //$this->catId =
-        //dd($this->catId . '-' . $this->searchTerm);
-//        $this->minPrice = DB::table('products')->min('sale_price');
-//        $this->maxPrice = DB::table('products')->max('sale_price');
     }
 
     public function selectCategory($id = '')

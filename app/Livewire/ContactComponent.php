@@ -37,7 +37,7 @@ class ContactComponent extends Component
         $this->message = '';
     }
 
-    public function sendMessage()
+    public function sendMessage(): void
     {
         $headers ='From: admin@kendir.tm'. "\r\n";
         $message_text = '

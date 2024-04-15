@@ -67,28 +67,28 @@
                                         <div class="form-group col-md-6">
                                             <label for="form-name">{{ __('First Name') }}</label>
                                             <input type="text" id="form-name" class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('First Name') }}" wire:model="name">
-                                            @error('name') <p class="text-danger">{{$message}}</p> @enderror
+                                            @error('name') <div class="invalid-feedback">{{$message}}</div> @enderror
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="form-email">{{__('Email address')}}</label>
                                             <input type="email" id="form-email" class="form-control @error('email') is-invalid @enderror" placeholder="{{__('Email address')}}" wire:model="email">
-                                            @error('email') <p class="text-danger">{{$message}}</p> @enderror
+                                            @error('email') <div class="invalid-feedback">{{$message}}</div> @enderror
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="form-subject">{{__('Phone Number')}}</label>
                                         <input type="text" id="form-subject" class="form-control @error('phone') is-invalid @enderror" placeholder="{{__('Phone Number')}}" wire:model="phone">
-                                        @error('phone') <p class="text-danger">{{$message}}</p> @enderror
+                                        @error('phone') <div class="invalid-feedback">{{$message}}</div> @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="form-subject">{{__('Subject')}}</label>
                                         <input type="text" id="form-subject" class="form-control @error('subject') is-invalid @enderror" placeholder="{{__('Subject')}}" wire:model="subject">
-                                        @error('subject') <p class="text-danger">{{$message}}</p> @enderror
+                                        @error('subject') <div class="invalid-feedback">{{$message}}</div> @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="form-message">{{__('Message')}}</label>
                                         <textarea id="form-message" class="form-control @error('message') is-invalid @enderror" rows="4" wire:model="message"></textarea>
-                                        @error('message') <p class="text-danger">{{$message}}</p> @enderror
+                                        @error('message') <div class="invalid-feedback">{{$message}}</div> @enderror
                                     </div>
                                     <button type="submit" class="btn btn-primary">{{__('Send Message')}}</button>
                                 </form>

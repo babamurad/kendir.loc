@@ -228,7 +228,7 @@
     <div class="col-md-12 col-sm-12">
         <div class="card">
             <div class="card-header">
-                <h4>Categories</h4> {{ $edit_mode }}
+                <h4>Categories</h4>
                 @include('components.alerts')
                 </div>
             <div class="card-body">

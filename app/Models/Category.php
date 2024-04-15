@@ -14,7 +14,7 @@ class Category extends Model
 
     protected $fillable = ['name', 'slug', 'image', 'is_popular', 'parent_id'];
 
-    public function cparent()
+    public function cparent():BelongsTo
     {
         return $this->belongsTo(self::class, 'parent_id');
     }

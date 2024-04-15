@@ -12,18 +12,19 @@
                     <label for="header-sign-in-email" class="sr-only">{{__('Email address')}}</label>
                     <input id="header-sign-in-email" name="header-sign-in-email" type="email"
                            class="form-control form-control-sm @error('email') is-invalid @enderror" placeholder="{{__('Email address')}}" wire:model="email">
-                    @error('email') <span class="text-danger">{{$message}}</span> @enderror
+                    @error('email') <div class="invalid-feedback">{{$message}}</div> @enderror
+
                 </div>
 
                 <div class="form-group">
 {{--                    <label class="required-field">{{__('NPass')}}</label>--}}
                     <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{__('NPass')}}" wire:model="password">
-                    @error('password') <span class="text-danger">{{$message}}</span> @enderror
+                    @error('password') <div class="invalid-feedback">{{$message}}</div> @enderror
                 </div>
                <div class="form-group">
 {{--                    <label class="required-field">{{__('ReenterPassword')}}</label>--}}
                     <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="{{__('ReenterPassword')}}" wire:model="password_confirmation">
-                   @error('password_confirmation') <span class="text-danger">{{$message}}</span> @enderror
+                   @error('password_confirmation') <div class="invalid-feedback">{{$message}}</div> @enderror
                 </div>
 
                 <div class="form-group account-menu__form-button">
