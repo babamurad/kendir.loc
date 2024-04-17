@@ -4434,6 +4434,9 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-origin {
   font-weight: 400;
   color: #999;
 }
+.categories__counter--current{
+    font-weight: 700;
+}
 
 /*
 // .filter-categories-alt
@@ -4595,7 +4598,10 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-origin {
 }
 
 .filter-categories-alt__item--current > a {
-  font-weight: 700;
+  font-weight: 500;
+}
+.filter-categories-alt__item--current {
+  font-weight: 500;
 }
 
 /*
@@ -16519,4 +16525,7 @@ ul {
     .mobile-calc{
         width: 140px !important;
     }
+}
+ul li.active{
+    color: #3366cc !important;
 }

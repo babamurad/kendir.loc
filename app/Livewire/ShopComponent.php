@@ -35,6 +35,8 @@ class ShopComponent extends Component
     public $prCount;
     public $check_brands = [];
     public $check_manufs = [];
+    public $openClass = 'filter-categories-alt__item--open';
+    public $catParent;
 
     #[On('selectBrand')]
     #[On('selectManuf')]
@@ -47,7 +49,7 @@ class ShopComponent extends Component
         $this->prCount = Product::all()->count();
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
 
-
+//dd($this->category_id);
 // 1  0  0
         if ($this->category_id && empty($this->check_brands) && empty($this->check_manufs)) {
             $this->active_id = $this->category_id;
@@ -71,7 +73,8 @@ class ShopComponent extends Component
         } // 1 1 1
         elseif ($this->category_id && !empty($this->check_brands) && !empty($this->check_manufs)) {
             $this->active_id = $this->category_id;
-            $products = Product::with('specification')
+            $products = Product::
+                with('specification')
                 ->with('brands')
                 ->with('manufacturers')
                 ->whereIn('category_id', $this->category_id)
@@ -134,29 +137,61 @@ class ShopComponent extends Component
         $manufacturers = Manufacturer::with('products')->get();
 
         $post = Post::first();
+
         return view('livewire.shop-component',
             compact('categories', 'latestProducts', 'products', 'newArrivals', 'rcategories', 'brands', 'manufacturers', 'post'));
     }
 
     public function mount($id = null)
     {
+        //dd('1 gezek');
         if ($id != null) {
-            $cats = Category::where('parent_id', '=', $id)->pluck('id');
+            $cats = Category::where('parent_id', '=', $id)->pluck('id', 'parent_id');
+
             if ($cats->count() > 0) {
                 foreach ($cats as $cat) {
                     $param[] = explode(',', $cat);
+
                 }
             } else {
                 $param[] = explode(',', $id);
+                $this->catParent = $id;
             }
             $this->category_id = $param;
+            $this->catParent = Category::where('id', '=', $id)->pluck('parent_id')->toArray();
+            //dd(Category::where('id', '=', $id)->pluck('parent_id'));
+
         } else {
             $this->category_id = null;
+            $this->catParent[] = 0;
         }
+        //$this->active_id = $id;
+        //$this->active_id = $this->active_id[0];
+        //dd($this->active_id);
+        //dd($this->catParent[0]);
+        //dd($id);
+//        if (!empty($this->category_id)) {
+//            DB::statement('TRUNCATE category_temp');
+//            foreach ($this->category_id as $key => $cat_id) {
+//                DB::table('category_temp')->insertGetId(['category_id' => $cat_id]);
+//            }
+//            //DB::table('category_temp')->insert($this->category_id);
+//        }
 
         $this->prodCount = Product::count();
+
 //        $this->minPrice = DB::table('products')->min('sale_price');
 //        $this->maxPrice = DB::table('products')->max('sale_price');
+    }
+
+    public function getCategoryProducts($category_id)
+    {
+        $cat = Category::findOrFail($category_id);
+        //dd($cat);
+        $this->cat_name = $cat->name;
+
+        $this->category_id[] = $cat->id;
+        $this->prodCount = Product::count();
     }
 
     public function checkBrand($id)
@@ -189,15 +224,6 @@ class ShopComponent extends Component
             }
         }
         $this->dispatch('selectManuf');
-    }
-
-    public function getCategoryProducts($category_id)
-    {
-        $cat = Category::findOrFail($category_id);
-        $this->cat_name = $cat->name;
-
-        $this->category_id = $cat->id;
-        //dd($this->cat_name);
     }
 
     public function store($product_id, $product_name, $product_price)
@@ -250,6 +276,7 @@ class ShopComponent extends Component
     {
         $this->category_id = $id;
         $cat = Category::where('id', '=', $this->category_id)->first();
+        dd($this->category_id);
         $this->cat_name = $cat->name;
         $this->active_id = $cat->id;
 

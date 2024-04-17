@@ -74,11 +74,20 @@ class Product extends Model
         return $default;
     }
 
-    protected function salePrice(): Attribute
+    public function scopeWithParams()
     {
-        return Attribute::make(
-            get: fn($value) => $value == 0 ? __('Price is negotiable') : $value,
-            set: fn($value) => $value
-        );
+        // In your model (e.g., App\Models\Product)
+//        return $query->select("*")
+//            ->from(DB::raw('EXEC MyStoredProcedure ?, ?', [$param1, $param2]));
+        // Usage in your controller
+//        $products = Product::withDetails($param1, $param2)->get();
     }
+
+//    protected function salePrice(): Attribute
+//    {
+//        return Attribute::make(
+//            get: fn($value) => $value == 0 ? __('Price is negotiable') : $value,
+//            set: fn($value) => $value
+//        );
+//    }
 }

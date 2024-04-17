@@ -83,34 +83,26 @@
                                                             <li class="filter-categories-alt__item d-flex"
                                                                 data-collapse-item="">
                                                                 <a href="{{route('shop')}}"><strong>{{ __('All Categories') }}</strong></a>
-                                                                <div
-                                                                    class="filter-categories__counter">{{$prCount}}</div>
+                                                                <div class="filter-categories__counter">{{$prCount}}</div>
                                                             </li>
                                                             @foreach($categories as $category)
                                                                 @if($category->parent_id == 0)
-                                                                    <li class="filter-categories-alt__item"
-                                                                        data-collapse-item="">
+                                                                    <li class="filter-categories-alt__item {{ $catParent[0] == $category->id ? 'filter-categories-alt__item--open' : '' }}" data-collapse-item="">
                                                                         @if($category->children->count()>0)
                                                                             <button
-                                                                                class="filter-categories-alt__expander"
-                                                                                data-collapse-trigger=""></button>
+                                                                                class="filter-categories-alt__expander" data-collapse-trigger="">
+                                                                            </button>
                                                                         @endif
                                                                         <a href="{{ route('shop', ['id' => $category->id]) }}">{{ $category->name }}</a>
                                                                         @if($category->children->count()>0)
-                                                                            <div class="filter-categories-alt__children"
-                                                                                 data-collapse-content="">
+                                                                            <div class="filter-categories-alt__children" data-collapse-content="">
                                                                                 <ul class="filter-categories-alt__list filter-categories-alt__list--level--2">
-                                                                                    {{--                                                                                wire:click="getCategoryProducts({{ $subcategory->id }})"--}}
+                                                 {{-- href="{{ route('shop', ['id' => $subcategory->id]) }}  wire:click.prevent="getCategoryProducts({{ $subcategory->id }})"  --}}
                                                                                     @foreach($category->children as $subcategory)
-                                                                                        <li class="filter-categories-alt__item d-flex"
-                                                                                            data-collapse-item=""
-                                                                                            style="cursor: pointer;"
-                                                                                            wire:key="{{$subcategory->id}}">
+                                                                                        <li class="filter-categories-alt__item d-flex {{ request('id') == $subcategory->id? 'filter-categories-alt__item--current' : '' }}" data-collapse-item="" style="cursor: pointer;" wire:key="{{$subcategory->id}}">
                                                                                             <a href="{{ route('shop', ['id' => $subcategory->id]) }}"
-                                                                                               class="cat "
-                                                                                               wire:navigate>{{ $subcategory->name }}</a>
-                                                                                            <div
-                                                                                                class="filter-categories__counter">{{ $subcategory->products->count() ?? '0' }}</div>
+                                                                                               class="cat " wire:navigate>{{ $subcategory->name }} </a>
+                                                                                            <div class="filter-categories__counter {{ request('id') == $subcategory->id? 'categories__counter--current' : '' }}">{{ $subcategory->products->count() ?? '0' }} </div>
                                                                                         </li>
                                                                                     @endforeach
                                                                                 </ul>
@@ -203,7 +195,7 @@
                                 <div class=" widget-filters__list widget-filters__actions d-flex">
                                     {{--                                    <button class="btn btn-primary btn-sm">Filter</button>--}}
                                     <a class="btn btn-secondary btn-sm" href="{{ route('shop') }}" wire:navigate
-                                       wire:navigate>Reset</a>
+                                       wire:navigate>{{__('Reset')}}</a>
                                 </div>
                             </div>
                         </div>
