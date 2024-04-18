@@ -50,84 +50,99 @@ class ShopComponent extends Component
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
 
 //dd($this->category_id);
+
+        $products_query = Product::query();
+
+        if ($this->category_id) { $products_query->whereIn('category_id', $this->category_id); }
+        if (!empty($this->check_brands)) { $products_query->whereIn('brand_id', $this->check_brands); }
+        if (!empty($this->check_manufs)) { $products_query->whereIn('manufacturer_id', $this->check_manufs); }
+
+        $products = $products_query
+            ->with('specification')
+            ->with('brands')
+            ->with('manufacturers')
+            ->orderBy($name, $this->sort)
+            ->paginate($this->perPage);
+
+
 // 1  0  0
-        if ($this->category_id && empty($this->check_brands) && empty($this->check_manufs)) {
-            $this->active_id = $this->category_id;
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-//                ->whereIn('category_id', [21, 22, 23])
-                ->whereIn('category_id', $this->category_id)
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        } // 1 1 0
-        elseif ($this->category_id && !empty($this->check_brands) && empty($this->check_manufs)) {
-            $this->active_id = $this->category_id;
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-                ->whereIn('category_id', $this->category_id)
-                ->whereIn('brand_id', $this->check_brands)
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        } // 1 1 1
-        elseif ($this->category_id && !empty($this->check_brands) && !empty($this->check_manufs)) {
-            $this->active_id = $this->category_id;
-            $products = Product::
-                with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-                ->whereIn('category_id', $this->category_id)
-                ->whereIn('brand_id', $this->check_brands)
-                ->whereIn('manufacturer_id', $this->check_manufs)
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        }// 0 1 1
-        elseif (!$this->category_id && !empty($this->check_brands) && !empty($this->check_manufs)) {
-            $this->active_id = $this->category_id;
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-                ->whereIn('brand_id', $this->check_brands)
-                ->whereIn('manufacturer_id', $this->check_manufs)
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        }// 0 0 1
-        elseif (!$this->category_id && empty($this->check_brands) && !empty($this->check_manufs)) {
-            $this->active_id = $this->category_id;
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-                ->whereIn('manufacturer_id', $this->check_manufs)
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        }// 1 0 1
-        elseif ($this->category_id && empty($this->check_brands) && !empty($this->check_manufs)) {
-            $this->active_id = $this->category_id;
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-                ->whereIn('category_id', $this->category_id)
-                ->whereIn('manufacturer_id', $this->check_manufs)
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        }// 0 1 0
-        elseif (!$this->category_id && !empty($this->check_brands) && empty($this->check_manufs)) {
-            $this->active_id = $this->category_id;
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-                ->whereIn('brand_id', $this->check_brands)
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        } //0 0 0
-        else {
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        }
+//        if ($this->category_id && empty($this->check_brands) && empty($this->check_manufs)) {
+//            $this->active_id = $this->category_id;
+//            $products = Product::with('specification')
+//                ->with('brands')
+//                ->with('manufacturers')
+////                ->whereIn('category_id', [21, 22, 23])
+//                ->whereIn('category_id', $this->category_id)
+//                ->orderBy($name, $this->sort)
+//                ->paginate($this->perPage);
+//        } // 1 1 0
+//        elseif ($this->category_id && !empty($this->check_brands) && empty($this->check_manufs)) {
+//            $this->active_id = $this->category_id;
+//            $products = Product::with('specification')
+//                ->with('brands')
+//                ->with('manufacturers')
+//                ->whereIn('category_id', $this->category_id)
+//                ->whereIn('brand_id', $this->check_brands)
+//                ->orderBy($name, $this->sort)
+//                ->paginate($this->perPage);
+//        } // 1 1 1
+//        elseif ($this->category_id && !empty($this->check_brands) && !empty($this->check_manufs)) {
+//            $this->active_id = $this->category_id;
+//            $products = Product::
+//                with('specification')
+//                ->with('brands')
+//                ->with('manufacturers')
+//                ->whereIn('category_id', $this->category_id)
+//                ->whereIn('brand_id', $this->check_brands)
+//                ->whereIn('manufacturer_id', $this->check_manufs)
+//                ->orderBy($name, $this->sort)
+//                ->paginate($this->perPage);
+//        }// 0 1 1
+//        elseif (!$this->category_id && !empty($this->check_brands) && !empty($this->check_manufs)) {
+//            $this->active_id = $this->category_id;
+//            $products = Product::with('specification')
+//                ->with('brands')
+//                ->with('manufacturers')
+//                ->whereIn('brand_id', $this->check_brands)
+//                ->whereIn('manufacturer_id', $this->check_manufs)
+//                ->orderBy($name, $this->sort)
+//                ->paginate($this->perPage);
+//        }// 0 0 1
+//        elseif (!$this->category_id && empty($this->check_brands) && !empty($this->check_manufs)) {
+//            $this->active_id = $this->category_id;
+//            $products = Product::with('specification')
+//                ->with('brands')
+//                ->with('manufacturers')
+//                ->whereIn('manufacturer_id', $this->check_manufs)
+//                ->orderBy($name, $this->sort)
+//                ->paginate($this->perPage);
+//        }// 1 0 1
+//        elseif ($this->category_id && empty($this->check_brands) && !empty($this->check_manufs)) {
+//            $this->active_id = $this->category_id;
+//            $products = Product::with('specification')
+//                ->with('brands')
+//                ->with('manufacturers')
+//                ->whereIn('category_id', $this->category_id)
+//                ->whereIn('manufacturer_id', $this->check_manufs)
+//                ->orderBy($name, $this->sort)
+//                ->paginate($this->perPage);
+//        }// 0 1 0
+//        elseif (!$this->category_id && !empty($this->check_brands) && empty($this->check_manufs)) {
+//            $this->active_id = $this->category_id;
+//            $products = Product::with('specification')
+//                ->with('brands')
+//                ->with('manufacturers')
+//                ->whereIn('brand_id', $this->check_brands)
+//                ->orderBy($name, $this->sort)
+//                ->paginate($this->perPage);
+//        } //0 0 0
+//        else {
+//            $products = Product::with('specification')
+//                ->with('brands')
+//                ->with('manufacturers')
+//                ->orderBy($name, $this->sort)
+//                ->paginate($this->perPage);
+//        }
 
         $date = Carbon::now()->subDays(7);
         $newArrivals = Product::where('created_at', '>=', $date)->get();
