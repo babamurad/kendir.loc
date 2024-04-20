@@ -144,16 +144,16 @@ class ProductEditComponent extends Component
 
         $spec = Specification::where('product_id', '=', $this->product_id)->first();
         $spec->model = $this->model;
-        $spec->dl = $this->dl;
-        $spec->dw = $this->dw;
-        $spec->dl = $this->dl;
-        $spec->dh = $this->dh;
+        $spec->dl = $this->dl?:0;
+        $spec->dw = $this->dw?:0;
+        $spec->dl = $this->dl?:0;
+        $spec->dh = $this->dh?:0;
         $spec->unit = $this->unit;
-        $spec->weight = $this->weight;
-        $spec->status = $this->status;
-        $spec->type_roll = $this->type_roll;
+        $spec->weight = $this->weight?:0;
+        $spec->status = $this->status?:0;
+        $spec->type_roll = $this->type_roll?:"Hot";
         $spec->dept = $this->dept;
-        $spec->diameter = $this->diameter;
+        $spec->diameter = $this->diameter?:0;
         $spec->meter_int = $this->meter_int;
         $spec->articles = $this->articles;
         $spec->update();

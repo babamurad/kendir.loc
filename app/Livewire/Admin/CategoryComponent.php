@@ -98,9 +98,12 @@ class CategoryComponent extends Component
         $category->name_ru = $this->name_ru;
         $category->name_tm = $this->name_tm;
         $category->slug = $this->slug;
-        $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();
-        $this->image->storeAs('categories', $imageName);
-        $category->image = $imageName;
+        if ($this->image) {
+            $imageName = Carbon::now()->timestamp . '.' . $this->image->extension();
+            $this->image->storeAs('categories', $imageName);
+            $category->image = $imageName;
+        }
+
         $category->is_popular = $this->is_popular? $this->is_popular : 0;
         $category->parent_id = $this->parent_id;
         $category->save();

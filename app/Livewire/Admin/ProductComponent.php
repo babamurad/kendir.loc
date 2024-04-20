@@ -55,11 +55,9 @@ class ProductComponent extends Component
         $this->category_id = session()->get('category', default: '');
     }
 
-    public function updatedСategory_id()
+    public function updated($category_id)
     {
-        dd('cat');
         session()->put('category', $this->category_id);
-        dd(session()->get('category', default: ''));
     }
 
     public function render()
