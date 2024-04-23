@@ -64,7 +64,10 @@ class ProductEditComponent extends Component
     public function updateProduct()
     {
         $this->validate([
-            'slug'              => 'required',
+            'name_en'               =>'required',
+            'name_ru'               =>'required',
+            'name_tm'               =>'required',
+            'slug'                  => 'required',
             'short_description_en' => 'required',
             'description_en'       => 'required',
             'short_description_ru' => 'required',
@@ -82,7 +85,7 @@ class ProductEditComponent extends Component
             'category_id'       => 'required',
         ]);
 
-        $product = Product::find($this->product_id);
+        $product = Product::findOrFail($this->product_id);
         $product->name_en = $this->name_en;
         $product->name_ru = $this->name_ru;
         $product->name_tm = $this->name_tm;
@@ -166,7 +169,7 @@ class ProductEditComponent extends Component
 
         $this->activeTab = 'details';
 
-        $product = Product::find($product_id);
+        $product = Product::findOrFail($product_id);
         $this->product_id = $product->id;
         $this->name = $product->name;
         $this->name_en = $product->name_en;

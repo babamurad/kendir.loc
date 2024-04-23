@@ -78,7 +78,6 @@ class ShopComponent extends Component
 
     public function mount($id = null)
     {
-        //dd('1 gezek');
         if ($id != null) {
             $cats = Category::where('parent_id', '=', $id)->pluck('id', 'parent_id');
 
@@ -99,18 +98,6 @@ class ShopComponent extends Component
             $this->category_id = null;
             $this->catParent[] = 0;
         }
-        //$this->active_id = $id;
-        //$this->active_id = $this->active_id[0];
-        //dd($this->active_id);
-        //dd($this->catParent[0]);
-        //dd($id);
-//        if (!empty($this->category_id)) {
-//            DB::statement('TRUNCATE category_temp');
-//            foreach ($this->category_id as $key => $cat_id) {
-//                DB::table('category_temp')->insertGetId(['category_id' => $cat_id]);
-//            }
-//            //DB::table('category_temp')->insert($this->category_id);
-//        }
 
         $this->prodCount = Product::count();
 
