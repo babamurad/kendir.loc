@@ -31,34 +31,61 @@ class SearchComponent extends Component
         $selectedCat = Category::where('id', $this->catId)->first();
         $categories = Category::with('cparent')->with('products')->get();
         $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
-        if ($this->catId){
-            if (!$this->searchTerm=='') {
-                $products = Product::
-                    with('specification')
-                    ->where('category_id', '=', $this->catId)
-                    ->where($name, 'like', $this->searchTerm)
-                    ->orderBy($name, $this->sort)
-                    ->paginate($this->perPage);
-            } else {
-                $products = Product::
-                    with('specification')
-                    ->where('category_id', '=', $this->catId)
-                    ->orderBy($name, $this->sort)
-                    ->paginate($this->perPage);
-            }
-        } else {
-            if (!$this->searchTerm==''){
-                $products = Product::where($name, 'like', $this->searchTerm)
-                    ->with('specification')
-                    ->orderBy($name, $this->sort)
-                    ->paginate($this->perPage);
-            } else {
-                $products = Product::
-                    with('specification')
-                    ->orderBy($name, $this->sort)
-                    ->paginate($this->perPage);
-            }
-        }
+        $products_query = Product::query();
+
+
+//        if (!empty($this->check_brands)) { $products_query->whereIn('brand_id', $this->check_brands); }
+//        if (!empty($this->check_manufs)) { $products_query->whereIn('manufacturer_id', $this->check_manufs); }
+
+        $products_query = Product::query()->active();
+        if ($this->catId) { $products_query->whereIn('category_id', $this->catId); }
+        if ($this->searchTerm) { $products_query->where($name, 'like', $this->searchTerm); }
+
+        $products = $products_query
+
+            ->orderBy($name, $this->sort)
+            ->paginate($this->perPage);
+
+//        $productsQuery = Product::query();
+//
+//        $productsQuery
+//            ->join('specifications as s', 's.product_id', '=', 'products.id')
+//            ->where('s.status', true);
+//            if ($this->catId) { $productsQuery->whereIn('products.category_id', $this->catId); }
+//            if ($this->searchTerm) { $productsQuery->where('products.name_ru', 'like', $this->searchTerm); }
+//            $productsQuery->select('products.*')
+//            ->get();
+//        $products = $productsQuery;
+//dd($products);
+//        dd($products);
+//        if ($this->catId){
+//            if (!$this->searchTerm=='') {
+//                $products = Product::
+//                    with('specification')
+//                    ->where('category_id', '=', $this->catId)
+//                    ->where($name, 'like', $this->searchTerm)
+//                    ->orderBy($name, $this->sort)
+//                    ->paginate($this->perPage);
+//            } else {
+//                $products = Product::
+//                    with('specification')
+//                    ->where('category_id', '=', $this->catId)
+//                    ->orderBy($name, $this->sort)
+//                    ->paginate($this->perPage);
+//            }
+//        } else {
+//            if (!$this->searchTerm==''){
+//                $products = Product::where($name, 'like', $this->searchTerm)
+//                    ->with('specification')
+//                    ->orderBy($name, $this->sort)
+//                    ->paginate($this->perPage);
+//            } else {
+//                $products = Product::
+//                    with('specification')
+//                    ->orderBy($name, $this->sort)
+//                    ->paginate($this->perPage);
+//            }
+//        }
 
         $date = Carbon::now()->subDays(7);
         $newArrivals = Product::where('created_at', '>=', $date)->get();

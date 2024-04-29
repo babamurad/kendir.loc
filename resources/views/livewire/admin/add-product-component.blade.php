@@ -389,10 +389,10 @@
                                             </div>
                                             <div class="col-sm-2">
                                                 <div class="form-group">
-                                                    <label for="status" class="form-label">Status</label>
+                                                    <label for="status" class="form-label">Published</label>
                                                     <select name="status" class="form-control" wire:model="status">
-                                                        <option value="1" selected>Enabled</option>
-                                                        <option value="0">Disabled</option>
+                                                        <option value="1" selected>Yes</option>
+                                                        <option value="0">No</option>
                                                     </select>
                                                 </div>
                                             </div>

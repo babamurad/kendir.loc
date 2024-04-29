@@ -102,7 +102,7 @@
                                                                                         <li class="filter-categories-alt__item d-flex {{ request('id') == $subcategory->id? 'filter-categories-alt__item--current' : '' }}" data-collapse-item="" style="cursor: pointer;" wire:key="{{$subcategory->id}}">
                                                                                             <a href="{{ route('shop', ['id' => $subcategory->id]) }}"
                                                                                                class="cat " wire:navigate>{{ $subcategory->name }} </a>
-                                                                                            <div class="filter-categories__counter {{ request('id') == $subcategory->id? 'categories__counter--current' : '' }}">{{ $subcategory->products->count() ?? '0' }} </div>
+                                                                                            <div class="filter-categories__counter {{ request('id') == $subcategory->id? 'categories__counter--current' : '' }}">{{ $subcategory->activeProductsCount($subcategory->id) }} </div>
                                                                                         </li>
                                                                                     @endforeach
                                                                                 </ul>
@@ -452,11 +452,11 @@
                                             </button>
                                             <div class="product-card__badges-list">
                                                 @if($newArrivals->contains($product->id))
-                                                    <div class="product-card__badge product-card__badge--new">New</div>
+                                                    <div class="product-card__badge product-card__badge--new">{{__('New')}}</div>
                                                 @elseif($product->featured)
-                                                    <div class="product-card__badge product-card__badge--hot">Hot</div>
+                                                    <div class="product-card__badge product-card__badge--hot">{{__('Hot')}}</div>
                                                 @else
-                                                    <div class="product-card__badge product-card__badge--sale">Sale
+                                                    <div class="product-card__badge product-card__badge--sale">{{__('Sale')}}
                                                     </div>
                                                 @endif
                                             </div>

@@ -228,7 +228,7 @@
                         <!-- /Modal -->
                         <div class="products-view__list products-list" data-layout="grid-3-sidebar" data-with-features="false" data-mobile-grid-columns="2">
                             <div class="products-list__body">
-                                @foreach($products as $product)
+                                @forelse($products as $product)
                                     <div class="products-list__item">
                                         <div class="product-card product-card--hidden-actions ">
                                             <button class="product-card__quickview" type="button" data-toggle="modal" data-target="#productDetails" wire:click="productDetails('{{$product->id}}')">
@@ -388,7 +388,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
+                                @empty
+                                    <div class="col-sm-8 offset-2 text-center mt-5 pt-5">
+                                        <p>{{ __('The search has not given any results.') }}</p></div>
+                                @endforelse
                             </div>
                         </div>
                         <div class="products-view__pagination">
@@ -450,4 +453,3 @@
         // });
     </script>
 @endpush
-

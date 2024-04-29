@@ -74,6 +74,13 @@ class Product extends Model
         return $default;
     }
 
+    public function scopeActive()
+    {
+        return $this->whereHas('specification', function ($query) {
+            $query->where('status', true);
+        });
+    }
+
     public function scopeWithParams()
     {
         // In your model (e.g., App\Models\Product)

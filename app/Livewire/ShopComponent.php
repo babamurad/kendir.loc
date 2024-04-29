@@ -43,13 +43,19 @@ class ShopComponent extends Component
     #[On('resetAll')]
     public function render()
     {
-        //->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
+        //->whereBetween('sale_price', [$this->minPrice, $this->maxPrice]) s.status=TRUE AND
+        $productCount = DB::table('products AS p')
+            ->join('specifications AS s', 's.product_id', '=', 'p.id')
+            ->where('s.status', true)
+            ->where('p.category_id', 51)
+            ->count();
         $name = 'name_' . Session::get('locale');
         $categories = Category::with('cparent')->with('products')->get();
-        $this->prCount = Product::all()->count();
-        $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
+//        $categories = DB::select('SELECT * FROM categories c LEFT JOIN products p ON c.id = p.category_id LEFT JOIN specifications s ON p.id = s.product_id HAVING s.status=true');
+        $this->prCount = Product::active()->count();
+        $latestProducts = Product::active()->orderBy('id', 'desc')->limit(5)->get();
 
-        $products_query = Product::query();
+        $products_query = Product::query()->active();
 
         if ($this->category_id) { $products_query->whereIn('category_id', $this->category_id); }
         if (!empty($this->check_brands)) { $products_query->whereIn('brand_id', $this->check_brands); }
@@ -64,7 +70,7 @@ class ShopComponent extends Component
 
 
         $date = Carbon::now()->subDays(7);
-        $newArrivals = Product::where('created_at', '>=', $date)->get();
+        $newArrivals = Product::where('created_at', '>=', $date)->active()->get();
 
         $rcategories = Category::with('children')->where('parent_id', '=', '0')->get();
         $brands = Brand::with('products')->get();
@@ -78,6 +84,7 @@ class ShopComponent extends Component
 
     public function mount($id = null)
     {
+        //dd($id);
         if ($id != null) {
             $cats = Category::where('parent_id', '=', $id)->pluck('id', 'parent_id');
 

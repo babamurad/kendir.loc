@@ -3,7 +3,6 @@
         <button type="button" class="close {{ request()->is('/') ? '' : ' mt-3' }}" data-dismiss="alert" aria-hidden="true">×</button>
         <h6><i class="icon fas fa-check"></i> {{ session('success') }}</h6>
     </div>
-
 @endif
 
 @if(session('error'))
