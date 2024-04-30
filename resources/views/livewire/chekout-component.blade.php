@@ -361,22 +361,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="payment-methods__item">
-                                        <label class="payment-methods__item-header">
-                                                    <span class="payment-methods__item-radio input-radio">
-                                                        <span class="input-radio__body">
-                                                            <input class="input-radio__input" name="checkout_payment_method" type="radio">
-                                                            <span class="input-radio__circle"></span>
-                                                        </span>
-                                                    </span>
-                                            <span class="payment-methods__item-title">{{__('Check payments')}}</span>
-                                        </label>
-                                        <div class="payment-methods__item-container">
-                                            <div class="payment-methods__item-description text-muted">
-                                                {{__('pls send check')}}
-                                            </div>
-                                        </div>
-                                    </li>
+
                                     <li class="payment-methods__item">
                                         <label class="payment-methods__item-header">
                                                     <span class="payment-methods__item-radio input-radio">
@@ -394,30 +379,14 @@
                                         </div>
                                     </li>
 
-                                    <!--<li class="payment-methods__item">
-                                        <label class="payment-methods__item-header">
-                                                    <span class="payment-methods__item-radio input-radio">
-                                                        <span class="input-radio__body">
-                                                            <input class="input-radio__input" name="checkout_payment_method" type="radio">
-                                                            <span class="input-radio__circle"></span>
-                                                        </span>
-                                                    </span>
-                                            <span class="payment-methods__item-title">PayPal</span>
-                                        </label>
-                                        <div class="payment-methods__item-container">
-                                            <div class="payment-methods__item-description text-muted">
-                                                Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.
-                                            </div>
-                                        </div>
-                                    </li>
-                                -->
+
                                 </ul>
                             </div>
                             <div class="checkout__agree form-group">
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input cpoint" id="ship_to_different" wire:model.live="terms">
-                                        <label class="custom-control-label cpoint" for="ship_to_different">{{__('termcondition')}}
+                                        <input type="checkbox" id="agree" class="custom-control-input cpoint">
+                                        <label class="custom-control-label cpoint" for="agree">{{__('termcondition')}}
                                             <a href="{{ route('terms') }}">{{__('termsandconditions')}}*</a>
                                         </label>
                                     </div>
