@@ -71,8 +71,12 @@
                     <!-- Panel 2 -->
                     <div class="tab-pane fade" id="panel2" role="tabpanel">
                         <div class="mb-2">
-                            <span>Формула для расчета веса металлического уголка </span><br>
-                            <span>M = (A + B - t) * t * 7.85 / 1000</span>
+                            <span>Формула для расчета одного погонного метра металлического швеллера:</span> <br>
+                            <span>S = 2 * b * t + (h - 2 * t) * s</span> <br>
+                            <span>W = S × ρ × L</span><br>
+                            <span>h – высота швеллера, мм; b – ширина полки, мм</span>
+                            <span>t – толщина полки, мм; s – толщина стенки, мм</span>
+                            <span>ρ – плотность металла</span>
                         </div>
                         <div class="tab-pane fade in active show" id="panel1" role="tabpanel">
                             <div class="form-group">
@@ -141,4 +145,3 @@
 
 
 </div>
-
