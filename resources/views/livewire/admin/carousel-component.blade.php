@@ -72,7 +72,7 @@
                                 </div>
                                 @error('image') <span class="text-danger">{{ $message }}</span> @enderror
                                 <div wire:loading wire:target="image" class="text-sm text-gray-500 italic">Uploading...</div>
-                                @if($image && !$edit_mode)
+                                @if($image && !$edit_mode && in_array($image->getClientOriginalExtension(), ['jpg', 'jpeg', 'png']))
                                     <img class="rounded mt-2" src="{{ $image->temporaryUrl() }}" alt="Carousel image" width="120">
                                 @endif
                             </div>
@@ -254,4 +254,3 @@
         </div>
     </div>
 </div>
-

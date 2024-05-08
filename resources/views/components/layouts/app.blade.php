@@ -549,17 +549,17 @@
                             <ul class="mobile-links mobile-links--level--1">
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('home', ['locale' => 'en']) }}" class="mobile-links__item-link" wire:navigate>English</a>
+                                        <a href="{{ route('locale', ['locale' => 'en']) }}" class="mobile-links__item-link" wire:navigate>English</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('home', ['locale' => 'ru']) }}" class="mobile-links__item-link" wire:navigate>Русский</a>
+                                        <a href="{{ route('locale', ['locale' => 'ru']) }}" class="mobile-links__item-link" wire:navigate>Русский</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('home', ['locale' => 'tm']) }}" class="mobile-links__item-link" wire:navigate>Turkmence</a>
+                                        <a href="{{ route('locale', ['locale' => 'tm']) }}" class="mobile-links__item-link" wire:navigate>Turkmence</a>
                                     </div>
                                 </li>
                             </ul>

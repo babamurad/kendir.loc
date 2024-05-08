@@ -278,10 +278,10 @@
             <a href="{{ route('shop', ['locale' => app()->getLocale()]) }}" class="block-banner__body">
                 <div class="block-banner__image block-banner__image--desktop" style="background-image: url('images/kendir/kupit armaturu.jpg'); opacity: 0.7;"></div>
                 <div class="block-banner__image block-banner__image--mobile" style="background-image: url('images/kendir/kupit armaturu.jpg')"></div>
-                <div class="block-banner__title">Hundreds <br class="block-banner__mobile-br"> Hand Tools</div>
-                <div class="block-banner__text text-black">Hammers, Chisels, Universal Pliers, Nippers, Jigsaws, Saws</div>
+                <div class="block-banner__title">{!! __('High quality') !!}</div>
+                <div class="block-banner__text text-black">{{__('WideRange')}}</div>
                 <div class="block-banner__button">
-                   <span class="btn btn-sm btn-primary">Shop Now</span>
+                    <span class="btn btn-sm btn-primary">{{__('Shop Now')}}</span>
                 </div>
             </a>
         </div>
@@ -289,6 +289,7 @@
     <!-- .block-banner / end -->
 
     <!-- .block-products-carousel -->
+    @if($newArrivals->count() > 0)
     <div class="block block-products-carousel" data-layout="horizontal" data-mobile-grid-columns="2">
         <div class="container">
             <div class="block-header">
@@ -466,6 +467,7 @@
             </div>
         </div>
     </div>
+    @endif
     <!-- .block-products-carousel / end -->
     <!-- .block-posts -->
     <div class="block block-posts" data-layout="list" data-mobile-columns="1">

@@ -16529,3 +16529,19 @@ ul {
 ul li.active{
     color: #3366cc !important;
 }
+
+@media (max-width: 430px) {
+    .block-slideshow {
+        margin-bottom: 0px !important;
+    }
+    .block-slideshow--layout--with-departments .block-slideshow__body {
+        height: 248px !important;
+    }
+    .block-slideshow .owl-carousel .owl-dots {
+        bottom: 210px !important;
+    }
+}
+
+[dir=ltr] .totop__button {
+    margin-bottom: 35px;
+}
