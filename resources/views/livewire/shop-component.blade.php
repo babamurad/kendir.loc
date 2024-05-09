@@ -474,11 +474,10 @@
                                                        wire:navigate>{{ $product->name }}</a>
                                                 </div>
                                                 <div class="product-card__rating">
-                                                    <div class="product-card__rating-legend"><strong>{{__('Brand')}}
-                                                            : </strong> {{ $product->brands->name }} </div>
-                                                    <div class="product-card__rating-legend">
-                                                        <strong>{{__('Manufacturer')}}
-                                                            : </strong> {{ $product->manufacturers->name }} </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12"><div class="product-card__rating-legend"><strong>{{__('Brand')}}: </strong> {{ $product->brands->name }} </div></div>
+                                                        <div class="col-sm-12"><div class="product-card__rating-legend"><strong>{{__('Manufacturer')}}: </strong> {{ $product->manufacturers->name }} </div></div>
+                                                    </div>
                                                 </div>
                                                 <ul class="product-card__features-list">
                                                     <li>Model: {{ $product->specification->model??'' }}</li>

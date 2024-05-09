@@ -5,6 +5,58 @@
         $wproducts = \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->pluck('id');
         $cproducts = \Gloudemans\Shoppingcart\Facades\Cart::instance('compare')->content()->pluck('id');
     @endphp
+{{--    Login--}}
+    <div class="col-md-6 d-flex flex-column">
+        <div class="card flex-grow-1 mb-md-0">
+            <div class="card-body">
+                <h3 class="card-title">{{__('Login')}}</h3>
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; ">
+                        <button type="button" class="close {{ request()->is('/') ? '' : ' mt-3' }}" data-dismiss="alert" aria-hidden="true" style="top: -16px;">×</button>
+                        <h6><i class="icon fas fa-check"></i> {{ session('success') }}</h6>
+                    </div>
+                @endif
+                @if(session('error'))
+                    <div class="alert alert-danger alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; ">
+                        <button type="button" class="close {{ request()->is('/') ? '' : ' mt-3' }}" data-dismiss="alert" aria-hidden="true" style="top: -16px;">×</button>
+                        <h6><i class="icon fas fa-info"></i> {{ session('error') }}</h6>
+                    </div>
+                @endif
+                <form wire:submit="login">
+                    @csrf
+                    <div class="form-group">
+                        <label class="required-field">{{__('Email address')}}</label>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{__('Email address')}}" wire:model="email">
+                        @error('email') <p class="text-danger">{{$message}}</p> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="required-field">{{__('Password')}}</label>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{__('Password')}}" wire:model="password">
+                        @error('password') <p class="text-danger">{{$message}}</p> @enderror
+                        <small class="form-text text-muted">
+                            <a href="{{ route('forgotten-password') }}">{{__('Forgotten Password')}}</a>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                                                <span class="form-check-input input-check">
+                                                    <span class="input-check__body">
+                                                        <input class="input-check__input" type="checkbox" id="login-remember">
+                                                        <span class="input-check__box"></span>
+                                                        <svg class="input-check__icon" width="9px" height="7px">
+                                                            <use xlink:href="images/sprite.svg#check-9x7"></use>
+                                                        </svg>
+                                                    </span>
+                                                </span>
+                            <label class="form-check-label" for="login-remember">{{__('Remember Me')}}</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-4">{{__('Login')}}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{--    Login--}}
     <div class="page-header">
         <div class="page-header__container container">
             <div class="page-header__breadcrumb">

@@ -33,7 +33,7 @@ class UserComponent extends Component
     public function logout()
     {
         auth()->logout();
-        session()->flash('error', 'You are logged out');
+        session()->flash('error', __('You are logged out'));
         $this->redirectRoute('home');
     }
 

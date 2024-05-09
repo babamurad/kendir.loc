@@ -211,9 +211,11 @@
     "NPass": "New Password",
     "ReenterPassword": "Reenter New Password",
     "Reset Password": "Reset Password",
-    "There are no products in this category yet.": "There are no products in this category yet.",
+    "There are no products in this category yet.": "There are no products here yet.",
     "Price is negotiable": "Price is negotiable",
     "High quality": "High quality<br class=\"block-banner__mobile-br\">building materials",
     "WideRange": "A wide range of affordable prices for your construction",
-    "Shop Now": "Shop Now"
+    "Shop Now": "Shop Now",
+    "You are logged out": "You are logged out",
+    "You are logged in": "You are logged in"
 }

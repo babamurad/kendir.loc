@@ -1,5 +1,5 @@
-@section('title', __('Home'))
 <div>
+    @section('title', __('Home'))
 @php
     $wproducts = \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->pluck('id');
 @endphp
