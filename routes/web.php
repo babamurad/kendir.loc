@@ -63,7 +63,6 @@ Route::middleware(\App\Http\Middleware\Localization::class)->group(function (){
     Route::get('/', HomeComponent::class)->name('home');
     Route::get('shop/{id?}', ShopComponent::class)->name('shop');
 
-
     Route::get('cart', CartComponent::class)->name('cart');
     Route::get('wishlist', WishlistComponent::class)->name('wishlist');
     Route::get('search', SearchComponent::class)->name('product.search');

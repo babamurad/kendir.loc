@@ -71,6 +71,7 @@
     "Show": "Show",
     "Add to cart": "Add to cart",
     "Add_to_cart": "Add to cart",
+    "New Arrivals": "New Arrivals",
     "Close": "Close",
     "Read more...": "Read more...",
     "New": "New",
@@ -210,5 +211,11 @@
     "NPass": "New Password",
     "ReenterPassword": "Reenter New Password",
     "Reset Password": "Reset Password",
-    "There are no products in this category yet.": "There are no products in this category yet."
+    "There are no products in this category yet.": "There are no products here yet.",
+    "Price is negotiable": "Price is negotiable",
+    "High quality": "High quality<br class=\"block-banner__mobile-br\">building materials",
+    "WideRange": "A wide range of affordable prices for your construction",
+    "Shop Now": "Shop Now",
+    "You are logged out": "You are logged out",
+    "You are logged in": "You are logged in"
 }

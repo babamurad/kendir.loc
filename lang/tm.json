@@ -74,7 +74,9 @@
     "Name": "Ady",
     "Show": "Görkez",
     "Add to cart": "Sebete goşuň",
+    "Add To Cart": "Sebete goşuň",
     "Add_to_cart": "Sebete goşuň",
+    "New Arrivals": "Täze gelener",
     "Close": "Ýapmak",
     "Read more...": "Dowamyny oka...",
     "New": "Täze",
@@ -181,7 +183,7 @@
     "pls send check":"Dükanyň ady, Dükan köçesi, Dükan şäheri, Dükan ştaty / okrugy, dükan poçta kody üçin çek iberiň.",
     "paywithcash":" Ýerine baranda nagt töleg",
     "termcondition":"Okadym, düzgünler bilen",
-    "termsandconditions":"tanysşdym we ylalşýaryn",
+    "termsandconditions":"tanyşdym we ylalaşýaryn",
     "placeorder":"Sargyt et",
 
     "Calculator": "Kalkulýator",
@@ -217,6 +219,11 @@
     "NPass": "Täze parol",
     "ReenterPassword": "Täze parolyňyzy tassyklaň",
     "Reset Password": "Paroly täzeden ýazmak",
-    "There are no products in this category yet.": "Bu kategoriýada entek önüm ýok."
-
+    "There are no products in this category yet.": "Bu ýerde entek önüm ýok.",
+    "Price is negotiable": "Bahasy ylalaşylýar",
+    "High quality": "Ýokary hilli<br class=\"block-banner__mobile-br\"> gurluşyk materiallary",
+    "WideRange": "Gurluşygyňyz üçin elýeterli bahalarda giň gerim",
+    "Shop Now": "Satyn almak",
+    "You are logged out": "Siz çykdyňyz",
+    "You are logged in": "Siz girdiňiz"
 }

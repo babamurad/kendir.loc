@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => 'Bu şahsyýetnamalar, ýazgylarymyza gabat gelmeýär.',
+    'password' => 'Berlen parol nädogry.',
+    'throttle' => 'Giriş synanyşyklary gaty köp. Gaýtadan synap görmegiňizi haýyş edýäris: sekuntlar.',
 
 ];

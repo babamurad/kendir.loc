@@ -78,7 +78,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            @if(!$parent_id == 0)
+
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="inputGroupSelect01">{{__('Parent')}}</label>
@@ -90,7 +90,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            @endif
+
                         </div>
                         <div class="col-12">
                             <div class="form-group">
@@ -290,12 +290,12 @@
                             <td>{{ ++$i }}</td>
                             <td>{{ $category->id }}</td>
                             <td><img src="{{ asset('images/categories').'/'.$category->image }}" alt="" width="60"></td>
-                            <td>{{$category->name}}</td>
+                            <td><a class="text-primary" href=""  data-toggle="modal" data-target="#EditCategory" wire:click="editCategory({{ $category->id }})" >{{$category->name}}</a> </td>
                             <td>{{$category->slug}}</td>
                             <td>{{$category->is_popular? 'Yes':'No'}}</td>
                             <td>{{ $category->cparent? $category->cparent->name : 'Root'}}</td>
                             <td>
-                                <button type="button" class="btn btn-success btn-sm rounded"data-toggle="modal" data-target="#EditCategory" wire:click="editCategory({{ $category->id }})">
+                                <button type="button" class="btn btn-success btn-sm rounded" data-toggle="modal" data-target="#EditCategory" wire:click="editCategory({{ $category->id }})">
                                     <i class="icon icon-pencil3"></i>
                                 </button>
                                 <button type="button" class="btn btn-danger btn-sm rounded"  data-toggle="modal" data-target="#deleteConfirmation" wire:click="deleteId({{ $category->id }})">

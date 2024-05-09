@@ -149,6 +149,7 @@ class AddProductComponent extends Component
         $product->stock_status = $this->stock_status='In Stock'?:'Out of Stock';
         $product->featured = $this->featured;
         $product->quantity = $this->quantity;
+
         $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();
         $this->image->storeAs('products', $imageName);
         $product->image = $imageName;
@@ -176,12 +177,12 @@ class AddProductComponent extends Component
 
         $sprec = new Specification();
         $sprec->model = $this->model;
-        $sprec->dl = $this->dl??0;
-        $sprec->dw = $this->dw??0;
-        $sprec->dh = $this->dh??0;
+        $sprec->dl = $this->dl?:0;
+        $sprec->dw = $this->dw?:0;
+        $sprec->dh = $this->dh?:0;
         $sprec->unit = $this->unit;
-        $sprec->weight = $this->weight??0;
-        $sprec->status = $this->status??1;
+        $sprec->weight = $this->weight?:0;
+        $sprec->status = $this->status?:1;
         $sprec->product_id = $product->id;
         //************
         $sprec->type_roll = $this->type_roll??'Hot';

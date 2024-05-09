@@ -34,6 +34,7 @@ class ProductComponent extends Component
     public $category_id;
     public $images;
     public $del_name, $del_id, $spec_id;
+    public $status;
 
     public function deleteId($id)
     {
@@ -55,11 +56,15 @@ class ProductComponent extends Component
         $this->category_id = session()->get('category', default: '');
     }
 
-    public function updatedСategory_id()
+    public function updated($category_id)
     {
-        dd('cat');
         session()->put('category', $this->category_id);
-        dd(session()->get('category', default: ''));
+    }
+
+    public function changeStatus($id)
+    {
+        //$specification = Specification::where('product_id', '=', $id)->get();
+
     }
 
     public function render()

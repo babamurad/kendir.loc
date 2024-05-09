@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Brand;
 use App\Models\Carousel;
 use App\Models\Category;
 use App\Models\Post;
@@ -32,15 +33,15 @@ class HomeComponent extends Component
         //dd($categories->count());
         $carousels = Carousel::orderBy('id', 'DESC')->get();
 
-        $products = Product::all();
+        $products = Product::active()->get();
         //dd($products->count());
-
+        $brands = Brand::all();
         $date = Carbon::now()->subDays(7);
-        $newArrivals = Product::where('created_at', '>=', $date)->get();
+        $newArrivals = Product::active()->where('created_at', '>=', $date)->get();
         //$blya = 'Blyat suka blyat nahuy';
         $posts = Post::orderBy('id', 'desc')->get();
         return view('livewire.home-component',
-            compact('categories', 'carousels', 'products', 'newArrivals', 'rcategories', 'posts')
+            compact('categories', 'carousels', 'products', 'newArrivals', 'rcategories', 'posts', 'brands')
 
         )->layout('components.layouts.app', ['rcategories' => $rcategories]);
     }

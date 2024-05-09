@@ -23,7 +23,6 @@ class Post extends Model
         if ( isset($this->lang_fileds) && is_array($this->lang_fileds) && in_array($key, $this->lang_fileds) ) {
             return $this->{ $key.'_'.app()->getLocale() } ?? '';
         }
-
         return $default;
     }
 }

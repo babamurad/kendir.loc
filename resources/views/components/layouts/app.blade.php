@@ -295,7 +295,7 @@
                                         <li class="footer-links__item"><a href="{{ route('contacts') }}" class="footer-links__link">{{__('Store Location')}}</a></li>
                                         <li class="footer-links__item"><a href="{{ route('order-history') }}" class="footer-links__link">{{__('Order History')}}</a></li>
                                         <li class="footer-links__item"><a href="{{ route('wishlist') }}" class="footer-links__link">{{__('Wish List')}}</a></li>
-                                        <li class="footer-links__item"><a href="{{ route('roof') }}" class="footer-links__link">{{__('Roof')}}</a></li>
+{{--                                        <li class="footer-links__item"><a href="{{ route('roof') }}" class="footer-links__link">{{__('Roof')}}</a></li>--}}
 {{--                                        <li class="footer-links__item"><a href="" class="footer-links__link">{{__('Specials')}}</a></li>--}}
 {{--                                        <li class="footer-links__item"><a href="" class="footer-links__link">{{__('Gift Certificates')}}</a></li>--}}
 {{--                                        <li class="footer-links__item"><a href="" class="footer-links__link">{{__('Affiliate')}}</a></li>--}}
@@ -328,24 +328,24 @@
                                                     <i class="fab fa-tiktok"></i>
                                                 </a>
                                             </li>
-                                            <li class="social-links__item">
-                                                <a class="social-links__link social-links__link--type--youtube" href=""
-                                                    target="_blank">
-                                                    <i class="fab fa-youtube"></i>
-                                                </a>
-                                            </li>
+{{--                                            <li class="social-links__item">--}}
+{{--                                                <a class="social-links__link social-links__link--type--youtube" href=""--}}
+{{--                                                    target="_blank">--}}
+{{--                                                    <i class="fab fa-youtube"></i>--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
                                             <li class="social-links__item">
                                                 <a class="social-links__link social-links__link--type--facebook" href=""
                                                     target="_blank">
                                                     <i class="fab fa-facebook-f"></i>
                                                 </a>
                                             </li>
-                                            <li class="social-links__item">
-                                                <a class="social-links__link social-links__link--type--twitter" href=""
-                                                    target="_blank">
-                                                    <i class="fab fa-twitter"></i>
-                                                </a>
-                                            </li>
+{{--                                            <li class="social-links__item">--}}
+{{--                                                <a class="social-links__link social-links__link--type--twitter" href=""--}}
+{{--                                                    target="_blank">--}}
+{{--                                                    <i class="fab fa-twitter"></i>--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
                                             <li class="social-links__item">
                                                 <a class="social-links__link social-links__link--type--instagram"
                                                     href="" target="_blank">
@@ -549,17 +549,17 @@
                             <ul class="mobile-links mobile-links--level--1">
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('home', ['locale' => 'en']) }}" class="mobile-links__item-link" wire:navigate>English</a>
+                                        <a href="{{ route('locale', ['locale' => 'en']) }}" class="mobile-links__item-link" wire:navigate>English</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('home', ['locale' => 'ru']) }}" class="mobile-links__item-link" wire:navigate>Русский</a>
+                                        <a href="{{ route('locale', ['locale' => 'ru']) }}" class="mobile-links__item-link" wire:navigate>Русский</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('home', ['locale' => 'tm']) }}" class="mobile-links__item-link" wire:navigate>Turkmence</a>
+                                        <a href="{{ route('locale', ['locale' => 'tm']) }}" class="mobile-links__item-link" wire:navigate>Turkmence</a>
                                     </div>
                                 </li>
                             </ul>

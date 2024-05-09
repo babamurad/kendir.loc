@@ -46,4 +46,14 @@ class Category extends Model
         return $default;
     }
 
+    public function activeProductsCount($category_id)
+    {
+        $productCount = DB::table('products AS p')
+            ->join('specifications AS s', 's.product_id', '=', 'p.id')
+            ->where('s.status', true)
+            ->where('p.category_id', $category_id)
+            ->count();
+        return $productCount;
+    }
+
 }

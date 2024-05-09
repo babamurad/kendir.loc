@@ -89,6 +89,7 @@
                             <th>#</th>
                             <th>{{__('Image')}}</th>
                             <th>{{__('Product Name')}}</th>
+                            <th>{{__('Published')}}</th>
                             <th>{{__('Category')}}</th>
                             <th>{{__('Stock Status')}}</th>
                             <th>{{__('Sale Price')}}</th>
@@ -104,7 +105,13 @@
                             <tr>
                                 <td>{{ ++$i }}</td>
                                 <td><img src="{{ asset('images/products').'/'.$product->image }}" alt="" width="60"></td>
-                                <td><a class="text-primary" href="{{ route('admin.edit-product', ['product_id' => $product->id] ) }}">{{$product->name}}</a></td>
+                                <td><a class="text-primary" href="{{ route('admin.edit-product', ['product_id' => $product->id] ) }}">{{$product->name}} </a></td>
+                                <td>@if($product->specification->status) <span class="badge badge-primary">Yes</span> @else <span class="badge badge-secondary">No</span> @endif
+{{--                                    <select class="form-control form-control-sm" wire:model="status">--}}
+{{--                                        <option value="1">Yes</option>--}}
+{{--                                        <option value="0">No</option>--}}
+{{--                                    </select>--}}
+                                </td>
                                 <td>{{$product->category->name }}</td>
                                 <td>{{$product->stock_status}}</td>
                                 <td>{{$product->sale_price}}</td>

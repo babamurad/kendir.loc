@@ -348,7 +348,11 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label for="type_roll" class="form-label">Type of roll</label>
-                                            <input type="text" class="form-control" name="type_roll" placeholder="Type of roll" wire:model="type_roll">
+                                            <select name="type_roll" class="form-control" wire:model="type_roll">
+                                                <option value="0" selected>Select Type of roll</option>
+                                                <option value="1">Hot</option>
+                                                <option value="2">Cold</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
@@ -398,10 +402,10 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label for="status" class="form-label">Status</label>
+                                            <label for="status" class="form-label">Published</label>
                                             <select name="status" class="form-control" wire:model="status">
-                                                <option value="1" selected>Enabled</option>
-                                                <option value="0">Disabled</option>
+                                                <option value="1" selected>Yes</option>
+                                                <option value="0">No</option>
                                             </select>
                                         </div>
                                     </div>

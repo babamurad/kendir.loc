@@ -210,7 +210,7 @@
 			<!-- END: .app-container -->
 			<!-- BEGIN .main-footer -->
 			<footer class="main-footer fixed-btm">
-				© Kendir HJ {{ date("Y") }}
+				© Kendir HK {{ date("Y") }}
 			</footer>
 			<!-- END: .main-footer -->
 		</div>

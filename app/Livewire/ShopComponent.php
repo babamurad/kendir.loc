@@ -35,128 +35,91 @@ class ShopComponent extends Component
     public $prCount;
     public $check_brands = [];
     public $check_manufs = [];
+    public $openClass = 'filter-categories-alt__item--open';
+    public $catParent;
 
     #[On('selectBrand')]
     #[On('selectManuf')]
     #[On('resetAll')]
     public function render()
     {
-        //->whereBetween('sale_price', [$this->minPrice, $this->maxPrice])
+        //->whereBetween('sale_price', [$this->minPrice, $this->maxPrice]) s.status=TRUE AND
+        $productCount = DB::table('products AS p')
+            ->join('specifications AS s', 's.product_id', '=', 'p.id')
+            ->where('s.status', true)
+            ->where('p.category_id', 51)
+            ->count();
         $name = 'name_' . Session::get('locale');
         $categories = Category::with('cparent')->with('products')->get();
-        $this->prCount = Product::all()->count();
-        $latestProducts = Product::orderBy('id', 'desc')->limit(5)->get();
+//        $categories = DB::select('SELECT * FROM categories c LEFT JOIN products p ON c.id = p.category_id LEFT JOIN specifications s ON p.id = s.product_id HAVING s.status=true');
+        $this->prCount = Product::active()->count();
+        $latestProducts = Product::active()->orderBy('id', 'desc')->limit(5)->get();
 
+        $products_query = Product::query()->active();
 
-// 1  0  0
-        if ($this->category_id && empty($this->check_brands) && empty($this->check_manufs)) {
-            $this->active_id = $this->category_id;
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-//                ->whereIn('category_id', [21, 22, 23])
-                ->whereIn('category_id', $this->category_id)
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        } // 1 1 0
-        elseif ($this->category_id && !empty($this->check_brands) && empty($this->check_manufs)) {
-            $this->active_id = $this->category_id;
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-                ->whereIn('category_id', $this->category_id)
-                ->whereIn('brand_id', $this->check_brands)
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        } // 1 1 1
-        elseif ($this->category_id && !empty($this->check_brands) && !empty($this->check_manufs)) {
-            $this->active_id = $this->category_id;
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-                ->whereIn('category_id', $this->category_id)
-                ->whereIn('brand_id', $this->check_brands)
-                ->whereIn('manufacturer_id', $this->check_manufs)
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        }// 0 1 1
-        elseif (!$this->category_id && !empty($this->check_brands) && !empty($this->check_manufs)) {
-            $this->active_id = $this->category_id;
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-                ->whereIn('brand_id', $this->check_brands)
-                ->whereIn('manufacturer_id', $this->check_manufs)
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        }// 0 0 1
-        elseif (!$this->category_id && empty($this->check_brands) && !empty($this->check_manufs)) {
-            $this->active_id = $this->category_id;
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-                ->whereIn('manufacturer_id', $this->check_manufs)
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        }// 1 0 1
-        elseif ($this->category_id && empty($this->check_brands) && !empty($this->check_manufs)) {
-            $this->active_id = $this->category_id;
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-                ->whereIn('category_id', $this->category_id)
-                ->whereIn('manufacturer_id', $this->check_manufs)
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        }// 0 1 0
-        elseif (!$this->category_id && !empty($this->check_brands) && empty($this->check_manufs)) {
-            $this->active_id = $this->category_id;
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-                ->whereIn('brand_id', $this->check_brands)
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        } //0 0 0
-        else {
-            $products = Product::with('specification')
-                ->with('brands')
-                ->with('manufacturers')
-                ->orderBy($name, $this->sort)
-                ->paginate($this->perPage);
-        }
+        if ($this->category_id) { $products_query->whereIn('category_id', $this->category_id); }
+        if (!empty($this->check_brands)) { $products_query->whereIn('brand_id', $this->check_brands); }
+        if (!empty($this->check_manufs)) { $products_query->whereIn('manufacturer_id', $this->check_manufs); }
+
+        $products = $products_query
+            ->with('specification')
+            ->with('brands')
+            ->with('manufacturers')
+            ->orderBy($name, $this->sort)
+            ->paginate($this->perPage);
+
 
         $date = Carbon::now()->subDays(7);
-        $newArrivals = Product::where('created_at', '>=', $date)->get();
+        $newArrivals = Product::where('created_at', '>=', $date)->active()->get();
 
         $rcategories = Category::with('children')->where('parent_id', '=', '0')->get();
         $brands = Brand::with('products')->get();
         $manufacturers = Manufacturer::with('products')->get();
 
         $post = Post::first();
+
         return view('livewire.shop-component',
             compact('categories', 'latestProducts', 'products', 'newArrivals', 'rcategories', 'brands', 'manufacturers', 'post'));
     }
 
     public function mount($id = null)
     {
+        //dd($id);
         if ($id != null) {
-            $cats = Category::where('parent_id', '=', $id)->pluck('id');
+            $cats = Category::where('parent_id', '=', $id)->pluck('id', 'parent_id');
+
             if ($cats->count() > 0) {
                 foreach ($cats as $cat) {
                     $param[] = explode(',', $cat);
+
                 }
             } else {
                 $param[] = explode(',', $id);
+                $this->catParent = $id;
             }
             $this->category_id = $param;
+            $this->catParent = Category::where('id', '=', $id)->pluck('parent_id')->toArray();
+            //dd(Category::where('id', '=', $id)->pluck('parent_id'));
+
         } else {
             $this->category_id = null;
+            $this->catParent[] = 0;
         }
 
         $this->prodCount = Product::count();
+
 //        $this->minPrice = DB::table('products')->min('sale_price');
 //        $this->maxPrice = DB::table('products')->max('sale_price');
+    }
+
+    public function getCategoryProducts($category_id)
+    {
+        $cat = Category::findOrFail($category_id);
+        //dd($cat);
+        $this->cat_name = $cat->name;
+
+        $this->category_id[] = $cat->id;
+        $this->prodCount = Product::count();
     }
 
     public function checkBrand($id)
@@ -189,15 +152,6 @@ class ShopComponent extends Component
             }
         }
         $this->dispatch('selectManuf');
-    }
-
-    public function getCategoryProducts($category_id)
-    {
-        $cat = Category::findOrFail($category_id);
-        $this->cat_name = $cat->name;
-
-        $this->category_id = $cat->id;
-        //dd($this->cat_name);
     }
 
     public function store($product_id, $product_name, $product_price)
@@ -250,6 +204,7 @@ class ShopComponent extends Component
     {
         $this->category_id = $id;
         $cat = Category::where('id', '=', $this->category_id)->first();
+        dd($this->category_id);
         $this->cat_name = $cat->name;
         $this->active_id = $cat->id;
 

@@ -1,5 +1,5 @@
-@section('title', __('Home'))
 <div>
+    @section('title', __('Home'))
 @php
     $wproducts = \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->pluck('id');
 @endphp
@@ -210,7 +210,7 @@
                                     </button>
                                     <div class="product-card__badges-list">
                                         @if($newArrivals->contains($product->id))
-                                        <div class="product-card__badge product-card__badge--new">New</div>
+                                        <div class="product-card__badge product-card__badge--new">{{__('New')}}</div>
                                         @endif
                                     </div>
                                     <div class="product-card__image product-image">
@@ -238,8 +238,8 @@
                                             {{ $product->sale_price }}
                                         </div>
                                         <div class="product-card__buttons">
-                                            <button class="btn btn-primary product-card__addtocart" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
-                                                    <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">Add To Cart</button>
+                                            <button class="btn btn-primary product-card__addtocart" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">{{__('Add To Cart')}}</button>
+                                                    <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" wire:click="store({{$product->id}}, '{{$product->name}}', {{ $product->sale_price }})">{{__('Add To Cart')}}</button>
                                                     {{-- @if($wproducts->contains($product->id))
                                                     <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button" wire:click="removeWishlist('{{ $product->id }}')">
                                                         <svg width="16px" height="16px" style="fill: #ff3333;">
@@ -278,10 +278,10 @@
             <a href="{{ route('shop', ['locale' => app()->getLocale()]) }}" class="block-banner__body">
                 <div class="block-banner__image block-banner__image--desktop" style="background-image: url('images/kendir/kupit armaturu.jpg'); opacity: 0.7;"></div>
                 <div class="block-banner__image block-banner__image--mobile" style="background-image: url('images/kendir/kupit armaturu.jpg')"></div>
-                <div class="block-banner__title">Hundreds <br class="block-banner__mobile-br"> Hand Tools</div>
-                <div class="block-banner__text text-black">Hammers, Chisels, Universal Pliers, Nippers, Jigsaws, Saws</div>
+                <div class="block-banner__title">{!! __('High quality') !!}</div>
+                <div class="block-banner__text text-black">{{__('WideRange')}}</div>
                 <div class="block-banner__button">
-                   <span class="btn btn-sm btn-primary">Shop Now</span>
+                    <span class="btn btn-sm btn-primary">{{__('Shop Now')}}</span>
                 </div>
             </a>
         </div>
@@ -289,17 +289,18 @@
     <!-- .block-banner / end -->
 
     <!-- .block-products-carousel -->
+    @if($newArrivals->count() > 0)
     <div class="block block-products-carousel" data-layout="horizontal" data-mobile-grid-columns="2">
         <div class="container">
             <div class="block-header">
-                <h3 class="block-header__title">New Arrivals</h3>
+                <h3 class="block-header__title">{{__('New Arrivals')}}</h3>
                 <div class="block-header__divider"></div>
-                <ul class="block-header__groups-list">
-                    <li><button type="button" class="block-header__group  block-header__group--active ">All</button></li>
-                    <li><button type="button" class="block-header__group ">Power Tools</button></li>
-                    <li><button type="button" class="block-header__group ">Hand Tools</button></li>
-                    <li><button type="button" class="block-header__group ">Plumbing</button></li>
-                </ul>
+{{--                <ul class="block-header__groups-list">--}}
+{{--                    <li><button type="button" class="block-header__group  block-header__group--active ">All</button></li>--}}
+{{--                    <li><button type="button" class="block-header__group ">Power Tools</button></li>--}}
+{{--                    <li><button type="button" class="block-header__group ">Hand Tools</button></li>--}}
+{{--                    <li><button type="button" class="block-header__group ">Plumbing</button></li>--}}
+{{--                </ul>--}}
                 <div class="block-header__arrows-list">
                     <button class="block-header__arrow block-header__arrow--left" type="button">
                         <svg width="7px" height="11px">
@@ -466,12 +467,13 @@
             </div>
         </div>
     </div>
+    @endif
     <!-- .block-products-carousel / end -->
     <!-- .block-posts -->
     <div class="block block-posts" data-layout="list" data-mobile-columns="1">
         <div class="container">
             <div class="block-header">
-                <h3 class="block-header__title">Latest News</h3>
+                <h3 class="block-header__title">{{__('Latest News')}}</h3>
                 <div class="block-header__divider"></div>
                 <div class="block-header__arrows-list">
                     <button class="block-header__arrow block-header__arrow--left" type="button">
@@ -524,27 +526,11 @@
         <div class="container">
             <div class="block-brands__slider">
                 <div class="owl-carousel" wire:ignore>
-                    <div class="block-brands__item">
-                        <a href=""><img src="{{ asset('images/kendir/logo1.png') }}" alt=""></a>
-                    </div>
-                    <div class="block-brands__item">
-                        <a href=""><img src="{{ asset('images/kendir/logo2.png') }}" alt=""></a>
-                    </div>
-                    <div class="block-brands__item">
-                        <a href=""><img src="{{ asset('images/kendir/logo3.png') }}" alt=""></a>
-                    </div>
-                    <div class="block-brands__item">
-                        <a href=""><img src="{{ asset('images/kendir/logo4.png') }}" alt=""></a>
-                    </div>
-                    <div class="block-brands__item">
-                        <a href=""><img src="{{ asset('images/kendir/logo5.png') }}" alt=""></a>
-                    </div>
-                    <div class="block-brands__item">
-                        <a href=""><img src="images/logos/logo-6.png" alt=""></a>
-                    </div>
-                    <div class="block-brands__item">
-                        <a href=""><img src="images/logos/logo-7.png" alt=""></a>
-                    </div>
+                    @foreach($brands as $brand)
+                        <div class="block-brands__item">
+                            <a href=""><img src="{{ asset('images/brands/' . $brand->image) }}" alt=""></a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

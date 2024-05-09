@@ -98,9 +98,12 @@ class CategoryComponent extends Component
         $category->name_ru = $this->name_ru;
         $category->name_tm = $this->name_tm;
         $category->slug = $this->slug;
-        $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();
-        $this->image->storeAs('categories', $imageName);
-        $category->image = $imageName;
+        if ($this->image) {
+            $imageName = Carbon::now()->timestamp . '.' . $this->image->extension();
+            $this->image->storeAs('categories', $imageName);
+            $category->image = $imageName;
+        }
+
         $category->is_popular = $this->is_popular? $this->is_popular : 0;
         $category->parent_id = $this->parent_id;
         $category->save();
@@ -115,7 +118,7 @@ class CategoryComponent extends Component
 
         $category = Category::findOrFail($id);
         $this->edit_id = $category->id;
-        $this->name = $category->name;
+        $this->name = $category->name_en;
         $this->name_en = $category->name_en;
         $this->name_ru = $category->name_ru;
         $this->name_tm = $category->name_tm;
@@ -124,6 +127,7 @@ class CategoryComponent extends Component
         $this->parent_id = $category->parent_id;
         $this->image = $category->image;
         //dd(asset('images/categories').'/'.$this->image);
+//        dd($category->image);
         $this->is_popular = $category->is_popular;
     }
 
@@ -137,7 +141,7 @@ class CategoryComponent extends Component
         ]);
 
         $category = Category::findOrFail($this->edit_id);
-        $category->name = $this->name;
+        $category->name = $this->name_en;
         $category->name_en = $this->name_en;
         $category->name_ru = $this->name_ru;
         $category->name_tm = $this->name_tm;
