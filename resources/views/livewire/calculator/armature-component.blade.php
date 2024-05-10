@@ -23,16 +23,16 @@
                             <label class="col-sm-4 control-label"
                                    for="inputFirstName">{{__('calc.Diameter mm.')}}</label>
                             <div class="col-sm-8">
-                                <input class="form-control" type="number" id="inputFirstName"
+                                <input class="form-control" type="number" id="inputFirstName" min="1"
                                        wire:model.live="diameter">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row calc">
-                            <label class="col-sm-4 control-label" for="inputFirstName">{{__('calc.Length, m.')}}</label>
+                            <label class="col-sm-4 control-label" for="inputLangth">{{__('calc.Length, m.')}}</label>
                             <div class="col-sm-8">
-                                <input class="form-control" type="number" id="inputFirstName" wire:model.live="length">
+                                <input class="form-control" type="number" id="inputLangth" wire:model.live="length" min="1">
                             </div>
                         </div>
                     </div>
@@ -44,17 +44,17 @@
                     <div class="tab-pane fade in active show" id="panel1" role="tabpanel">
                         <div class="form-group">
                             <div class="row calc">
-                                <label class="col-sm-4 control-label" for="inputFirstName">{{__('calc.Diameter mm.')}}</label>
+                                <label class="col-sm-4 control-label" for="inputDiameter2">{{__('calc.Diameter mm.')}}</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="number" id="inputFirstName" wire:model.live="diameter">
+                                    <input class="form-control" type="number" id="inputDiameter2" wire:model.live="diameter" min="1" >
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row calc">
-                                <label class="col-sm-4 control-label" for="inputFirstName">{{__('calc.Weight')}}</label>
+                                <label class="col-sm-4 control-label" for="inputWeight">{{__('calc.Weight')}}</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="number" id="inputFirstName" wire:model.live="weight">
+                                    <input class="form-control" type="number" id="inputWeight" wire:model.live="weight" min="1">
                                 </div>
                             </div>
                         </div>

@@ -16520,3 +16520,12 @@ ul {
         width: 140px !important;
     }
 }
+
+/*.social-links__link--type--instagram {*/
+/*    background-color: #a943ab;*/
+/*}*/
+
+.social-links__link:hover {
+    opacity: 0.8;
+    padding-bottom: 5px;
+}

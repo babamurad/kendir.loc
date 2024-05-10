@@ -29,17 +29,17 @@
 
                         <div class="form-group">
                             <div class="row calc">
-                                <label class="col-sm-4 control-label" for="inputFirstName">{{__('calc.Length')}} {{ __('calc.mm.') }} </label>
+                                <label class="col-sm-4 control-label" for="plateLenght">{{__('calc.Length')}} {{ __('calc.mm.') }} </label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="number" id="inputFirstName" step="10" wire:model.live="length">
+                                    <input class="form-control" type="number" id="plateLenght" step="10" wire:model.live="length">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row calc">
-                                <label class="col-sm-4 control-label" for="inputFirstName">{{__('calc.Width')}} {{ __('calc.mm.') }}</label>
+                                <label class="col-sm-4 control-label" for="plateWidth">{{__('calc.Width')}} {{ __('calc.mm.') }}</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="number" id="inputFirstName" step="10" wire:model.live="width">
+                                    <input class="form-control" type="number" id="plateWidth" step="10" wire:model.live="width">
                                 </div>
                             </div>
                         </div>

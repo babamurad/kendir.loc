@@ -18,7 +18,7 @@ class ArmatureComponent extends Component
 
     public function mount()
     {
-        $this->diameter = 0;
+        $this->diameter = 1;
         $this->length = 1;
         $this->weight =1000;
         $this->resWeight = 0;
