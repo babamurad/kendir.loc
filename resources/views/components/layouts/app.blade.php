@@ -58,6 +58,9 @@
                                 <div class="indicator indicator--mobile d-sm-flex d-sm-none">
                                     <livewire:wishlist-mobile-icon-component />
                                 </div>
+                                <div class="indicator indicator--mobile d-sm-flex d-sm-none">
+
+                                </div>
                                 <div class="indicator indicator--mobile">
                                     <livewire:cart-mobile-icon-component />
                                 </div>
@@ -531,17 +534,17 @@
                             <ul class="mobile-links mobile-links--level--1">
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('home', ['locale' => 'en']) }}" class="mobile-links__item-link" wire:navigate>English</a>
+                                        <a href="{{ route('locale', ['locale' => 'en']) }}" class="mobile-links__item-link" wire:navigate>English</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('home', ['locale' => 'ru']) }}" class="mobile-links__item-link" wire:navigate>Русский</a>
+                                        <a href="{{ route('locale', ['locale' => 'ru']) }}" class="mobile-links__item-link" wire:navigate>Русский</a>
                                     </div>
                                 </li>
                                 <li class="mobile-links__item" data-collapse-item>
                                     <div class="mobile-links__item-title">
-                                        <a href="{{ route('home', ['locale' => 'tm']) }}" class="mobile-links__item-link" wire:navigate>Turkmence</a>
+                                        <a href="{{ route('locale', ['locale' => 'tm']) }}" class="mobile-links__item-link" wire:navigate>Turkmence</a>
                                     </div>
                                 </li>
                             </ul>
@@ -559,32 +562,32 @@
                 <li>
                     <a href="/" class="{{ request()->is('/')? 'active':'' }}" wire:navigate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home center"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                        <span>{{__('Home')}}</span>
+{{--                        <span>{{__('Home')}}</span>--}}
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('shop') }}" class="{{ request()->is('shop')? 'active':'' }}" wire:navigate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-align-justify center"><line x1="21" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="3" y2="18"></line></svg>
-                        <span>{{ __('Shop') }}</span>
+{{--                        <span>{{ __('Shop') }}</span>--}}
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('cart') }}" class="{{ request()->is('cart')? 'active':'' }}" wire:navigate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag center"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                        <span>{{ __('Cart') }}</span>
+{{--                        <span>{{ __('Cart') }}</span>--}}
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('wishlist') }}" class="{{ request()->is('wishlist')? 'active':'' }}" wire:navigate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart center"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        <span>{{ __('Wishlist') }}</span>
+{{--                        <span>{{ __('Wishlist') }}</span>--}}
                     </a>
                 </li>
                 @auth()
                 <li>
                     <a href="{{ route('dashboard') }}" class="{{ request()->is('dashboard')? 'active':'' }}" wire:navigate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user center"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                        <span>{{ __('Account') }}</span>
+{{--                        <span>{{ __('Account') }}</span>--}}
                     </a>
                 </li>
                 @endauth
@@ -592,7 +595,7 @@
                 <li>
                     <a href="{{ route('register') }}" class="{{ request()->is('dashboard')? 'active':'' }}" wire:navigate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user center"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                        <span>Login</span>
+{{--                        <span>Login</span>--}}
                     </a>
                 </li>
                 @endguest
