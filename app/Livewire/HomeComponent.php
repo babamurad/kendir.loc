@@ -60,7 +60,7 @@ class HomeComponent extends Component
 
     public function toShop ()
     {
-        return redirect()->route('shop');
+        return $this->redirect('/shop', navigate: true);
     }
 
     public function allCategory()

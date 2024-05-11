@@ -32,11 +32,11 @@ class RoundBarComponent extends Component
         $l = floatval($this->length);
         $s = pi() * $r ** 2;
         //dd($s);
-        $this->resWeight = number_format(round($s * $l * 7850, 3), '3', '.', ' ');
+        $this->resWeight = number_format(round($s * $l * 7850, 3), '3', ',', ' ');
 
         $w = floatval($this->weight) / 1000;
         //dd($w);
-        $this->resLength = number_format(round($w / ($s * 7.850), 3), '0', '.', ' ');
+        $this->resLength = number_format(round($w / ($s * 7.850), 3), '0', ',', ' ');
     }
 
     public function updatedDiameter()

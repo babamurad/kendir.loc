@@ -15,7 +15,6 @@
                 });
                 $('.zoomla').imagezoomsl();
             });
-
         </script>
     @endpush
         <div class="page-header">
@@ -163,30 +162,29 @@
                             <form class="product__options">
 
                                 <div class="form-group product__option">
-                                    <label class="product__option-label" for="product-quantity">{{__('Quantity')}} </label>
+                                    <label class="product__option-label" for="product-quantity">{{__('Quantity')}}</label>
                                     <div class="product__actions">
-                                        <script>
-                                            $(document).ready(function () {
-                                            var aa='';
-                                            $('.input-number__add').click(function () {
-                                                aa=$("#product-quantity").val();
-                                                @this.set('qty', aa)
-                                                // alert(aa)
+{{--                                        <script>--}}
+{{--                                            $(document).ready(function () {--}}
+{{--                                            var aa='';--}}
+{{--                                            $('.input-number__add').click(function () {--}}
+{{--                                                aa=$("#product-quantity").val();--}}
+{{--                                                @this.set('qty', aa)--}}
+{{--                                                // alert(aa)--}}
 
-                                            })
-                                            $('.input-number__sub').click(function () {
-                                                aa=$("#product-quantity").val();
-                                            @this.set('qty', aa)
-                                                // alert(aa)
-                                            })
-                                            })
-                                        </script>
+{{--                                            })--}}
+{{--                                            $('.input-number__sub').click(function () {--}}
+{{--                                                aa=$("#product-quantity").val();--}}
+{{--                                                @this.set('qty', aa)--}}
+{{--                                                // alert(aa)--}}
+{{--                                            })--}}
+{{--                                            })--}}
+{{--                                        </script>--}}
                                         <div class="product__actions-item">
                                             <div class="input-number product__quantity">
-                                                <input id="product-quantity" class="input-number__input form-control" type="number" min="1" wire:model.live="qty">
-
-                                                <div class="input-number__add"></div>
-                                                <div class="input-number__sub"></div>
+                                                <input id="product-quantity" class="input-number__input form-control" type="number" min="1" wire:model="qty">
+                                                <div class="input-number__add" wire:click.prebent="incrQty"></div>
+                                                <div class="input-number__sub" wire:click.prebent="decrQty"></div>
 
                                             </div>
                                         </div>

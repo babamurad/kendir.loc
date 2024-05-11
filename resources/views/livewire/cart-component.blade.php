@@ -52,7 +52,7 @@
                         </div>
                     </td>
                     <td class="cart-table__column cart-table__column--product">
-                        <a href="" class="cart-table__product-name">{{ $product->model->name }}</a>
+                        <a href="{{ route('product.details', ['slug' => $product->model->slug]) }}" class="cart-table__product-name">{{ $product->model->name }}</a>
 {{--                        <ul class="cart-table__options">--}}
 {{--                            <li>Color: Yellow</li>--}}
 {{--                            <li>Material: Aluminium</li>--}}
@@ -132,7 +132,7 @@
     <div class="block-empty__body">
         <div class="block-empty__message">{{__('Your shopping cart is empty!')}}</div>
         <div class="block-empty__actions">
-            <a class="btn btn-primary btn-sm" href="">{{__('Continue')}}</a>
+            <a class="btn btn-primary btn-sm" href="{{ route('shop') }}">{{__('Continue')}}</a>
         </div>
     </div>
     @endif

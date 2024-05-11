@@ -34,12 +34,20 @@ class ProfilTubeComponent extends Component
         $L = floatval($this->length);
         $T = floatval($this->tikness);
         $w = 0.0157 * $T * ($A + $B - 2.86 * $T);
+        if ($w > 0) {
+            $this->resWeight = number_format(round($w * $L, 2), 2, '.', ' ');
+        } else {
+            $w = 0;
+        }
 
-        $this->resWeight = number_format(round($w * $L, 2), 2, '.', ' ');
 
         $tw = floatval($this->weight);
-        $dlina = floatval($this->weight) / $w;
-        
+        if ($w > 0) {
+            $dlina = floatval($this->weight) / $w;
+        } else {
+            $dlina = 0;
+        }
+
         $this->resLength = number_format(round($dlina, 2), 2,'.',' ');
     }
 

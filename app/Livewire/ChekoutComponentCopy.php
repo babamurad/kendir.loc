@@ -11,7 +11,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class ChekoutComponent extends Component
+class ChekoutComponentCopy extends Component
 {
     public $ship_to_different = 0;
     public $firstname;
@@ -41,15 +41,37 @@ class ChekoutComponent extends Component
 
     public $paymentmode;
     public $thankyou;
-    public $agree = false;
 
     public function updated($fields)
     {
         $this->validateOnly($fields, [
             'firstname' => 'required',
+            'lastname' => 'required',
+            'companyname' => 'required',
+//            'country' => 'required',
+            'address1' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'zipcode' => 'required',
             'phone' => 'required|numeric',
+            'email' => 'required|email',
+            'paymentmode' => 'required',
         ]);
 
+        if ($this->ship_to_different)
+        {
+            $this->validateOnly($fields,[
+                's_firstname' => 'required',
+                's_lastname' => 'required',
+//                's_country' => 'required',
+                's_address1' => 'required',
+                's_city' => 'required',
+                's_state' => 'required',
+                's_zipcode' => 'required',
+                's_phone' => 'required|numeric',
+
+            ]);
+        }
     }
 
     public function placeOrder()
@@ -58,9 +80,8 @@ class ChekoutComponent extends Component
         if(!Auth::check()){
             $this->validate([
                 'firstname' => 'required|max:200',
-//                'email' => 'required|email|unique:users',
-//                'password' => 'required|min:6',
-                'phone' => 'required|numeric',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|min:6',
             ]);
 
             $user = new User();
@@ -74,7 +95,17 @@ class ChekoutComponent extends Component
         }
 
         $this->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            //'companyname' => 'required',
+          //  'country' => 'required',
+            'address1' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'zipcode' => 'required',
             'phone' => 'required|numeric',
+            'email' => 'required|email',
+            // 'paymentmode' => 'required',
         ]);
 
         $order = new Order();

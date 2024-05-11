@@ -127,13 +127,60 @@
                         <div class="card-body">
                             <h3 class="card-title">{{__('Billing details')}}</h3>
                             <div class="form-row">
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-6">
                                     <label class="required-field" for="checkout-first-name">{{__('First Name')}}</label>
                                     <input type="text" class="form-control @error('firstname') is-invalid @enderror" id="checkout-first-name" placeholder="{{__('First Name')}}" wire:model="firstname">
                                     @error('firstname') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="checkout-email">{{__('Email address')}}</label>
+                                    <label class="required-field" for="checkout-last-name">{{__('Last Name')}}</label>
+                                    <input type="text" class="form-control @error('lastname') is-invalid @enderror" id="checkout-last-name" placeholder="{{__('Last Name')}}" wire:model="lastname">
+                                    @error('lastname') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="" for="checkout-company-name">{{__('Company Name')}} <span class="text-muted">({{__('Optional')}})</span></label>
+                                <input type="text" class="form-control @error('companyname') is-invalid @enderror" id="checkout-company-name" placeholder="{{__('Company Name')}}" wire:model="companyname">
+                                @error('companyname') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="required-field" for="checkout-country">{{__('Country')}}</label>
+                                <select id="checkout-country" class="form-control form-control-select2" wire:model="country">
+                                    <option value="0">{{ __('Select a country...') }}</option>
+                                    <option value="1" selected>{{ __('Turkmenistan') }}</option>
+                                    <option value="2">{{ __('Uzbekistan') }}</option>
+                                    <option value="3">{{ __('Turkiye') }}</option>
+                                    <option value="4">{{ __('Russia') }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="required-field" for="checkout-state">{{__('State')}} / {{__('Country')}}</label>
+                                <input type="text" class="form-control @error('state') is-invalid @enderror" id="checkout-state" wire:model="state">
+                                @error('state') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="required-field" for="checkout-city">{{__('Town / City')}}</label>
+                                <input type="text" class="form-control @error('city') is-invalid @enderror" id="checkout-city" wire:model="city">
+                                @error('city') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="required-field" for="checkout-street-address">{{__('Address')}}</label>
+                                <input type="text" class="form-control @error('address1') is-invalid @enderror" id="checkout-street-address" placeholder="{{__('Address')}}"  wire:model="address1">
+                                @error('address1') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="" for="checkout-address">{{__('Address')}} {{__('Line')}} 2 <span class="text-muted">({{__('Optional')}})</span></label>
+                                <input type="text" class="form-control" id="checkout-address"  wire:model="address2">
+                                @error('address2') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="required-field" for="checkout-postcode">{{__('Postcode / ZIP')}}</label>
+                                <input type="text" class="form-control @error('zipcode') is-invalid @enderror" id="checkout-postcode" wire:model="zipcode">
+                                @error('zipcode') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label class="required-field" for="checkout-email">{{__('Email address')}}</label>
                                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="checkout-email" placeholder="{{__('Email address')}}" wire:model="email">
                                     @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
@@ -146,10 +193,104 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="checkout-street-address">{{__('Address')}}</label>
-                                <input type="text" class="form-control @error('address1') is-invalid @enderror" id="checkout-street-address" placeholder="{{__('Address')}}"  wire:model="address1">
-                                @error('address1') <span class="text-danger">{{ $message }}</span> @enderror
+                                <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input cpoint" id="createAcc" wire:model.live="createAcc">
+                                        <label class="custom-control-label cpoint" for="createAcc">{{__('Create An Account')}}?</label>
+                                </div>
                             </div>
+                            @if ($createAcc)
+                            <div class="form-group">
+                                <label class="required-field">{{__('Password')}}</label>
+                                <input type="password" class="form-control " placeholder="{{__('Password')}}" wire:model="password">
+                            </div>
+                            @endif
+                        </div>
+                        <div class="card-divider"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">{{__('Shipping Details')}}</h3>
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input cpoint" id="ship_to_different" wire:model.live="ship_to_different">
+                                    <label class="custom-control-label cpoint" for="ship_to_different">{{__('Ship to a different address')}}?</label>
+                                </div>
+                            </div>
+                            @if ($ship_to_different)
+                            <div class="ship-diff">
+                                <h5 class="card-title">{{__('Billing details')}}</h5>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="checkout-first-name">{{__('First Name')}}</label>
+                                        <input type="text" class="form-control" id="checkout-first-name" placeholder="{{__('First Name')}}" wire:model="s_firstname">
+                                        @error('s_firstname') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="checkout-last-name">{{__('Last Name')}}</label>
+                                        <input type="text" class="form-control" id="checkout-last-name" placeholder="{{__('Last Name')}}" wire:model="s_lastname">
+                                        @error('s_lastname') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="" for="checkout-company-name">{{__('Company Name')}} <span class="text-muted">({{__('Optional')}})</span></label>
+                                    <input type="text" class="form-control" id="checkout-company-name" placeholder="{{__('Company Name')}}" wire:model="s_companyname">
+                                    @error('s_companyname') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="required-field" for="checkout-country">{{__('Country')}}</label>
+                                    <select id="checkout-country" class="form-control form-control-select2" wire:model="s_country">
+                                        <option value="0">{{ __('Select a country...') }}</option>
+                                        <option value="1" selected>{{ __('Turkmenistan') }}</option>
+                                        <option value="2">{{ __('Uzbekistan') }}</option>
+                                        <option value="3">{{ __('Turkiye') }}</option>
+                                        <option value="4">{{ __('Russia') }}</option>
+                                        <option value="5">{{ __('Ukraine') }}</option>
+                                        <option value="6">{{ __('Kazakhstan') }}</option>
+                                        <option value="7">{{ __('Kyrgyzstan') }}</option>
+                                        <option value="8">{{ __('Iran') }}</option>
+                                        <option value="9">{{ __('Georgia') }}</option>
+                                        <option value="10">{{ __('Tadjikistan') }}</option>
+                                        <option value="11">{{ __('Afghanistan') }}</option>
+                                        <option value="12">{{ __('Azerbaijan') }}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="required-field" for="checkout-state">{{__('State')}} / {{__('County')}}</label>
+                                    <input type="text" class="form-control" id="checkout-state" wire:model="s_state">
+                                    @error('state') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="required-field" for="checkout-city">{{__('Town / City')}}</label>
+                                    <input type="text" class="form-control" id="checkout-city" wire:model="s_city">
+                                    @error('city') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="required-field" for="checkout-street-address">{{__('Address')}}</label>
+                                    <input type="text" class="form-control" id="checkout-street-address" placeholder="{{__('Street Address')}}"  wire:model="s_address1">
+                                    @error('address1') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="" for="checkout-address">{{__('Address Line')}} 2 <span class="text-muted">({{__('Optional')}})</span></label>
+                                    <input type="text" class="form-control" id="checkout-address"  wire:model="s_address2">
+                                    @error('address2') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="required-field" for="checkout-postcode">{{__('Postcode / ZIP')}}</label>
+                                    <input type="text" class="form-control" id="checkout-postcode" wire:model="s_zipcode">
+                                    @error('zipcode') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="required-field" for="checkout-email">{{__('Email address')}}</label>
+                                        <input type="email" class="form-control" id="checkout-email" placeholder="{{__('Email address')}}" wire:model="s_email">
+                                        @error('email') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="required-field" for="checkout-phone">{{__('Phone Number')}}</label>
+                                        <input type="text" class="form-control" id="checkout-phone" placeholder="{{__('Phone Number')}}" wire:model="s_phone">
+                                        @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="checkout-comment">{{__('Order notes')}} <span class="text-muted">({{__('Optional')}})</span></label>
                                 <textarea id="checkout-comment" class="form-control" rows="4" wire:model="addinfo"></textarea>
@@ -244,7 +385,7 @@
                             <div class="checkout__agree form-group">
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" id="agree" class="custom-control-input cpoint" wire:model="agree">
+                                        <input type="checkbox" id="agree" class="custom-control-input cpoint">
                                         <label class="custom-control-label cpoint" for="agree">{{__('termcondition')}}
                                             <a href="{{ route('terms') }}">{{__('termsandconditions')}}*</a>
                                         </label>

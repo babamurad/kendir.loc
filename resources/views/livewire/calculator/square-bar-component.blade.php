@@ -32,7 +32,7 @@
                             <div class="row calc">
                                 <label class="col-sm-4 control-label" for="isideA">{{__('calc.Side A')}} {{ __('calc.mm.') }}</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="number" id="sideA" wire:model.live="sideA">
+                                    <input class="form-control" type="number" id="sideA" wire:model.live="sideA" min="0">
                                 </div>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                             <div class="row calc">
                                 <label class="col-sm-4 control-label" for="length">{{__('calc.Length')}} {{__('calc.m.')}}</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="number" id="length" wire:model.live="length">
+                                    <input class="form-control" type="number" id="length" wire:model.live="length" min="0">
                                 </div>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                                 <div class="row calc">
                                     <label class="col-sm-4 control-label" for="isideA">{{__('calc.Side A')}} {{ __('calc.mm.') }}</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control" type="number" id="sideA" wire:model.live="sideA">
+                                        <input class="form-control" type="number" id="sideA" wire:model.live="sideA" min="0">
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                                 <div class="row calc">
                                     <label class="col-sm-4 control-label" for="weight">{{__('calc.Weight')}}</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control" type="number" id="weight" wire:model.live="weight">
+                                        <input class="form-control" type="number" id="weight" wire:model.live="weight" min="0">
                                     </div>
                                 </div>
                             </div>
@@ -101,4 +101,3 @@
 
 
 </div>
-

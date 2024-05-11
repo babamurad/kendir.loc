@@ -18,7 +18,7 @@ class DetailsComponent extends Component
             ->with('manufacturers')
             ->where('slug', $this->slug)->first();
         $products = Product::with('specification')->where('category_id', '=', $product->category_id)->get();
-        //dd($product->manufacturers);
+
         return view('livewire.details-component', compact('product', 'products'))->layout('components.layouts.app');
     }
     public function mount($slug)
@@ -34,8 +34,20 @@ class DetailsComponent extends Component
     {
         //dd($this->qty);
         Cart::instance('cart')->add($product_id, $product_name, $this->qty, $product_price)->associate('App\Models\Product');
-        session()->flash('success', 'Item added in Cart');
+        session()->flash('success', __('Item added in Cart'));
         $this->dispatch('addToCartDetails');
+    }
+
+    public function decrQty()
+    {
+        $this->qty--;
+        if ($this->qty == 0) {
+            $this->qty = 1;
+        }
+    }
+    public function incrQty()
+    {
+        $this->qty++;
     }
 
     public function addToWishlist($product_id, $product_name, $product_price)

@@ -18,7 +18,7 @@ class ArmatureComponent extends Component
 
     public function mount()
     {
-        $this->diameter = 0;
+        $this->diameter = 1;
         $this->length = 1;
         $this->weight =1000;
         $this->resWeight = 0;
@@ -39,7 +39,7 @@ class ArmatureComponent extends Component
         $s= $s/2;
         $s = ($s*$s);
         $s = pi()*$s;
-        $this->resWeight = number_format(round($s * $this->length * (0.00785), 2), '2', '.', ' ');
+        $this->resWeight = number_format(round($s * $this->length * (0.00785), 3), '3', '.', ' ');
     }
 
     public function updatedDiameter()

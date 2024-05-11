@@ -16530,7 +16530,7 @@ ul li.active{
     color: #3366cc !important;
 }
 
-@media (max-width: 430px) {
+@media (max-width: 750px) {
     .block-slideshow {
         margin-bottom: 0px !important;
     }

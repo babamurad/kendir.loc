@@ -37,7 +37,11 @@ class AngleComponent extends Component
         $ww = (($a + $b - $t) * $t + (1 - pi()/4)) * 0.7850 * $l;
         $this->resWeight = number_format(round($ww, 3), 3, '.', ' ');
 
-        $ll = $w * 1000/((($a + $b - $t) * $t + (1 - pi()/4)) * 0.007850);
+        if (((($a + $b - $t) * $t + (1 - pi()/4)) * 0.007850) != 0) {
+            $ll = $w * 1000/((($a + $b - $t) * $t + (1 - pi()/4)) * 0.007850);
+        } else {
+            $ll = 0;
+        }
         $this->resLength = number_format(round($ll, 3), 3, '.', ' ');
 
     }

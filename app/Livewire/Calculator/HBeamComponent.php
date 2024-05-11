@@ -44,9 +44,19 @@ class HBeamComponent extends Component
         $s2 = $b * $bt;
         $s = $s1 + 2 * $s2;
         $ww = $s * 7850 * $len / 1000;
+        if ($s != 0) {
+            $weight = $w * 100/( $s*0.7850 );
+        } else {
+            $weight = 0;
+        }
+        if ($ww > 0) {
+            $ww = $s * 7850 * $len / 1000;
+        } else {
+            $ww = 0;
+        }
 
         //dd($this->weight * 100/( $s*0.7850 ));
-        $this->resLength = number_format(round( $w * 100/( $s*0.7850 ), 3 ), 3, '.', ' ');
+        $this->resLength = number_format(round( $weight, 3 ), 3, '.', ' ');
         $this->resWeight = number_format(round($ww, 3), 3, '.', ' ');
     }
 

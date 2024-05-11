@@ -44,13 +44,27 @@ class TubeComponent extends Component
 
         $kr = (($this->diameter/2 - $this->tickness)/1000);
 
-        $skrug = pi() * ($ur**2 - $kr**2);
-        $w = $skrug * $this->length*7850;
+        if ($ur>$kr) {
+            $skrug = pi() * ($ur**2 - $kr**2);
+        } else {
+            $skrug = 0;
+        }
 
-        $this->resWeight = number_format(round($w, 2), '2', '.', ' ');
+        if ($skrug > 0) {
+            $w = $skrug * $this->length*7850;
+        } else {
+            $w = 0;
+        }
+        $this->resWeight = number_format(round($w, 3), '3', '.', ' ');
 
         //L = (m * 1000) / (π * ρ * (R^2 - r^2))
-        $dlina = ( $this->weight ) / ( pi() * 7850 * ( $ur**2 - $kr**2 ) );
+        $mayd = ( pi() * 7850 * ( $ur**2 - $kr**2 ) );
+
+        if ($mayd > 0 ) {
+            $dlina = ( $this->weight ) / ( pi() * 7850 * ( $ur**2 - $kr**2 ) );
+        } else {
+            $dlina = 0;
+        }
 
         $this->resLength = number_format(round($dlina, 2), '2', '.', ' ');
 

@@ -11,7 +11,7 @@
                     <div class="block-slideshow__body">
                         <div class="owl-carousel">
                             @foreach($carousels as $carousel)
-                                <a class="block-slideshow__slide img-fluid" href="#">
+                                <a class="block-slideshow__slide img-fluid" href="#"  wire:click='toShop'>
                                     <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop">
                                         <img src="{{asset('images/carousel').'/'.$carousel->image}}" alt="" class="img-fluid">
                                     </div>
@@ -26,7 +26,7 @@
 
                                         </div>
                                         <div class="block-slideshow__slide-button">
-                                            <span class="btn btn-primary btn-lg" wire:click='toShop' wire:navigate>Shop Now</span>
+                                            <span class="btn btn-primary btn-lg">{{ __('Shop Now') }}</span>
                                         </div>
                                     </div>
                                 </a>

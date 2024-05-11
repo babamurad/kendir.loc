@@ -35,7 +35,11 @@ class SquareBarComponent extends Component
         $this->resWeight = number_format(round($w * $L, 3), 3, '.', ' ');
 
         $S = $A ** 2 * 7850;
-        $dlina = number_format(round(floatval($this->weight) / $S, 2), '0', '.', ' ');
+        if ($S>0) {
+            $dlina = number_format(round(floatval($this->weight) / $S, 2), '0', '.', ' ');
+        } else {
+            $dlina = 0;
+        }
 
         $this->resLength = $dlina;
     }

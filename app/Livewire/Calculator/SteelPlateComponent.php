@@ -40,8 +40,8 @@ class SteelPlateComponent extends Component
         $width = floatval($this->width);
         $tik = floatval($this->tickness);
         $qt = floatval($this->qty);
-        $this->resWeight = $length * $width * $tik * $qt * 7850*0.0000001;
-        $this->resKv = $qt * $tik * 7850*0.0001;
+        $this->resWeight = number_format(round($length * $width * $tik * $qt * 7850*0.0000001, 3), 3, ',', ' ');
+        $this->resKv = number_format(round($qt * $tik * 7850*0.0001, 3), 3, ',', ' ');
     }
 
     public function updatedLength()

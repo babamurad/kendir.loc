@@ -184,6 +184,13 @@
                                             @error('sale_price') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
                                         <div class="form-group">
+                                            <label for="status" class="form-label">Published</label>
+                                            <select name="status" class="form-control" wire:model="status">
+                                                <option value="1" selected>Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="sku" class="form-label">SKU</label>
                                             <input type="text" class="form-control @error('sale_price') is-invalid @enderror" name="sku" placeholder="Enter sku" wire:model="sku">
                                             @error('sku') <p class="text-danger">{{$message}}</p> @enderror
@@ -401,13 +408,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label for="status" class="form-label">Published</label>
-                                            <select name="status" class="form-control" wire:model="status">
-                                                <option value="1" selected>Yes</option>
-                                                <option value="0">No</option>
-                                            </select>
-                                        </div>
+
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
