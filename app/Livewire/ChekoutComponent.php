@@ -39,7 +39,7 @@ class ChekoutComponent extends Component
 
     public $createAcc = 0, $password;
 
-    public $paymentmode;
+    public $paymentmode = 1;
     public $thankyou;
     public $agree = false;
 
@@ -48,120 +48,67 @@ class ChekoutComponent extends Component
         $this->validateOnly($fields, [
             'firstname' => 'required',
             'phone' => 'required|numeric',
+            'agree' => 'accepted'
         ]);
 
     }
 
     public function placeOrder()
     {
-        //dd($this->firstname);
-        if(!Auth::check()){
-            $this->validate([
-                'firstname' => 'required|max:200',
+        //dd($this->agree);
+        $this->validate([
+            'firstname' => 'required|max:200',
 //                'email' => 'required|email|unique:users',
 //                'password' => 'required|min:6',
-                'phone' => 'required|numeric',
-            ]);
-
-            $user = new User();
-            $user->name = $this->firstname;
-            $user->email = $this->email;
-            $user->password = $this->password;
-            $user->save();
-
-            session()->flash('success', 'Successful registration');
-            Auth::login($user);
-        }
-
-        $this->validate([
             'phone' => 'required|numeric',
-        ]);
+            'agree' => 'accepted'
+        ],
+            [
+                'agree.accepted' => __('You must agree to the terms of use'), // Передача собственного сообщения
+            ]
+        );
 
-        $order = new Order();
-        $order->user_id = Auth::user()->id;
-        $nom = session()->get('checkout', Cart::instance('cart')->subtotal());
-//        dd((float)$nom);
-//        $nom = str_replace(' ', '', $nom);
-//        dd((float) $nom);
+        if ($this->agree) {
+            $order = new Order();
+            //User
+            if(Auth::check()) { $order->user_id = Auth::user()->id; } else { $order->user_id = 1; }
+            $nom = session()->get('checkout', Cart::instance('cart')->subtotal());
+            $order->subtotal = (float) str_replace(' ', '', Cart::instance('cart')->subtotal()) ;
+            $order->tax = (float) str_replace(' ', '', Cart::instance('cart')->tax());
+            $order->total = (float) str_replace(' ', '', Cart::instance('cart')->total());
 
-//        $order->subtotal = session()->get('checkout')['subtotal'];
-//        $order->tax = session()->get('checkout')['tax'];
-//        $order->total = session()->get('checkout')['total'];
-//
-//        dd(((float)Cart::instance('cart')->subtotal()));
+            $order->firstname = $this->firstname;
+            $order->mobile = $this->phone;
+            $order->status = 'ordered';
+            $order->is_shipping_different = 0;
+            $order->save();
 
-//dd(number_format(Cart::instance('cart')->subtotal(),',', ' '));
-        //dd(Cart::instance('cart')->subtotal());
+            foreach (Cart::instance('cart')->content() as $item)
+            {
+                $orderItem = new OrderItem();
+                $orderItem->product_id = $item->id;
+                $orderItem->order_id = $order->id;
+                $orderItem->price = $item->price;
+                $orderItem->quantity = $item->qty;
+                $orderItem->save();
+            }
 
-        $order->subtotal = (float) str_replace(' ', '', Cart::instance('cart')->subtotal()) ;
-        $order->tax = (float) str_replace(' ', '', Cart::instance('cart')->tax());
-        $order->total = (float) str_replace(' ', '', Cart::instance('cart')->total());
+            $transaction = new Transaction();
+            if(Auth::check()) { $transaction->user_id = Auth::user()->id; } else { $transaction->user_id = 1; }
 
-        $order->firstname = $this->firstname;
-        $order->lastname = $this->lastname;
-        $order->companyname = $this->companyname;
-        $order->country = $this->country;
-        $order->line1 = $this->address1;
-        $order->line2 = $this->address2;
-        $order->city = $this->city;
-        $order->province = $this->state;
-        $order->zipcode = $this->zipcode;
-        $order->mobile = $this->phone;
-        $order->email = $this->email;
-        $order->addinfo = $this->addinfo;
-        $order->status = 'ordered';
-        $order->is_shipping_different = $this->ship_to_different ? 1:0;
-        $order->save();
+            $transaction->order_id = $order->id;
+            $this->paymentmode == 1 ? $transaction->mode = 'cash' : $transaction->mode = 'code';
+            $transaction->status = 'pending';
+            $transaction->save();
 
-        foreach (Cart::instance('cart')->content() as $item)
-        {
-            $orderItem = new OrderItem();
-            $orderItem->product_id = $item->id;
-            $orderItem->order_id = $order->id;
-            $orderItem->price = $item->price;
-            $orderItem->quantity = $item->qty;
-            $orderItem->save();
+            $this->thankyou = 1;
+
+            Cart::instance('cart')->destroy();
+            session()->forget('checkout');
+        } else {
+            session()->flash('error', __('You must agree to the terms and conditions'));
         }
 
-        if ($this->ship_to_different)
-        {
-            $this->validate([
-                's_firstname' => 'required',
-                's_lastname' => 'required',
-//                's_country' => 'required',
-                's_address1' => 'required',
-                's_city' => 'required',
-                's_state' => 'required',
-                's_zipcode' => 'required',
-                's_phone' => 'required|numeric',
-            ]);
-
-            $shipping = new Shipping();
-            $shipping->order_id = $order->id;
-            $shipping->firstname = $this->s_firstname;
-            $shipping->lastname = $this->s_lastname;
-            $shipping->country = $this->country;
-            $shipping->address1 = $this->s_address1;
-            $shipping->address2 = $this->s_address2;
-            $shipping->city = $this->s_city;
-            $shipping->state = $this->s_state;
-            $shipping->zipcode = $this->s_zipcode;
-            $shipping->phone = $this->s_phone;
-            $shipping->addinfo = $this->s_addinfo;
-            $shipping->save();
-        }
-
-        $transaction = new Transaction();
-        $transaction->user_id = Auth::user()->id;
-        $transaction->order_id = $order->id;
-        $this->paymentmode == 'code' ? $transaction->mode = 'code' : $transaction->mode = 'card';
-        $transaction->status = 'pending';
-        $transaction->save();
-
-        $this->thankyou = 1;
-
-        Cart::instance('cart')->destroy();
-        session()->forget('checkout');
     }
 
     public function verifyForCheckout()
@@ -169,18 +116,6 @@ class ChekoutComponent extends Component
         if ($this->thankyou){
            return redirect()->route('thankyou');
         }
-        // if (!Auth::check())
-        // {
-        //     return redirect()->route('register');
-        // }
-        // elseif ($this->thankyou)
-        // {
-        //     return redirect()->route('thankyou');
-        // }
-//        elseif (!session()->get('checkout'))
-//        {
-//            return redirect()->route('cart');
-//        }
     }
 
     public function render()

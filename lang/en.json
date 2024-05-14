@@ -218,5 +218,15 @@
     "Shop Now": "Shop Now",
     "You are logged out": "You are logged out",
     "You are logged in": "You are logged in",
-    "Tax": "Tax"
+    "Tax": "Tax",
+    "Thank you": "Thank you",
+    "Your order has been received": "Your order has been received",
+    "Go To Homepage": "Go To Homepage",
+    "Order number": "Order number",
+    "Created at": "Created at",
+    "Shipping Address": "Shipping Address",
+    "Billing Address": "Billing Address",
+    "You must agree to the terms and conditions": "You must agree to the terms and conditions",
+    "You must agree to the terms of use": "You must agree to the terms of use",
+    "Payment method": "Payment method"
 }

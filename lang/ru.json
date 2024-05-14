@@ -226,6 +226,16 @@
     "Shop Now": "Купить сейчас",
     "You are logged out": "Вы вышли из системы",
     "You are logged in": "Вы вошли в систему",
-    "Tax": "Налог"
+    "Tax": "Налог",
+    "Thank you": "Спасибо",
+    "Your order has been received": "Ваш заказ был получен",
+    "Go To Homepage": "Вернуться на домашнюю страницу",
+    "Order number": "Номер заказа",
+    "Created at": "Создан",
+    "Shipping Address": "Адрес доставки",
+    "Billing Address": "Адрес для выставления счета",
+    "You must agree to the terms and conditions": "Вы должны согласится с условиями",
+    "You must agree to the terms of use": "Вы должны согласиться с условиями использования",
+    "Payment method": "Способ оплаты"
 
 }

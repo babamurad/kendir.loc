@@ -23,7 +23,12 @@
             </div>
             <div class="page-header__title">
                 <h1>{{__('Checkout')}}</h1>
-                @include('components.alerts')
+                @if(session('error'))
+                    <div class="alert alert-danger alert-dismissible" style="margin-bottom: 0%; padding-top:0.5rem; padding-bottom:0.5rem; ">
+                        <button type="button" class="close {{ request()->is('/') ? '' : ' mt-3' }}" data-dismiss="alert" aria-hidden="true" style="top: -17px;">×</button>
+                        <h6><i class="icon fas fa-info"></i> {{ session('error') }}</h6>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -202,30 +207,13 @@
                                 </tr>
                                 </tfoot>
                             </table>
-                            <div class="payment-methods">
+                            <div class="payment-methods" wire:ignore>
                                 <ul class="payment-methods__list">
                                     <li class="payment-methods__item payment-methods__item--active">
                                         <label class="payment-methods__item-header">
                                                     <span class="payment-methods__item-radio input-radio">
                                                         <span class="input-radio__body">
-                                                            <input class="input-radio__input" name="checkout_payment_method" type="radio" checked>
-                                                            <span class="input-radio__circle"></span>
-                                                        </span>
-                                                    </span>
-                                            <span class="payment-methods__item-title">{{__('Direct bank transfer')}}</span>
-                                        </label>
-                                        <div class="payment-methods__item-container">
-                                            <div class="payment-methods__item-description text-muted">
-                                               {{__('makeyourpayment')}}
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="payment-methods__item">
-                                        <label class="payment-methods__item-header">
-                                                    <span class="payment-methods__item-radio input-radio">
-                                                        <span class="input-radio__body">
-                                                            <input class="input-radio__input" name="checkout_payment_method" type="radio">
+                                                            <input class="input-radio__input" name="checkout_payment_method" type="radio" value="1" checked wire:model="paymentmode">
                                                             <span class="input-radio__circle"></span>
                                                         </span>
                                                     </span>
@@ -233,11 +221,26 @@
                                         </label>
                                         <div class="payment-methods__item-container">
                                             <div class="payment-methods__item-description text-muted">
-                                               {{__('paywithcash')}}
+                                                {{__('paywithcash')}}
                                             </div>
                                         </div>
                                     </li>
-
+                                    <li class="payment-methods__item">
+                                        <label class="payment-methods__item-header">
+                                                    <span class="payment-methods__item-radio input-radio">
+                                                        <span class="input-radio__body">
+                                                            <input class="input-radio__input" name="checkout_payment_method" type="radio" value="2" wire:model="paymentmode">
+                                                            <span class="input-radio__circle"></span>
+                                                        </span>
+                                                    </span>
+                                            <span class="payment-methods__item-title">{{__('Direct bank transfer')}}</span>
+                                        </label>
+                                        <div class="payment-methods__item-container">
+                                            <div class="payment-methods__item-description text-muted">
+                                                {{__('makeyourpayment')}}
+                                            </div>
+                                        </div>
+                                    </li>
 
                                 </ul>
                             </div>
@@ -245,6 +248,7 @@
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" id="agree" class="custom-control-input cpoint" wire:model="agree">
+                                        @error('agree') <span class="text-danger">{{ $message }}</span> @enderror
                                         <label class="custom-control-label cpoint" for="agree">{{__('termcondition')}}
                                             <a href="{{ route('terms') }}">{{__('termsandconditions')}}*</a>
                                         </label>
