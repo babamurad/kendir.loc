@@ -17,7 +17,7 @@ class ShopComponentTest extends TestCase
     public function test_render_method()
     {
         Livewire::test('shop-component')
-            ->set('category_id', [1])
+            ->set('category_id', [4])
             ->call('render')
             ->assertSee('Categories')
             ->assertSee('Products')
