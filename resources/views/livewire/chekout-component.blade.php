@@ -191,7 +191,7 @@
                                     <td>{{__('Free Shipping')}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Tax 10%</th>
+                                    <th>{{__('Tax')}} 10%</th>
                                     <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->tax() }}</td>
                                 </tr>
                                 </tbody>
